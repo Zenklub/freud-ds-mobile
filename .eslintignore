@@ -1,0 +1,8 @@
+**/node_modules
+android
+ios
+.vscode
+.gitlab
+docs
+lib
+playground

@@ -1,0 +1,36 @@
+diff --git a/node_modules/react-native-gesture-handler/android/build.gradle b/node_modules/react-native-gesture-handler/android/build.gradle
+index 8afc3d5..5bf4dd3 100644
+--- a/node_modules/react-native-gesture-handler/android/build.gradle
++++ b/node_modules/react-native-gesture-handler/android/build.gradle
+@@ -21,12 +21,13 @@ def safeExtGet(prop, fallback) {
+ 
+ // Check whether Reanimated 2.3 or higher is installed alongside Gesture Handler
+ def shouldUseCommonInterfaceFromReanimated() {
+-    if (rootProject.subprojects.find { it.name == 'react-native-reanimated' } != null) {
+-        def inputFile = new File(rootProject.projectDir, '../node_modules/react-native-reanimated/package.json')
++    def reanimated = rootProject.subprojects.find { it.name == 'react-native-reanimated' }
++    if (reanimated != null) {
++        def inputFile = new File(reanimated.projectDir, '../package.json')
+         def json = new JsonSlurper().parseText(inputFile.text)
+         def reanimatedVersion = json.version as String
+         def (major, minor, patch) = reanimatedVersion.tokenize('.')
+-        return Integer.parseInt(minor) >= 3
++        return (Integer.parseInt(major) == 2 && Integer.parseInt(minor) >= 3) || Integer.parseInt(major) == 3
+     } else {
+         return false
+     }
+diff --git a/node_modules/react-native-gesture-handler/android/lib/src/main/java/com/swmansion/gesturehandler/PanGestureHandler.kt b/node_modules/react-native-gesture-handler/android/lib/src/main/java/com/swmansion/gesturehandler/PanGestureHandler.kt
+index 391a98f..77327ee 100644
+--- a/node_modules/react-native-gesture-handler/android/lib/src/main/java/com/swmansion/gesturehandler/PanGestureHandler.kt
++++ b/node_modules/react-native-gesture-handler/android/lib/src/main/java/com/swmansion/gesturehandler/PanGestureHandler.kt
+@@ -54,8 +54,8 @@ class PanGestureHandler(context: Context?) : GestureHandler<PanGestureHandler>()
+    * position of all the fingers will remain still while doing a rotation gesture.
+    */
+   init {
+-    val vc = ViewConfiguration.get(context)
+-    val touchSlop = vc.scaledTouchSlop
++    val vc = context?.let { ViewConfiguration.get(it) }
++    val touchSlop = vc?.scaledTouchSlop ?: 1
+     defaultMinDistSq = (touchSlop * touchSlop).toFloat()
+     minDistSq = defaultMinDistSq
+   }
