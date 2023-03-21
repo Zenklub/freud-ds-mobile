@@ -47,6 +47,17 @@ function error(text) {
 	print(text, Colors.red);
 }
 
+function preBuild() {
+	notify('· Cleaning previous building...');
+	spawnSync('yarn', ['clean']);
+	success('  Done');
+
+	notify('· Preparing building...');
+	spawnSync('yarn', ['tsc', '-p', 'tsconfig.json']);
+	spawnSync('yarn', ['tsc-alias', '-p', 'tsconfig.json']);
+	success('  Done');
+}
+
 function cloneFiles() {
 	notify('· Coping files to Playground project...');
 
@@ -61,7 +72,7 @@ function cloneFiles() {
 	}
 	cloneItem('android', true);
 	cloneItem('ios', true);
-	cloneItem('lib', true);
+	cloneItem('dist', true);
 	cloneItem('package.json', false);
 	cloneItem('react-native-freud-ds.podspec', false);
 	success('  Done');
@@ -170,5 +181,6 @@ process.on('SIGINT', function (exitCode) {
 	exitHandler(exitCode);
 });
 
+preBuild();
 cloneFiles();
 startUp();

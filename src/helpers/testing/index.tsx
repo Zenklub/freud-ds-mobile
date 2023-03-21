@@ -1,10 +1,10 @@
 import React from 'react';
-import { FreudDSProvider } from '../providers';
 import {
 	render,
 	RenderAPI,
 	RenderOptions,
 } from '@testing-library/react-native';
+import { FreudDSProvider } from '../../providers';
 
 const inset = {
 	frame: { x: 0, y: 0, width: 0, height: 0 },

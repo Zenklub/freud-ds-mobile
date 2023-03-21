@@ -1,7 +1,7 @@
 import React from 'react';
 import '@testing-library/jest-native/extend-expect';
-import { renderWithProviders } from '../../../testings/test-helpers';
-import { FreudHeading } from '../heading';
+import { renderWithProviders } from '../../helpers/testing';
+import { FreudHeading } from '../typography/heading';
 
 const testID = 'heading-test';
 

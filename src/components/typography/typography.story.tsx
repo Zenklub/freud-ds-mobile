@@ -1,8 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
-import { ScrollView, View } from 'react-native';
+import { ScrollView } from 'react-native';
 
 import { FreudHeading } from './heading';
+import { VStack } from 'native-base';
 
 const HeadingStory: React.FC = () => {
 	return (
@@ -12,14 +13,16 @@ const HeadingStory: React.FC = () => {
 				justifyContent: 'flex-start',
 			}}
 		>
-			<View
-				style={{
-					flexShrink: 1,
-					padding: 16,
-				}}
-			>
-				<FreudHeading>Heading text</FreudHeading>
-			</View>
+			<VStack space={1} alignItems="center">
+				<FreudHeading size="xs">xs 2</FreudHeading>
+				<FreudHeading size="sm">sm</FreudHeading>
+				<FreudHeading size="md">md</FreudHeading>
+				<FreudHeading size="lg">lg</FreudHeading>
+				<FreudHeading size="xl">xl</FreudHeading>
+				<FreudHeading size="2xl">2xl</FreudHeading>
+				<FreudHeading size="3xl">3xl</FreudHeading>
+				<FreudHeading size="4xl">4xl</FreudHeading>
+			</VStack>
 		</ScrollView>
 	);
 };

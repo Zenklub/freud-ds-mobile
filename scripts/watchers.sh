@@ -9,7 +9,7 @@ clean_up_watchers() {
 
 add_watchers() {
     (watchman watch-del ./ && watchman trigger-del ./ sync-changes) >/dev/null
-    watchman watch ./lib && watchman -- trigger ./lib sync-changes '**/*' -- ../scripts/sync-changes.sh
+    watchman watch ./dist && watchman -- trigger ./dist sync-changes '**/*' -- ../scripts/sync-changes.sh
 }
 
 "$@"

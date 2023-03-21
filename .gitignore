@@ -1,7 +1,10 @@
 # Created by https://www.gitignore.io/api/xcode,macos,android,windows,cocoapods,reactnative,sublimetext,androidstudio
 # Edit at https://www.gitignore.io/?templates=xcode,macos,android,windows,cocoapods,reactnative,sublimetext,androidstudio
 
+# Build generated
 lib/
+dist/
+build/
 
 # Dependency directories
 node_modules/*
