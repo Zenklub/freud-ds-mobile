@@ -1,0 +1,22 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "lib",
+    "baseUrl": "."
+  },
+  "include": ["type-declarations/**/*.d.ts", "src/**/*"],
+  "exclude": [
+    "node_modules", 
+    "lib", 
+    "playground", 
+    "**/*.stories.ts", 
+    "**/*.stories.tsx",
+    "**/*.story.ts", 
+    "**/*.story.tsx",
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "**/*.spec.tsx",
+    "**/*.test.tsx",
+    "src/stories.ts",
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "outDir": "lib",
+    "module": "esnext",
+    "target": "es5",
+    "lib": ["ES2019"],
+    "declaration": true,
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "esModuleInterop": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "checkJs": false,
+    "jsx": "react-native",
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@components": ["./src/components"],
+      "@components/*": ["./src/components/*"],
+      "@providers/*": ["./src/providers/*"],
+    }
+  },
+  "include": ["type-declarations/**/*.d.ts", "src/**/*"],
+  "exclude": ["node_modules", "lib", "playground"]
+}
