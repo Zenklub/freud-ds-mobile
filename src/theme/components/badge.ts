@@ -1,5 +1,6 @@
 import { InterfaceBadgeProps } from 'native-base/lib/typescript/components/composites/Badge/types';
-import { getColorScheme } from 'native-base/lib/typescript/theme/tools';
+// @ts-ignore
+import { getColorScheme } from 'native-base/lib/module/theme/tools';
 
 const baseStyle = {
 	flexDirection: 'row',

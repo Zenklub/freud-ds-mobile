@@ -2,7 +2,8 @@ import {
 	getColor,
 	getColorScheme,
 	transparentize,
-} from 'native-base/lib/typescript/theme/tools';
+	// @ts-ignore
+} from 'native-base/lib/module/theme/tools';
 import { InterfaceAlertProps } from 'native-base/lib/typescript/components/composites/Alert/types';
 
 function getBg(

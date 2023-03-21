@@ -2,7 +2,8 @@ import {
 	getColorFormColorScheme,
 	getColorScheme,
 	mode,
-} from 'native-base/lib/typescript/theme/tools';
+	// @ts-ignore
+} from 'native-base/lib/module/theme/tools';
 
 function baseStyle(props: Record<string, any>) {
 	const activeColor = getColorFormColorScheme(props);

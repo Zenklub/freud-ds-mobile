@@ -1,5 +1,6 @@
 // Accordion
-import { mode } from 'native-base/lib/typescript/theme/tools';
+// @ts-ignore
+import { mode } from 'native-base/lib/module/theme/tools';
 
 const accordionBaseStyle = (props: Record<string, any>) => {
 	return {

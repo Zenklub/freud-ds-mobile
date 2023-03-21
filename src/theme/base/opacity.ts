@@ -1,19 +1,17 @@
+// @ts-ignore
+import * as Tokens from '@freud-ds/tokens/style/react-native/variables';
+
 const opacity = {
-	0: 0,
-	5: 0.05,
-	10: 0.1,
-	20: 0.2,
-	25: 0.25,
-	30: 0.3,
-	40: 0.4,
-	50: 0.5,
-	60: 0.6,
-	70: 0.7,
-	75: 0.75,
-	80: 0.8,
-	90: 0.9,
-	95: 0.95,
-	100: 1,
+	none: 0,
+	level1: Tokens.opacityLevel1,
+	level2: Tokens.opacityLevel2,
+	level3: Tokens.opacityLevel3,
+	level4: Tokens.opacityLevel4,
+	level5: Tokens.opacityLevel5,
+	level6: Tokens.opacityLevel6,
+	level7: Tokens.opacityLevel7,
+	level8: Tokens.opacityLevel8,
+	full: 1,
 };
 export type IOpacity = keyof typeof opacity;
 

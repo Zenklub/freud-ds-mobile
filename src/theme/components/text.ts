@@ -1,8 +1,8 @@
 const baseStyle = () => {
 	return {
-		color: 'text.900',
+		color: 'neutral.black',
 		_dark: {
-			color: 'text.50',
+			color: 'neutral.white',
 		},
 		fontWeight: '400',
 		fontFamily: 'body',

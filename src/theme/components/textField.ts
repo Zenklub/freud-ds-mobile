@@ -1,5 +1,6 @@
 // TextField
-import { mode } from 'native-base/lib/typescript/theme/tools';
+// @ts-ignore
+import { mode } from 'native-base/lib/module/theme/tools';
 
 const baseStyle = (props: Record<string, any>) => {
 	return {

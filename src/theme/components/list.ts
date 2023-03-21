@@ -1,4 +1,5 @@
-import { mode } from 'native-base/lib/typescript/theme/tools';
+// @ts-ignore
+import { mode } from 'native-base/lib/module/theme/tools';
 
 // List
 export const List = {

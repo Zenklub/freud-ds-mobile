@@ -25,7 +25,7 @@
 		"start": "tsc -w & tsc-alias -w",
 		"dev": "node ./scripts/run-dev.js",
 		"clean": "tsc --build --clean && rm -rf ./dist",
-		"build": "yarn clean && tsc -p tsconfig.release.json & tsc-alias -p tsconfig.release.json",
+		"build": "yarn clean && tsc -p tsconfig.release.json && tsc-alias -p tsconfig.release.json",
 		"build:playground:ios": "cd playground && yarn ios && cd ../",
 		"build:playground:android": "cd playground && yarn android && cd ../",
 		"build:playground:android:develop": "cd playground && yarn android -- --variant=releaseDevelop && cd ../",

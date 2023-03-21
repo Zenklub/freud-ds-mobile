@@ -9,7 +9,7 @@
     "**/*.test.*",
     "**/*.story.*",
     "**/*.stories.*",
-    "src/stories.ts",
+    "**/storybook/*",
     "**/__mocks__/*",
     "**/__tests__/*",
     "**/__fixtures__/*",

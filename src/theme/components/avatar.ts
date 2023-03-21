@@ -1,8 +1,10 @@
+import { InterfaceAvatarProps } from 'native-base/lib/typescript/components/composites/Avatar/types';
+// @ts-ignore
 import {
 	getRandomString,
 	randomColor,
-} from 'native-base/lib/typescript/theme/tools';
-import { InterfaceAvatarProps } from 'native-base/lib/typescript/components/composites/Avatar/types';
+	// @ts-ignore
+} from 'native-base/lib/module/theme/tools';
 
 const baseStyle = (props: InterfaceAvatarProps & { name: string }) => {
 	const { name } = props;

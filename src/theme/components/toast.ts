@@ -1,5 +1,6 @@
 import { Easing } from 'react-native';
-import { mode } from 'native-base/lib/typescript/theme/tools';
+// @ts-ignore
+import { mode } from 'native-base/lib/module/theme/tools';
 
 const baseStyle = (props: Record<string, any>) => {
 	// NOTE: Internal pseudo props like _stack, _overlay nad _presenceTransition can only be update by the theme.

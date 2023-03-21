@@ -1,4 +1,5 @@
-import { Dict } from 'native-base/lib/typescript/theme/tools';
+// @ts-ignore
+import { Dict } from 'native-base/lib/module/theme/tools';
 
 const baseStyle = (props: Dict) => {
 	const { centerContent } = props;

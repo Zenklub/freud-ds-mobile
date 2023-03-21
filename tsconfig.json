@@ -37,8 +37,6 @@
   "include": ["type-declarations/**/*.d.ts", "src/**/*"],
   "exclude": [
     "**/*.test.*",
-    "**/*.story.*",
-    "**/*.stories.*",
     "**/__mocks__/*",
     "**/__tests__/*",
     "src/helpers/testing/"

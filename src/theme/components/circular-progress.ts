@@ -1,4 +1,5 @@
-import { getColorScheme, mode } from 'native-base/lib/typescript/theme/tools';
+// @ts-ignore
+import { getColorScheme, mode } from 'native-base/lib/module/theme/tools';
 
 const sizes = {
 	xs: {

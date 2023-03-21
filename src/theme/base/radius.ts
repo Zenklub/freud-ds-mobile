@@ -1,13 +1,14 @@
+// @ts-ignore
+import * as Tokens from '@freud-ds/tokens/style/react-native/variables';
+
 const radii = {
-	none: 0,
-	xs: 2,
-	sm: 4,
-	md: 6,
-	lg: 8,
-	xl: 12,
-	'2xl': 16,
-	'3xl': 24,
-	full: 9999,
+	none: Tokens.borderRadiusNone,
+	sm: Tokens.borderRadiusSm,
+	md: Tokens.borderRadiusMd,
+	lg: Tokens.borderRadiusLg,
+	xl: Tokens.borderRadiusXl,
+	pill: Tokens.borderRadiusPill,
+	circular: Tokens.borderRadiusCircular,
 };
 
 export type IRadii = keyof typeof radii;

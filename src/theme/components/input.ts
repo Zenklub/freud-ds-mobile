@@ -1,5 +1,6 @@
 import { InterfaceInputProps } from 'native-base/lib/typescript/components/primitives/Input/types';
-import { transparentize } from 'native-base/lib/typescript/theme/tools';
+// @ts-ignore
+import { transparentize } from 'native-base/lib/module/theme/tools';
 
 const baseStyle = (props: InterfaceInputProps & { theme: any }) => {
 	const { primary, error } = props.theme.colors;

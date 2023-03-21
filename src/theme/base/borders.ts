@@ -1,9 +1,13 @@
+// @ts-ignore
+import * as Tokens from '@freud-ds/tokens/style/react-native/variables';
+
 const borderWidths = {
-	'0': 0,
-	'1': '1px',
-	'2': '2px',
-	'4': '4px',
-	'8': '8px',
+	none: Tokens.borderWidthNone,
+	sm: Tokens.borderWidthSm,
+	md: Tokens.borderWidthMd,
+	lg: Tokens.borderWidthLg,
+	xl: Tokens.borderWidthXl,
+	xxl: Tokens.borderWidthXxl,
 };
 
 export type IBorderWidth = keyof typeof borderWidths;
