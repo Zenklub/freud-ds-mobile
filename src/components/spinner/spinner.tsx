@@ -1,28 +1,17 @@
 import React from 'react';
-import { ISpinnerProps, Spinner as NBSpinner } from 'native-base';
-
-interface SpinnerProps {
-	size?: 'sm' | 'lg' | 'small' | 'large';
-	inverted?: boolean;
-}
-
-const sizesMap: Record<
-	NonNullable<SpinnerProps['size']>,
-	ISpinnerProps['size']
-> = {
-	sm: 'small',
-	lg: 'large',
-	small: 'small',
-	large: 'large',
-};
+import { Spinner as NBSpinner } from 'native-base';
+import { SpinnerProps } from '@components/spinner/types';
+import { iconSizesMap } from '@components/spinner/constants';
 
 export const Spinner: React.FC<SpinnerProps> = ({
-	size = 'md',
+	testID,
+	size = 'large',
 	inverted = false,
 }) => {
 	return (
 		<NBSpinner
-			size={sizesMap[size]}
+			testID={testID}
+			size={iconSizesMap[size]}
 			color={inverted ? 'neutral.white' : 'brand.pure'}
 		/>
 	);
