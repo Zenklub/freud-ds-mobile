@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "lib",
+    "outDir": "dist",
     "module": "esnext",
     "target": "es5",
     "lib": ["ES2019"],
@@ -26,9 +26,19 @@
     "paths": {
       "@components": ["./src/components"],
       "@components/*": ["./src/components/*"],
+      "@providers": ["./src/providers"],
       "@providers/*": ["./src/providers/*"],
+      "@theme": ["./src/theme"],
+      "@theme/*": ["./src/theme/*"],
+      "@helpers": ["./src/helpers"],
+      "@helpers/*": ["./src/helpers/*"]
     }
   },
   "include": ["type-declarations/**/*.d.ts", "src/**/*"],
-  "exclude": ["node_modules", "lib", "playground"]
+  "exclude": [
+    "**/*.test.*",
+    "**/__mocks__/*",
+    "**/__tests__/*",
+    "src/helpers/testing/"
+  ]
 }

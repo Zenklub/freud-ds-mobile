@@ -2,7 +2,9 @@
 android
 ios
 .vscode
-.gitlab
+.idea
 docs
 lib
 playground
+dist
+coverage

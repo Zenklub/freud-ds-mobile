@@ -1,9 +1,12 @@
 @objc(RNFreudDSViewManager)
 class RNFreudDSViewManager: RCTViewManager {
-
-  override func view() -> (RNFreudDSView) {
-    return RNFreudDSView()
-  }
+    @objc
+    override static func requiresMainQueueSetup() -> Bool {
+        return false
+    }
+    override func view() -> (RNFreudDSView) {
+        return RNFreudDSView()
+    }
 }
 
 class RNFreudDSView : UIView {

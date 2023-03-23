@@ -3,21 +3,20 @@
 	"title": "React Native Freud Design System",
 	"version": "0.0.1",
 	"description": "This is the implementation of Freud DS for React Native",
-	"main": "./lib/index.js",
-	"module": "./lib/index.js",
-	"types": "./lib/index.d.ts",
+	"main": "./dist/index.js",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
 	"source": "src/index",
 	"files": [
 		"README.md",
-		"src",
-		"lib",
+		"dist",
 		"android",
 		"ios",
-		"cpp",
 		"react-native-freud-ds.podspec",
-		"!lib/typescript/playground",
 		"!android/build",
 		"!ios/build",
+		"!android/.gradle",
+		"!**/.idea",
 		"!**/__tests__",
 		"!**/__fixtures__",
 		"!**/__mocks__"
@@ -25,7 +24,7 @@
 	"scripts": {
 		"start": "tsc -w & tsc-alias -w",
 		"dev": "node ./scripts/run-dev.js",
-		"clean": "tsc --build --clean",
+		"clean": "tsc --build --clean && rm -rf ./dist",
 		"build": "yarn clean && tsc -p tsconfig.release.json && tsc-alias -p tsconfig.release.json",
 		"build:playground:ios": "cd playground && yarn ios && cd ../",
 		"build:playground:android": "cd playground && yarn android && cd ../",
@@ -37,10 +36,11 @@
 		"lint:typescript": "tsc --noEmit -p tsconfig.json",
 		"lint:fix": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
 		"prepare": "is-ci || husky install",
+		"prepublishOnly": "yarn build",
 		"semantic-release": "semantic-release",
 		"playground": "yarn --cwd playground",
 		"pods": "cd playground && pod-install --quiet",
-		"bootstrap": "yarn playground && yarn && yarn build && yarn pods",
+		"bootstrap": "yarn build && cd playground && yarn && yarn react-native link && pod-install --quiet && cd ../",
 		"postinstall": "husky install"
 	},
 	"repository": {
@@ -66,7 +66,8 @@
 		"react-native-gesture-handler": "2.1.0",
 		"react-native-reanimated": "1.13.4",
 		"react-native-safe-area-context": "^3.3.2",
-		"react-native-svg": "12.4.3"
+		"react-native-svg": "12.4.3",
+		"@freud-ds/tokens": "*"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.21.0",
