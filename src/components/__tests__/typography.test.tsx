@@ -9,21 +9,21 @@ const testID = 'heading-test';
 describe('Typography > Heading', () => {
 	it('should render correctly', function () {
 		const { getByTestId } = renderWithProviders(
-			<Heading testID={testID}>Teste</Heading>
+			<Heading testID={testID}>Test</Heading>
 		);
 
 		expect(getByTestId(testID)).toBeTruthy();
-		expect(getByTestId(testID)).toHaveTextContent('Teste');
+		expect(getByTestId(testID)).toHaveTextContent('Test');
 	});
 });
 
 describe('Typography > Text', () => {
 	it('should render correctly', function () {
 		const { getByTestId } = renderWithProviders(
-			<Text testID={testID}>Teste</Text>
+			<Text testID={testID}>Test</Text>
 		);
 
 		expect(getByTestId(testID)).toBeTruthy();
-		expect(getByTestId(testID)).toHaveTextContent('Teste');
+		expect(getByTestId(testID)).toHaveTextContent('Test');
 	});
 });
