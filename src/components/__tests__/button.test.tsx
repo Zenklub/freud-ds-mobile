@@ -4,7 +4,7 @@ import { renderWithProviders } from '../../helpers/testing';
 import { Button } from '../button/button';
 import { iconCharMap, iconSizeMap } from '../icon/constants';
 
-const testID = 'heading-test';
+const testID = 'button-test';
 
 const sizes = ['sm', 'md', 'lg'] as const;
 const sizesMap = {
