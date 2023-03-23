@@ -28,7 +28,7 @@ const colors = {
 	},
 	complementary: {
 		funny: {
-			funnyPure: Tokens.complementaryColorFunnyPure,
+			pure: Tokens.complementaryColorFunnyPure,
 			'01': Tokens.complementaryColorFunny01,
 			'02': Tokens.complementaryColorFunny02,
 			'03': Tokens.complementaryColorFunny03,

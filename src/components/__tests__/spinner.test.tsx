@@ -4,7 +4,7 @@ import { renderWithProviders } from '../../helpers/testing';
 import { Spinner } from '../spinner/spinner';
 import { SpinnerSize } from '../spinner/types';
 import { iconSizesMap } from '../spinner/constants';
-import { colors } from '../../theme/tokens';
+import Colors from '../../theme/base/colors';
 
 const testID = 'spinner-test';
 
@@ -37,7 +37,7 @@ describe('Feedback > Spinner', () => {
 		const { getByTestId } = renderWithProviders(<Spinner testID={testID} />);
 
 		expect(getByTestId(testID)).toBeTruthy();
-		expect(getByTestId(testID)).toHaveProp('color', colors.brand.pure);
+		expect(getByTestId(testID)).toHaveProp('color', Colors.brand.pure);
 	});
 
 	it('should render spinner with inverted color correctly', () => {
@@ -46,6 +46,6 @@ describe('Feedback > Spinner', () => {
 		);
 
 		expect(getByTestId(testID)).toBeTruthy();
-		expect(getByTestId(testID)).toHaveProp('color', colors.neutral.white);
+		expect(getByTestId(testID)).toHaveProp('color', Colors.neutral.white);
 	});
 });
