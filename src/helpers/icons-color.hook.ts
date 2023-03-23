@@ -34,8 +34,6 @@ export const useIconColor = (
 		return inverted ? result._dark?._icon?.color : result._icon?.color;
 	}, [icon, inverted, isPressed, variant]);
 
-	console.log(variant, inverted, iconColorKey);
-
 	const [iconColor] = useToken('colors', [iconColorKey]);
 
 	return [iconColor, pressableProps];
