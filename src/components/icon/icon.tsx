@@ -1,25 +1,20 @@
 import React from 'react';
-import { iconCodeMap, IconName } from '@components/icon/icon-code-map';
+import { iconCharMap, iconSizeMap } from '@components/icon/constants';
 import { Text } from 'react-native';
+import { IconProps } from '@components/icon/types';
 
-export interface IconProps {
-	name: IconName;
-	size?: 'sm' | 'md' | 'lg';
-	color?: string;
-}
-
-const iconSizeMap = {
-	sm: 16,
-	md: 24,
-	lg: 32,
-};
-
-export const Icon: React.FC<IconProps> = ({ color, name, size = 'md' }) => {
-	const char = iconCodeMap[name];
+export const Icon: React.FC<IconProps> = ({
+	testID,
+	color,
+	name,
+	size = 'md',
+}) => {
+	const char = iconCharMap[name];
 	const iconsSize = iconSizeMap[size];
 	if (char) {
 		return (
 			<Text
+				testID={testID}
 				style={{
 					fontFamily: 'freud-icon',
 					fontSize: iconsSize,

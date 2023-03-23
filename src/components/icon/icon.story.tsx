@@ -2,11 +2,12 @@ import { StoryWrapper } from '../../storybook/story-wrapper';
 import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 import { StyleSheet, useWindowDimensions, View } from 'react-native';
-import { iconCodeMap, IconName } from '@components/icon/icon-code-map';
 import { Icon } from '@components/icon/icon';
 import { Text } from '@components/typography/text';
+import { iconCharMap } from '@components/icon/constants';
+import { IconName } from '@components/icon/types';
 
-const keys = Object.keys(iconCodeMap) as Array<IconName>;
+const keys = Object.keys(iconCharMap) as Array<IconName>;
 
 const MARGIN = 5;
 const IconStory = () => {

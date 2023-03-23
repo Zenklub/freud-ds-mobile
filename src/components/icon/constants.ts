@@ -1,4 +1,4 @@
-export const iconCodeMap = {
+export const iconCharMap = {
 	accessible: '',
 	adjustments: '',
 	'adjustments-horizontal': '',
@@ -425,4 +425,8 @@ export const iconCodeMap = {
 	'yin-yang': '',
 } as const;
 
-export type IconName = keyof typeof iconCodeMap;
+export const iconSizeMap = {
+	sm: 16,
+	md: 24,
+	lg: 32,
+};
