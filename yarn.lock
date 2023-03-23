@@ -1387,6 +1387,13 @@
   dependencies:
     tslib "^2.4.0"
 
+"@freud-ds/icons@*":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@freud-ds/icons/-/icons-2.1.1.tgz#6811bc387df80bcdc113b7716a3735e64992d44e"
+  integrity sha512-iG6PW8j10WTHI0WoZS2OyV+lc4w4Sz0PfUbBOIczPWoteWMvs+59nFbOfag9hAfTqIhegxlno1ia3EchjXEKFQ==
+  dependencies:
+    fs-extra "^11.1.0"
+
 "@freud-ds/tokens@*":
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/@freud-ds/tokens/-/tokens-2.0.7.tgz#125eeba5cdf49ad4a46b6aaef51da2ea77de96fd"
@@ -7465,7 +7472,7 @@ fs-extra@^10.0.0:
     jsonfile "^6.0.1"
     universalify "^2.0.0"
 
-fs-extra@^11.0.0:
+fs-extra@^11.0.0, fs-extra@^11.1.0:
   version "11.1.1"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-11.1.1.tgz#da69f7c39f3b002378b0954bb6ae7efdc0876e2d"
   integrity sha512-MGIE4HOvQCeUCzmlHs0vXpih4ysz4wg9qiSAu6cd42lVwPbTM1TjV7RusoyQqMmk/95gdQZX72u+YW+c3eEpFQ==
