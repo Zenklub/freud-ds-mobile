@@ -49,12 +49,16 @@ const baseStyle = ({ colorScheme }: InterfaceButtonProps & { theme: any }) => {
 			size: 'sm',
 			focusable: false,
 		},
+		_pressed: {
+			bg: 'brand.01',
+		},
 	};
 };
 
 function variantGhost(props: InterfaceButtonProps) {
 	return {
 		...variantOutline(props),
+		borderWidth: 1,
 		borderColor: 'transparent',
 	};
 }
@@ -63,6 +67,9 @@ function variantOutline({ colorScheme }: InterfaceButtonProps) {
 	const inverted = colorScheme === 'neutral.white';
 	const backgroundColor = inverted ? 'transparent' : 'neutral.white';
 	const foregroundColor = inverted ? 'neutral.white' : 'brand.pure';
+
+	const pressedForegroundColor = inverted ? 'neutral.white' : 'brand.pure';
+	const pressedBackgroundColor = inverted ? 'brand.03' : 'brand.01';
 
 	return {
 		bg: backgroundColor,
@@ -78,6 +85,16 @@ function variantOutline({ colorScheme }: InterfaceButtonProps) {
 			color: foregroundColor,
 		},
 
+		_pressed: {
+			bg: pressedBackgroundColor,
+			borderColor: pressedBackgroundColor,
+			_text: {
+				color: pressedForegroundColor,
+			},
+			_icon: {
+				color: pressedForegroundColor,
+			},
+		},
 		_dark: {
 			borderColor: foregroundColor,
 			bg: foregroundColor,
@@ -90,6 +107,17 @@ function variantOutline({ colorScheme }: InterfaceButtonProps) {
 			_spinner: {
 				color: backgroundColor,
 			},
+
+			_pressed: {
+				bg: pressedForegroundColor,
+				borderColor: pressedForegroundColor,
+				_text: {
+					color: pressedBackgroundColor,
+				},
+				_icon: {
+					color: pressedBackgroundColor,
+				},
+			},
 		},
 	};
 }
@@ -99,9 +127,13 @@ function variantSolid({ colorScheme }: InterfaceButtonProps) {
 	const foregroundColor = inverted ? 'brand.pure' : 'neutral.white';
 	const backgroundColor = inverted ? 'neutral.white' : 'brand.pure';
 
+	const pressedForegroundColor = inverted ? 'neutral.white' : 'brand.pure';
+	const pressedBackgroundColor = inverted ? 'brand.03' : 'brand.01';
+
 	return {
 		bg: backgroundColor,
 		rounded: 'md',
+		borderWidth: 1,
 		borderColor: backgroundColor,
 		paddingVertical: 10,
 		_text: {
@@ -116,7 +148,16 @@ function variantSolid({ colorScheme }: InterfaceButtonProps) {
 		_hover: {
 			color: foregroundColor,
 		},
-
+		_pressed: {
+			bg: pressedBackgroundColor,
+			borderColor: pressedBackgroundColor,
+			_text: {
+				color: pressedForegroundColor,
+			},
+			_icon: {
+				color: pressedForegroundColor,
+			},
+		},
 		_dark: {
 			bg: foregroundColor,
 			_hover: {
@@ -132,7 +173,14 @@ function variantSolid({ colorScheme }: InterfaceButtonProps) {
 				color: foregroundColor,
 			},
 			_pressed: {
-				bg: foregroundColor,
+				bg: pressedForegroundColor,
+				borderColor: pressedForegroundColor,
+				_text: {
+					color: pressedBackgroundColor,
+				},
+				_icon: {
+					color: pressedBackgroundColor,
+				},
 			},
 		},
 	};

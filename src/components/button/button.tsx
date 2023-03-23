@@ -1,27 +1,23 @@
 import React, { useMemo } from 'react';
-import { Button as NBButton, useToken } from 'native-base';
+import { Button as NBButton, composeEventHandlers } from 'native-base';
 import { ButtonProps } from '@components/button/types';
 import { Icon } from '@components/icon/icon';
+import { useIconColor } from '@helpers/icons-color.hook';
 import buttonTheme from '@theme/components/button';
 
 export const Button: React.FC<ButtonProps> = ({
 	testID,
 	icon,
 	inverted,
+	onPressIn,
+	onPressOut,
 	...props
 }) => {
-	const iconColorKey: string = useMemo(() => {
-		if (!icon) return 'brand.pure';
-		const variant = props.variant || 'solid';
-
-		const result = buttonTheme.variants[variant]?.(props);
-		if (inverted) {
-			return result._dark?._icon?.color ?? 'brand.pure';
-		}
-		return result._icon?.color ?? 'neutral.white';
-	}, [icon, inverted, props.variant]);
-
-	const [iconColor] = useToken('colors', [iconColorKey]);
+	const [iconColor, pressableProps] = useIconColor(buttonTheme.variants, {
+		icon,
+		inverted,
+		...props,
+	});
 
 	const _isLoadingText = useMemo(() => {
 		if (props.isLoading) return props.children as string;
@@ -32,6 +28,8 @@ export const Button: React.FC<ButtonProps> = ({
 		<NBButton
 			testID={testID}
 			size="md"
+			onPressIn={composeEventHandlers(onPressIn, pressableProps.onPressIn)}
+			onPressOut={composeEventHandlers(onPressOut, pressableProps.onPressOut)}
 			colorScheme={inverted ? 'neutral.white' : 'brand.pure'}
 			endIcon={
 				icon ? (

@@ -14,4 +14,7 @@ export interface ButtonProps {
 	isFocused?: boolean;
 	icon?: IconName;
 	testID?: string;
+	onPress?: IButtonProps['onPress'];
+	onPressIn?: IButtonProps['onPressIn'];
+	onPressOut?: IButtonProps['onPressOut'];
 }
