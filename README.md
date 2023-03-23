@@ -58,7 +58,7 @@ yarn install
 yarn bootstrap
 ```
 
-To overcome the problem metro bundler has with symlinks, we  use `watchman` to detect changes in development mode and update directly into the playground app. To make work properly, please install it locally
+To overcome the problem that metro bundler has with symlinks, we're using `watchman` to detect changes in development mode and update it directly into the playground app. To make work properly, please install it locally
 
 ```bash
 # Mac OS
@@ -77,7 +77,7 @@ yarn build:playground:ios
 yarn build:playground:android
 ```
 
-Run the build script on development mode
+Running the build script on development mode
 
 ```bash
 yarn dev
@@ -110,16 +110,16 @@ import { MyFirstComponent } from '.';
 storiesOf('MyFirstComponent', module).add('Simple Usage', () => <MyFirstComponent />);
 ```
 
-Finally, let's import our story into the application, open the `src/stories.ts` file and add the import statement of our component's story:
+Finally, let's import our story into the application, open the `src/storybook/stories.ts` file and add the import statement of our component's story:
 
 ``` diff
-// src/stories.ts
+// src/storybook/stories.ts
 ...
-+ import { MyFirstComponent } from '@components/my-fist-component/my-fist-component.stories';
++ import '@components/my-fist-component/my-fist-component.stories';
 
 ```
 
-Now our component is already being displayed in the playground.
+Now you can see our component is already being displayed in the playground.
 
 
 

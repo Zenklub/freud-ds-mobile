@@ -14,18 +14,19 @@
     "postinstall": "patch-package && yarn jetify"
   },
   "dependencies": {
+    "@freud-ds/icons": "*",
     "@freud-ds/react-native": "file:../dist",
+    "@freud-ds/tokens": "*",
     "@react-native-async-storage/async-storage": "^1.17.11",
+    "native-base": "^3.4.25",
     "react": "17.0.2",
     "react-native": "0.68.1",
     "react-native-gesture-handler": "2.1.0",
     "react-native-reanimated": "1.13.4",
+    "react-native-safe-area-context": "^3.3.2",
     "react-native-svg": "11.0.1",
     "react-native-svg-transformer": "0.14.3",
-    "reanimated-bottom-sheet": "^1.0.0-alpha.22",
-    "native-base": "^3.4.25",
-    "react-native-safe-area-context": "^3.3.2",
-    "@freud-ds/tokens": "*"
+    "reanimated-bottom-sheet": "^1.0.0-alpha.22"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

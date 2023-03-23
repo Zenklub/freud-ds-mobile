@@ -1,35 +1,38 @@
+// @ts-ignore
+import * as Tokens from '@freud-ds/tokens/style/react-native/variables';
 import { InterfaceButtonProps } from 'native-base/lib/typescript/components/primitives/Button/types';
 
-const baseStyle = (props: InterfaceButtonProps & { theme: any }) => {
-	const { primary } = props.theme.colors;
+const baseStyle = ({ colorScheme }: InterfaceButtonProps & { theme: any }) => {
+	const inverted = colorScheme === 'neutral.white';
+	const foregroundColor = inverted ? 'brand.pure' : 'neutral.white';
+	const backgroundColor = inverted ? 'neutral.white' : 'brand.pure';
 
 	return {
-		borderRadius: 'sm', // '4px'
 		flexDirection: 'row',
 		justifyContent: 'center',
 		alignItems: 'center',
-		_web: {
-			_disabled: {
-				cursor: 'not-allowed',
-			},
-			_loading: {
-				cursor: 'not-allowed',
-			},
-			cursor: 'pointer',
-			userSelect: 'none',
+		paddingHorizontal: 12,
+		rounded: 'md',
+		borderWidth: 1,
+		borderColor: backgroundColor,
+		bg: backgroundColor,
+		_text: {
+			color: foregroundColor,
+			fontWeight: '600',
 		},
-		_focusVisible: {
-			_web: {
-				outlineWidth: '0',
-				style: { boxShadow: `${primary[400]} 0px 0px 0px 2px` },
-			},
+		_icon: {
+			color: foregroundColor,
 		},
 		_dark: {
-			_focusVisible: {
-				_web: {
-					outlineWidth: '0',
-					style: { boxShadow: `${primary[500]} 0px 0px 0px 2px` },
-				},
+			bg: foregroundColor,
+			_text: {
+				color: backgroundColor,
+			},
+			_icon: {
+				color: backgroundColor,
+			},
+			_loading: {
+				color: backgroundColor,
 			},
 		},
 		_stack: {
@@ -37,10 +40,10 @@ const baseStyle = (props: InterfaceButtonProps & { theme: any }) => {
 			alignItems: 'center',
 		},
 		_loading: {
-			opacity: '40',
+			opacity: Tokens.opacityLevel7,
 		},
 		_disabled: {
-			opacity: '40',
+			opacity: Tokens.opacityLevel5,
 		},
 		_spinner: {
 			size: 'sm',
@@ -49,179 +52,87 @@ const baseStyle = (props: InterfaceButtonProps & { theme: any }) => {
 	};
 };
 
-function variantGhost({ colorScheme }: InterfaceButtonProps) {
+function variantGhost(props: InterfaceButtonProps) {
 	return {
-		_text: {
-			color: `${colorScheme}.600`,
-		},
-		_icon: {
-			color: `${colorScheme}.600`,
-		},
-		_spinner: {
-			color: `${colorScheme}.600`,
-		},
-		_hover: {
-			bg: `${colorScheme}.600:alpha.10`,
-		},
-		_pressed: {
-			bg: `${colorScheme}.600:alpha.20`,
-		},
-
-		_dark: {
-			_text: {
-				color: `${colorScheme}.500`,
-			},
-			_icon: {
-				color: `${colorScheme}.500`,
-			},
-			_spinner: {
-				color: `${colorScheme}.500`,
-			},
-			_hover: {
-				bg: `${colorScheme}.500:alpha.10`,
-			},
-			_pressed: {
-				bg: `${colorScheme}.500:alpha.20`,
-			},
-		},
+		...variantOutline(props),
+		borderColor: 'transparent',
 	};
 }
 
 function variantOutline({ colorScheme }: InterfaceButtonProps) {
+	const inverted = colorScheme === 'neutral.white';
+	const backgroundColor = inverted ? 'transparent' : 'neutral.white';
+	const foregroundColor = inverted ? 'neutral.white' : 'brand.pure';
+
 	return {
-		borderWidth: '1px',
-		borderColor: 'muted.300',
+		bg: backgroundColor,
+		borderWidth: 1,
+		borderColor: foregroundColor,
 		_text: {
-			color: `${colorScheme}.600`,
+			color: foregroundColor,
 		},
 		_icon: {
-			color: `${colorScheme}.600`,
+			color: foregroundColor,
 		},
 		_spinner: {
-			color: `${colorScheme}.600`,
-		},
-		_hover: {
-			bg: `${colorScheme}.600:alpha.10`,
-		},
-		_pressed: {
-			bg: `${colorScheme}.600:alpha.20`,
+			color: foregroundColor,
 		},
 
 		_dark: {
-			borderColor: 'muted.700',
+			borderColor: foregroundColor,
+			bg: foregroundColor,
 			_text: {
-				color: `${colorScheme}.500`,
+				color: backgroundColor,
 			},
 			_icon: {
-				color: `${colorScheme}.500`,
+				color: backgroundColor,
 			},
 			_spinner: {
-				color: `${colorScheme}.500`,
-			},
-			_hover: {
-				bg: `${colorScheme}.500:alpha.10`,
-			},
-			_pressed: {
-				bg: `${colorScheme}.500:alpha.20`,
+				color: backgroundColor,
 			},
 		},
 	};
 }
 
 function variantSolid({ colorScheme }: InterfaceButtonProps) {
+	const inverted = colorScheme === 'neutral.white';
+	const foregroundColor = inverted ? 'brand.pure' : 'neutral.white';
+	const backgroundColor = inverted ? 'neutral.white' : 'brand.pure';
+
 	return {
+		bg: backgroundColor,
+		rounded: 'md',
+		borderColor: backgroundColor,
+		paddingVertical: 10,
 		_text: {
-			color: 'text.50',
+			color: foregroundColor,
 		},
 		_icon: {
-			color: 'text.50',
+			color: foregroundColor,
 		},
 		_spinner: {
-			color: 'text.50',
+			color: foregroundColor,
 		},
-		bg: `${colorScheme}.600`,
 		_hover: {
-			bg: `${colorScheme}.700`,
-		},
-		_pressed: {
-			bg: `${colorScheme}.800`,
+			color: foregroundColor,
 		},
 
 		_dark: {
-			bg: `${colorScheme}.600`,
+			bg: foregroundColor,
 			_hover: {
-				bg: `${colorScheme}.700`,
+				bg: foregroundColor,
+			},
+			_text: {
+				color: backgroundColor,
+			},
+			_icon: {
+				color: backgroundColor,
+			},
+			_spinner: {
+				color: foregroundColor,
 			},
 			_pressed: {
-				bg: `${colorScheme}.800`,
-			},
-		},
-	};
-}
-
-function variantSubtle({ colorScheme }: InterfaceButtonProps) {
-	return {
-		bg: `${colorScheme}.100`,
-		_text: {
-			color: `${colorScheme}.900`,
-		},
-		_icon: {
-			color: `${colorScheme}.900`,
-		},
-		_spinner: {
-			color: `${colorScheme}.900`,
-		},
-		_hover: {
-			bg: `${colorScheme}.200`,
-		},
-		_pressed: {
-			bg: `${colorScheme}.300`,
-		},
-
-		_dark: {
-			bg: `${colorScheme}.300`,
-			_hover: {
-				bg: `${colorScheme}.200`,
-			},
-			_pressed: {
-				bg: `${colorScheme}.100`,
-			},
-		},
-	};
-}
-
-function variantLink({ colorScheme }: InterfaceButtonProps) {
-	return {
-		_icon: {
-			color: `${colorScheme}.600`,
-		},
-		_spinner: {
-			color: `${colorScheme}.600`,
-		},
-
-		_hover: {
-			_text: {
-				textDecorationLine: 'underline',
-			},
-		},
-		_pressed: {
-			_text: {
-				color: `${colorScheme}.800`,
-				textDecorationLine: 'underline',
-			},
-		},
-
-		_text: {
-			color: `${colorScheme}.600`,
-		},
-		_dark: {
-			_text: {
-				color: `${colorScheme}.500`,
-			},
-			_pressed: {
-				_text: {
-					color: `${colorScheme}.300`,
-				},
+				bg: foregroundColor,
 			},
 		},
 	};
@@ -231,15 +142,14 @@ const variants = {
 	ghost: variantGhost as any,
 	outline: variantOutline as any,
 	solid: variantSolid as any,
-	subtle: variantSubtle as any,
-	link: variantLink as any,
 	unstyled: {} as any,
 };
 
 const sizes = {
 	lg: {
 		px: '3',
-		py: '3',
+		py: '1.5',
+		height: Tokens.spacingSizeMd / 4,
 		_text: {
 			fontSize: 'md',
 		},
@@ -249,7 +159,8 @@ const sizes = {
 	},
 	md: {
 		px: '3',
-		py: '2.5',
+		py: '1',
+		height: Tokens.spacingSizeSm / 4,
 		_text: {
 			fontSize: 'sm',
 		},
@@ -259,7 +170,8 @@ const sizes = {
 	},
 	sm: {
 		px: '3',
-		py: '2',
+		py: '1',
+		height: Tokens.spacingSizeXs / 4,
 		_text: {
 			fontSize: 'xs',
 		},
@@ -267,22 +179,12 @@ const sizes = {
 			size: 'sm',
 		},
 	},
-	xs: {
-		px: '3',
-		py: '2',
-		_text: {
-			fontSize: '2xs',
-		},
-		_icon: {
-			size: 'xs',
-		},
-	},
 };
 
 const defaultProps = {
 	variant: 'solid',
 	size: 'md',
-	colorScheme: 'primary',
+	colorScheme: 'brand.pure',
 };
 
 export const ButtonGroup = {

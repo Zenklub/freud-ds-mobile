@@ -1,10 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
-import { ScrollView, StyleSheet, View } from 'react-native';
 
 import { Heading } from './heading';
-import { HStack, VStack } from 'native-base';
+import { HStack } from 'native-base';
 import { Text } from './text';
+import { StoryWrapper } from '../../storybook/story-wrapper';
 
 const headerSizesWithSize = [
 	{ size: 'xs', fontSize: 14 },
@@ -19,44 +19,22 @@ const headerSizesWithSize = [
 
 const HeadingStory: React.FC = () => {
 	return (
-		<View style={{ flex: 1 }}>
-			<View
-				style={{
-					padding: 20,
-					borderBottomColor: '#707870',
-					borderBottomWidth: StyleSheet.hairlineWidth,
-				}}
-			>
-				<Heading size="lg">Heading</Heading>
-			</View>
-			<ScrollView
-				style={{ flex: 1 }}
-				contentContainerStyle={{
-					flexGrow: 1,
-					justifyContent: 'flex-start',
-				}}
-			>
-				<VStack space={1} alignItems="center" paddingY={10}>
-					{headerSizesWithSize.map((item) => (
-						<Heading size={item.size} key={item.size}>
-							{item.size}: {item.fontSize}px
-						</Heading>
-					))}
-				</VStack>
-				<VStack
-					space={1}
-					alignItems="center"
-					background="#241249"
-					paddingY={10}
-				>
-					{headerSizesWithSize.map((item) => (
-						<Heading size={item.size} inverted key={item.size}>
-							{item.size}: {item.fontSize}px
-						</Heading>
-					))}
-				</VStack>
-			</ScrollView>
-		</View>
+		<StoryWrapper title="Typography | Heading">
+			<StoryWrapper.Session>
+				{headerSizesWithSize.map((item) => (
+					<Heading size={item.size} key={item.size}>
+						{item.size}: {item.fontSize}px
+					</Heading>
+				))}
+			</StoryWrapper.Session>
+			<StoryWrapper.Session inverted>
+				{headerSizesWithSize.map((item) => (
+					<Heading size={item.size} inverted key={item.size}>
+						{item.size}: {item.fontSize}px
+					</Heading>
+				))}
+			</StoryWrapper.Session>
+		</StoryWrapper>
 	);
 };
 
@@ -76,66 +54,44 @@ const textSizesWithSize = [
 
 const TextStory: React.FC = () => {
 	return (
-		<View style={{ flex: 1 }}>
-			<View
-				style={{
-					padding: 20,
-					borderBottomColor: '#707870',
-					borderBottomWidth: StyleSheet.hairlineWidth,
-				}}
-			>
-				<Heading size="lg">Text</Heading>
-			</View>
-			<ScrollView
-				style={{ flex: 1 }}
-				contentContainerStyle={{
-					flexGrow: 1,
-					justifyContent: 'flex-start',
-				}}
-			>
-				<VStack space={1} alignItems="center" paddingY={10}>
-					<HStack space="xl">
-						<Text fontSize="md">Regular</Text>
-						<Text fontSize="md">Medium </Text>
-					</HStack>
-					{textSizesWithSize.map((item) => (
-						<HStack space="xl" key={item.size}>
-							<Text fontSize={item.size}>
-								{item.size}: {item.fontSize}px
-							</Text>
-							<Text fontSize={item.size} fontWeight="medium">
-								{item.size}: {item.fontSize}px
-							</Text>
-						</HStack>
-					))}
-				</VStack>
-				<VStack
-					space={1}
-					alignItems="center"
-					background="#241249"
-					paddingY={10}
-				>
-					<HStack space="xl">
-						<Text fontSize="md" inverted>
-							Regular
+		<StoryWrapper title="Typography | Text">
+			<StoryWrapper.Session>
+				<HStack space="xl">
+					<Text fontSize="md">Regular</Text>
+					<Text fontSize="md">Medium </Text>
+				</HStack>
+				{textSizesWithSize.map((item) => (
+					<HStack space="xl" key={item.size}>
+						<Text fontSize={item.size}>
+							{item.size}: {item.fontSize}px
 						</Text>
-						<Text fontSize="md" inverted>
-							Medium{' '}
+						<Text fontSize={item.size} fontWeight="medium">
+							{item.size}: {item.fontSize}px
 						</Text>
 					</HStack>
-					{textSizesWithSize.map((item) => (
-						<HStack space="xl" key={item.size}>
-							<Text fontSize={item.size} inverted>
-								{item.size}: {item.fontSize}px
-							</Text>
-							<Text fontSize={item.size} inverted fontWeight="medium">
-								{item.size}: {item.fontSize}px
-							</Text>
-						</HStack>
-					))}
-				</VStack>
-			</ScrollView>
-		</View>
+				))}
+			</StoryWrapper.Session>
+			<StoryWrapper.Session inverted>
+				<HStack space="xl">
+					<Text fontSize="md" inverted>
+						Regular
+					</Text>
+					<Text fontSize="md" inverted>
+						Medium{' '}
+					</Text>
+				</HStack>
+				{textSizesWithSize.map((item) => (
+					<HStack space="xl" key={item.size}>
+						<Text fontSize={item.size} inverted>
+							{item.size}: {item.fontSize}px
+						</Text>
+						<Text fontSize={item.size} inverted fontWeight="medium">
+							{item.size}: {item.fontSize}px
+						</Text>
+					</HStack>
+				))}
+			</StoryWrapper.Session>
+		</StoryWrapper>
 	);
 };
 
