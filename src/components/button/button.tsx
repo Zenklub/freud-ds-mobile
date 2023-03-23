@@ -4,7 +4,12 @@ import { ButtonProps } from '@components/button/types';
 import { Icon } from '@components/icon/icon';
 import buttonTheme from '@theme/components/button';
 
-export const Button: React.FC<ButtonProps> = ({ icon, inverted, ...props }) => {
+export const Button: React.FC<ButtonProps> = ({
+	testID,
+	icon,
+	inverted,
+	...props
+}) => {
 	const iconColorKey: string = useMemo(() => {
 		if (!icon) return 'brand.pure';
 		const variant = props.variant || 'solid';
@@ -25,11 +30,17 @@ export const Button: React.FC<ButtonProps> = ({ icon, inverted, ...props }) => {
 
 	return (
 		<NBButton
+			testID={testID}
 			size="md"
 			colorScheme={inverted ? 'neutral.white' : 'brand.pure'}
 			endIcon={
 				icon ? (
-					<Icon name={icon} size="md" color={iconColor ?? 'white'} />
+					<Icon
+						name={icon}
+						size={props.size}
+						color={iconColor ?? 'white'}
+						testID={`${testID}-icon`}
+					/>
 				) : undefined
 			}
 			{...props}
