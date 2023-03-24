@@ -58,4 +58,11 @@ describe('Icons', () => {
 		expect(getByTestId(testID)).toBeTruthy();
 		expect(getByTestId(testID)).toHaveStyle({ color: 'white' });
 	});
+
+	it('should render null when name not found correctly', () => {
+		const { queryByTestId } = renderWithProviders(
+			<Icon testID={testID} name={'no-existent-icon' as IconName} />
+		);
+		expect(queryByTestId(testID)).toBeFalsy();
+	});
 });

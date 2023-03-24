@@ -426,6 +426,7 @@ export const iconCharMap = {
 } as const;
 
 export const iconSizeMap = {
+	xs: 14,
 	sm: 16,
 	md: 24,
 	lg: 32,

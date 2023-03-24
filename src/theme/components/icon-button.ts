@@ -1,234 +1,43 @@
-const baseStyle = (props: any) => {
-	const { colorScheme } = props;
-	const colors = props.theme.colors;
+// @ts-ignore
+import * as Tokens from '@freud-ds/tokens/style/react-native/variables';
+import button from '@theme/components/button';
 
+const baseStyle = (props: any) => {
 	return {
-		borderRadius: 'sm', // '4px'
-		flexDirection: 'row',
-		justifyContent: 'center',
-		alignItems: 'center',
-		_web: {
-			_disabled: {
-				cursor: 'not-allowed',
-			},
-			_loading: {
-				cursor: 'not-allowed',
-			},
-			cursor: 'pointer',
-			userSelect: 'none',
-		},
-		_focus: {
-			borderColor: `${colorScheme}.400`,
-		},
-		_focusVisible: {
-			_web: {
-				style: {
-					outlineWidth: '2px',
-					outlineColor: `${colors[colorScheme][600]}`,
-					outlineStyle: 'solid',
-				},
-			},
-		},
-		_loading: {
-			opacity: '40',
-		},
+		...button.baseStyle(props),
+		borderRadius: Tokens.borderRadiusSm,
 		_disabled: {
-			opacity: '40',
-		},
-		_dark: {
-			_focusVisible: {
-				_web: {
-					style: {
-						outlineWidth: '2px',
-						outlineColor: `${colors[colorScheme][500]}`,
-						outlineStyle: 'solid',
-					},
-				},
-			},
+			opacity: Tokens.opacityLevel5,
 		},
 	};
 };
 
-function variantGhost({ colorScheme }: Record<string, any>) {
+function variantGhost(props: any) {
 	return {
-		_icon: {
-			color: `${colorScheme}.600`,
-		},
-		_hover: {
-			bg: `${colorScheme}.600:alpha.10`,
-		},
-		_pressed: {
-			bg: `${colorScheme}.600:alpha.20`,
-		},
-		_dark: {
-			_icon: {
-				color: `${colorScheme}.500`,
-			},
-			_hover: {
-				bg: `${colorScheme}.500:alpha.10`,
-			},
-			_pressed: {
-				bg: `${colorScheme}.500:alpha.20`,
-			},
+		...button.variants.ghost(props),
+		borderRadius: Tokens.borderRadiusSm,
+		_disabled: {
+			opacity: Tokens.opacityLevel5,
 		},
 	};
 }
 
-function variantOutline({ colorScheme }: Record<string, any>) {
+function variantOutline(props: any) {
 	return {
-		borderWidth: '1px',
-		borderColor: `${colorScheme}.600`,
-		_icon: {
-			color: `${colorScheme}.600`,
-		},
-		_hover: {
-			bg: `${colorScheme}.700`,
-			_icon: {
-				color: 'muted.50',
-			},
-		},
-		_pressed: {
-			bg: `${colorScheme}.800`,
-			_icon: {
-				color: 'muted.50',
-			},
-		},
-		_focus: {
-			bg: `${colorScheme}.600`,
-			_icon: {
-				color: 'muted.50',
-			},
-		},
-		_dark: {
-			borderColor: `${colorScheme}.500`,
-			_icon: {
-				color: `${colorScheme}.500`,
-			},
-			_hover: {
-				bg: `${colorScheme}.400`,
-				_icon: {
-					color: 'muted.900',
-				},
-			},
-			_pressed: {
-				bg: `${colorScheme}.300`,
-				_icon: {
-					color: 'muted.900',
-				},
-			},
-			_focus: {
-				bg: `${colorScheme}.500`,
-				_icon: {
-					color: 'muted.900',
-				},
-			},
+		...button.variants.outline(props),
+		borderRadius: Tokens.borderRadiusSm,
+		_disabled: {
+			opacity: Tokens.opacityLevel5,
 		},
 	};
 }
 
-function variantSolid({ colorScheme }: Record<string, any>) {
+function variantSolid(props: any) {
 	return {
-		bg: `${colorScheme}.600`,
-		_hover: {
-			bg: `${colorScheme}.700`,
-		},
-		_pressed: {
-			bg: `${colorScheme}.800`,
-		},
-		_icon: {
-			color: 'muted.50',
-		},
-		_dark: {
-			bg: `${colorScheme}.500`,
-			_hover: {
-				bg: `${colorScheme}.400`,
-			},
-			_pressed: {
-				bg: `${colorScheme}.300`,
-				_icon: {
-					color: 'muted.900',
-				},
-			},
-			_icon: {
-				color: 'muted.900',
-			},
-		},
-	};
-}
-
-function variantSubtle({ colorScheme }: Record<string, any>) {
-	return {
-		_text: {
-			color: `${colorScheme}.900`,
-		},
-		_icon: {
-			color: `${colorScheme}.900`,
-		},
-		bg: `${colorScheme}.100`,
-		_hover: {
-			bg: `${colorScheme}.200`,
-		},
-		_pressed: {
-			bg: `${colorScheme}.300`,
-		},
-		_dark: {
-			bg: `${colorScheme}.300`,
-			_hover: {
-				bg: `${colorScheme}.200`,
-			},
-			_pressed: {
-				bg: `${colorScheme}.100`,
-			},
-		},
-	};
-}
-
-function variantLink({ colorScheme }: Record<string, any>) {
-	return {
-		_spinner: {
-			color: `${colorScheme}.600`,
-		},
-
-		_icon: {
-			color: `${colorScheme}.600`,
-		},
-		_hover: {
-			_icon: {
-				color: `${colorScheme}.700`,
-			},
-		},
-		_pressed: {
-			_icon: {
-				color: `${colorScheme}.800`,
-			},
-		},
-		_dark: {
-			_icon: {
-				color: `${colorScheme}.500`,
-			},
-			_hover: {
-				_icon: {
-					color: `${colorScheme}.400`,
-				},
-			},
-			_pressed: {
-				_icon: {
-					color: `${colorScheme}.300`,
-				},
-			},
-		},
-	};
-}
-
-function variantUnstyled() {
-	return {
-		_icon: {
-			color: 'muted.900',
-		},
-		_dark: {
-			_icon: {
-				color: 'muted.50',
-			},
+		...button.variants.solid(props),
+		borderRadius: Tokens.borderRadiusSm,
+		_disabled: {
+			opacity: Tokens.opacityLevel5,
 		},
 	};
 }
@@ -237,42 +46,39 @@ const variants = {
 	ghost: variantGhost,
 	outline: variantOutline,
 	solid: variantSolid,
-	subtle: variantSubtle,
-	link: variantLink,
-	unstyled: variantUnstyled,
 };
 
 const sizes = {
 	lg: {
-		p: '3',
-		_icon: {
-			size: 'lg',
-		},
+		px: '2',
+		py: '2',
+		height: Tokens.spacingSizeMd / 4,
+		width: Tokens.spacingSizeMd / 4,
 	},
 	md: {
-		p: '2.5',
-		_icon: {
-			size: 'md',
-		},
+		px: '2',
+		py: '2',
+		height: Tokens.spacingSizeSm / 4,
+		width: Tokens.spacingSizeSm / 4,
 	},
 	sm: {
-		p: '2',
-		_icon: {
-			size: 'sm',
-		},
+		px: '2',
+		py: '2',
+		height: Tokens.spacingSizeXs / 4,
+		width: Tokens.spacingSizeXs / 4,
 	},
 	xs: {
-		p: '1.5',
-		_icon: {
-			size: 'xs',
-		},
+		px: '1',
+		py: '1',
+		height: Tokens.spacingSizeXxs / 4,
+		width: Tokens.spacingSizeXxs / 4,
 	},
 };
 
 const defaultProps = {
-	variant: 'ghost',
+	variant: 'solid',
 	size: 'md',
-	colorScheme: 'primary',
+	colorScheme: 'brand.pure',
 };
 
 export default {
