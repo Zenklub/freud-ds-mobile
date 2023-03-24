@@ -26,7 +26,7 @@ const baseStyle = (_props: InterfaceInputProps & { theme: any }) => {
 		},
 		placeholderTextColor: 'neutral.dark.200',
 		color: 'neutral.dark.400',
-		borderColor: 'feedback.positive.pure ',
+		borderColor: 'neutral.light.300',
 		_stack: {
 			bg: 'neutral.white',
 			flexDirection: 'row',
