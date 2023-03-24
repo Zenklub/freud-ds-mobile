@@ -1,4 +1,8 @@
 // FormControl
+import { FormControlLabelProps } from '@components/form-control/types';
+// @ts-ignore
+import * as Tokens from '@freud-ds/tokens/style/react-native/variables';
+
 export const FormControl = {
 	baseStyle: {
 		width: '100%',
@@ -11,8 +15,11 @@ export const FormControlErrorMessage = {
 		return {
 			mt: '2',
 			_text: {
-				fontSize: 'xs',
-				color: 'error.600',
+				fontSize: 'md',
+				color: 'feedback.negative.pure',
+			},
+			_disabled: {
+				opacity: Tokens.opacityLevel5,
 			},
 			_stack: { space: 1, alignItems: 'center' },
 			_dark: {
@@ -26,25 +33,32 @@ export const FormControlErrorMessage = {
 
 // FormControlLabel
 export const FormControlLabel = {
-	baseStyle: () => {
+	baseStyle: ({ colorScheme }: FormControlLabelProps) => {
+		const inverted = colorScheme === 'neutral.white';
+		const color = inverted ? 'neutral.white' : 'neutral.dark.400';
+		const colorDark = inverted ? 'neutral.dark.400' : 'neutral.white';
+
 		return {
 			flexDirection: 'row',
 			justifyContent: 'flex-start',
 			_text: {
-				fontSize: 'sm',
+				fontSize: 'md',
 				fontWeight: 'medium',
-				color: 'text.500',
+				color: color,
 			},
-			my: '1',
+			my: '0',
 			_astrick: {
-				color: 'error.600',
+				color: color,
+			},
+			_disabled: {
+				opacity: Tokens.opacityLevel5,
 			},
 			_dark: {
 				_text: {
-					color: 'text.400',
+					color: colorDark,
 				},
 				_astrick: {
-					color: 'error.500',
+					color: colorDark,
 				},
 			},
 		};
@@ -53,16 +67,21 @@ export const FormControlLabel = {
 
 // FormControlHelperText
 export const FormControlHelperText = {
-	baseStyle: () => {
+	baseStyle: ({ colorScheme }: FormControlLabelProps) => {
+		const inverted = colorScheme === 'neutral.white';
+
 		return {
-			mt: '2',
+			mt: '0',
 			_text: {
-				fontSize: 'xs',
-				color: 'text.500',
+				fontSize: 'sm',
+				color: inverted ? 'neutral.white' : 'neutral.dark.400',
+			},
+			_disabled: {
+				opacity: Tokens.opacityLevel5,
 			},
 			_dark: {
 				_text: {
-					color: 'text.400',
+					color: inverted ? 'neutral.dark.400' : 'neutral.white',
 				},
 			},
 		};

@@ -1,5 +1,13 @@
+// Typography
 import '@components/typography/typography.story';
-import '@components/button/button.story';
+
+// Media and Icons
 import '@components/icon/icon.story';
+
+// Feedback
 import '@components/spinner/spinner.story';
+
+// Form
+import '@components/button/button.story';
 import '@components/icon-button/icon-button.story';
+import '@components/input-text/input.story';
