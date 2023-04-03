@@ -1,255 +1,124 @@
 import { InterfaceInputProps } from 'native-base/lib/typescript/components/primitives/Input/types';
 // @ts-ignore
 import { transparentize } from 'native-base/lib/module/theme/tools';
+// @ts-ignore
+import * as Tokens from '@freud-ds/tokens/style/react-native/variables';
 
-const baseStyle = (props: InterfaceInputProps & { theme: any }) => {
-	const { primary, error } = props.theme.colors;
-
+const baseStyle = (_props: InterfaceInputProps & { theme: any }) => {
 	return {
 		fontFamily: 'body',
+		fontSize: 'md',
 		py: '2',
 		px: '3',
-		borderRadius: 'sm',
+		borderRadius: 'md',
 		overflow: 'hidden',
+		h: '10',
 		_disabled: {
-			opacity: '0.4',
-			_web: {
-				disabled: true,
-				cursor: 'not-allowed',
-			},
+			opacity: Tokens.opacityLevel5,
 		},
-		_web: {
-			outlineWidth: '0',
-			overflow: 'auto',
-			lineHeight: 'lg', // Todo: Move to _web inside size so that sm and xs don't have this much height
-			style: { outline: 'none' },
-			cursor: 'auto',
-		},
-
+		bg: 'neutral.white',
 		_input: {
-			bg: 'transparent',
 			flex: 1,
+			bg: 'neutral.white',
 			w: '100%',
 			h: '100%',
+			fontSize: 'md',
 		},
-		placeholderTextColor: 'text.400',
-		color: 'text.900',
-		borderColor: 'muted.300',
+		placeholderTextColor: 'neutral.dark.200',
+		color: 'neutral.dark.400',
+		borderColor: 'neutral.light.300',
 		_stack: {
+			bg: 'neutral.white',
 			flexDirection: 'row',
 			alignItems: 'center',
-			// justifyContent: 'space-between',
 			overflow: 'hidden',
 		},
-		_hover: {
-			borderColor: 'primary.600',
-		},
 		_invalid: {
-			borderColor: 'error.600',
-			_hover: { borderColor: 'error.600' },
-			_stack: {
-				style: {
-					outlineWidth: '0',
-					boxShadow: `0 0 0 1px ${error[600]}`,
-				},
-			},
+			borderColor: 'feedback.negative.pure',
 		},
 		_focus: {
-			borderColor: 'primary.600',
-			_hover: { borderColor: 'primary.600' },
+			borderColor: 'brand.pure',
+			bg: 'neutral.white',
 			_invalid: {
-				borderColor: 'error.600',
-				_hover: { borderColor: 'error.600' },
-				_stack: {
-					style: {
-						outlineWidth: '0',
-						boxShadow: `0 0 0 1px ${error[600]}`,
-					},
-				},
+				borderColor: 'feedback.negative.pure',
 			},
 			_ios: {
-				selectionColor: 'coolGray.800',
+				selectionColor: 'brand.pure',
 			},
 			_android: {
-				selectionColor: 'coolGray.800',
+				selectionColor: 'brand.pure',
 			},
 			_disabled: {
-				placeholderTextColor: 'muted.700',
+				placeholderTextColor: 'neutral.dark.200',
 				_hover: {
-					borderColor: 'muted.300',
+					borderColor: 'brand.pure',
 				},
 			},
 			_stack: {
-				style: {
-					outlineWidth: '0',
-					boxShadow: `0 0 0 1px ${primary[600]}`,
-				},
+				bg: 'neutral.white',
+				borderColor: 'brand.pure',
 			},
 		},
-		_dark: {
-			placeholderTextColor: 'text.600',
-			color: 'text.50',
-			borderColor: 'muted.700',
-			_hover: {
-				borderColor: 'primary.500',
-			},
-			_focus: {
-				borderColor: 'primary.500',
-				_hover: { borderColor: 'primary.500' },
-				_stack: {
-					style: {
-						outlineWidth: '0',
-						boxShadow: `0 0 0 1px ${primary[500]}`,
-					},
-				},
-			},
-			_invalid: {
-				borderColor: 'error.500',
-				_stack: {
-					style: {
-						outlineWidth: '0',
-						boxShadow: `0 0 0 1px ${error[500]}`,
-					},
-				},
-				_hover: { borderColor: 'error.500' },
-			},
-			_ios: {
-				selectionColor: 'warmGray.50',
-			},
-			_android: {
-				selectionColor: 'warmGray.50',
-			},
-			_disabled: {
-				placeholderTextColor: 'text.50',
-				_hover: {
-					borderColor: 'muted.700',
-				},
-			},
-			_stack: {
-				flexDirection: 'row',
-				alignItems: 'center',
-				// justifyContent: 'space-between',
-				overflow: 'hidden',
-			},
-		},
+		// _dark: {
+		// 	placeholderTextColor: 'neutral.dark.200',
+		// 	color: 'text.50',
+		// 	borderColor: 'muted.700',
+		// 	_hover: {
+		// 		borderColor: 'primary.500',
+		// 	},
+		// 	_focus: {
+		// 		borderColor: 'primary.500',
+		// 		_hover: { borderColor: 'primary.500' },
+		// 		_stack: {
+		// 			style: {
+		// 				outlineWidth: '0',
+		// 				boxShadow: `0 0 0 1px ${primary[500]}`,
+		// 			},
+		// 		},
+		// 	},
+		// 	_invalid: {
+		// 		borderColor: 'error.500',
+		// 		_stack: {
+		// 			style: {
+		// 				outlineWidth: '0',
+		// 				boxShadow: `0 0 0 1px ${error[500]}`,
+		// 			},
+		// 		},
+		// 		_hover: { borderColor: 'error.500' },
+		// 	},
+		// 	_ios: {
+		// 		selectionColor: 'warmGray.50',
+		// 	},
+		// 	_android: {
+		// 		selectionColor: 'warmGray.50',
+		// 	},
+		// 	_disabled: {
+		// 		placeholderTextColor: 'text.50',
+		// 		_hover: {
+		// 			borderColor: 'muted.700',
+		// 		},
+		// 	},
+		// 	_stack: {
+		// 		flexDirection: 'row',
+		// 		alignItems: 'center',
+		// 		// justifyContent: 'space-between',
+		// 		overflow: 'hidden',
+		// 	},
+		// },
 	};
 };
 
-function roundedStyle(props: InterfaceInputProps & { theme: any }) {
-	const { theme } = props;
-	return {
-		borderRadius: 'full',
-		borderWidth: '1',
-		_focus: {
-			bg: transparentize('primary.600', 0.1)(theme),
-		},
-	};
-}
-function outlineStyle(props: InterfaceInputProps & { theme: any }) {
-	const { theme } = props;
+function outlineStyle(_props: InterfaceInputProps & { theme: any }) {
 	return {
 		borderWidth: '1',
 		_focus: {
-			bg: transparentize('primary.600', 0.1)(theme),
+			bg: 'neutral.white',
 		},
-	};
-}
-function filledStyle(props: InterfaceInputProps & { theme: any }) {
-	const { theme } = props;
-	return {
-		borderWidth: '1',
-		_focus: {
-			bg: transparentize('primary.600', 0.1)(theme),
-		},
-		_hover: {
-			borderWidth: '1',
-			_disabled: {
-				borderWidth: 0,
-			},
-		},
-		bg: 'muted.100',
-		borderColor: 'muted.100',
-
-		_dark: {
-			bg: 'muted.800',
-			borderColor: 'muted.800',
-		},
-	};
-}
-function unstyledStyle() {
-	return {
-		borderWidth: '0',
-		_focus: {
-			bg: 'transparent',
-		},
-		_invalid: {
-			_stack: {
-				style: {
-					outlineWidth: 0,
-				},
-			},
-		},
-		_stack: {
-			_focus: {
-				style: {
-					outlineWidth: '0',
-				},
-			},
-		},
-	};
-}
-function underlinedStyle(props: InterfaceInputProps & { theme: any }) {
-	const { primary, error } = props.theme.colors;
-
-	return {
-		borderWidth: '0',
-		pl: '0',
-		borderBottomWidth: '1',
-		_focus: {
-			_stack: {
-				style: {
-					outlineWidth: '0',
-					boxShadow: `0 1px 0 0 ${primary[600]}`,
-				},
-			},
-		},
-		_invalid: {
-			_stack: {
-				style: {
-					outlineWidth: 0,
-					boxShadow: `0 1px 0 0 ${error[600]}`,
-				},
-			},
-		},
-
-		_dark: {
-			_focus: {
-				_stack: {
-					style: {
-						outlineWidth: '0',
-						boxShadow: `0 1px 0 0 ${primary[500]}`,
-					},
-				},
-			},
-			_invalid: {
-				_stack: {
-					style: {
-						outlineWidth: 0,
-						boxShadow: `0 1px 0 0 ${error[500]}`,
-					},
-				},
-			},
-		},
-		borderRadius: 0,
 	};
 }
 
 const variants = {
 	outline: outlineStyle as any,
-	underlined: underlinedStyle as any,
-	rounded: roundedStyle as any,
-	filled: filledStyle as any,
-	unstyled: unstyledStyle as any,
 };
 
 const sizes = {
@@ -262,11 +131,11 @@ const sizes = {
 };
 
 const defaultProps = {
-	size: 'sm',
+	size: 'md',
 	variant: 'outline',
 };
 
-// Input
+// InputText
 export const Input = {
 	baseStyle,
 	defaultProps,

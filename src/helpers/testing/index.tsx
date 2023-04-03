@@ -5,6 +5,7 @@ import {
 	RenderOptions,
 } from '@testing-library/react-native';
 import { FreudDSProvider } from '../../providers';
+import { FormControl } from '../../components/form-control/form-control';
 
 const inset = {
 	frame: { x: 0, y: 0, width: 0, height: 0 },
@@ -17,6 +18,18 @@ export const renderWithProviders = (
 ): RenderAPI => {
 	return render(
 		<FreudDSProvider initialWindowMetrics={inset}>{component}</FreudDSProvider>,
+		options
+	);
+};
+
+export const renderWithProvidersAndFormControl = (
+	component: React.ReactElement<any, string | React.JSXElementConstructor<any>>,
+	options?: RenderOptions | undefined
+): RenderAPI => {
+	return render(
+		<FreudDSProvider initialWindowMetrics={inset}>
+			<FormControl>{component}</FormControl>
+		</FreudDSProvider>,
 		options
 	);
 };

@@ -50,7 +50,7 @@ const baseStyle = ({ colorScheme }: InterfaceButtonProps & { theme: any }) => {
 			focusable: false,
 		},
 		_pressed: {
-			bg: 'brand.01',
+			bg: 'brand.100',
 		},
 	};
 };
@@ -69,7 +69,7 @@ function variantOutline({ colorScheme }: InterfaceButtonProps) {
 	const foregroundColor = inverted ? 'neutral.white' : 'brand.pure';
 
 	const pressedForegroundColor = inverted ? 'neutral.white' : 'brand.pure';
-	const pressedBackgroundColor = inverted ? 'brand.03' : 'brand.01';
+	const pressedBackgroundColor = inverted ? 'brand.300' : 'brand.100';
 
 	return {
 		bg: backgroundColor,
@@ -128,7 +128,7 @@ function variantSolid({ colorScheme }: InterfaceButtonProps) {
 	const backgroundColor = inverted ? 'neutral.white' : 'brand.pure';
 
 	const pressedForegroundColor = inverted ? 'neutral.white' : 'brand.pure';
-	const pressedBackgroundColor = inverted ? 'brand.03' : 'brand.01';
+	const pressedBackgroundColor = inverted ? 'brand.300' : 'brand.100';
 
 	return {
 		bg: backgroundColor,
