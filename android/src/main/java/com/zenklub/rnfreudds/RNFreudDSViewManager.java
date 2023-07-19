@@ -1,4 +1,4 @@
-package com.reactnativefreudds;
+package com.zenklub.rnfreudds;
 
 import android.graphics.Color;
 import android.view.View;

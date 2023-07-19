@@ -2,7 +2,7 @@ import {
 	IFormControlHelperTextProps,
 	IFormControlLabelProps,
 	IFormControlProps,
-} from 'native-base/lib/module/components/composites/FormControl/types';
+} from 'native-base/lib/typescript/components/composites/FormControl';
 import React from 'react';
 
 export type FormControlProps = IFormControlProps;

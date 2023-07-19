@@ -4,10 +4,14 @@ import org.apache.tools.ant.taskdefs.condition.Os
 
 buildscript {
     ext {
-        buildToolsVersion = "31.0.0"
-        minSdkVersion = 21
-        compileSdkVersion = 31
-        targetSdkVersion = 31
+        kotlinVersion = "1.6.21"
+        applicationId = "com.zenklub.freudds.sample"
+        buildToolsVersion = "33.0.0"
+        minSdkVersion = 28
+        compileSdkVersion = 33
+        targetSdkVersion = 33
+        supportLibVersion = "30.0.0"
+
         if (System.properties['os.arch'] == "aarch64") {
             // For M1 Users we need to use the NDK 24 which added support for aarch64
             ndkVersion = "24.0.8215888"
@@ -20,18 +24,20 @@ buildscript {
             ndkVersion = "21.4.7075529"
         }
     }
+
     repositories {
         google()
+        gradlePluginPortal()
         mavenCentral()
+        maven { url "https://maven.google.com" }
+        maven { url 'https://plugins.gradle.org/m2/' }
     }
     dependencies {
         classpath("com.android.tools.build:gradle:7.0.4")
         classpath("com.facebook.react:react-native-gradle-plugin")
-        classpath("de.undercouch:gradle-download-task:4.1.2")
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
     }
 }
+
 
 allprojects {
     repositories {
@@ -43,6 +49,9 @@ allprojects {
             // Android JSC is installed from npm
             url("$rootDir/../node_modules/jsc-android/dist")
         }
+        maven {
+            url "$rootDir/../node_modules/@notifee/react-native/android/libs"
+        }
         mavenCentral {
             // We don't want to fetch react-native from Maven Central as there are
             // older versions over there.
@@ -50,7 +59,27 @@ allprojects {
                 excludeGroup "com.facebook.react"
             }
         }
+        mavenLocal()
+        mavenCentral()
         google()
+        maven {
+            url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"
+        }
         maven { url 'https://www.jitpack.io' }
+        maven { url "https://maven.google.com" }
+
+    }
+
+
+    subprojects {
+        afterEvaluate {
+            project ->
+                if (project.hasProperty("android")) {
+                    android {
+                        compileSdkVersion = rootProject.ext.compileSdkVersion
+                        buildToolsVersion = rootProject.ext.buildToolsVersion
+                    }
+                }
+        }
     }
 }

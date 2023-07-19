@@ -35,6 +35,8 @@ export const StoryWrapper = (({ children, title }: StoryWrapperProps) => {
 					flexGrow: 1,
 					justifyContent: 'flex-start',
 				}}
+				keyboardDismissMode="interactive"
+				keyboardShouldPersistTaps="handled"
 			>
 				{children}
 			</ScrollView>

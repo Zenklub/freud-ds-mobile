@@ -9,5 +9,5 @@ export const RNFreudDS = NativeModules;
 export { FreudDSProvider } from '@providers';
 
 // Components
-export { Heading } from '@components/typography/heading';
-export { Text } from '@components/typography/text';
+export * from '@components';
+export { useToken } from 'native-base';

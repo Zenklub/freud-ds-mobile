@@ -1,4 +1,4 @@
-import { IconName } from '@components/icon/types';
+import { IconName } from '@components/icon/icon.types';
 
 export interface InputProps {
 	label?: string;

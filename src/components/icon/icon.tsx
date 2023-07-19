@@ -1,7 +1,7 @@
 import React from 'react';
 import { iconCharMap, iconSizeMap } from '@components/icon/constants';
 import { Text } from 'react-native';
-import { IconProps } from '@components/icon/types';
+import { IconProps } from '@components/icon/icon.types';
 
 export const Icon: React.FC<IconProps> = ({
 	testID,

@@ -11,3 +11,5 @@ import '@components/spinner/spinner.story';
 import '@components/button/button.story';
 import '@components/icon-button/icon-button.story';
 import '@components/input-text/input.story';
+import '@components/radio/radio.story';
+import '@components/select/select.story';
