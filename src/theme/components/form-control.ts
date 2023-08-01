@@ -1,5 +1,5 @@
 // FormControl
-import { FormControlLabelProps } from '@components/form-control/types';
+import { FormControlLabelProps } from '@components/form-control/form-control.types';
 // @ts-ignore
 import * as Tokens from '@freud-ds/tokens/style/react-native/variables';
 

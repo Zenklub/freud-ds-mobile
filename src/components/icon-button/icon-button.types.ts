@@ -1,4 +1,4 @@
-import { IconName } from '@components/icon/types';
+import { IconName } from '@components/icon/icon.types';
 import { IButtonProps } from 'native-base';
 
 export type IconButtonSize = 'xs' | 'sm' | 'md' | 'lg';

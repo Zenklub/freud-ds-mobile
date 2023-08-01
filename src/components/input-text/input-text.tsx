@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { InputProps } from '@components/input-text/types';
+import { InputProps } from '@components/input-text/input.types';
 import { Input as NRInput, Pressable, useThemeProps } from 'native-base';
 import { StyleSheet, View } from 'react-native';
 import { FormControl } from '@components/form-control/form-control';
@@ -34,12 +34,14 @@ export const InputText: React.FC<InputProps> = ({
 	...props
 }) => {
 	const colorScheme: IColors = inverted ? 'neutral.white' : 'brand.pure';
+
 	useThemeProps('InputText', {
 		variant: 'outline',
 		colorScheme: colorScheme,
 		isDisabled: disabled,
 		isInvalid: !!error,
 	});
+
 	const icon = useMemo(() => {
 		if (iconName) {
 			const iconComponent = (
@@ -73,6 +75,7 @@ export const InputText: React.FC<InputProps> = ({
 		}
 		return undefined;
 	}, [iconName, onIconPress]);
+
 	return (
 		<View>
 			{label ? (

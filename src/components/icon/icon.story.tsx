@@ -5,7 +5,7 @@ import { StyleSheet, useWindowDimensions, View } from 'react-native';
 import { Icon } from '@components/icon/icon';
 import { Text } from '@components/typography/text';
 import { iconCharMap } from '@components/icon/constants';
-import { IconName } from '@components/icon/types';
+import { IconName } from '@components/icon/icon.types';
 
 const keys = Object.keys(iconCharMap) as Array<IconName>;
 

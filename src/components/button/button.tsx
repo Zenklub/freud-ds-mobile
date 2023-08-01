@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { Button as NBButton, composeEventHandlers } from 'native-base';
-import { ButtonProps } from '@components/button/types';
+import { ButtonProps } from '@components/button/button.types';
 import { Icon } from '@components/icon/icon';
 import { useIconColor } from '@helpers/icons-color.hook';
 import buttonTheme from '@theme/components/button';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { composeEventHandlers, IconButton as NRIconButton } from 'native-base';
-import { IconButtonProps } from '@components/icon-button/types';
+import { IconButtonProps } from '@components/icon-button/icon-button.types';
 import { Icon } from '@components/icon/icon';
 import { useIconColor } from '@helpers/icons-color.hook';
 import iconButtonTheme from '@theme/components/icon-button';
