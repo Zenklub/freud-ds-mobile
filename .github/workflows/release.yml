@@ -8,29 +8,54 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    concurrency: release
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
-        token: ${{ secrets.GITHUB_TOKEN }}
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18.x
-    - name: Install dependencies
-      run: yarn install --frozen-lockfile
-    - name: Lint
-      run: yarn lint:fix
-    - name: Lint TS
-      run: yarn lint:typescript
-    - name: Test
-      run: yarn test
-    - name: Build
-      run: yarn build      
-    - name: Release
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      run: npx semantic-release
+      - name: Generate token
+        id: generate_token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.SEMANTIC_RELEASE_APP_ID }}
+          private_key: ${{ secrets.SEMANTIC_RELEASE_APP_PRIVATE_KEY }}
+      
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ steps.generate_token.outputs.token }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Lint
+        run: yarn lint:fix
+
+      - name: Lint TS
+        run: yarn lint:typescript
+
+      - name: Test
+        run: yarn test
+
+      - name: Build
+        run: yarn build   
+
+      - name: Semantic Release
+        uses: codfish/semantic-release-action@v2
+        with:
+          additional_packages: |
+            [
+              'conventional-changelog-conventionalcommits',
+              '@semantic-release/changelog',
+              '@semantic-release/release-notes-generator',
+              '@semantic-release/git',
+              '@semantic-release/npm',
+              'semantic-release-slack-bot'
+            ]
+        env:
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
