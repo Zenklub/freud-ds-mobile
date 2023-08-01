@@ -26,6 +26,7 @@ module.exports = {
 				notifyOnSuccess: false,
 				notifyOnFail: false,
 				markdownReleaseNotes: true,
+				packageName: '@freud-ds/react-native',
 				markdownReleaseNotesFields: ['commit', 'subject'],
 				markdownReleaseNotesFormat: 'table',
 				markdownReleaseNotesShowAuthor: true,
