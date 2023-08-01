@@ -79,11 +79,10 @@
     "@commitlint/config-conventional": "^13.2.0",
     "@react-native-community/eslint-config": "^3.0.1",
     "@react-native-picker/picker": "^2.4.10",
-    "@release-it/conventional-changelog": "^3.3.0",
-    "@semantic-release/changelog": "^6.0.0",
-    "@semantic-release/git": "^10.0.0",
-    "@semantic-release/gitlab": "^7.0.3",
-    "@semantic-release/npm": "^8.0.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^9.0.4",
+    "@semantic-release/npm": "^10.0.4",
     "@storybook/addon-links": "^6.3.8",
     "@storybook/react-native": "^5.3.25",
     "@testing-library/jest-native": "^5.4.2",
@@ -140,10 +139,15 @@
   },
   "dependencies": {
     "@freud-ds/icons": "*",
-    "@freud-ds/tokens": "*"
+    "@freud-ds/tokens": "*",
+    "@release-it/conventional-changelog": "^7.0.0"
   },
   "bugs": {
     "url": "https://github.com/Zenklub/freud-ds-mobile/issues"
+  },
+  "engines": {
+    "npm": "use-yarn",
+    "node": ">=18.0.0 <19.0.0"
   },
   "directories": {
     "doc": "docs"

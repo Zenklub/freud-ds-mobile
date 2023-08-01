@@ -18,8 +18,6 @@ jobs:
         node-version: 18.x
     - name: Install dependencies
       run: yarn install --frozen-lockfile
-    - name: Install semantic-release extra plugins
-      run: yarn add @semantic-release/changelog @semantic-release/git --dev
     - name: Lint
       run: yarn lint:fix
     - name: Lint TS
