@@ -23,4 +23,4 @@ jobs:
     - name: Lint TS
       run: yarn lint:typescript
     - name: Test
-      run: yarn test --if-present
+      run: yarn test
