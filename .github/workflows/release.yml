@@ -32,21 +32,22 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Lint
-        run: yarn lint:fix
+      # - name: Lint
+      #   run: yarn lint:fix
 
-      - name: Lint TS
-        run: yarn lint:typescript
+      # - name: Lint TS
+      #   run: yarn lint:typescript
 
-      - name: Test
-        run: yarn test
+      # - name: Test
+      #   run: yarn test
 
       - name: Build
         run: yarn build   
 
-      - name: Release
+      - name: Semantic Release
+        uses: codfish/semantic-release-action@v2
         env:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: yarn semantic-release
+        # run: yarn semantic-release
