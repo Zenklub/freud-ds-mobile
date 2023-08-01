@@ -585,3 +585,4 @@ _docs
 
 # Some files that only the pipeline should edit
 .history
+.npmrc

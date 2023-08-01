@@ -1,0 +1,26 @@
+on:
+  pull_request:
+    branches: [main, beta]
+
+jobs:
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    strategy:
+        matrix:
+            node-version: [18.x]
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Setup Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 18.x
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile
+    - name: Lint
+      run: yarn lint:fix
+    - name: Lint TS
+      run: yarn lint:typescript
+    - name: Test
+      run: yarn test
