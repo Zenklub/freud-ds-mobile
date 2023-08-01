@@ -48,4 +48,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: yarn semantic-release
