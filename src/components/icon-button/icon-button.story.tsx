@@ -4,7 +4,7 @@ import React from 'react';
 import { HStack } from 'native-base';
 import { Text } from '@components/typography/text';
 import { IconButton } from '@components/icon-button/icon-button';
-import { IconButtonProps } from '@components/icon-button/types';
+import { IconButtonProps } from '@components/icon-button/icon-button.types';
 
 const sizes = ['lg', 'md', 'sm', 'xs'] as const;
 const variants = ['solid', 'outline', 'ghost'] as const;

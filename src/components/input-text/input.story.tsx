@@ -39,7 +39,7 @@ const InputTextStory = () => {
 						onIconPress={onIconPressHandler('error')}
 					/>
 					<InputText
-						label="Normal disbabled"
+						label="Normal disabled"
 						helperText="Helper text"
 						iconName="bookmark"
 						placeholder="Placeholder"
@@ -49,7 +49,7 @@ const InputTextStory = () => {
 						disabled
 					/>
 					<InputText
-						label="With error disbabled"
+						label="With error disabled"
 						helperText="Helper text"
 						placeholder="Placeholder"
 						iconName="bookmark"
@@ -83,7 +83,7 @@ const InputTextStory = () => {
 						inverted
 					/>
 					<InputText
-						label="Normal disbabled"
+						label="Normal disabled"
 						helperText="Helper text"
 						placeholder="Placeholder"
 						iconName="bookmark"
@@ -94,7 +94,7 @@ const InputTextStory = () => {
 						inverted
 					/>
 					<InputText
-						label="With error disbabled"
+						label="With error disabled"
 						helperText="Helper text"
 						placeholder="Placeholder"
 						error="Some error"

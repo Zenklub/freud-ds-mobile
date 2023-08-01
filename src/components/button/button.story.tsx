@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 import { HStack } from 'native-base';
 import { Text } from '@components/typography/text';
-import { ButtonProps } from '@components/button/types';
+import { ButtonProps } from '@components/button/button.types';
 
 const sizes = ['lg', 'md', 'sm'] as const;
 const variants = ['solid', 'outline', 'ghost'] as const;

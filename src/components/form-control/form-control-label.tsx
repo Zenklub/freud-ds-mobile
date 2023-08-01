@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormControlLabelProps } from '@components/form-control/types';
+import { FormControlLabelProps } from '@components/form-control/form-control.types';
 import { FormControl } from 'native-base';
 
 export const FormControlLabel: React.FC<FormControlLabelProps> = ({

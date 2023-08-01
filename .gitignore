@@ -5,6 +5,7 @@
 lib/
 dist/
 build/
+.npmrc
 
 # Dependency directories
 node_modules/*

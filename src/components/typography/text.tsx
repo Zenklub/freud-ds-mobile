@@ -1,10 +1,7 @@
 import React, { useMemo } from 'react';
-import { ITextProps, Text as NBText } from 'native-base';
+import { Text as NBText } from 'native-base';
 import TextTheme from '@theme/components/text';
-
-export interface TextProps extends ITextProps {
-	inverted?: boolean;
-}
+import { TextProps } from './typography.types';
 
 export const Text: React.FC<TextProps> = ({ inverted, ...props }) => {
 	const color = useMemo(() => {

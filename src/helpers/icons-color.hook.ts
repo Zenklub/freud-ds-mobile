@@ -1,11 +1,11 @@
 import { useMemo } from 'react';
 import { useToken } from 'native-base';
-import { IconName } from '@components/icon/types';
-import { ButtonVariants } from '@components/button/types';
+import { IconName } from '@components/icon/icon.types';
+import { ButtonVariants } from '@components/button/button.types';
 // @ts-ignore
 import { useIsPressed } from 'native-base/lib/module/components/primitives/Pressable/Pressable';
 
-interface UseIconColorProps {
+export interface UseIconColorProps {
 	icon?: IconName;
 	variant?: ButtonVariants;
 	inverted?: boolean;

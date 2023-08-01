@@ -1,6 +1,6 @@
 import React from 'react';
 import { Spinner as NBSpinner } from 'native-base';
-import { SpinnerProps } from '@components/spinner/types';
+import { SpinnerProps } from '@components/spinner/spinner.types';
 import { iconSizesMap } from '@components/spinner/constants';
 
 export const Spinner: React.FC<SpinnerProps> = ({

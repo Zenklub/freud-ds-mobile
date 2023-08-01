@@ -1,5 +1,5 @@
+import { IconName } from '@components/icon';
 import { IButtonProps } from 'native-base';
-import { IconName } from '@components/icon/constants';
 
 export type ButtonVariants = 'solid' | 'outline' | 'ghost';
 export type ButtonSize = 'sm' | 'md' | 'lg';
