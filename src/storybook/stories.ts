@@ -13,3 +13,4 @@ import '@components/icon-button/icon-button.story';
 import '@components/input-text/input.story';
 import '@components/radio/radio.story';
 import '@components/select/select.story';
+import '@components/switch/switch.story';
