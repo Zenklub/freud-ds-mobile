@@ -69,5 +69,7 @@ jobs:
         uses: codfish/semantic-release-action@v2
         env:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_NAME: ${{ secrets.SLACK_NAME }}
+          SLACK_CHANNEL: ${{ secrets.SLACK_CHANNEL }}
