@@ -1,0 +1,28 @@
+export declare const spacing: {
+    minimum: any;
+    quark: any;
+    nano: any;
+    xxxs: any;
+    xxs: any;
+    xs: any;
+    sm: any;
+    md: any;
+    lg: any;
+    xl: any;
+    xxl: any;
+    xxxl: any;
+    big: any;
+    huge: any;
+    giant: any;
+    '1/10': string;
+    '1/5': string;
+    '1/4': string;
+    '1/3': string;
+    '2/5': string;
+    '2/4': string;
+    '3/5': string;
+    '3/4': string;
+    '4/5': string;
+    full: string;
+};
+export type ISpacing = keyof typeof spacing;

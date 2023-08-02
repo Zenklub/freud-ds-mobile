@@ -1,0 +1,38 @@
+declare const sizes: {
+    container: {
+        sm: number;
+        md: number;
+        lg: number;
+        xl: number;
+    };
+    '3xs': number;
+    '2xs': number;
+    xs: number;
+    sm: number;
+    md: number;
+    lg: number;
+    xl: number;
+    '2xl': number;
+    minimum: any;
+    quark: any;
+    nano: any;
+    xxxs: any;
+    xxs: any;
+    xxl: any;
+    xxxl: any;
+    big: any;
+    huge: any;
+    giant: any;
+    '1/10': string;
+    '1/5': string;
+    '1/4': string;
+    '1/3': string;
+    '2/5': string;
+    '2/4': string;
+    '3/5': string;
+    '3/4': string;
+    '4/5': string;
+    full: string;
+};
+export type ISizes = keyof typeof sizes;
+export default sizes;
