@@ -1,3 +1,17 @@
+## [1.0.1-beta.1](https://github.com/Zenklub/freud-ds-mobile/compare/v1.0.0...v1.0.1-beta.1) (2023-08-02)
+
+
+### Bug Fixes
+
+* merge conflict ([1588dab](https://github.com/Zenklub/freud-ds-mobile/commit/1588dab4a33efa360ee1734d2d396f2cfc4be8dd))
+* merge main fast-forward ([92e150e](https://github.com/Zenklub/freud-ds-mobile/commit/92e150e0e8f864ddee7c65cb8bbbba6715519e09))
+* **release:** fixed PR jobs to use yarn instead ([6612af6](https://github.com/Zenklub/freud-ds-mobile/commit/6612af6c2f5879a7e6b69e71af4990ad1152ed98))
+* **release:** fixed PR jobs to use yarn instead ([11d0a64](https://github.com/Zenklub/freud-ds-mobile/commit/11d0a641e835c5249941e1f265494ca06cce51c6))
+* **release:** fixed PR jobs to use yarn instead ([a8e70d6](https://github.com/Zenklub/freud-ds-mobile/commit/a8e70d663f0fda472a2a521d07b19437138eb374))
+* **release:** fixed PR jobs to use yarn instead ([e08c3e2](https://github.com/Zenklub/freud-ds-mobile/commit/e08c3e2c7b68e6e2f782a8959b5a4f4638f5c213))
+* **release:** fixed PR jobs to use yarn instead ([8f05edd](https://github.com/Zenklub/freud-ds-mobile/commit/8f05eddf55331b1182ba754fc3aaa70ee56ea230))
+* **release:** slack channel config in semantic release config ([9a2e15e](https://github.com/Zenklub/freud-ds-mobile/commit/9a2e15eea828563b5b9081f24f1c7c2611d7a9c6))
+
 # [1.0.0-beta.4](https://github.com/Zenklub/freud-ds-mobile/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2023-08-02)
 
 
