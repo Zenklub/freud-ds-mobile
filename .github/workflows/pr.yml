@@ -82,12 +82,11 @@ jobs:
     - name: Coverage report
       uses: ArtiomTr/jest-coverage-report-action@v2
       with:
-        package-manager: yarn
         test-script: yarn test:coverage --json --coverage --testLocationInResults --outputFile=report.json
         output: report-markdown
         prnumber: ${{ steps.findPr.outputs.number }}
 
-    - name: Post coverage report
+    - name: Add coverage report comment
       uses: marocchino/sticky-pull-request-comment@v2
       with:
           # pass output from the previous step by id.
