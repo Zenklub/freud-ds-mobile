@@ -72,9 +72,6 @@ jobs:
         node-version: 18.x
         cache: 'npm'
     
-    - name: Install dependencies
-      run: yarn install --frozen-lockfile
-    
     - name: Find PR number
       id: findPr
       uses: jwalton/gh-find-current-pr@v1
@@ -82,7 +79,7 @@ jobs:
     - name: Coverage report
       uses: ArtiomTr/jest-coverage-report-action@v2
       with:
-        test-script: yarn test:coverage --json --coverage --testLocationInResults --outputFile=report.json
+        package-manager: yarn
         output: report-markdown
         prnumber: ${{ steps.findPr.outputs.number }}
 
