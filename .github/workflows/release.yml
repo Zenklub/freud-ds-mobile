@@ -1,0 +1,73 @@
+name: Release
+
+on:
+  push:
+    branches: [main, beta]
+
+jobs:
+  pre-release:
+    name: pre-release
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'skip release') && !contains(github.event.head_commit.message, 'skip ci')"
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: '0'
+    # - name: Check code for leaks
+    #   uses: zricethezav/gitleaks-action@v2
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #     GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE}} 
+    #     GITLEAKS_NOTIFY_USER_LIST: ${{ secrets.GITLEAKS_NOTIFY_USER_LIST }}
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
+        cache: 'npm'
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile
+    - name: Check linting
+      run: yarn lint:fix
+    - name: Check types
+      run: yarn lint:typescript
+    - name: Run tests and collect coverage
+      run: yarn test:coverage
+
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    concurrency: release
+    needs: [ pre-release ]
+    if: "!contains(github.event.head_commit.message, 'skip release') && !contains(github.event.head_commit.message, 'skip ci')"
+
+    steps:
+      - name: Generate token
+        id: generate_token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.SEMANTIC_RELEASE_APP_ID }}
+          private_key: ${{ secrets.SEMANTIC_RELEASE_APP_PRIVATE_KEY }}
+      
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ steps.generate_token.outputs.token }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Semantic Release
+        uses: codfish/semantic-release-action@v2
+        env:
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

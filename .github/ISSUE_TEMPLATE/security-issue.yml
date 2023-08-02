@@ -1,0 +1,19 @@
+name: "Security Issue"
+description: "File a security issue"
+labels: ["Security"]
+body:
+  - type: "markdown"
+    attributes:
+      value: |
+        Thanks for helping us keep our project secure.
+
+        *Please do not disclose any information that could be used to exploit a vulnerability until we have had a chance to mitigate it.*
+
+        Send any sensitive information to our security team at [dev@zenklub.com](mailto:dev@zenklub.com).
+  - type: "textarea"
+    id: "description"
+    attributes:
+      label: "Description"
+      description: "Please describe your request in one or two sentences."
+    validations:
+      required: true

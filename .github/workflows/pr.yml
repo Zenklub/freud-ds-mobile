@@ -1,0 +1,101 @@
+name: Check PR
+
+on: [pull_request]
+
+jobs:
+  # leaks:
+  #   name: leaks
+  #   runs-on: ubuntu-latest
+  #   if: "!contains(github.event.head_commit.message, 'skip ci')"
+  #   steps:
+  #   - name: Checkout code
+  #     uses: actions/checkout@v3
+  #     with:
+  #       fetch-depth: '0'
+  #   - name: Check code for leaks
+  #     uses: zricethezav/gitleaks-action@v2
+  #     env:
+  #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #       GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE}} 
+  #       GITLEAKS_NOTIFY_USER_LIST: ${{ secrets.GITLEAKS_NOTIFY_USER_LIST }}
+
+  lint:
+    name: lint + typecheck
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
+        cache: 'npm'
+    - name: Install dependencies
+      run: npm ci
+    - name: Check linting
+      run: npm run lint
+    - name: Check types
+      run: npm run typecheck
+
+  language:
+    name: language
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+
+    steps:
+    - name: Check language with Alex
+      uses: brown-ccv/alex-recommends@v1.2.1
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        pr_only: true
+
+  test:
+    name: test/${{ matrix.node }}
+    strategy:
+      matrix:
+        node: [ '16', '18' ]
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node }}
+        cache: 'npm'
+    - name: Install dependencies
+      run: npm ci
+    - name: Run tests
+      run: npm run test
+
+  coverage:
+    name: code coverage
+    runs-on: ubuntu-latest
+    needs: [ test ]
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile
+    
+    - name: Coverage report
+      uses: ArtiomTr/jest-coverage-report-action@v2
+      with:
+        package-manager: yarn
+        test-script: yarn test:coverage --coverageReporters json-summary
+        output: report-markdown
+    - name: Post coverage report
+      uses: marocchino/sticky-pull-request-comment@v2
+      with:
+          # pass output from the previous step by id.
+          message: ${{ steps.coverage.outputs.report }}
