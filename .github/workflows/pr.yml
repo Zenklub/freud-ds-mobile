@@ -32,14 +32,15 @@ jobs:
         node-version: 18.x
         cache: 'npm'
     - name: Install dependencies
-      run: npm ci
+      run: yarn install --frozen-lockfile
     - name: Check linting
-      run: npm run lint
+      run: yarn lint:fix
     - name: Check types
-      run: npm run typecheck
+      run: yarn lint:typescript
 
   language:
     name: language
+    needs: [ lint ]
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'skip ci')"
 
@@ -50,31 +51,17 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         pr_only: true
 
-  test:
-    name: test/${{ matrix.node }}
-    strategy:
-      matrix:
-        node: [ '16', '18' ]
-    runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, 'skip ci')"
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node }}
-        cache: 'npm'
-    - name: Install dependencies
-      run: npm ci
-    - name: Run tests
-      run: npm run test
-
   coverage:
     name: code coverage
+    permissions:
+      checks: write
+      pull-requests: write
+      contents: write
+
     runs-on: ubuntu-latest
-    needs: [ test ]
+    needs: [ language ]
     if: "!contains(github.event.head_commit.message, 'skip ci')"
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -85,17 +72,20 @@ jobs:
         node-version: 18.x
         cache: 'npm'
     
-    - name: Install dependencies
-      run: yarn install --frozen-lockfile
+    - name: Find PR number
+      id: findPr
+      uses: jwalton/gh-find-current-pr@v1
     
     - name: Coverage report
+      id: coverage
       uses: ArtiomTr/jest-coverage-report-action@v2
       with:
         package-manager: yarn
-        test-script: yarn test:coverage --coverageReporters json-summary
         output: report-markdown
-    - name: Post coverage report
+        prnumber: ${{ steps.findPr.outputs.number }}
+
+    - name: Add coverage report comment
       uses: marocchino/sticky-pull-request-comment@v2
       with:
-          # pass output from the previous step by id.
-          message: ${{ steps.coverage.outputs.report }}
+        number: ${{ steps.findPr.outputs.number }}
+        message: ${{ steps.coverage.outputs.report }}
