@@ -11,6 +11,7 @@ export const Icon: React.FC<IconProps> = ({
 }) => {
 	const char = iconCharMap[name];
 	const iconsSize = iconSizeMap[size];
+
 	if (char) {
 		return (
 			<Text
