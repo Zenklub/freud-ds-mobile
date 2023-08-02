@@ -94,6 +94,7 @@ const colors = {
 		},
 	},
 	neutral: {
+		hidden: 'transparent',
 		white: Tokens.neutralColorWhite,
 		black: Tokens.neutralColorBlack,
 		dark: {

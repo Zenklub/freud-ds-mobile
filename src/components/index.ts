@@ -5,3 +5,5 @@ export * from './spinner';
 export * from './form-control';
 export * from './input-text';
 export * from './typography';
+export * from './switch';
+export * from './checkbox';
