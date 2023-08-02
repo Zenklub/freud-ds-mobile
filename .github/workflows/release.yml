@@ -5,10 +5,45 @@ on:
     branches: [main, beta]
 
 jobs:
+  pre-release:
+    name: pre-release
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'skip release') && !contains(github.event.head_commit.message, 'skip ci')"
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: '0'
+    - name: Check code for leaks
+      uses: zricethezav/gitleaks-action@master
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 18.x
+        cache: 'npm'
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile
+    - name: Check linting
+      run: yarn lint:fix
+    - name: Check types
+      run: yarn lint:typescript
+    - name: Run tests and collect coverage
+      run: yarn test:coverage
+    - name: Upload code coverage
+      uses: codecov/codecov-action@v2
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        directory: coverage
+        flags: unittests
+        fail_ci_if_error: true
+        verbose: true
+
   release:
     name: Release
     runs-on: ubuntu-latest
     concurrency: release
+    needs: [ pre-release ]
+    if: "!contains(github.event.head_commit.message, 'skip release') && !contains(github.event.head_commit.message, 'skip ci')"
 
     steps:
       - name: Generate token
@@ -28,18 +63,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
+          cache: 'npm'
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
-
-      # - name: Lint
-      #   run: yarn lint:fix
-
-      # - name: Lint TS
-      #   run: yarn lint:typescript
-
-      # - name: Test
-      #   run: yarn test
 
       - name: Semantic Release
         uses: codfish/semantic-release-action@v2

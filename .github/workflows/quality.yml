@@ -18,9 +18,9 @@ jobs:
         node-version: 18.x
     - name: Install dependencies
       run: yarn install --frozen-lockfile
-    - name: Lint
+    - name: Check linting
       run: yarn lint:fix
-    - name: Lint TS
+    - name: Check types
       run: yarn lint:typescript
     - name: Test
       run: yarn test
