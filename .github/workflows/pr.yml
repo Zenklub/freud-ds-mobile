@@ -53,9 +53,15 @@ jobs:
 
   coverage:
     name: code coverage
+    permissions:
+      checks: write
+      pull-requests: write
+      contents: write
+
     runs-on: ubuntu-latest
     needs: [ language ]
     if: "!contains(github.event.head_commit.message, 'skip ci')"
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -69,12 +75,18 @@ jobs:
     - name: Install dependencies
       run: yarn install --frozen-lockfile
     
+    - name: Find PR number
+      id: findPr
+      uses: jwalton/gh-find-current-pr@v1
+    
     - name: Coverage report
       uses: ArtiomTr/jest-coverage-report-action@v2
       with:
         package-manager: yarn
-        test-script: yarn test:coverage --coverageReporters json-summary
+        test-script: yarn test:coverage --json --coverage --testLocationInResults --outputFile=report.json
         output: report-markdown
+        prnumber: ${{ steps.findPr.outputs.number }}
+
     - name: Post coverage report
       uses: marocchino/sticky-pull-request-comment@v2
       with:
