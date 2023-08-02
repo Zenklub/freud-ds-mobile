@@ -1,3 +1,12 @@
+# [1.0.0-beta.2](https://github.com/Zenklub/freud-ds-mobile/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2023-08-02)
+
+
+### Bug Fixes
+
+* release commiting dist folder ([dd858ac](https://github.com/Zenklub/freud-ds-mobile/commit/dd858acf6602232694f8194c055c5ec97cd5f903))
+* updated codeql version ([4b27812](https://github.com/Zenklub/freud-ds-mobile/commit/4b2781219900de0000d88d67481a93943461f373))
+* updated release actions ([a16cf17](https://github.com/Zenklub/freud-ds-mobile/commit/a16cf1721567024d55c2d99c15b893f85449a738))
+
 # 1.0.0-beta.1 (2023-08-02)
 
 
