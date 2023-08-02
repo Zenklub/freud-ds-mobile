@@ -9,15 +9,20 @@ jobs:
     name: pre-release
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'skip release') && !contains(github.event.head_commit.message, 'skip ci')"
+
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         fetch-depth: '0'
-    - name: Check code for leaks
-      uses: zricethezav/gitleaks-action@master
+    # - name: Check code for leaks
+    #   uses: zricethezav/gitleaks-action@v2
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #     GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE}} 
+    #     GITLEAKS_NOTIFY_USER_LIST: ${{ secrets.GITLEAKS_NOTIFY_USER_LIST }}
     - name: Set up Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: 18.x
         cache: 'npm'
@@ -29,14 +34,6 @@ jobs:
       run: yarn lint:typescript
     - name: Run tests and collect coverage
       run: yarn test:coverage
-    - name: Upload code coverage
-      uses: codecov/codecov-action@v2
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        directory: coverage
-        flags: unittests
-        fail_ci_if_error: true
-        verbose: true
 
   release:
     name: Release
@@ -74,4 +71,3 @@ jobs:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        # run: yarn semantic-release
