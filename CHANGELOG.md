@@ -1,3 +1,10 @@
+# [1.0.0-beta.4](https://github.com/Zenklub/freud-ds-mobile/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2023-08-02)
+
+
+### Bug Fixes
+
+* **release:** slack channel config in semantic release config ([9a2e15e](https://github.com/Zenklub/freud-ds-mobile/commit/9a2e15eea828563b5b9081f24f1c7c2611d7a9c6))
+
 # [1.0.0-beta.3](https://github.com/Zenklub/freud-ds-mobile/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2023-08-02)
 
 
