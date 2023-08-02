@@ -14,3 +14,4 @@ import '@components/input-text/input.story';
 import '@components/radio/radio.story';
 import '@components/select/select.story';
 import '@components/switch/switch.story';
+import '@components/checkbox/checkbox.story';
