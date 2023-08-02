@@ -1,3 +1,10 @@
+# [1.0.0-beta.3](https://github.com/Zenklub/freud-ds-mobile/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2023-08-02)
+
+
+### Bug Fixes
+
+* removed package.json and yarn-lock from publish git commit ([ca1f8b1](https://github.com/Zenklub/freud-ds-mobile/commit/ca1f8b190654e85f150a3332187d963a8987cab6))
+
 # [1.0.0-beta.2](https://github.com/Zenklub/freud-ds-mobile/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2023-08-02)
 
 
