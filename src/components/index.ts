@@ -7,3 +7,4 @@ export * from './input-text';
 export * from './typography';
 export * from './switch';
 export * from './checkbox';
+export * from './select';
