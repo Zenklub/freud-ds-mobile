@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/Zenklub/freud-ds-mobile/compare/v1.0.1...v1.1.0) (2023-08-16)
+
+
+### Features
+
+* **select:** added select component ([68496b4](https://github.com/Zenklub/freud-ds-mobile/commit/68496b43549207ded0b8ec4b0449c15969c7fc6b))
+
 ## [1.0.1](https://github.com/Zenklub/freud-ds-mobile/compare/v1.0.0...v1.0.1) (2023-08-02)
 
 
