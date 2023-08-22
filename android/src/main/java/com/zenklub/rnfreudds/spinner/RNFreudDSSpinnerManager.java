@@ -5,7 +5,7 @@ import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
 import com.facebook.react.bridge.ReadableArray;
 
-public class RNFreudDSSpinnerManager extends SimpleViewManager<FreudDSSpinner> {
+public class RNFreudDSSpinner extends SimpleViewManager<FreudDSSpinner> {
     public static final String REACT_CLASS = "RNFreudDSSpinner";
 
     @Override
@@ -19,7 +19,7 @@ public class RNFreudDSSpinnerManager extends SimpleViewManager<FreudDSSpinner> {
     }
 
     @ReactProp(name = "options")
-    public void setValues(FreudDSSpinner view, ReadableArray options) {
+    public void setOptions(FreudDSSpinner view, ReadableArray options) {
         view.setOptions(options);
     }
 

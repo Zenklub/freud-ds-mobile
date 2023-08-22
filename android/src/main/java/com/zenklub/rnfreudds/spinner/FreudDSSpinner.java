@@ -2,7 +2,6 @@ package com.zenklub.rnfreudds.spinner;
 
 
 import android.content.Context;
-import android.os.SystemClock;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,8 +15,6 @@ import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.ThemedReactContext;
-import com.facebook.react.uimanager.UIManagerModule;
-import com.facebook.react.uimanager.events.RCTEventEmitter;
 import com.facebook.react.uimanager.events.RCTModernEventEmitter;
 
 import java.util.ArrayList;
@@ -57,7 +54,7 @@ public class FreudDSSpinner extends AppCompatSpinner {
 
     public void setSelected(String value) {
         int index = this.getIndexWithValue(value);
-        if (index == -1 || selected == mSelected) {
+        if (index == -1 || (selected == mSelected && selected == this.selected)) {
             return;
         }
         mSelected = selected;
