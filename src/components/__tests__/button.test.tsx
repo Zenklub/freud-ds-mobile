@@ -119,4 +119,12 @@ describe('Forms > Button', () => {
 		expect(getByTestId(testID)).toBeTruthy();
 		expect(getByText('Test')).toBeTruthy();
 	});
+
+	it('should add children', async () => {
+		const { getByTestId, getByText } = renderWithProviders(
+			<Button testID={testID}>Test</Button>
+		);
+		expect(getByTestId(testID)).toBeTruthy();
+		expect(getByText('Test')).toBeTruthy();
+	});
 });
