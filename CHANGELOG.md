@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/Zenklub/freud-ds-mobile/compare/v1.1.2...v1.1.3) (2023-08-22)
+
+
+### Bug Fixes
+
+* **select:** moved implementation from playgroud ([f9c4cc1](https://github.com/Zenklub/freud-ds-mobile/commit/f9c4cc126b887b034930430a9809208c9349186b))
+
 ## [1.1.2](https://github.com/Zenklub/freud-ds-mobile/compare/v1.1.1...v1.1.2) (2023-08-22)
 
 
