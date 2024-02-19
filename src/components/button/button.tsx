@@ -11,6 +11,7 @@ export const Button: React.FC<ButtonProps> = ({
 	inverted,
 	onPressIn,
 	onPressOut,
+	children,
 	...props
 }) => {
 	const [iconColor, pressableProps] = useIconColor(buttonTheme.variants, {
@@ -20,9 +21,9 @@ export const Button: React.FC<ButtonProps> = ({
 	});
 
 	const _isLoadingText = useMemo(() => {
-		if (props.isLoading) return props.children as string;
+		if (props.isLoading) return children as string;
 		return undefined;
-	}, [props.isLoading, props.children]);
+	}, [props.isLoading, children]);
 
 	return (
 		<NBButton
@@ -46,7 +47,7 @@ export const Button: React.FC<ButtonProps> = ({
 			isLoadingText={_isLoadingText}
 			spinnerPlacement="end"
 		>
-			{props.variant}
+			{children}
 		</NBButton>
 	);
 };
