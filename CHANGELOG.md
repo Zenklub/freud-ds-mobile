@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/Zenklub/freud-ds-mobile/compare/v1.1.3...v1.1.4) (2024-02-19)
+
+
+### Bug Fixes
+
+* **button:** mistake adding variant as children ([5d46181](https://github.com/Zenklub/freud-ds-mobile/commit/5d461818b0112ed70f12bc9575bad6931281e688))
+
 ## [1.1.3](https://github.com/Zenklub/freud-ds-mobile/compare/v1.1.2...v1.1.3) (2023-08-22)
 
 
