@@ -6,6 +6,9 @@ import '@components/icon/icon.story';
 
 // Feedback
 import '@components/spinner/spinner.story';
+import '@components/alert/alert.story';
+import '@components/toast/toast.story';
+import '@components/popover/popover.story';
 
 // Form
 import '@components/button/button.story';
