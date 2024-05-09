@@ -31,7 +31,6 @@ export const FreudDSIOSPickerView: React.FC<FreudDSPickerViewProps> = memo(
 	({ onSelectedValueChange, ...props }) => {
 		const onValueChangeHandler = useCallback(
 			(event: FreudDSPickerViewChangeEvent) => {
-				console.log('onValueChangeHandler', event.nativeEvent.value);
 				onSelectedValueChange?.(event.nativeEvent.value);
 			},
 			[onSelectedValueChange]

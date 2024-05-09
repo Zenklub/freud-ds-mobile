@@ -81,10 +81,6 @@ export const Select: React.FC<SelectProps> = ({
 		opacity,
 	} = useSelectStyle(disabled, inverted);
 
-	console.log('inputHeight', inputHeight);
-	console.log('borderRadius', borderRadius);
-	console.log('opacity', opacity);
-
 	const inputRef = useRef<TextInput>(null);
 
 	const borderColor = useMemo(() => {
