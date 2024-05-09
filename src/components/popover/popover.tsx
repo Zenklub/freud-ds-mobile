@@ -42,7 +42,6 @@ export const Popover: React.FC<PopoverProps> = ({
 	const [borderRadius, shadows] = useTokens('radii.md', 'shadows.shadowLevel3');
 
 	const onPressHandler = () => {
-		console.log('onPressHandler');
 		setVisible(true);
 	};
 
@@ -53,7 +52,6 @@ export const Popover: React.FC<PopoverProps> = ({
 	};
 
 	useEffect(() => {
-		console.log('Animation', visible ? 'true' : 'false');
 		Animated.timing(animation.current, {
 			toValue: visible ? 1 : 0,
 			duration: ANIMATION_DURATION,

@@ -60,8 +60,6 @@ export const Alert: React.FC<AlertProps> = memo(
 			'sizes.spacing.nano'
 		);
 
-		console.log('marginBetween', marginBetween);
-
 		const onClose = () => {
 			onDismiss?.();
 		};

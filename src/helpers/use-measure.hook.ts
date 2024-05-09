@@ -21,7 +21,6 @@ export const useMeasurement = (): [
 	const onLayout = () => {
 		ref.current?.measure((x, y, width, height, pageX, pageY) => {
 			setMeasure({ x, y, width, height, pageX, pageY });
-			console.log(x, y, width, height, pageX, pageY);
 		});
 	};
 
