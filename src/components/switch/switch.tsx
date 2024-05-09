@@ -1,21 +1,12 @@
-import { useColors } from '@helpers/use-colors.hook';
 import React from 'react';
 import { Switch as RNSwitch, SwitchChangeEvent, View } from 'react-native';
 import { SwitchProps } from './switch.types';
-import { useNamedTokens } from '@helpers/use-named-tokens.hook';
+import { useColors, useTokens } from '@hooks';
 
-const tokens = {
-	normal: {
-		thumbColor: 'neutral.white',
-		trackColorFalse: 'neutral.dark.100',
-		trackColorTrue: 'brand.pure',
-	},
-	inverted: {
-		thumbColor: 'neutral.white',
-		trackColorFalse: 'neutral.dark.100',
-		trackColorTrue: 'brand.pure',
-	},
-};
+const colors = {
+	normal: ['neutral.white', 'neutral.dark.100', 'brand.pure'],
+	inverted: ['neutral.white', 'neutral.dark.100', 'brand.pure'],
+} as const;
 
 export const Switch: React.FC<SwitchProps> = ({
 	testID,
@@ -24,16 +15,19 @@ export const Switch: React.FC<SwitchProps> = ({
 	disabled,
 	inverted = false,
 }) => {
-	const { thumbColor, trackColorFalse, trackColorTrue } = useColors(
-		tokens,
-		inverted
+	const [thumbColor, trackColorFalse, trackColorTrue] = useColors(
+		...(inverted ? colors.inverted : colors.normal)
 	);
 
-	const { opacity } = useNamedTokens('opacity', {
-		opacity: disabled ? 'level5' : 'full',
-	});
+	const [opacity, opacityDisabled] = useTokens(
+		'opacity.full',
+		'opacity.level5'
+	);
 
 	const onChangeHandler = (event: SwitchChangeEvent) => {
+		if (disabled) {
+			return;
+		}
 		const currentValue = event.nativeEvent.value;
 		onChange?.(currentValue);
 	};
@@ -42,7 +36,7 @@ export const Switch: React.FC<SwitchProps> = ({
 		<View pointerEvents={disabled ? 'none' : undefined}>
 			<RNSwitch
 				testID={testID}
-				style={{ opacity }}
+				style={{ opacity: disabled ? opacityDisabled : opacity }}
 				thumbColor={thumbColor}
 				trackColor={{ false: trackColorFalse, true: trackColorTrue }}
 				value={checked}

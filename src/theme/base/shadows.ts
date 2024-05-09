@@ -103,3 +103,5 @@ const shadow = {
 
 export type IShadow = keyof typeof shadow;
 export default shadow;
+
+export type IShadowValue = typeof shadow[keyof typeof shadow];

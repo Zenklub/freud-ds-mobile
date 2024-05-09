@@ -8,8 +8,9 @@ const borderWidths = {
 	lg: Tokens.borderWidthLg,
 	xl: Tokens.borderWidthXl,
 	xxl: Tokens.borderWidthXxl,
-};
+} as const;
 
 export type IBorderWidth = keyof typeof borderWidths;
 
 export default borderWidths;
+export type IBorders = IBorderWidth;

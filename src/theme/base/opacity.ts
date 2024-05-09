@@ -13,6 +13,7 @@ const opacity = {
 	level8: Tokens.opacityLevel8,
 	full: 1,
 };
+
 export type IOpacity = keyof typeof opacity;
 
 export default opacity;

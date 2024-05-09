@@ -1,7 +1,8 @@
-// import type { ITheme } from '..';
-import type { Leaves } from './types';
 // @ts-ignore
-import * as Tokens from '@freud-ds/tokens/style/react-native/variables';
+import * as Variables from '@freud-ds/tokens/style/react-native/variables';
+import type { Leaves } from './types';
+
+const Tokens = Variables as Record<string, string>;
 
 export interface IColorHues {
 	50: string;
@@ -110,10 +111,9 @@ const colors = {
 			400: Tokens.neutralColorLight04,
 		},
 	},
-};
+} as const;
 
 export default colors;
 
 export type IColorsObject = typeof colors;
-// export type IColors = Leaves<ITheme['colors']>;
 export type IColors = Leaves<typeof colors>;

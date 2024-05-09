@@ -1,5 +1,7 @@
 // @ts-ignore
-import * as Tokens from '@freud-ds/tokens/style/react-native/variables';
+import * as Variables from '@freud-ds/tokens/style/react-native/variables';
+
+const Tokens = Variables as Record<string, number>;
 
 export const spacing = {
 	minimum: Tokens.spacingSizeMinimum,
@@ -27,6 +29,6 @@ export const spacing = {
 	'3/4': '75%',
 	'4/5': '80%',
 	full: '100%',
-};
+} as const;
 
 export type ISpacing = keyof typeof spacing;

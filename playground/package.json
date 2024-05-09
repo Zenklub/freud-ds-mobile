@@ -17,6 +17,7 @@
     "@freud-ds/icons": "*",
     "@freud-ds/react-native": "file:../dist",
     "@freud-ds/tokens": "*",
+    "@gorhom/portal": "^1.0.14",
     "@react-native-async-storage/async-storage": "^1.17.11",
     "@react-native-picker/picker": "^2.4.10",
     "native-base": "^3.4.25",

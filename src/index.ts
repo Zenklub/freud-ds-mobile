@@ -8,6 +8,8 @@ export const RNFreudDS = NativeModules;
 // Theme Provider
 export { FreudDSProvider } from '@providers';
 
+// Hooks
+export * from '@hooks';
+
 // Components
 export * from '@components';
-export { useToken } from 'native-base';

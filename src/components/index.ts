@@ -8,3 +8,8 @@ export * from './typography';
 export * from './switch';
 export * from './checkbox';
 export * from './select';
+export * from './radio';
+export * from './toast';
+export * from './alert';
+export * from './touchable';
+export * from './popover';
