@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/Zenklub/freud-ds-mobile/compare/v1.1.4...v1.2.0) (2024-05-09)
+
+
+### Features
+
+* exposes some tokens hooks + Alert Component + Popover + Toask + Touchable ([177cd68](https://github.com/Zenklub/freud-ds-mobile/commit/177cd681823c6c8a54ac93acc82e73df83451e3d))
+
 ## [1.1.4](https://github.com/Zenklub/freud-ds-mobile/compare/v1.1.3...v1.1.4) (2024-02-19)
 
 
