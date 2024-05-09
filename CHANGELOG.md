@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/Zenklub/freud-ds-mobile/compare/v1.2.0...v1.2.1) (2024-05-09)
+
+
+### Bug Fixes
+
+* remove console logs ([c69f6a4](https://github.com/Zenklub/freud-ds-mobile/commit/c69f6a419a05a53d4e141e049cef7de64cb7edf8))
+
 # [1.2.0](https://github.com/Zenklub/freud-ds-mobile/compare/v1.1.4...v1.2.0) (2024-05-09)
 
 
