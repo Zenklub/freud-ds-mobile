@@ -21,32 +21,36 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { useIsIOS } from '@helpers/use-is-ios.hook';
 import { Picker } from '@react-native-picker/picker';
 import { useSelectStyle } from './use-select-style.hook';
+import { ConditionalTouchable } from '@components/touchable';
 
 export const Select: React.FC<SelectProps> = ({
 	testID,
 	placeholder,
-	inverted = false,
 	selected,
-	isFocused = false,
 	options,
 	label,
 	error,
 	helperText,
-	disabled = false,
-	nativeID: inputNativeID,
 	onClose,
 	onOpen,
 	onCancel,
 	onDone,
+	onPress,
 	onSelectedValueChange,
-	displayAccessories = true,
+	nativeID: inputNativeID,
 	accessoryViewID,
+	style,
 	cancelText = 'Cancel',
 	doneText = 'Done',
 	cancelAccessibilityLabel = 'Cancel',
 	doneAccessibilityLabel = 'Done',
 	hideCancelButton = false,
 	hideDoneButton = false,
+	customPicker = false,
+	inverted = false,
+	isFocused = false,
+	disabled = false,
+	displayAccessories = true,
 }) => {
 	const isIOS = useIsIOS();
 
@@ -56,7 +60,7 @@ export const Select: React.FC<SelectProps> = ({
 		useState<SelectOption['value']>();
 
 	const selectedItem = useMemo(() => {
-		return options?.find((option) => option.value === selected);
+		return options.find((option) => option.value === selected);
 	}, [options, selected]);
 
 	const inputAccessoryViewID = useMemo(() => {
@@ -132,6 +136,69 @@ export const Select: React.FC<SelectProps> = ({
 		[onSelectedValueChange]
 	);
 
+	const onPressHandler = useCallback(() => {
+		const state = !isOpen;
+		setIsOpen(state);
+
+		onPress?.();
+
+		if (state) {
+			onOpen?.();
+		} else {
+			onClose?.();
+		}
+	}, [isOpen, onPress, onClose, onOpen]);
+
+	const renderPicker = () => {
+		if (customPicker) {
+			return null;
+		}
+
+		if (isIOS) {
+			return (
+				<>
+					<TextInput
+						ref={inputRef}
+						nativeID={inputNativeID}
+						style={styles.input}
+						underlineColorAndroid="transparent"
+						editable={!disabled}
+						selectTextOnFocus={!disabled}
+						placeholder={placeholder}
+						value={selectedItem?.label}
+						onFocus={onFocusHandler}
+						onBlur={onBlurHandler}
+						inputAccessoryViewID={inputAccessoryViewID}
+						contextMenuHidden
+						caretHidden
+					/>
+
+					<FreudDSIOSPickerView
+						options={options}
+						selected={selected}
+						onSelectedValueChange={onSelectedValueChange}
+						inputNativeID={inputNativeID}
+					/>
+				</>
+			);
+		}
+
+		return (
+			<Picker
+				onValueChange={onValueChangeAndroidHandler}
+				selectedValue={selected}
+			>
+				{options.map((option) => (
+					<Picker.Item
+						key={option.value}
+						label={option.label}
+						value={option.value}
+					/>
+				))}
+			</Picker>
+		);
+	};
+
 	useEffect(() => {
 		if (isOpen) {
 			onOpen?.();
@@ -148,6 +215,7 @@ export const Select: React.FC<SelectProps> = ({
 				{
 					opacity: opacity,
 				},
+				style,
 			]}
 		>
 			{label ? (
@@ -160,7 +228,9 @@ export const Select: React.FC<SelectProps> = ({
 					{label}
 				</Text>
 			) : null}
-			<View
+			<ConditionalTouchable
+				condition={customPicker}
+				onPress={onPressHandler}
 				testID={`${testID}-text-container`}
 				style={[
 					styles.selectContainer,
@@ -177,7 +247,7 @@ export const Select: React.FC<SelectProps> = ({
 					testID={`${testID}-text`}
 					style={styles.selectValue}
 					bold={!!selectedLabel && !!isFocused && !disabled}
-					color={!!selectedLabel ? selectedItemTextColor : placeholderTextColor}
+					color={selectedLabel ? selectedItemTextColor : placeholderTextColor}
 					fontSize="md"
 				>
 					{selectedLabel ?? placeholder}
@@ -193,52 +263,14 @@ export const Select: React.FC<SelectProps> = ({
 					style={styles.nativePickerContainer}
 					pointerEvents={disabled ? 'none' : undefined}
 				>
-					{isIOS ? (
-						<>
-							<TextInput
-								ref={inputRef}
-								nativeID={inputNativeID}
-								style={styles.input}
-								underlineColorAndroid="transparent"
-								editable={!disabled}
-								selectTextOnFocus={!disabled}
-								placeholder={placeholder}
-								value={selectedItem?.label}
-								onFocus={onFocusHandler}
-								onBlur={onBlurHandler}
-								inputAccessoryViewID={inputAccessoryViewID}
-								contextMenuHidden
-								caretHidden
-							/>
-
-							<FreudDSIOSPickerView
-								options={options}
-								selected={selected}
-								onSelectedValueChange={onSelectedValueChange}
-								inputNativeID={inputNativeID}
-							/>
-						</>
-					) : (
-						<Picker
-							onValueChange={onValueChangeAndroidHandler}
-							selectedValue={selected}
-						>
-							{options.map((option) => (
-								<Picker.Item
-									key={option.value}
-									label={option.label}
-									value={option.value}
-								/>
-							))}
-						</Picker>
-					)}
+					{renderPicker()}
 				</View>
-			</View>
+			</ConditionalTouchable>
 
 			{error || helperText ? (
 				<Text
-					testID={`${testID}-${!!helperText ? 'helper-text' : 'error'}`}
-					color={!!error ? errorTextColor : helperTextColor}
+					testID={`${testID}-${helperText ? 'helper-text' : 'error'}`}
+					color={error ? errorTextColor : helperTextColor}
 					fontWeight={400}
 					fontSize="md"
 					bold={!!selectedLabel && isFocused && !disabled}

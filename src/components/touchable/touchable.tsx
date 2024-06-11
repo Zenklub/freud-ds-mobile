@@ -1,56 +1,12 @@
 import React from 'react';
 import {
-	Insets,
 	Platform,
-	StyleProp,
 	TouchableNativeFeedback,
 	TouchableOpacity,
 	View,
-	ViewStyle,
 } from 'react-native';
-import tinyColor from 'tinycolor2';
-import {
-	TOUCHABLE_RIPPLE_COLOR,
-	TOUCHABLE_RIPPLE_COLOR_DARK,
-} from './constants';
-import { shouldUseRipple } from './utils';
-
-export interface TouchableProps<T> {
-	data?: T;
-	onPress?: T extends undefined ? () => void : (data: T) => void;
-	children: React.ReactNode;
-	disabled?: boolean;
-	style?: StyleProp<ViewStyle> | StyleProp<ViewStyle>[];
-	testID?: string;
-	accessibilityLabel?: string;
-
-	backgroundColor?: string;
-	borderless?: boolean;
-	rippleSize?: number;
-
-	/**
-	 * Additional distance outside of this view in which a press is detected.
-	 */
-	hitSlop?: Insets | number;
-}
-
-const getBackground = (
-	backgroundColor: string,
-	borderless: boolean,
-	rippleSize: number | undefined
-) => {
-	if (shouldUseRipple()) {
-		return TouchableNativeFeedback.Ripple(
-			tinyColor(backgroundColor).isDark()
-				? TOUCHABLE_RIPPLE_COLOR_DARK
-				: TOUCHABLE_RIPPLE_COLOR,
-			borderless,
-			rippleSize
-		);
-	}
-
-	return TouchableNativeFeedback.SelectableBackground();
-};
+import { getBackground } from './utils';
+import { TouchableProps } from './touchable-types';
 
 export const Touchable = <T,>({
 	children,
