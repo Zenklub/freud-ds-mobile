@@ -5,8 +5,9 @@ import { Heading } from './heading';
 import { HStack } from 'native-base';
 import { Text } from './text';
 import { StoryWrapper } from '../../storybook/story-wrapper';
+import { IHeadingFontSizes, ITextFontSizes } from './typography.types';
 
-const headerSizesWithSize = [
+const headerSizesWithSize: { size: IHeadingFontSizes; fontSize: number }[] = [
 	{ size: 'xs', fontSize: 14 },
 	{ size: 'sm', fontSize: 16 },
 	{ size: 'md', fontSize: 20 },
@@ -22,14 +23,14 @@ const HeadingStory: React.FC = () => {
 		<StoryWrapper title="Typography | Heading">
 			<StoryWrapper.Session>
 				{headerSizesWithSize.map((item) => (
-					<Heading size={item.size} key={item.size}>
+					<Heading fontSize={item.size} key={item.size}>
 						{item.size}: {item.fontSize}px
 					</Heading>
 				))}
 			</StoryWrapper.Session>
 			<StoryWrapper.Session inverted>
 				{headerSizesWithSize.map((item) => (
-					<Heading size={item.size} inverted key={item.size}>
+					<Heading fontSize={item.size} inverted key={item.size}>
 						{item.size}: {item.fontSize}px
 					</Heading>
 				))}
@@ -38,7 +39,7 @@ const HeadingStory: React.FC = () => {
 	);
 };
 
-const textSizesWithSize = [
+const textSizesWithSize: { size: ITextFontSizes; fontSize: number }[] = [
 	{ size: '2xs', fontSize: 10 },
 	{ size: 'xs', fontSize: 12 },
 	{ size: 'sm', fontSize: 14 },
@@ -62,12 +63,12 @@ const TextStory: React.FC = () => {
 				</HStack>
 				{textSizesWithSize.map((item) => (
 					<HStack space="xl" key={item.size}>
-						<Text fontSize={item.size}>
+						<Text.Regular fontSize={item.size}>
 							{item.size}: {item.fontSize}px
-						</Text>
-						<Text fontSize={item.size} fontWeight="medium">
+						</Text.Regular>
+						<Text.Medium fontSize={item.size}>
 							{item.size}: {item.fontSize}px
-						</Text>
+						</Text.Medium>
 					</HStack>
 				))}
 			</StoryWrapper.Session>
@@ -82,12 +83,12 @@ const TextStory: React.FC = () => {
 				</HStack>
 				{textSizesWithSize.map((item) => (
 					<HStack space="xl" key={item.size}>
-						<Text fontSize={item.size} inverted>
+						<Text.Regular fontSize={item.size} inverted>
 							{item.size}: {item.fontSize}px
-						</Text>
-						<Text fontSize={item.size} inverted fontWeight="medium">
+						</Text.Regular>
+						<Text.Medium fontSize={item.size} inverted>
 							{item.size}: {item.fontSize}px
-						</Text>
+						</Text.Medium>
 					</HStack>
 				))}
 			</StoryWrapper.Session>

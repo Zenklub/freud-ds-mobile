@@ -17,7 +17,7 @@ const TargetContent = () => (
 			alignItems: 'center',
 		}}
 	>
-		<Text color="#ffffff">Click me</Text>
+		<Text customColor="#ffffff">Click me</Text>
 	</View>
 );
 

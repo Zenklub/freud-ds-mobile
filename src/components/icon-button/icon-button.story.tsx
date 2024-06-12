@@ -55,7 +55,7 @@ const IconButtonStory = () => {
 				</HStack>
 				{sizes.map((size) => renderButtonSizes(size, inverted))}
 
-				<Text marginTop={5} inverted={inverted}>
+				<Text style={{ marginTop: 16 }} inverted={inverted}>
 					Disabled
 				</Text>
 				{sizes.map((size) =>

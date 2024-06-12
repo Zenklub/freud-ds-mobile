@@ -9,7 +9,6 @@ import { Text } from '@components/typography';
 import { Modal, StyleSheet, View } from 'react-native';
 import { Touchable } from '@components/touchable';
 import { Icon } from '@components/icon';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 const options: SelectOption[] = [
 	{ label: 'Option 1', value: 'option1' },

@@ -221,8 +221,8 @@ export const Select: React.FC<SelectProps> = ({
 			{label ? (
 				<Text
 					testID={`${testID}-label`}
-					color={labelColor}
-					fontWeight={600}
+					customColor={labelColor}
+					fontWeight="semibold"
 					fontSize="md"
 				>
 					{label}
@@ -271,8 +271,6 @@ export const Select: React.FC<SelectProps> = ({
 				<Text
 					testID={`${testID}-${helperText ? 'helper-text' : 'error'}`}
 					color={error ? errorTextColor : helperTextColor}
-					fontWeight={400}
-					fontSize="md"
 					bold={!!selectedLabel && isFocused && !disabled}
 				>
 					{error ?? helperText}
