@@ -40,7 +40,8 @@
     "semantic-release": "semantic-release",
     "playground": "yarn --cwd playground",
     "pods": "cd playground && pod-install --quiet",
-    "bootstrap": "yarn build && cd playground && yarn && yarn react-native link && pod-install --quiet && cd ../"
+    "bootstrap": "yarn build && cd playground && yarn && yarn react-native link && pod-install --quiet && cd ../",
+    "generate-docs": "./scripts/generate-docs/run.sh"
   },
   "repository": {
     "type": "git",

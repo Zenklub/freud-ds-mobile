@@ -92,15 +92,12 @@ export const Alert: React.FC<AlertProps> = memo(
 							justifyContent: 'center',
 						}}
 					>
-						<Text.Medium
-							fontSize={body ? 'md' : 'sm'}
-							testID={`${testID}-title`}
-						>
+						<Text.Medium size={body ? 'md' : 'sm'} testID={`${testID}-title`}>
 							{title}
 						</Text.Medium>
 						{body ? (
 							<Text.Regular
-								fontSize="sm"
+								size="sm"
 								testID={`${testID}-body`}
 								style={{ marginTop: 4 }}
 							>

@@ -6,7 +6,7 @@ import { Text } from '../typography/text';
 
 const testID = 'typography-test';
 
-describe('Typography', () => {
+describe('Components > Typography', () => {
 	describe('Heading', () => {
 		it('should render correctly', function () {
 			const { getByTestId } = renderWithProviders(
@@ -24,7 +24,7 @@ describe('Typography', () => {
 
 			expect(getByTestId(testID)).toBeTruthy();
 			expect(getByTestId(testID)).toHaveTextContent('Test');
-			expect(getByTestId(testID)).toHaveStyle({ color: '#000000' });
+			expect(getByTestId(testID)).toHaveStyle({ color: '#1F2937' });
 		});
 
 		it('should render custom correctly with color', function () {
@@ -48,7 +48,7 @@ describe('Typography', () => {
 
 			expect(getByTestId(testID)).toBeTruthy();
 			expect(getByTestId(testID)).toHaveTextContent('Test');
-			expect(getByTestId(testID)).toHaveStyle({ color: '#FFFFFF' });
+			expect(getByTestId(testID)).toHaveStyle({ color: '#D1D5DB' });
 		});
 	});
 
@@ -69,7 +69,7 @@ describe('Typography', () => {
 
 			expect(getByTestId(testID)).toBeTruthy();
 			expect(getByTestId(testID)).toHaveTextContent('Test');
-			expect(getByTestId(testID)).toHaveStyle({ color: '#000000' });
+			expect(getByTestId(testID)).toHaveStyle({ color: '#1F2937' });
 		});
 
 		it('should render custom correctly with color', function () {
@@ -93,7 +93,7 @@ describe('Typography', () => {
 
 			expect(getByTestId(testID)).toBeTruthy();
 			expect(getByTestId(testID)).toHaveTextContent('Test');
-			expect(getByTestId(testID)).toHaveStyle({ color: '#FFFFFF' });
+			expect(getByTestId(testID)).toHaveStyle({ color: '#D1D5DB' });
 		});
 	});
 });

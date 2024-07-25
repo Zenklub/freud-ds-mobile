@@ -5,17 +5,32 @@ import { Heading } from './heading';
 import { HStack } from 'native-base';
 import { Text } from './text';
 import { StoryWrapper } from '../../storybook/story-wrapper';
-import { IHeadingFontSizes, ITextFontSizes } from './typography.types';
+import { HeadingFontSizes, TextFontSizes } from '@theme/types/typography';
+import { baseThemeTypography } from '@theme/base-theme/typography';
 
-const headerSizesWithSize: { size: IHeadingFontSizes; fontSize: number }[] = [
-	{ size: 'xs', fontSize: 14 },
-	{ size: 'sm', fontSize: 16 },
-	{ size: 'md', fontSize: 20 },
-	{ size: 'lg', fontSize: 24 },
-	{ size: 'xl', fontSize: 30 },
-	{ size: '2xl', fontSize: 36 },
-	{ size: '3xl', fontSize: 48 },
-	{ size: '4xl', fontSize: 60 },
+const headerSizesWithSize: { size: HeadingFontSizes; fontSize: number }[] = [
+	{ size: 'xs', fontSize: baseThemeTypography.heading.xs.fontSize },
+	{ size: 'sm', fontSize: baseThemeTypography.heading.sm.fontSize },
+	{ size: 'md', fontSize: baseThemeTypography.heading.md.fontSize },
+	{ size: 'lg', fontSize: baseThemeTypography.heading.lg.fontSize },
+	{ size: 'xl', fontSize: baseThemeTypography.heading.xl.fontSize },
+	{ size: '2xl', fontSize: baseThemeTypography.heading['2xl'].fontSize },
+	{ size: '3xl', fontSize: baseThemeTypography.heading['3xl'].fontSize },
+	{ size: '4xl', fontSize: baseThemeTypography.heading['4xl'].fontSize },
+];
+
+const textSizesWithSize: { size: TextFontSizes; fontSize: number }[] = [
+	{ size: '2xs', fontSize: baseThemeTypography.text['2xs'].fontSize },
+	{ size: 'xs', fontSize: baseThemeTypography.text.xs.fontSize },
+	{ size: 'sm', fontSize: baseThemeTypography.text.sm.fontSize },
+	{ size: 'md', fontSize: baseThemeTypography.text.md.fontSize },
+	{ size: 'lg', fontSize: baseThemeTypography.text.lg.fontSize },
+	{ size: 'xl', fontSize: baseThemeTypography.text.xl.fontSize },
+	{ size: '2xl', fontSize: baseThemeTypography.text['2xl'].fontSize },
+	{ size: '3xl', fontSize: baseThemeTypography.text['3xl'].fontSize },
+	{ size: '4xl', fontSize: baseThemeTypography.text['4xl'].fontSize },
+	{ size: '5xl', fontSize: baseThemeTypography.text['5xl'].fontSize },
+	{ size: '6xl', fontSize: baseThemeTypography.text['6xl'].fontSize },
 ];
 
 const HeadingStory: React.FC = () => {
@@ -23,14 +38,14 @@ const HeadingStory: React.FC = () => {
 		<StoryWrapper title="Typography | Heading">
 			<StoryWrapper.Session>
 				{headerSizesWithSize.map((item) => (
-					<Heading fontSize={item.size} key={item.size}>
+					<Heading size={item.size} key={item.size}>
 						{item.size}: {item.fontSize}px
 					</Heading>
 				))}
 			</StoryWrapper.Session>
 			<StoryWrapper.Session inverted>
 				{headerSizesWithSize.map((item) => (
-					<Heading fontSize={item.size} inverted key={item.size}>
+					<Heading size={item.size} key={item.size} inverted>
 						{item.size}: {item.fontSize}px
 					</Heading>
 				))}
@@ -39,34 +54,20 @@ const HeadingStory: React.FC = () => {
 	);
 };
 
-const textSizesWithSize: { size: ITextFontSizes; fontSize: number }[] = [
-	{ size: '2xs', fontSize: 10 },
-	{ size: 'xs', fontSize: 12 },
-	{ size: 'sm', fontSize: 14 },
-	{ size: 'md', fontSize: 16 },
-	{ size: 'lg', fontSize: 18 },
-	{ size: 'xl', fontSize: 20 },
-	{ size: '2xl', fontSize: 24 },
-	{ size: '3xl', fontSize: 32 },
-	{ size: '4xl', fontSize: 40 },
-	{ size: '5xl', fontSize: 48 },
-	{ size: '6xl', fontSize: 60 },
-];
-
 const TextStory: React.FC = () => {
 	return (
 		<StoryWrapper title="Typography | Text">
 			<StoryWrapper.Session>
 				<HStack space="xl">
-					<Text fontSize="md">Regular</Text>
-					<Text fontSize="md">Medium </Text>
+					<Text size="md">Regular</Text>
+					<Text size="md">Medium </Text>
 				</HStack>
 				{textSizesWithSize.map((item) => (
 					<HStack space="xl" key={item.size}>
-						<Text.Regular fontSize={item.size}>
+						<Text.Regular size={item.size}>
 							{item.size}: {item.fontSize}px
 						</Text.Regular>
-						<Text.Medium fontSize={item.size}>
+						<Text.Medium size={item.size}>
 							{item.size}: {item.fontSize}px
 						</Text.Medium>
 					</HStack>
@@ -74,19 +75,19 @@ const TextStory: React.FC = () => {
 			</StoryWrapper.Session>
 			<StoryWrapper.Session inverted>
 				<HStack space="xl">
-					<Text fontSize="md" inverted>
+					<Text size="md" inverted>
 						Regular
 					</Text>
-					<Text fontSize="md" inverted>
+					<Text size="md" inverted>
 						Medium{' '}
 					</Text>
 				</HStack>
 				{textSizesWithSize.map((item) => (
 					<HStack space="xl" key={item.size}>
-						<Text.Regular fontSize={item.size} inverted>
+						<Text.Regular size={item.size} inverted>
 							{item.size}: {item.fontSize}px
 						</Text.Regular>
-						<Text.Medium fontSize={item.size} inverted>
+						<Text.Medium size={item.size} inverted>
 							{item.size}: {item.fontSize}px
 						</Text.Medium>
 					</HStack>

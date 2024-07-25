@@ -14,6 +14,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
 	disabled = false,
 	onPressIn,
 	onPressOut,
+	onPress,
 	...props
 }) => {
 	const [iconColor, pressableProps] = useIconColor(iconButtonTheme.variants, {
@@ -32,6 +33,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
 			isDisabled={disabled}
 			onPressIn={composeEventHandlers(onPressIn, pressableProps.onPressIn)}
 			onPressOut={composeEventHandlers(onPressOut, pressableProps.onPressOut)}
+			onPress={composeEventHandlers(onPress, pressableProps.onPress)}
 			icon={
 				<Icon
 					name={icon}

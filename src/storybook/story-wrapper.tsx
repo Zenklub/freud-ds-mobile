@@ -27,7 +27,7 @@ export const StoryWrapper = (({ children, title }: StoryWrapperProps) => {
 					borderBottomWidth: StyleSheet.hairlineWidth,
 				}}
 			>
-				<Heading fontSize="lg">{title}</Heading>
+				<Heading size="lg">{title}</Heading>
 			</View>
 			<ScrollView
 				style={{ flex: 1 }}
