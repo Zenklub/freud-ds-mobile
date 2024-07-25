@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/Zenklub/freud-ds-mobile/compare/v1.2.1...v1.3.0) (2024-06-12)
+
+
+### Features
+
+* **select:** enables custom picker ([c059069](https://github.com/Zenklub/freud-ds-mobile/commit/c059069dc155d29d22697a0aec53d68c8201c9c3))
+
 ## [1.2.1](https://github.com/Zenklub/freud-ds-mobile/compare/v1.2.0...v1.2.1) (2024-05-09)
 
 
