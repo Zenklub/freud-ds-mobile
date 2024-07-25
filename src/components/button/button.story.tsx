@@ -2,9 +2,9 @@ import { StoryWrapper } from '../../storybook/story-wrapper';
 import { Button } from './button';
 import { storiesOf } from '@storybook/react-native';
 import React from 'react';
-import { HStack } from 'native-base';
 import { Text } from '@components/typography/text';
 import { ButtonProps } from '@components/button/button.types';
+import { HStack } from '../../storybook/components/h-stack';
 
 const sizes = ['lg', 'md', 'sm'] as const;
 const variants = ['solid', 'outline', 'ghost'] as const;

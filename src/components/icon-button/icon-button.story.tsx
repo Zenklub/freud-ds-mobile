@@ -1,10 +1,10 @@
 import { StoryWrapper } from '../../storybook/story-wrapper';
 import { storiesOf } from '@storybook/react-native';
 import React from 'react';
-import { HStack } from 'native-base';
 import { Text } from '@components/typography/text';
 import { IconButton } from '@components/icon-button/icon-button';
 import { IconButtonProps } from '@components/icon-button/icon-button.types';
+import { HStack } from '../../storybook/components/h-stack';
 
 const sizes = ['lg', 'md', 'sm', 'xs'] as const;
 const variants = ['solid', 'outline', 'ghost'] as const;

@@ -2,11 +2,11 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 
 import { Heading } from './heading';
-import { HStack } from 'native-base';
 import { Text } from './text';
 import { StoryWrapper } from '../../storybook/story-wrapper';
 import { HeadingFontSizes, TextFontSizes } from '@theme/types/typography';
 import { baseThemeTypography } from '@theme/base-theme/typography';
+import { HStack } from '../../storybook/components/h-stack';
 
 const headerSizesWithSize: { size: HeadingFontSizes; fontSize: number }[] = [
 	{ size: 'xs', fontSize: baseThemeTypography.heading.xs.fontSize },
@@ -54,16 +54,18 @@ const HeadingStory: React.FC = () => {
 	);
 };
 
+const SPACE = 32;
+
 const TextStory: React.FC = () => {
 	return (
 		<StoryWrapper title="Typography | Text">
 			<StoryWrapper.Session>
-				<HStack space="xl">
+				<HStack space={SPACE}>
 					<Text size="md">Regular</Text>
 					<Text size="md">Medium </Text>
 				</HStack>
 				{textSizesWithSize.map((item) => (
-					<HStack space="xl" key={item.size}>
+					<HStack space={SPACE} key={item.size}>
 						<Text.Regular size={item.size}>
 							{item.size}: {item.fontSize}px
 						</Text.Regular>
@@ -74,7 +76,7 @@ const TextStory: React.FC = () => {
 				))}
 			</StoryWrapper.Session>
 			<StoryWrapper.Session inverted>
-				<HStack space="xl">
+				<HStack space={SPACE}>
 					<Text size="md" inverted>
 						Regular
 					</Text>
@@ -83,7 +85,7 @@ const TextStory: React.FC = () => {
 					</Text>
 				</HStack>
 				{textSizesWithSize.map((item) => (
-					<HStack space="xl" key={item.size}>
+					<HStack space={SPACE} key={item.size}>
 						<Text.Regular size={item.size} inverted>
 							{item.size}: {item.fontSize}px
 						</Text.Regular>

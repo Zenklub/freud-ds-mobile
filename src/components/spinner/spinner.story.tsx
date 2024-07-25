@@ -2,8 +2,8 @@ import { StoryWrapper } from '../../storybook/story-wrapper';
 import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 import { Spinner } from '@components/spinner/spinner';
-import { HStack } from 'native-base';
 import { Text } from '@components/typography/text';
+import { HStack } from '../../storybook/components/h-stack';
 
 const sizes = ['small', 'large'] as const;
 
