@@ -1,52 +1,17 @@
 import React, { createContext, useMemo } from 'react';
-import { Theme } from './types';
+import { deepMerge } from '../helpers/deep-merge';
 import { baseTheme } from './base-theme';
+import { Theme } from './types';
 
-export const ThemeContext = createContext({} as Theme);
+interface ThemeContextValue {
+	theme: Theme;
+}
+
+export const ThemeContext = createContext({} as ThemeContextValue);
 
 interface ThemeProviderProps {
 	theme?: Theme;
 	children: React.ReactNode;
-}
-
-type Primitives = string | number | boolean | undefined | null;
-
-function isPrimitive(value: any): value is Primitives {
-	return (
-		!value ||
-		typeof value === 'string' ||
-		typeof value === 'number' ||
-		typeof value === 'boolean' ||
-		typeof value === 'undefined' ||
-		typeof value === 'function' ||
-		typeof value === 'symbol' ||
-		typeof value === 'bigint'
-	);
-}
-
-function deepMerge<T>(target: T, source: T): T {
-	if (!source) return target;
-	if (!target) return source;
-
-	if (typeof target !== typeof source) return target;
-
-	if (isPrimitive(source)) {
-		return source as T;
-	}
-
-	let targetCopy = JSON.parse(JSON.stringify(target));
-
-	if (Array.isArray(target)) {
-		for (const key in source) {
-			targetCopy.push(source[key]);
-		}
-	} else if (typeof target === 'object') {
-		for (const key in source) {
-			targetCopy[key] = deepMerge((target as any)[key], source[key]);
-		}
-	}
-
-	return targetCopy;
 }
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({
@@ -60,7 +25,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
 	}, [theme]);
 
 	return (
-		<ThemeContext.Provider value={currentTheme}>
+		<ThemeContext.Provider value={{ theme: currentTheme }}>
 			{children}
 		</ThemeContext.Provider>
 	);

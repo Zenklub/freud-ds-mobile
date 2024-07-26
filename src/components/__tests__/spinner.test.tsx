@@ -1,8 +1,8 @@
-import React from 'react';
 import '@testing-library/jest-native/extend-expect';
+import React from 'react';
 import { renderWithProviders } from '../../helpers/testing';
-import { Spinner } from '../spinner/spinner';
 import Colors from '../../theme/base/colors';
+import { Spinner } from '../spinner/spinner';
 
 const testID = 'spinner-test';
 const sizes = ['small', 'large'];
@@ -43,6 +43,6 @@ describe('Feedback > Spinner', () => {
 		);
 
 		expect(getByTestId(testID)).toBeTruthy();
-		expect(getByTestId(testID)).toHaveProp('color', Colors.neutral.white);
+		expect(getByTestId(testID)).toHaveProp('color', Colors.brand.pure);
 	});
 });

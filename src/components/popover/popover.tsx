@@ -1,12 +1,12 @@
+import { Text } from '@components/typography/text';
 import { Portal } from '@gorhom/portal';
+import { useMeasurement } from '@helpers/use-measure.hook';
+import { useColors, useTokens } from '@hooks';
 import React, { useEffect, useRef } from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { calculatePosition } from './calculate-position';
 import { ANIMATION_DURATION, ARROW_SIZE, EASING } from './constants';
-import { useMeasurement } from '@helpers/use-measure.hook';
-import { Text } from '@components/typography/text';
-import { useColors, useTokens } from '@hooks';
 
 export interface PopoverProps {
 	placement: 'top' | 'bottom' | 'left' | 'right';
@@ -36,7 +36,7 @@ export const Popover: React.FC<PopoverProps> = ({
 
 	const [backgroundColor] = useColors('neutral.dark.300');
 
-	const [borderRadius, shadows] = useTokens('radii.md', 'shadows.shadowLevel3');
+	const [borderRadius, shadows] = useTokens('radii.md', 'shadow.300');
 
 	const onPressHandler = () => {
 		setVisible(true);

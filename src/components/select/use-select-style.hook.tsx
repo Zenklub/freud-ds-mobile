@@ -1,5 +1,4 @@
-import { useNamedTokens } from '@helpers/use-named-tokens.hook';
-import { useColors } from '@hooks';
+import { useColors, useTokens } from '@hooks';
 import { IColors } from '@theme/base/colors';
 
 interface SelectColors {
@@ -61,18 +60,19 @@ export const useSelectStyle = (disabled: boolean, inverted: boolean) => {
 		tokens.errorBorderColor
 	);
 
-	const { inputHeight, paddingHorizontal, inputAccessoryPaddingHorizontal } =
-		useNamedTokens('space', {
-			inputHeight: 'sm',
-			paddingHorizontal: 'nano',
-			inputAccessoryPaddingHorizontal: 'nano',
-		});
-	const { borderRadius } = useNamedTokens('radii', {
-		borderRadius: 'md',
-	});
-	const { opacity } = useNamedTokens('opacity', {
-		opacity: disabled ? 'level7' : 'full',
-	});
+	const [
+		inputHeight,
+		paddingHorizontal,
+		inputAccessoryPaddingHorizontal,
+		borderRadius,
+		opacity,
+	] = useTokens(
+		'spacing.sm',
+		'spacing.nano',
+		'spacing.nano',
+		'radii.md',
+		disabled ? 'opacity.700' : 'opacity.full'
+	);
 
 	return {
 		backgroundColor,

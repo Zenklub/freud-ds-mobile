@@ -1,11 +1,11 @@
-import { DocGenerator, DocGeneratorTable } from './doc-generator';
-import { baseThemeTypography } from '../../src/theme/base-theme/typography';
 import { calculateLineHeight } from '../../src/helpers/calculate-line-height';
+import { baseThemeTypography } from '../../src/theme/base-theme/typography';
 import {
+	FontSizeBaseMap,
 	HeadingFontSizes,
 	TextFontSizes,
-	FontSizeBaseMap,
-} from '../../src/theme/types/typography';
+} from '../../src/theme/tokens/typography';
+import { DocGenerator, DocGeneratorTable } from './doc-generator';
 
 export class TypographyCheatSheetDocGenerator extends DocGenerator {
 	constructor() {

@@ -3,13 +3,14 @@ import { Animated, StyleSheet, View } from 'react-native';
 
 import { Text } from '../typography';
 
-import { AlertStatus, AlertProps } from './alert.types';
-import { useOnLayout } from '@helpers/use-on-layout';
-import { Touchable } from '@components/touchable/touchable';
 import { Icon, IconName } from '@components/icon';
+import { ConditionalTouchable } from '@components/touchable';
+import { Touchable } from '@components/touchable/touchable';
+import { useOnLayout } from '@helpers/use-on-layout';
 import { useColors, useTokens } from '@hooks';
 import { IColors } from '@theme/base/colors';
-import { ConditionalTouchable } from '@components/touchable';
+import { ColorsPathOrHardCoded } from '@theme/tokens/colors';
+import { AlertProps, AlertStatus } from './alert.types';
 
 const styles = StyleSheet.create({
 	container: {
@@ -55,7 +56,7 @@ export const Alert: React.FC<AlertProps> = memo(
 		const [borderRadius, closeButtonRadius, marginBetween] = useTokens(
 			'radii.sm',
 			'radii.circular',
-			'sizes.spacing.nano'
+			'spacing.nano'
 		);
 
 		const onClose = () => {
@@ -67,7 +68,7 @@ export const Alert: React.FC<AlertProps> = memo(
 			return (
 				<Icon
 					style={{ marginTop: body ? 4 : undefined }}
-					color={iconColor}
+					color={iconColor as ColorsPathOrHardCoded}
 					name={StatusIconNamesMap[status]}
 					testID={iconTestID}
 					size={22}

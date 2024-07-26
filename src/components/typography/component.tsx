@@ -1,18 +1,23 @@
-import React from 'react';
-import { HeadingProps, TextProps } from './typography.types';
-import { Text, TextProps as RNTextProps } from 'react-native';
 import { useTypographyStyle } from '@hooks';
+import React from 'react';
+import { TextProps as RNTextProps, Text } from 'react-native';
+import { HeadingProps, TextProps } from './typography.types';
 
 type TypographyComponentProps =
 	| ({ type: 'text' } & TextProps)
 	| ({ type: 'heading' } & HeadingProps);
 
 export const TypographyComponent: React.FC<TypographyComponentProps> = ({
+	testID,
 	children,
 	...props
 }) => {
 	const typographyProps = useTypographyProps(props);
-	return <Text {...typographyProps}>{children}</Text>;
+	return (
+		<Text {...typographyProps} testID={testID}>
+			{children}
+		</Text>
+	);
 };
 
 function useTypographyProps(props: TypographyComponentProps): RNTextProps {

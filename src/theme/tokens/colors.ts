@@ -1,10 +1,11 @@
 import { Leaves } from '@theme/base/types';
 
 export type ColorsPathOrHardCoded =
-	| ColorsPath
+	| ColorTokensPath
 	| `#${string}`
 	| `rgba(${string})`
-	| `rgb(${string})`;
+	| `rgb(${string})`
+	| 'transparent';
 
 export interface IColorHues {
 	100: string;
@@ -22,7 +23,7 @@ export interface INeutralColorHues {
 	400: string;
 }
 
-export interface ColorTheme {
+export interface ColorsTokens {
 	brand: IColorHues & { pure: string };
 	complementary: {
 		funny: IColorHues & { pure: string };
@@ -44,4 +45,4 @@ export interface ColorTheme {
 	};
 }
 
-export type ColorsPath = Leaves<ColorTheme>;
+export type ColorTokensPath = Leaves<ColorsTokens>;

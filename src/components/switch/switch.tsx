@@ -1,7 +1,7 @@
+import { useColors, useTokens } from '@hooks';
 import React from 'react';
 import { Switch as RNSwitch, SwitchChangeEvent, View } from 'react-native';
 import { SwitchProps } from './switch.types';
-import { useColors, useTokens } from '@hooks';
 
 const colors = {
 	normal: ['neutral.white', 'neutral.dark.100', 'brand.pure'],
@@ -19,10 +19,7 @@ export const Switch: React.FC<SwitchProps> = ({
 		...(inverted ? colors.inverted : colors.normal)
 	);
 
-	const [opacity, opacityDisabled] = useTokens(
-		'opacity.full',
-		'opacity.level5'
-	);
+	const [opacity, opacityDisabled] = useTokens('opacity.full', 'opacity.500');
 
 	const onChangeHandler = (event: SwitchChangeEvent) => {
 		if (disabled) {
