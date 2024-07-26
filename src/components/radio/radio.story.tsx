@@ -1,10 +1,10 @@
+import { Text } from '@components/typography/text';
 import { storiesOf } from '@storybook/react-native';
 import React from 'react';
+import { View } from 'react-native';
+import { HStack } from '../../storybook/components/h-stack';
 import { StoryWrapper } from '../../storybook/story-wrapper';
 import { Radio } from './radio';
-import { Text } from '@components/typography/text';
-import { View } from 'react-native';
-import { HStack } from 'native-base';
 
 const RadioStory = () => {
 	const renderSession = (inverted: boolean) => {

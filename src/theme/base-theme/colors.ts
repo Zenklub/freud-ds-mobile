@@ -1,10 +1,10 @@
 // @ts-ignore
 import * as Variables from '@freud-ds/tokens/style/react-native/variables';
-import { ColorTheme } from '@theme/types/colors';
+import { ColorsTokens } from '@theme/tokens';
 
 export const Tokens = Variables as Record<string, string>;
 
-export const baseThemeColors: ColorTheme = {
+export const baseThemeColors: ColorsTokens = {
 	brand: {
 		pure: Tokens.brandColorPure,
 		100: Tokens.brandColor01,

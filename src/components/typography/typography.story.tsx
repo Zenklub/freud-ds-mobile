@@ -1,12 +1,12 @@
-import React from 'react';
 import { storiesOf } from '@storybook/react-native';
+import React from 'react';
 
+import { baseThemeTypography } from '@theme/base-theme/typography';
+import { HeadingFontSizes, TextFontSizes } from '@theme/tokens/typography';
+import { HStack } from '../../storybook/components/h-stack';
+import { StoryWrapper } from '../../storybook/story-wrapper';
 import { Heading } from './heading';
 import { Text } from './text';
-import { StoryWrapper } from '../../storybook/story-wrapper';
-import { HeadingFontSizes, TextFontSizes } from '@theme/types/typography';
-import { baseThemeTypography } from '@theme/base-theme/typography';
-import { HStack } from '../../storybook/components/h-stack';
 
 const headerSizesWithSize: { size: HeadingFontSizes; fontSize: number }[] = [
 	{ size: 'xs', fontSize: baseThemeTypography.heading.xs.fontSize },

@@ -1,9 +1,9 @@
-import { StoryWrapper } from '../../storybook/story-wrapper';
-import { storiesOf } from '@storybook/react-native';
-import React from 'react';
 import { Spinner } from '@components/spinner/spinner';
 import { Text } from '@components/typography/text';
+import { storiesOf } from '@storybook/react-native';
+import React from 'react';
 import { HStack } from '../../storybook/components/h-stack';
+import { StoryWrapper } from '../../storybook/story-wrapper';
 
 const sizes = ['small', 'large'] as const;
 
@@ -25,7 +25,7 @@ const SpinnerStory = () => {
 			<StoryWrapper.Session inverted>
 				<HStack space={SPACE_BETWEEN}>
 					{sizes.map((size) => (
-						<Spinner key={size} size={size} inverted />
+						<Spinner key={size} size={size} color="neutral.light.100" />
 					))}
 				</HStack>
 			</StoryWrapper.Session>

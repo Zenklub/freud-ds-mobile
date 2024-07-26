@@ -1,25 +1,31 @@
-import { IBorders } from '@theme/base/borders';
-import { IColors } from '@theme/base/colors';
-import { IOpacity } from '@theme/base/opacity';
-import { IRadii } from '@theme/base/radius';
-import { IShadow, IShadowValue } from '@theme/base/shadows';
-import { ISizes } from '@theme/base/sizes';
-import { useTheme } from 'native-base';
+import { IShadowValue } from '@theme/base/shadows';
+import {
+	BordersSizes,
+	ColorTokensPath,
+	OpacityLevel,
+	RadiiSize,
+	ShadowSizes,
+	Sizes,
+	SpacingSizes,
+} from '@theme/tokens';
 import { useMemo } from 'react';
+import { useTheme } from './use-theme';
 
-type ColorsLeaves = `colors.${IColors}`;
-type Borders = `borders.${IBorders}`;
-type Sizes = `sizes.${ISizes}`;
-type Opacity = `opacity.${IOpacity}`;
-type Radius = `radii.${IRadii}`;
-type Shadow = `shadows.${IShadow}`;
+type ColorsLeaves = `color.${ColorTokensPath}`;
+type BordersLeaves = `border.${BordersSizes}`;
+type SizesLeaves = `size.${Sizes}`;
+type OpacityLeaves = `opacity.${OpacityLevel}`;
+type SpacingLeaves = `spacing.${SpacingSizes}`;
+type RadiusLeaves = `radii.${RadiiSize}`;
+type ShadowLeaves = `shadow.${ShadowSizes}`;
 
 type TokenLeaves = Record<ColorsLeaves, string> &
-	Record<Borders, string> &
-	Record<Sizes, number> &
-	Record<Opacity, number> &
-	Record<Radius, number> &
-	Record<Shadow, IShadowValue>;
+	Record<BordersLeaves, number> &
+	Record<SizesLeaves, number> &
+	Record<OpacityLeaves, number> &
+	Record<RadiusLeaves, number> &
+	Record<SpacingLeaves, number> &
+	Record<ShadowLeaves, IShadowValue>;
 
 export type Tokens = keyof TokenLeaves;
 
@@ -52,6 +58,16 @@ type TokenVal<T extends Tokens> = ObjValueTuple<{
 	[K in T]: TokenLeaves[K];
 }>;
 
+const allowedTokens = [
+	'color',
+	'border',
+	'size',
+	'opacity',
+	'spacing',
+	'radii',
+	'shadow',
+] as const;
+
 export const useTokens = <T extends Tokens>(...tokens: T[]): TokenVal<T> => {
 	const theme = useTheme();
 
@@ -60,6 +76,12 @@ export const useTokens = <T extends Tokens>(...tokens: T[]): TokenVal<T> => {
 		for (const token of tokens) {
 			let val = theme as any;
 			const split = token.split('.');
+
+			const [first] = split;
+			if (!allowedTokens.includes(first as any)) {
+				throw new Error(`Token ${first} not allowed`);
+			}
+
 			for (const element of split) {
 				if (element in val) {
 					val = val[element];

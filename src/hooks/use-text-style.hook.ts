@@ -1,18 +1,18 @@
+import { BaseTypographyStyleProps } from '@components/typography/typography.types';
 import { conditionalFirstMatch } from '@helpers/conditional-first-match';
+import { ColorTokensPath } from '@theme/tokens/colors';
 import {
-	IFontWeight,
 	HeadingFontSizes,
+	IFontWeight,
 	TextFontSizes,
-} from '@theme/types/typography';
+} from '@theme/tokens/typography';
 import { useMemo } from 'react';
 import { StyleSheet, TextStyle } from 'react-native';
-import { BaseTypographyStyleProps } from '@components/typography/typography.types';
-import { ColorsPath } from '@theme/types/colors';
+import { calculateLineHeight } from '../helpers/calculate-line-height';
+import { useColorTokenOrHardCoded } from './use-colors.hook';
 import { useContainerPropsStyle } from './use-container-style.hook';
 import { useTheme } from './use-theme';
 import { useTypographySizeTheme } from './use-typography-size-theme';
-import { useColorTokenOrHardCoded } from './use-colors.hook';
-import { calculateLineHeight } from '../helpers/calculate-line-height';
 
 interface UseTypographyStyle<T extends BaseTypographyStyleProps> {
 	style: TextStyle;
@@ -32,8 +32,7 @@ export function useTypographyStyle<
 	K extends TextFontSizes | HeadingFontSizes,
 	Props extends BaseTypographyStyleProps
 >(type: T, size: K, allProps: Props): UseTypographyStyle<Props> {
-	const { style: containerStyle, rest: props } =
-		useContainerPropsStyle(allProps);
+	const [containerStyle, props] = useContainerPropsStyle(allProps);
 
 	const {
 		color: colorProp,
@@ -63,7 +62,7 @@ export function useTypographyStyle<
 		...rest
 	} = props;
 
-	const fallbackColor: ColorsPath = inverted
+	const fallbackColor: ColorTokensPath = inverted
 		? 'neutral.light.400'
 		: 'neutral.dark.400';
 

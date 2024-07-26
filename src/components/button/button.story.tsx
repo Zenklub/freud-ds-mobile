@@ -1,10 +1,10 @@
-import { StoryWrapper } from '../../storybook/story-wrapper';
-import { Button } from './button';
+import { ButtonProps } from '@components/button/button.types';
+import { Text } from '@components/typography/text';
 import { storiesOf } from '@storybook/react-native';
 import React from 'react';
-import { Text } from '@components/typography/text';
-import { ButtonProps } from '@components/button/button.types';
 import { HStack } from '../../storybook/components/h-stack';
+import { StoryWrapper } from '../../storybook/story-wrapper';
+import { Button } from './button';
 
 const sizes = ['lg', 'md', 'sm'] as const;
 const variants = ['solid', 'outline', 'ghost'] as const;
@@ -12,7 +12,7 @@ const variants = ['solid', 'outline', 'ghost'] as const;
 const renderButtonSizes = (
 	size: 'lg' | 'md' | 'sm',
 	inverted: boolean,
-	extraProps: Partial<ButtonProps> = {},
+	extraProps: Partial<ButtonProps<any>> = {},
 	key = 'default'
 ) => {
 	const renderButton = (variant: 'solid' | 'outline' | 'ghost') => {
@@ -22,10 +22,9 @@ const renderButtonSizes = (
 				variant={variant}
 				inverted={inverted}
 				key={`${key}-${variant}`}
-				{...extraProps}
-			>
-				Button
-			</Button>
+				text="Button"
+				{...(extraProps as any)}
+			/>
 		);
 	};
 

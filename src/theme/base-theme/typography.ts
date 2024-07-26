@@ -1,8 +1,8 @@
 // @ts-ignore
 import * as Tokens from '@freud-ds/tokens/style/react-native/variables';
-import { TypographyTheme } from '@theme/types/typography';
+import { TypographyTokens } from '@theme/tokens';
 
-export const baseThemeTypography: TypographyTheme = {
+export const baseThemeTypography: TypographyTokens = {
 	fonts: {
 		heading: {
 			thin: 'SourceSansPro-Regular',

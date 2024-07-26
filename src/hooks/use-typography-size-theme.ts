@@ -4,9 +4,9 @@ import {
 	isHeadingFontSizes,
 	isTextFontSizes,
 	TextFontSizes,
-} from '@theme/types/typography';
-import { useTheme } from './use-theme';
+} from '@theme/tokens/typography';
 import { useMemo } from 'react';
+import { useTheme } from './use-theme';
 
 export function useTypographySizeTheme<Type extends 'heading'>(
 	type: Type,

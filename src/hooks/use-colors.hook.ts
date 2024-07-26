@@ -1,11 +1,11 @@
-import { ColorsPath, ColorsPathOrHardCoded } from '@theme/types/colors';
+import { isHardCodedColor } from '@helpers/is-hard-coded-color';
+import { ColorTokensPath, ColorsPathOrHardCoded } from '@theme/tokens/colors';
 import { useMemo } from 'react';
 import { findValueWithPath } from '../helpers/value-with-path';
 import { useTheme } from './use-theme';
-import { isHardCodedColor } from '@helpers/is-hard-coded-color';
 
-export function useColors<T extends ColorsPath>(...tokens: T[]) {
-	const colorsTheme = useTheme('colors');
+export function useColors<T extends ColorTokensPath>(...tokens: T[]) {
+	const colorsTheme = useTheme('color');
 
 	const colors = useMemo(() => {
 		const list: string[] = [];
@@ -23,20 +23,23 @@ export function useColors<T extends ColorsPath>(...tokens: T[]) {
 }
 
 export function useColorTokenOrHardCoded(
-	pathOrColor: ColorsPathOrHardCoded,
-	fallback: ColorsPath
+	colorOrToken: ColorsPathOrHardCoded,
+	fallback: ColorTokensPath
 ) {
-	const colorsTheme = useTheme('colors');
+	const colorsTheme = useTheme('color');
 
 	const color = useMemo(() => {
-		if (isHardCodedColor(pathOrColor)) {
-			return pathOrColor;
+		if (isHardCodedColor(colorOrToken)) {
+			return colorOrToken;
 		}
 
-		const userColor = findValueWithPath(colorsTheme, pathOrColor as ColorsPath);
+		const userColor = findValueWithPath(
+			colorsTheme,
+			colorOrToken as ColorTokensPath
+		);
 
 		return userColor || findValueWithPath(colorsTheme, fallback);
-	}, [colorsTheme, pathOrColor, fallback]);
+	}, [colorsTheme, colorOrToken, fallback]);
 
 	return color;
 }

@@ -1,16 +1,16 @@
 import { ContainerProps } from '@theme/container-props-style';
-import { ColorsPathOrHardCoded } from '@theme/types/colors';
+import { ColorsPathOrHardCoded } from '@theme/tokens/colors';
 import {
 	HeadingFontSizes,
 	IFont,
 	IFontWeight,
 	TextFontSizes,
-} from '@theme/types/typography';
+} from '@theme/tokens/typography';
 import React from 'react';
 import {
-	TextStyle,
-	TextProps as RNTextProps,
 	AccessibilityProps,
+	TextProps as RNTextProps,
+	TextStyle,
 } from 'react-native';
 
 export interface BaseTypographyStyleProps extends ContainerProps {

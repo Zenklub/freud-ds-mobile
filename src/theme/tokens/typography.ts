@@ -67,7 +67,7 @@ export type HeadingSizesTheme = Record<HeadingFontSizes, FontSizeBaseMap>;
 
 export type FontNameWeightMap = Record<IFontWeight, string>;
 
-export interface TypographyTheme {
+export interface TypographyTokens {
 	fonts: Record<IFont, FontNameWeightMap>;
 	text: TextSizesTheme;
 	heading: HeadingSizesTheme;
