@@ -34,10 +34,7 @@ export const Popover: React.FC<PopoverProps> = ({
 	const [tooltipLayout, onTooltipRef, setTooltipLayout] = useMeasurement();
 	const animation = useRef(new Animated.Value(0));
 
-	const [backgroundColor, color] = useColors(
-		'neutral.dark.300',
-		'neutral.white'
-	);
+	const [backgroundColor] = useColors('neutral.dark.300');
 
 	const [borderRadius, shadows] = useTokens('radii.md', 'shadows.shadowLevel3');
 
@@ -97,7 +94,7 @@ export const Popover: React.FC<PopoverProps> = ({
 					>
 						<View style={[styles.arrow, arrowStyle, { backgroundColor }]} />
 						{typeof content === 'string' ? (
-							<Text color={color}>{content}</Text>
+							<Text color="neutral.white">{content}</Text>
 						) : (
 							<>{content}</>
 						)}

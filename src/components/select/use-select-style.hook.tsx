@@ -1,12 +1,30 @@
-import { useColors } from '@helpers/use-colors.hook';
 import { useNamedTokens } from '@helpers/use-named-tokens.hook';
+import { useColors } from '@hooks';
+import { IColors } from '@theme/base/colors';
 
-const colorTokens = {
+interface SelectColors {
+	backgroundColor: IColors;
+	normalBorderColor: IColors;
+	focusedBorderColor: IColors;
+	errorBorderColor: IColors;
+	helperTextColor: IColors;
+	errorTextColor: IColors;
+	placeholderTextColor: IColors;
+	selectedItemTextColor: IColors;
+	labelColor: IColors;
+	iconColor: IColors;
+}
+
+const colorTokens: {
+	inverted: SelectColors;
+	normal: SelectColors;
+} = {
 	inverted: {
 		backgroundColor: 'neutral.white',
 		normalBorderColor: 'neutral.light.300',
 		focusedBorderColor: 'brand.pure',
 		errorBorderColor: 'feedback.negative.400',
+
 		helperTextColor: 'neutral.white',
 		errorTextColor: 'feedback.negative.400',
 		placeholderTextColor: 'neutral.dark.200',
@@ -19,6 +37,7 @@ const colorTokens = {
 		normalBorderColor: 'neutral.light.300',
 		focusedBorderColor: 'brand.pure',
 		errorBorderColor: 'feedback.negative.400',
+
 		helperTextColor: 'neutral.dark.400',
 		errorTextColor: 'feedback.negative.400',
 		placeholderTextColor: 'neutral.dark.200',
@@ -27,19 +46,20 @@ const colorTokens = {
 		iconColor: 'neutral.dark.200',
 	},
 };
+
 export const useSelectStyle = (disabled: boolean, inverted: boolean) => {
-	const {
+	const tokens = inverted ? colorTokens.inverted : colorTokens.normal;
+	const [
 		backgroundColor,
 		normalBorderColor,
 		focusedBorderColor,
 		errorBorderColor,
-		placeholderTextColor,
-		helperTextColor,
-		errorTextColor,
-		selectedItemTextColor,
-		labelColor,
-		iconColor,
-	} = useColors(colorTokens, inverted);
+	] = useColors(
+		tokens.backgroundColor,
+		tokens.normalBorderColor,
+		tokens.focusedBorderColor,
+		tokens.errorBorderColor
+	);
 
 	const { inputHeight, paddingHorizontal, inputAccessoryPaddingHorizontal } =
 		useNamedTokens('space', {
@@ -59,12 +79,12 @@ export const useSelectStyle = (disabled: boolean, inverted: boolean) => {
 		normalBorderColor,
 		focusedBorderColor,
 		errorBorderColor,
-		placeholderTextColor,
-		helperTextColor,
-		errorTextColor,
-		selectedItemTextColor,
-		labelColor,
-		iconColor,
+		placeholderTextColor: tokens.placeholderTextColor,
+		helperTextColor: tokens.helperTextColor,
+		errorTextColor: tokens.errorTextColor,
+		selectedItemTextColor: tokens.selectedItemTextColor,
+		labelColor: tokens.labelColor,
+		iconColor: tokens.iconColor,
 		inputHeight,
 		paddingHorizontal,
 		inputAccessoryPaddingHorizontal,

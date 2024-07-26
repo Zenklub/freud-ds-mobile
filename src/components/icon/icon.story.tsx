@@ -32,7 +32,7 @@ const IconStory = () => {
 				<View style={{ height: 34, justifyContent: 'center' }}>
 					<Icon name={name} size="md" />
 				</View>
-				<Text lineBreakMode="tail" noOfLines={1}>
+				<Text ellipsizeMode="tail" numberOfLines={1}>
 					{name}
 				</Text>
 			</View>

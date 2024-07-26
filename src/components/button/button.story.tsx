@@ -56,20 +56,20 @@ const ButtonStory = () => {
 				</HStack>
 				{sizes.map((size) => renderButtonSizes(size, inverted))}
 
-				<Text marginTop={5} inverted={inverted}>
+				<Text style={{ marginTop: 16 }} inverted={inverted}>
 					Width Icon
 				</Text>
 				{sizes.map((size) =>
 					renderButtonSizes(size, inverted, { icon: 'plus' }, 'icon')
 				)}
-				<Text marginTop={5} inverted={inverted}>
+				<Text style={{ marginTop: 16 }} inverted={inverted}>
 					Disabled
 				</Text>
 				{sizes.map((size) =>
 					renderButtonSizes(size, inverted, { disabled: true }, 'disabled')
 				)}
 
-				<Text marginTop={5} inverted={inverted}>
+				<Text style={{ marginTop: 16 }} inverted={inverted}>
 					Disabled Icon
 				</Text>
 				{sizes.map((size) =>
@@ -80,7 +80,7 @@ const ButtonStory = () => {
 						'disabled-icon'
 					)
 				)}
-				<Text marginTop={5} inverted={inverted}>
+				<Text style={{ marginTop: 16 }} inverted={inverted}>
 					Loading
 				</Text>
 				{sizes.map((size) =>

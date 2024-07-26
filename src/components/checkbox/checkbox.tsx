@@ -190,7 +190,6 @@ export const Checkbox: React.FC<CheckboxProps> = ({
 
 	const onPressHandler = () => {
 		onChange?.(!checked);
-		debugger;
 	};
 
 	return (

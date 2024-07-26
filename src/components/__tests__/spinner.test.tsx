@@ -2,13 +2,10 @@ import React from 'react';
 import '@testing-library/jest-native/extend-expect';
 import { renderWithProviders } from '../../helpers/testing';
 import { Spinner } from '../spinner/spinner';
-import { SpinnerSize } from '../spinner/types';
-import { iconSizesMap } from '../spinner/constants';
 import Colors from '../../theme/base/colors';
 
 const testID = 'spinner-test';
-
-const sizes = Object.keys(iconSizesMap) as Array<SpinnerSize>;
+const sizes = ['small', 'large'];
 
 describe('Feedback > Spinner', () => {
 	it('should render spinner correctly', () => {
@@ -23,14 +20,14 @@ describe('Feedback > Spinner', () => {
 		);
 
 		expect(getByTestId(testID)).toBeTruthy();
-		expect(getByTestId(testID)).toHaveProp('size', iconSizesMap[size]);
+		expect(getByTestId(testID)).toHaveProp('size', size);
 	});
 
 	it('should render default spinner size correctly', () => {
 		const { getByTestId } = renderWithProviders(<Spinner testID={testID} />);
 
 		expect(getByTestId(testID)).toBeTruthy();
-		expect(getByTestId(testID)).toHaveProp('size', iconSizesMap.large);
+		expect(getByTestId(testID)).toHaveProp('size', 'large');
 	});
 
 	it('should render spinner with color correctly', () => {

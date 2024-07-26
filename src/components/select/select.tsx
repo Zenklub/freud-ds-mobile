@@ -222,8 +222,8 @@ export const Select: React.FC<SelectProps> = ({
 				<Text
 					testID={`${testID}-label`}
 					color={labelColor}
-					fontWeight={600}
-					fontSize="md"
+					fontWeight="semibold"
+					size="md"
 				>
 					{label}
 				</Text>
@@ -248,7 +248,7 @@ export const Select: React.FC<SelectProps> = ({
 					style={styles.selectValue}
 					bold={!!selectedLabel && !!isFocused && !disabled}
 					color={selectedLabel ? selectedItemTextColor : placeholderTextColor}
-					fontSize="md"
+					size="md"
 				>
 					{selectedLabel ?? placeholder}
 				</Text>
@@ -271,8 +271,6 @@ export const Select: React.FC<SelectProps> = ({
 				<Text
 					testID={`${testID}-${helperText ? 'helper-text' : 'error'}`}
 					color={error ? errorTextColor : helperTextColor}
-					fontWeight={400}
-					fontSize="md"
 					bold={!!selectedLabel && isFocused && !disabled}
 				>
 					{error ?? helperText}

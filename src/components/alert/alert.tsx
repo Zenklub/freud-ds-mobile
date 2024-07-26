@@ -9,6 +9,7 @@ import { Touchable } from '@components/touchable/touchable';
 import { Icon, IconName } from '@components/icon';
 import { useColors, useTokens } from '@hooks';
 import { IColors } from '@theme/base/colors';
+import { ConditionalTouchable } from '@components/touchable';
 
 const styles = StyleSheet.create({
 	container: {
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
 const StatusIconNamesMap: Record<AlertStatus, IconName> = {
 	success: 'check-circle',
 	info: 'info-circle',
-	warning: 'exclamation-triangle',
+	warning: 'exclamation-circle',
 	danger: 'exclamation-triangle',
 };
 
@@ -49,10 +50,7 @@ export const Alert: React.FC<AlertProps> = memo(
 	}) => {
 		const [layout, onLayoutHandler] = useOnLayout();
 
-		const [backgroundColor, iconColor, textColor] = useColors(
-			...StatusColors[status],
-			'neutral.dark.400'
-		);
+		const [backgroundColor, iconColor] = useColors(...StatusColors[status]);
 
 		const [borderRadius, closeButtonRadius, marginBetween] = useTokens(
 			'radii.sm',
@@ -68,10 +66,11 @@ export const Alert: React.FC<AlertProps> = memo(
 			const iconTestID = `${testID}-icon-${status}`;
 			return (
 				<Icon
+					style={{ marginTop: body ? 4 : undefined }}
 					color={iconColor}
 					name={StatusIconNamesMap[status]}
 					testID={iconTestID}
-					size="md"
+					size={22}
 				/>
 			);
 		};
@@ -93,25 +92,17 @@ export const Alert: React.FC<AlertProps> = memo(
 							justifyContent: 'center',
 						}}
 					>
-						<Text
-							color={textColor}
-							fontSize={body ? 'md' : 'sm'}
-							lineHeight={'sm'}
-							fontWeight="medium"
-							testID={`${testID}-title`}
-						>
+						<Text.Medium size={body ? 'md' : 'sm'} testID={`${testID}-title`}>
 							{title}
-						</Text>
+						</Text.Medium>
 						{body ? (
-							<Text
-								color={textColor}
-								fontSize="sm"
-								lineHeight="sm"
+							<Text.Regular
+								size="sm"
 								testID={`${testID}-body`}
-								marginTop="2"
+								style={{ marginTop: 4 }}
 							>
 								{body}
-							</Text>
+							</Text.Regular>
 						) : null}
 					</View>
 					{dismissible && (
@@ -125,10 +116,10 @@ export const Alert: React.FC<AlertProps> = memo(
 							}}
 						>
 							<Icon
-								color={textColor}
+								color="neutral.dark.400"
 								testID={`${testID}-dismiss-icon`}
 								name="close"
-								size="xs"
+								size={16}
 							/>
 						</Touchable>
 					)}
@@ -142,20 +133,13 @@ export const Alert: React.FC<AlertProps> = memo(
 				testID={testID}
 				onLayout={onLayoutHandler}
 			>
-				{action ? (
-					<Touchable
-						onPress={action}
-						style={[styles.innerContainer, { borderRadius, backgroundColor }]}
-					>
-						{renderContent()}
-					</Touchable>
-				) : (
-					<View
-						style={[styles.innerContainer, { borderRadius, backgroundColor }]}
-					>
-						{renderContent()}
-					</View>
-				)}
+				<ConditionalTouchable
+					condition={!!action}
+					onPress={action}
+					style={[styles.innerContainer, { borderRadius, backgroundColor }]}
+				>
+					{renderContent()}
+				</ConditionalTouchable>
 			</Animated.View>
 		);
 	}

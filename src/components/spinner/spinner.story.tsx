@@ -5,7 +5,7 @@ import { Spinner } from '@components/spinner/spinner';
 import { HStack } from 'native-base';
 import { Text } from '@components/typography/text';
 
-const sizes = ['sm', 'lg'] as const;
+const sizes = ['small', 'large'] as const;
 
 const SPACE_BETWEEN = 16;
 const SpinnerStory = () => {
