@@ -1,3 +1,4 @@
+import { IconButtonTheme } from './tokens';
 import { BordersTokens } from './tokens/borders';
 import { ColorsTokens } from './tokens/colors';
 import { ButtonTheme } from './tokens/components/button';
@@ -18,6 +19,7 @@ export interface Theme {
 	shadow: ShadowTokens;
 	typography: TypographyTokens;
 	components: {
-		button: ButtonTheme;
+		Button: ButtonTheme;
+		IconButton: IconButtonTheme;
 	};
 }

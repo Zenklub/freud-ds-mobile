@@ -1,47 +1,70 @@
-import React from 'react';
-import { composeEventHandlers, IconButton as NRIconButton } from 'native-base';
-import { IconButtonProps } from '@components/icon-button/icon-button.types';
+import { ButtonsState } from '@components/button/use-button-props';
 import { Icon } from '@components/icon/icon';
-import { useIconColor } from '@helpers/icons-color.hook';
-import iconButtonTheme from '@theme/components/icon-button';
+import { Spinner } from '@components/spinner';
+import { Touchable } from '@components/touchable';
+import { mergePressableResponder } from '@helpers/merge-pressable-responder';
+import React, { useEffect } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { IconButtonProps } from './icon-button.types';
+import { useIconButtonProps } from './use-icon-button-props';
 
-export const IconButton: React.FC<IconButtonProps> = ({
-	inverted = false,
-	variant = 'solid',
-	icon,
-	testID,
-	size = 'md',
-	disabled = false,
-	onPressIn,
-	onPressOut,
-	onPress,
-	...props
-}) => {
-	const [iconColor, pressableProps] = useIconColor(iconButtonTheme.variants, {
-		icon,
-		variant,
-		inverted,
-		...props,
-	});
+export function IconButton<T>(props: Readonly<IconButtonProps<T>>) {
+	const { icon, testID } = props;
+
+	const [state, setState] = React.useState<ButtonsState>('default');
+
+	const {
+		pressable: pressableProps,
+		container: containerProps,
+		icon: iconProps,
+		spinner: spinnerProps,
+	} = useIconButtonProps(props, state);
+
+	useEffect(() => {
+		if (props.disabled) {
+			setState('disabled');
+		} else if (props.isLoading) {
+			setState('loading');
+		}
+	}, [props.disabled]);
 
 	return (
-		<NRIconButton
+		<Touchable
 			testID={testID}
-			variant={variant}
-			size={size}
-			colorScheme={inverted ? 'neutral.white' : 'brand.pure'}
-			isDisabled={disabled}
-			onPressIn={composeEventHandlers(onPressIn, pressableProps.onPressIn)}
-			onPressOut={composeEventHandlers(onPressOut, pressableProps.onPressOut)}
-			onPress={composeEventHandlers(onPress, pressableProps.onPress)}
-			icon={
-				<Icon
-					name={icon}
-					size={size}
-					color={iconColor ?? 'white'}
-					testID={`${testID}-icon`}
-				/>
-			}
-		/>
+			{...pressableProps}
+			activeOpacity={1}
+			onPressIn={mergePressableResponder(
+				() => setState('active'),
+				pressableProps.onPressIn
+			)}
+			onPressOut={mergePressableResponder(
+				() => setState('default'),
+				pressableProps.onPressOut
+			)}
+			disabled={props.disabled ?? props.isLoading}
+		>
+			<View
+				testID={`${testID}-container`}
+				{...containerProps}
+				style={[styles.container, containerProps.style]}
+			>
+				{props.isLoading ? (
+					<View testID={`${testID}-spinner`}>
+						<Spinner {...spinnerProps} />
+					</View>
+				) : (
+					<Icon testID={`${testID}-icon`} name={icon} {...iconProps} />
+				)}
+			</View>
+		</Touchable>
 	);
-};
+}
+
+const styles = StyleSheet.create({
+	container: {
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+});
+
+IconButton.displayName = 'IconButton';

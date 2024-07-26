@@ -1,45 +1,36 @@
-import { IconProps } from '@components/icon';
+import { ButtonsState } from '@components/button/use-button-props';
+import { IconButtonProps } from '@components/icon-button';
 import { SpinnerProps } from '@components/spinner';
 import { PressableProps } from '@components/touchable';
-import { TextProps } from '@components/typography';
 import { deepMerge } from '@helpers/deep-merge';
 import { useColorTokenOrHardCoded, useContainerPropsStyle } from '@hooks';
+import { usePressableProps } from '@hooks/use-pressable-props';
 import { useComponentTheme, useOpacity, useRadii } from '@hooks/use-theme';
-
 import {
-	ButtonSizes,
-	ButtonThemeSizes,
-	ButtonThemeVariantStyle,
-	ButtonVariants,
-} from '@theme/tokens';
+	IconButtonSizes,
+	IconButtonThemeSizes,
+	IconButtonThemeVariantStyle,
+	IconButtonVariants,
+} from '@theme/tokens/components/icon-button';
 import { useMemo } from 'react';
 import { StyleSheet, ViewProps } from 'react-native';
-import { usePressableProps } from '../../hooks/use-pressable-props';
-import { ButtonProps } from './button.types';
+import { IconProps } from '../icon/icon.types';
 
-export interface ButtonStyleHook<T> {
+export interface IconButtonStyleHook<T> {
 	pressable: PressableProps<T>;
 	container: ViewProps;
-	text: TextProps;
 	icon: Pick<IconProps, 'color' | 'size'>;
 	spinner: Pick<SpinnerProps, 'color' | 'size'>;
 }
 
-export type ButtonsState =
-	| 'default'
-	| 'loading'
-	| 'focus'
-	| 'active'
-	| 'disabled';
-
-export function useButtonProps<T>(
-	props: ButtonProps<T>,
+export function useIconButtonProps<T>(
+	props: IconButtonProps<T>,
 	state: ButtonsState
-): ButtonStyleHook<T> {
+): IconButtonStyleHook<T> {
 	const pressableProps = usePressableProps(props as PressableProps<T>);
 	const [containerStyle] = useContainerPropsStyle(props);
 
-	const { style, size } = useButtonTheme(
+	const { style, size } = useIconButtonTheme(
 		state,
 		props.variant,
 		props.size,
@@ -51,12 +42,12 @@ export function useButtonProps<T>(
 		borderColor: _borderColor,
 		borderRadius: _borderRadius,
 		opacity: _opacity,
-		icon: iconStyle,
 		spinner: spinnerStyle,
+		color: iconColor,
 		...buttonStyle
 	} = style;
 
-	const { text: textSize, ...sizePropsStyle } = size;
+	const { icon: iconSize, ...sizePropsStyle } = size;
 
 	const backgroundColor = useColorTokenOrHardCoded(
 		style.backgroundColor,
@@ -79,40 +70,36 @@ export function useButtonProps<T>(
 						opacity,
 						borderRadius,
 						backgroundColor,
+						height: sizePropsStyle.height,
+						width: sizePropsStyle.width ?? sizePropsStyle.height,
 					},
 				],
 				props.style
 			),
 		},
-		text: {
-			color: style.color,
-			size: textSize.size,
-			fontWeight: textSize.weight,
-			style: props.textStyle,
-		},
 		icon: {
-			color: iconStyle?.color ?? style.color,
-			size: size.icon.size,
+			color: iconColor,
+			size: iconSize.size,
 		},
 		spinner: {
-			color: spinnerStyle?.color ?? style.color,
-			size: size.icon.size,
+			color: spinnerStyle?.color ?? iconColor,
+			size: iconSize.size,
 		},
 	};
 }
 
-interface UseButtonThemeHook {
-	style: ButtonThemeVariantStyle;
-	size: ButtonThemeSizes;
+interface UseIconButtonThemeHook {
+	style: IconButtonThemeVariantStyle;
+	size: IconButtonThemeSizes;
 }
 
-function useButtonTheme(
+function useIconButtonTheme(
 	state: ButtonsState,
-	variant: ButtonVariants = 'solid',
-	size: ButtonSizes = 'md',
+	variant: IconButtonVariants = 'solid',
+	size: IconButtonSizes = 'md',
 	inverted = false
-): UseButtonThemeHook {
-	const buttonTheme = useComponentTheme('Button');
+): UseIconButtonThemeHook {
+	const buttonTheme = useComponentTheme('IconButton');
 
 	const style = useMemo(() => {
 		const theme = inverted ? buttonTheme.inverted : buttonTheme.variants;
@@ -121,7 +108,7 @@ function useButtonTheme(
 		return deepMerge(
 			buttonVariant.default,
 			buttonVariant[state]
-		) as ButtonThemeVariantStyle;
+		) as IconButtonThemeVariantStyle;
 	}, [buttonTheme, inverted, state, variant]);
 
 	return {

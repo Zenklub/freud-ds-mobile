@@ -1,10 +1,10 @@
-import { StoryWrapper } from '../../storybook/story-wrapper';
-import { storiesOf } from '@storybook/react-native';
-import React from 'react';
-import { Text } from '@components/typography/text';
 import { IconButton } from '@components/icon-button/icon-button';
 import { IconButtonProps } from '@components/icon-button/icon-button.types';
+import { Text } from '@components/typography/text';
+import { storiesOf } from '@storybook/react-native';
+import React from 'react';
 import { HStack } from '../../storybook/components/h-stack';
+import { StoryWrapper } from '../../storybook/story-wrapper';
 
 const sizes = ['lg', 'md', 'sm', 'xs'] as const;
 const variants = ['solid', 'outline', 'ghost'] as const;
@@ -12,7 +12,7 @@ const variants = ['solid', 'outline', 'ghost'] as const;
 const renderButtonSizes = (
 	size: 'lg' | 'md' | 'sm' | 'xs',
 	inverted: boolean,
-	extraProps: Partial<IconButtonProps> = {},
+	extraProps: Partial<IconButtonProps<any>> = {},
 	key = 'default'
 ) => {
 	const renderButton = (variant: 'solid' | 'outline' | 'ghost') => {
