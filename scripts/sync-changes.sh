@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SAMPLE_PROJ_PATH=../playground/node_modules/@freud-ds/react-native
+SAMPLE_PROJ_PATH=../preview/node_modules/@freud-ds/react-native
 
 path=../dist
 

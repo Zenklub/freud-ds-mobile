@@ -1,0 +1,21 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "node_modules/@freud-ds/tokens/assets/fonts/SourceSansPro-Bold.ttf",
+      "sha1": "167ac25366e252f07c090a8113910337f3d5255b"
+    },
+    {
+      "path": "node_modules/@freud-ds/tokens/assets/fonts/SourceSansPro-Regular.ttf",
+      "sha1": "48d6928e08ba5e2ca1e15d754c146580b1c8febd"
+    },
+    {
+      "path": "node_modules/@freud-ds/tokens/assets/fonts/SourceSansPro-SemiBold.ttf",
+      "sha1": "3eeb4bae47e308c768d8c65a89480159d4e0e7c2"
+    },
+    {
+      "path": "node_modules/@freud-ds/icons/fonts/freud-icon.ttf",
+      "sha1": "3eafef1aba25444ccd40506a241f086878864fcc"
+    }
+  ]
+}
