@@ -1,21 +1,12 @@
 import { ButtonProps } from '@components/button/button.types';
 import { Icon } from '@components/icon';
 import { Spinner } from '@components/spinner';
-import { PressableResponder, Touchable } from '@components/touchable';
+import { Touchable } from '@components/touchable';
 import { Text } from '@components/typography';
+import { mergePressableResponder } from '@helpers/merge-pressable-responder';
 import React, { useCallback, useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { ButtonsState, useButtonProps } from './use-button-props';
-
-function mergePressableResponder(
-	...responders: Array<((...args: any) => any) | undefined>
-): any {
-	return ((...args: any[]) => {
-		for (const responder of responders) {
-			responder?.(...args);
-		}
-	}) as PressableResponder<any>;
-}
 
 export function Button<T>(props: Readonly<ButtonProps<T>>) {
 	const { text, testID } = props;

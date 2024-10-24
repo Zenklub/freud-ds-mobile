@@ -2,6 +2,7 @@ import { Theme } from '@theme/types';
 import { baseBordersTheme } from './borders';
 import { baseThemeColors } from './colors';
 import { baseButtonTheme } from './components/buttons';
+import { baseIconButtonTheme } from './components/icon-buttons';
 import { baseThemeOpacity } from './opacity';
 import { baseThemeRadii } from './radius';
 import { baseShadowTheme } from './shadows';
@@ -19,6 +20,7 @@ export const baseTheme: Theme = {
 	shadow: baseShadowTheme,
 	typography: baseThemeTypography,
 	components: {
-		button: baseButtonTheme,
+		Button: baseButtonTheme,
+		IconButton: baseIconButtonTheme,
 	},
 };
