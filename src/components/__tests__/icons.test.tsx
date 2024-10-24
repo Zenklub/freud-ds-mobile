@@ -1,9 +1,9 @@
-import React from 'react';
 import '@testing-library/jest-native/extend-expect';
+import React from 'react';
 import { renderWithProviders } from '../../helpers/testing';
-import { Icon } from '../icon/icon';
 import { iconCharMap } from '../icon/constants';
-import { IconName } from '../icon/types';
+import { Icon } from '../icon/icon';
+import { IconName } from '../icon/icon.types';
 
 const testID = 'icon-test';
 
@@ -33,7 +33,7 @@ describe('Icons', () => {
 		'should render icon size "%s" correctly',
 		({ size, fontSize }: SizeFont) => {
 			const { getByTestId } = renderWithProviders(
-				<Icon testID={testID} name="plus" size={size} color="white" />
+				<Icon testID={testID} name="plus" size={size} color="#FFF" />
 			);
 
 			expect(getByTestId(testID)).toBeTruthy();
@@ -43,7 +43,7 @@ describe('Icons', () => {
 
 	it('should render default icon size correctly', () => {
 		const { getByTestId } = renderWithProviders(
-			<Icon testID={testID} name="plus" color="white" />
+			<Icon testID={testID} name="plus" color="#FFF" />
 		);
 
 		expect(getByTestId(testID)).toBeTruthy();
@@ -52,11 +52,11 @@ describe('Icons', () => {
 
 	it('should render icon with color correctly', () => {
 		const { getByTestId } = renderWithProviders(
-			<Icon testID={testID} name="plus" size="md" color="white" />
+			<Icon testID={testID} name="plus" size="md" color="#FFF" />
 		);
 
 		expect(getByTestId(testID)).toBeTruthy();
-		expect(getByTestId(testID)).toHaveStyle({ color: 'white' });
+		expect(getByTestId(testID)).toHaveStyle({ color: '#FFF' });
 	});
 
 	it('should render null when name not found correctly', () => {

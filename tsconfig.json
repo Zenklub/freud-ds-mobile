@@ -42,5 +42,11 @@
     "**/__mocks__/*",
     "**/__tests__/*",
     "src/helpers/testing/"
-  ]
+  ],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs",
+      "target": "esnext"
+    }
+  }
 }

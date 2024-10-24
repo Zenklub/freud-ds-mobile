@@ -1,10 +1,10 @@
-import React, { useMemo } from 'react';
-import { InputProps } from '@components/input-text/input.types';
-import { Input as NRInput, Pressable, useThemeProps } from 'native-base';
-import { StyleSheet, View } from 'react-native';
 import { FormControl } from '@components/form-control/form-control';
 import { Icon } from '@components/icon/icon';
-import Colors, { IColors } from '@theme/base/colors';
+import { InputProps } from '@components/input-text/input.types';
+import { IColors } from '@theme/base/colors';
+import { Input as NRInput, Pressable, useThemeProps } from 'native-base';
+import React, { useMemo } from 'react';
+import { StyleSheet, View } from 'react-native';
 import { HitSlop } from 'react-native-gesture-handler/lib/typescript/handlers/gestureHandlerCommon';
 
 const styles = StyleSheet.create({
@@ -49,7 +49,7 @@ export const InputText: React.FC<InputProps> = ({
 					testID={`${testID}-icon`}
 					name={iconName}
 					size="md"
-					color={Colors.neutral.dark[100]}
+					color="neutral.dark.100"
 				/>
 			);
 			if (!onIconPress) {

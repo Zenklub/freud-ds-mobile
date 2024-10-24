@@ -1,18 +1,13 @@
-import React from 'react';
-import { Spinner as NBSpinner } from 'native-base';
 import { SpinnerProps } from '@components/spinner/spinner.types';
-import { iconSizesMap } from '@components/spinner/constants';
+import { useColorTokenOrHardCoded } from '@hooks';
+import React from 'react';
+import { ActivityIndicator } from 'react-native';
 
 export const Spinner: React.FC<SpinnerProps> = ({
 	testID,
 	size = 'large',
-	inverted = false,
+	color = 'brand.pure',
 }) => {
-	return (
-		<NBSpinner
-			testID={testID}
-			size={iconSizesMap[size]}
-			color={inverted ? 'neutral.white' : 'brand.pure'}
-		/>
-	);
+	const spinnerColor = useColorTokenOrHardCoded(color, 'brand.pure');
+	return <ActivityIndicator testID={testID} size={size} color={spinnerColor} />;
 };

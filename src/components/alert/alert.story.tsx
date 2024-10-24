@@ -19,7 +19,7 @@ export const Story = () => {
 	return (
 		<ScrollView style={{ width: '100%' }}>
 			<View style={{ flex: 1, padding: 32, paddingTop: 16, width: '100%' }}>
-				<Text fontSize="lg">Alerts Status</Text>
+				<Text size="lg">Alerts Status</Text>
 				<View>
 					<Space size={16} />
 					<Alert
@@ -40,16 +40,16 @@ export const Story = () => {
 				</View>
 
 				<Space size={36} />
-				<Text fontSize="lg">NOT dismissible</Text>
+				<Text size="lg">NOT dismissible</Text>
 				<Space size={16} />
 				<Alert title="Alert with title" status="success" dismissible={false} />
 
 				<Space size={36} />
-				<Text fontSize="lg">Just title</Text>
+				<Text size="lg">Just title</Text>
 				<Space size={16} />
 				<Alert title="Alert with title" status="warning" />
 				<Space size={36} />
-				<Text fontSize="lg">With Action Callback</Text>
+				<Text size="lg">With Action Callback</Text>
 				<Space size={16} />
 				<Alert
 					title="Alert with action"

@@ -1,9 +1,9 @@
 import { StoryWrapper } from '../../storybook/story-wrapper';
 import { storiesOf } from '@storybook/react-native';
 import React, { useState } from 'react';
-import { HStack } from 'native-base';
 import { Text } from '@components/typography/text';
 import { Checkbox } from './checkbox';
+import { HStack } from '../../storybook/components/h-stack';
 
 const SPACE_BETWEEN = 16;
 const CheckboxStory = () => {

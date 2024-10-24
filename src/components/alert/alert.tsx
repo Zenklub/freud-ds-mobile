@@ -3,12 +3,14 @@ import { Animated, StyleSheet, View } from 'react-native';
 
 import { Text } from '../typography';
 
-import { AlertStatus, AlertProps } from './alert.types';
-import { useOnLayout } from '@helpers/use-on-layout';
-import { Touchable } from '@components/touchable/touchable';
 import { Icon, IconName } from '@components/icon';
+import { ConditionalTouchable } from '@components/touchable';
+import { Touchable } from '@components/touchable/touchable';
+import { useOnLayout } from '@helpers/use-on-layout';
 import { useColors, useTokens } from '@hooks';
 import { IColors } from '@theme/base/colors';
+import { ColorsPathOrHardCoded } from '@theme/tokens/colors';
+import { AlertProps, AlertStatus } from './alert.types';
 
 const styles = StyleSheet.create({
 	container: {
@@ -24,7 +26,7 @@ const styles = StyleSheet.create({
 const StatusIconNamesMap: Record<AlertStatus, IconName> = {
 	success: 'check-circle',
 	info: 'info-circle',
-	warning: 'exclamation-triangle',
+	warning: 'exclamation-circle',
 	danger: 'exclamation-triangle',
 };
 
@@ -49,15 +51,12 @@ export const Alert: React.FC<AlertProps> = memo(
 	}) => {
 		const [layout, onLayoutHandler] = useOnLayout();
 
-		const [backgroundColor, iconColor, textColor] = useColors(
-			...StatusColors[status],
-			'neutral.dark.400'
-		);
+		const [backgroundColor, iconColor] = useColors(...StatusColors[status]);
 
 		const [borderRadius, closeButtonRadius, marginBetween] = useTokens(
 			'radii.sm',
 			'radii.circular',
-			'sizes.spacing.nano'
+			'spacing.nano'
 		);
 
 		const onClose = () => {
@@ -68,10 +67,11 @@ export const Alert: React.FC<AlertProps> = memo(
 			const iconTestID = `${testID}-icon-${status}`;
 			return (
 				<Icon
-					color={iconColor}
+					style={{ marginTop: body ? 4 : undefined }}
+					color={iconColor as ColorsPathOrHardCoded}
 					name={StatusIconNamesMap[status]}
 					testID={iconTestID}
-					size="md"
+					size={22}
 				/>
 			);
 		};
@@ -93,25 +93,17 @@ export const Alert: React.FC<AlertProps> = memo(
 							justifyContent: 'center',
 						}}
 					>
-						<Text
-							color={textColor}
-							fontSize={body ? 'md' : 'sm'}
-							lineHeight={'sm'}
-							fontWeight="medium"
-							testID={`${testID}-title`}
-						>
+						<Text.Medium size={body ? 'md' : 'sm'} testID={`${testID}-title`}>
 							{title}
-						</Text>
+						</Text.Medium>
 						{body ? (
-							<Text
-								color={textColor}
-								fontSize="sm"
-								lineHeight="sm"
+							<Text.Regular
+								size="sm"
 								testID={`${testID}-body`}
-								marginTop="2"
+								style={{ marginTop: 4 }}
 							>
 								{body}
-							</Text>
+							</Text.Regular>
 						) : null}
 					</View>
 					{dismissible && (
@@ -125,10 +117,10 @@ export const Alert: React.FC<AlertProps> = memo(
 							}}
 						>
 							<Icon
-								color={textColor}
+								color="neutral.dark.400"
 								testID={`${testID}-dismiss-icon`}
 								name="close"
-								size="xs"
+								size={16}
 							/>
 						</Touchable>
 					)}
@@ -142,20 +134,13 @@ export const Alert: React.FC<AlertProps> = memo(
 				testID={testID}
 				onLayout={onLayoutHandler}
 			>
-				{action ? (
-					<Touchable
-						onPress={action}
-						style={[styles.innerContainer, { borderRadius, backgroundColor }]}
-					>
-						{renderContent()}
-					</Touchable>
-				) : (
-					<View
-						style={[styles.innerContainer, { borderRadius, backgroundColor }]}
-					>
-						{renderContent()}
-					</View>
-				)}
+				<ConditionalTouchable
+					condition={!!action}
+					onPress={action}
+					style={[styles.innerContainer, { borderRadius, backgroundColor }]}
+				>
+					{renderContent()}
+				</ConditionalTouchable>
 			</Animated.View>
 		);
 	}

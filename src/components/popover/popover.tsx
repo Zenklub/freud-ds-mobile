@@ -1,12 +1,12 @@
+import { Text } from '@components/typography/text';
 import { Portal } from '@gorhom/portal';
+import { useMeasurement } from '@helpers/use-measure.hook';
+import { useColors, useTokens } from '@hooks';
 import React, { useEffect, useRef } from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { calculatePosition } from './calculate-position';
 import { ANIMATION_DURATION, ARROW_SIZE, EASING } from './constants';
-import { useMeasurement } from '@helpers/use-measure.hook';
-import { Text } from '@components/typography/text';
-import { useColors, useTokens } from '@hooks';
 
 export interface PopoverProps {
 	placement: 'top' | 'bottom' | 'left' | 'right';
@@ -34,12 +34,9 @@ export const Popover: React.FC<PopoverProps> = ({
 	const [tooltipLayout, onTooltipRef, setTooltipLayout] = useMeasurement();
 	const animation = useRef(new Animated.Value(0));
 
-	const [backgroundColor, color] = useColors(
-		'neutral.dark.300',
-		'neutral.white'
-	);
+	const [backgroundColor] = useColors('neutral.dark.300');
 
-	const [borderRadius, shadows] = useTokens('radii.md', 'shadows.shadowLevel3');
+	const [borderRadius, shadows] = useTokens('radii.md', 'shadow.300');
 
 	const onPressHandler = () => {
 		setVisible(true);
@@ -97,7 +94,7 @@ export const Popover: React.FC<PopoverProps> = ({
 					>
 						<View style={[styles.arrow, arrowStyle, { backgroundColor }]} />
 						{typeof content === 'string' ? (
-							<Text color={color}>{content}</Text>
+							<Text color="neutral.white">{content}</Text>
 						) : (
 							<>{content}</>
 						)}

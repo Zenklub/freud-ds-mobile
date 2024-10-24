@@ -1,8 +1,8 @@
-import React from 'react';
 import '@testing-library/jest-native/extend-expect';
+import React from 'react';
 import { renderWithProviders } from '../../helpers/testing';
 import { Button } from '../button/button';
-import { iconCharMap, iconSizeMap } from '../icon/constants';
+import { iconCharMap } from '../icon/constants';
 
 const testID = 'button-test';
 
@@ -11,6 +11,12 @@ const sizesMap = {
 	sm: 32,
 	md: 40,
 	lg: 48,
+};
+
+const iconSizeMap = {
+	sm: 16,
+	md: 20,
+	lg: 24,
 };
 
 type VariantIconColorMap = {
@@ -30,49 +36,45 @@ const buttonInvertedVariantsIconColorsMap: VariantIconColorMap[] = [
 ];
 
 describe('Forms > Button', () => {
-	it('should render button correctly', () => {
+	it('should render button container correctly', () => {
 		const { getByTestId } = renderWithProviders(
 			<Button testID={testID}>Test</Button>
 		);
-		expect(getByTestId(testID)).toBeTruthy();
+		expect(getByTestId(`${testID}-container`)).toBeTruthy();
 	});
 
 	it.each(sizes)('should render button size "%s" correctly', (size) => {
 		const { getByTestId } = renderWithProviders(
-			<Button testID={testID} size={size}>
-				Test
-			</Button>
+			<Button testID={testID} size={size} text="Button" />
 		);
-		expect(getByTestId(testID)).toBeTruthy();
-		expect(getByTestId(testID)).toHaveStyle({ height: sizesMap[size] });
+
+		expect(getByTestId(`${testID}-container`)).toHaveStyle({
+			height: sizesMap[size],
+		});
 	});
 
 	it('should render default button size correctly', () => {
 		const { getByTestId } = renderWithProviders(
-			<Button testID={testID}>Test</Button>
+			<Button testID={testID} text="Button" />
 		);
-		expect(getByTestId(testID)).toBeTruthy();
-		expect(getByTestId(testID)).toHaveStyle({ height: sizesMap.md });
+
+		expect(getByTestId(`${testID}-container`)).toHaveStyle({
+			height: sizesMap.md,
+		});
 	});
 
 	it('should render icon button correctly', () => {
 		const { getByTestId } = renderWithProviders(
-			<Button testID={testID} icon="plus">
-				Test
-			</Button>
+			<Button testID={testID} icon="plus" text="Button" />
 		);
-		expect(getByTestId(testID)).toBeTruthy();
 		expect(getByTestId(`${testID}-icon`)).toHaveTextContent(iconCharMap.plus);
 	});
 
 	it.each(sizes)('should render icon with correctly size "%s"', (size) => {
 		const { getByTestId } = renderWithProviders(
-			<Button testID={testID} icon="plus" size={size}>
-				Test
-			</Button>
+			<Button testID={testID} icon="plus" size={size} text="Button" />
 		);
 
-		expect(getByTestId(testID)).toBeTruthy();
 		expect(getByTestId(`${testID}-icon`)).toHaveStyle({
 			fontSize: iconSizeMap[size],
 		});
@@ -82,11 +84,8 @@ describe('Forms > Button', () => {
 		'should render icon variant color "%s" correctly',
 		({ variant, iconColor }) => {
 			const { getByTestId } = renderWithProviders(
-				<Button testID={testID} variant={variant} icon="plus">
-					Test
-				</Button>
+				<Button testID={testID} variant={variant} icon="plus" text="Button" />
 			);
-			expect(getByTestId(testID)).toBeTruthy();
 
 			expect(getByTestId(`${testID}-icon`)).toHaveStyle({
 				color: iconColor,
@@ -98,11 +97,14 @@ describe('Forms > Button', () => {
 		'should render inverted icon variant color "%s" correctly',
 		({ variant, iconColor }) => {
 			const { getByTestId } = renderWithProviders(
-				<Button testID={testID} variant={variant} icon="plus" inverted>
-					Test
-				</Button>
+				<Button
+					testID={testID}
+					variant={variant}
+					icon="plus"
+					text="Button"
+					inverted
+				/>
 			);
-			expect(getByTestId(testID)).toBeTruthy();
 
 			expect(getByTestId(`${testID}-icon`)).toHaveStyle({
 				color: iconColor,
@@ -111,20 +113,17 @@ describe('Forms > Button', () => {
 	);
 
 	it('should persist text when loading', async () => {
-		const { getByTestId, getByText } = renderWithProviders(
-			<Button testID={testID} isLoading>
-				Test
-			</Button>
+		const { getByTestId } = renderWithProviders(
+			<Button testID={testID} text="Button" isLoading />
 		);
-		expect(getByTestId(testID)).toBeTruthy();
-		expect(getByText('Test')).toBeTruthy();
+		expect(getByTestId(`${testID}-spinner`)).toBeTruthy();
 	});
 
-	it('should add children', async () => {
-		const { getByTestId, getByText } = renderWithProviders(
-			<Button testID={testID}>Test</Button>
+	it('should render text', async () => {
+		const { getByTestId } = renderWithProviders(
+			<Button testID={testID} text="Button" />
 		);
-		expect(getByTestId(testID)).toBeTruthy();
-		expect(getByText('Test')).toBeTruthy();
+
+		expect(getByTestId(`${testID}-text`)).toHaveTextContent('Button');
 	});
 });

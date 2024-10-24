@@ -1,15 +1,14 @@
 import React from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { Heading } from '@components/typography/heading';
-import { VStack } from 'native-base';
-import { IVStackProps } from 'native-base/lib/typescript/components/primitives/Stack/VStack';
+import { VStack, VStackProps } from './components/v-stack';
 
 interface StoryWrapperProps {
 	children: React.ReactNode;
 	title: string;
 }
 
-interface StoryWrapperSessionProps extends IVStackProps {
+interface StoryWrapperSessionProps extends VStackProps {
 	inverted?: boolean;
 }
 

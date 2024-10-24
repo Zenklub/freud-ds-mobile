@@ -1,8 +1,8 @@
-import React from 'react';
 import '@testing-library/jest-native/extend-expect';
+import React from 'react';
 import { renderWithProviders } from '../../helpers/testing';
-import { iconCharMap, iconSizeMap } from '../icon/constants';
 import { IconButton } from '../icon-button/icon-button';
+import { iconCharMap } from '../icon/constants';
 
 const testID = 'icon-btn-test';
 
@@ -12,6 +12,13 @@ const sizesMap = {
 	sm: 32,
 	md: 40,
 	lg: 48,
+};
+
+const iconSizeMap = {
+	xs: 12,
+	sm: 24,
+	md: 24,
+	lg: 24,
 };
 
 type VariantIconColorMap = {
@@ -35,30 +42,34 @@ describe('Forms > Icon IconButton', () => {
 		const { getByTestId } = renderWithProviders(
 			<IconButton testID={testID} icon="plus" />
 		);
-		expect(getByTestId(testID)).toBeTruthy();
+		expect(getByTestId(`${testID}-container`)).toBeTruthy();
 	});
 
 	it.each(sizes)('should render size "%s" correctly', (size) => {
 		const { getByTestId } = renderWithProviders(
 			<IconButton testID={testID} size={size} icon="plus" />
 		);
-		expect(getByTestId(testID)).toBeTruthy();
-		expect(getByTestId(testID)).toHaveStyle({ height: sizesMap[size] });
+		expect(getByTestId(`${testID}-container`)).toBeTruthy();
+		expect(getByTestId(`${testID}-container`)).toHaveStyle({
+			height: sizesMap[size],
+		});
 	});
 
 	it('should render default size correctly', () => {
 		const { getByTestId } = renderWithProviders(
 			<IconButton testID={testID} icon="plus" />
 		);
-		expect(getByTestId(testID)).toBeTruthy();
-		expect(getByTestId(testID)).toHaveStyle({ height: sizesMap.md });
+		expect(getByTestId(`${testID}-container`)).toBeTruthy();
+		expect(getByTestId(`${testID}-container`)).toHaveStyle({
+			height: sizesMap.md,
+		});
 	});
 
 	it('should render icon correctly', () => {
 		const { getByTestId } = renderWithProviders(
 			<IconButton testID={testID} icon="plus" />
 		);
-		expect(getByTestId(testID)).toBeTruthy();
+		expect(getByTestId(`${testID}-container`)).toBeTruthy();
 		expect(getByTestId(`${testID}-icon`)).toHaveTextContent(iconCharMap.plus);
 	});
 
@@ -67,7 +78,7 @@ describe('Forms > Icon IconButton', () => {
 			<IconButton testID={testID} icon="plus" size={size} />
 		);
 
-		expect(getByTestId(testID)).toBeTruthy();
+		expect(getByTestId(`${testID}-container`)).toBeTruthy();
 		expect(getByTestId(`${testID}-icon`)).toHaveStyle({
 			fontSize: iconSizeMap[size],
 		});
@@ -79,7 +90,7 @@ describe('Forms > Icon IconButton', () => {
 			const { getByTestId } = renderWithProviders(
 				<IconButton testID={testID} variant={variant} icon="plus" />
 			);
-			expect(getByTestId(testID)).toBeTruthy();
+			expect(getByTestId(`${testID}-container`)).toBeTruthy();
 
 			expect(getByTestId(`${testID}-icon`)).toHaveStyle({
 				color: iconColor,
@@ -93,7 +104,7 @@ describe('Forms > Icon IconButton', () => {
 			const { getByTestId } = renderWithProviders(
 				<IconButton testID={testID} variant={variant} icon="plus" inverted />
 			);
-			expect(getByTestId(testID)).toBeTruthy();
+			expect(getByTestId(`${testID}-container`)).toBeTruthy();
 
 			expect(getByTestId(`${testID}-icon`)).toHaveStyle({
 				color: iconColor,

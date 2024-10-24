@@ -32,14 +32,14 @@ export const Story = () => {
 				alignItems: 'center',
 			}}
 		>
-			<Text fontSize="lg">Popover top</Text>
+			<Text size="lg">Popover top</Text>
 
 			<Space size={16} />
 			<Popover content="Hello" placement="top">
 				<TargetContent />
 			</Popover>
 			<Space size={36} />
-			<Text fontSize="lg">Popover bottom</Text>
+			<Text size="lg">Popover bottom</Text>
 
 			<Space size={16} />
 			<Popover content="Hello" placement="bottom">
@@ -47,13 +47,13 @@ export const Story = () => {
 			</Popover>
 
 			<Space size={36} />
-			<Text fontSize="lg">Popover left</Text>
+			<Text size="lg">Popover left</Text>
 			<Popover content="Hello" placement="left">
 				<TargetContent />
 			</Popover>
 
 			<Space size={36} />
-			<Text fontSize="lg">Popover right</Text>
+			<Text size="lg">Popover right</Text>
 			<Popover content="Hello" placement="right">
 				<TargetContent />
 			</Popover>

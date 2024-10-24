@@ -1,0 +1,28 @@
+export type SpacingSizes =
+	| 'minimum'
+	| 'quark'
+	| 'nano'
+	| 'xxxs'
+	| 'xxs'
+	| 'xs'
+	| 'sm'
+	| 'md'
+	| 'lg'
+	| 'xl'
+	| 'xxl'
+	| 'xxxl'
+	| 'big'
+	| 'huge'
+	| 'giant'
+	| '1/10'
+	| '1/5'
+	| '1/4'
+	| '1/3'
+	| '2/5'
+	| '2/4'
+	| '3/5'
+	| '3/4'
+	| '4/5'
+	| 'full';
+
+export type SpacingTokens = Record<SpacingSizes, number | string>;

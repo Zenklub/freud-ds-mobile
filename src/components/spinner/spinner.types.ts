@@ -1,7 +1,9 @@
-export type SpinnerSize = 'sm' | 'lg' | 'small' | 'large';
+import { ColorsPathOrHardCoded } from '@theme/tokens/colors';
+
+export type SpinnerSize = number | 'small' | 'large';
 
 export interface SpinnerProps {
 	size?: SpinnerSize;
-	inverted?: boolean;
+	color?: ColorsPathOrHardCoded;
 	testID?: string;
 }

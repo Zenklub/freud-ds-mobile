@@ -3,7 +3,7 @@ import { RadioComponentType } from './radio.types';
 import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 import { RadioGroupContextProvider, useRadioContext } from './radio-context';
 import { Text } from '@components/typography/text';
-import { useToken } from 'native-base';
+import { useColors } from '@hooks';
 
 export const Radio: RadioComponentType = ({
 	value,
@@ -12,9 +12,10 @@ export const Radio: RadioComponentType = ({
 	inverted,
 	children,
 }) => {
-	const [neutralWhiteColor, neutralLight400Color, brandPureColor] = useToken(
-		'colors',
-		['neutral.white', 'neutral.light.400', 'brand.pure']
+	const [neutralWhiteColor, neutralLight400Color, brandPureColor] = useColors(
+		'neutral.white',
+		'neutral.light.400',
+		'brand.pure'
 	);
 
 	const { setValue, currentValue } = useRadioContext();
