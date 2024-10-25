@@ -1,9 +1,11 @@
 #!/bin/node
 
+const previewProjName = 'preview';
+
 const { spawn, spawnSync } = require('child_process');
 const { name } = require('../package.json');
 
-const SAMPLE_PROJ_PATH = `./playground/node_modules/${name}`;
+const SAMPLE_PROJ_PATH = `./${previewProjName}/node_modules/${name}`;
 
 const Colors = {
 	reset: '\x1b[0m',
@@ -59,7 +61,7 @@ function preBuild() {
 }
 
 function cloneFiles() {
-	notify('· Coping files to Playground project...');
+	notify('· Coping files to Preview App project...');
 
 	spawnSync('rm', ['-rf', SAMPLE_PROJ_PATH]);
 	spawnSync('mkdir', ['-p', SAMPLE_PROJ_PATH]);
@@ -88,26 +90,26 @@ function cleanUp() {
 	console.log('  Done');
 }
 
-let playgroundRunner;
+let previewRunner;
 let builder;
 
 function startSampleProject() {
-	notify('· Starting Playground project');
-	playgroundRunner = spawn('yarn', ['start', '--reset-cache'], {
-		cwd: './playground',
+	notify('· Starting Preview App project');
+	previewRunner = spawn('yarn', ['start', '--reset-cache'], {
+		cwd: `./${previewProjName}`,
 	});
 
-	playgroundRunner.stdout.on('data', (data) => {
+	previewRunner.stdout.on('data', (data) => {
 		const str = `${data}`;
 		if (str && str.replace(/\s\t\r\n/, '') !== '') {
-			console.log(Colors.cyan, '[Playground]:', Colors.reset, str);
+			console.log(Colors.cyan, '[Preview App]:', Colors.reset, str);
 		}
 	});
 
-	playgroundRunner.stderr.on('data', (data) => {
+	previewRunner.stderr.on('data', (data) => {
 		console.error(
 			Colors.cyan,
-			'[Playground]:',
+			'[Preview App]:',
 			Colors.red,
 			`${data}`,
 			Colors.reset
@@ -153,10 +155,10 @@ function killBuilder() {
 	builder.stdin.pause();
 	builder.kill();
 }
-function killPlaygroundRunner() {
-	if (!playgroundRunner) return;
-	playgroundRunner.stdin.pause();
-	playgroundRunner.kill();
+function killPreviewAppRunner() {
+	if (!previewRunner) return;
+	previewRunner.stdin.pause();
+	previewRunner.kill();
 }
 
 function exitHandler(exitCode) {
@@ -167,7 +169,7 @@ function exitHandler(exitCode) {
 	breath();
 	notify('Killing process and removing watchers...');
 	killBuilder();
-	killPlaygroundRunner();
+	killPreviewAppRunner();
 	removeWatches();
 	success('Done');
 	process.exit();
