@@ -48,6 +48,7 @@ export interface BaseTypographyStyleProps extends ContainerProps {
 }
 
 type BaseTypographyProps = BaseTypographyStyleProps &
+	ContainerProps &
 	AccessibilityProps &
 	RNTextProps;
 

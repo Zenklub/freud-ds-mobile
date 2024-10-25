@@ -1,16 +1,16 @@
-import React from 'react';
 import '@testing-library/jest-native/extend-expect';
-import { renderWithProvidersAndFormControl } from '../../helpers/testing';
-import { InputText } from '../input-text/input-text';
-import { act } from 'react-test-renderer';
 import { fireEvent } from '@testing-library/react-native';
+import React from 'react';
+import { act } from 'react-test-renderer';
+import { renderWithProvidersAndFormControl } from '../../helpers/testing';
+import { TextInput } from '../text-input';
 
 const testID = 'input-text-test';
 
-describe('Forms > InputText', () => {
+describe('Forms > TextInput', () => {
 	it('should render correctly', () => {
 		const { getByTestId } = renderWithProvidersAndFormControl(
-			<InputText testID={testID} value="Test" />
+			<TextInput testID={testID} value="Test" />
 		);
 
 		expect(getByTestId(testID)).toBeTruthy();
@@ -19,7 +19,7 @@ describe('Forms > InputText', () => {
 
 	it('should render correctly with label', () => {
 		const { getByTestId } = renderWithProvidersAndFormControl(
-			<InputText testID={testID} label="Label" />
+			<TextInput testID={testID} label="Label" />
 		);
 
 		expect(getByTestId(testID)).toBeTruthy();
@@ -28,7 +28,7 @@ describe('Forms > InputText', () => {
 
 	it('should render correctly with helper text', () => {
 		const { getByTestId } = renderWithProvidersAndFormControl(
-			<InputText testID={testID} helperText="Helper text" />
+			<TextInput testID={testID} helperText="Helper text" />
 		);
 
 		expect(getByTestId(testID)).toBeTruthy();
@@ -39,16 +39,16 @@ describe('Forms > InputText', () => {
 
 	it('should render correctly with error', () => {
 		const { getByTestId } = renderWithProvidersAndFormControl(
-			<InputText testID={testID} error="Error" />
+			<TextInput testID={testID} error="Error" />
 		);
 
 		expect(getByTestId(testID)).toBeTruthy();
-		expect(getByTestId(`${testID}-helper-text`)).toHaveTextContent('Error');
+		expect(getByTestId(`${testID}-error-text`)).toHaveTextContent('Error');
 	});
 
 	it('should render correctly with icon', () => {
 		const { getByTestId } = renderWithProvidersAndFormControl(
-			<InputText testID={testID} iconName="bookmark" />
+			<TextInput testID={testID} iconName="bookmark" />
 		);
 
 		expect(getByTestId(testID)).toBeTruthy();
@@ -57,26 +57,44 @@ describe('Forms > InputText', () => {
 
 	it('should render correctly with placeholder', () => {
 		const { getByTestId } = renderWithProvidersAndFormControl(
-			<InputText testID={testID} placeholder="Placeholder" />
+			<TextInput testID={testID} placeholder="Placeholder" />
 		);
 
 		expect(getByTestId(testID)).toBeTruthy();
 		expect(getByTestId(testID)).toHaveProp('placeholder', 'Placeholder');
 	});
 
-	it('should render correctly with disabled', () => {
+	it('should render disabled correctly', () => {
 		const { getByTestId } = renderWithProvidersAndFormControl(
-			<InputText testID={testID} disabled />
+			<TextInput testID={testID} disabled />
 		);
 
 		expect(getByTestId(testID)).toBeTruthy();
-		expect(getByTestId(testID)).toHaveProp('disabled', true);
+		expect(getByTestId(testID)).toHaveProp('editable', false);
+	});
+
+	it('should render enabled correctly', () => {
+		const { getByTestId } = renderWithProvidersAndFormControl(
+			<TextInput testID={testID} />
+		);
+
+		expect(getByTestId(testID)).toBeTruthy();
+		expect(getByTestId(testID)).toHaveProp('editable', true);
+	});
+
+	it('should render not editable correctly', () => {
+		const { getByTestId } = renderWithProvidersAndFormControl(
+			<TextInput testID={testID} editable={false} />
+		);
+
+		expect(getByTestId(testID)).toBeTruthy();
+		expect(getByTestId(testID)).toHaveProp('editable', false);
 	});
 
 	it('should respond to onChangeText', async () => {
 		const onChangeText = jest.fn();
 		const { getByTestId } = renderWithProvidersAndFormControl(
-			<InputText testID={testID} value="Test" onChangeText={onChangeText} />
+			<TextInput testID={testID} value="Test" onChangeText={onChangeText} />
 		);
 
 		await act(async () => {
@@ -91,7 +109,7 @@ describe('Forms > InputText', () => {
 	it('should respond to onIconPress', async () => {
 		const onIconPress = jest.fn();
 		const { getByTestId } = renderWithProvidersAndFormControl(
-			<InputText
+			<TextInput
 				testID={testID}
 				iconName="bookmark"
 				onIconPress={onIconPress}

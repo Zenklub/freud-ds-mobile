@@ -3,6 +3,7 @@ import { baseBordersTheme } from './borders';
 import { baseThemeColors } from './colors';
 import { baseButtonTheme } from './components/buttons';
 import { baseIconButtonTheme } from './components/icon-buttons';
+import { baseTextInputTheme } from './components/text-input';
 import { baseThemeOpacity } from './opacity';
 import { baseThemeRadii } from './radius';
 import { baseShadowTheme } from './shadows';
@@ -22,5 +23,6 @@ export const baseTheme: Theme = {
 	components: {
 		Button: baseButtonTheme,
 		IconButton: baseIconButtonTheme,
+		TextInput: baseTextInputTheme,
 	},
 };
