@@ -1,3 +1,4 @@
+import { ContainerProps } from '@theme/container-props-style';
 import React from 'react';
 import {
 	AccessibilityProps,
@@ -87,18 +88,19 @@ export interface PressableProps<T> extends AccessibilityProps {
 	touchSoundDisabled?: boolean;
 }
 
-export interface TouchableProps<T> extends PressableProps<T> {
-	data?: T;
-	children: React.ReactNode;
-	style?: StyleProp<ViewStyle> | StyleProp<ViewStyle>[];
-	accessibilityLabel?: string;
-	backgroundColor?: string;
-	borderless?: boolean;
-	rippleSize?: number;
-	activeOpacity?: number;
+export type TouchableProps<T> = PressableProps<T> &
+	ContainerProps & {
+		data?: T;
+		children: React.ReactNode;
+		style?: StyleProp<ViewStyle> | StyleProp<ViewStyle>[];
+		accessibilityLabel?: string;
+		backgroundColor?: string;
+		borderless?: boolean;
+		rippleSize?: number;
+		activeOpacity?: number;
 
-	/**
-	 * Used to locate this view in end-to-end tests.
-	 */
-	testID?: string;
-}
+		/**
+		 * Used to locate this view in end-to-end tests.
+		 */
+		testID?: string;
+	};

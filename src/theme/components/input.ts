@@ -1,6 +1,5 @@
 import { InterfaceInputProps } from 'native-base/lib/typescript/components/primitives/Input/types';
 // @ts-ignore
-import { transparentize } from 'native-base/lib/module/theme/tools';
 // @ts-ignore
 import * as Tokens from '@freud-ds/tokens/style/react-native/variables';
 
@@ -135,7 +134,7 @@ const defaultProps = {
 	variant: 'outline',
 };
 
-// InputText
+// TextInput
 export const Input = {
 	baseStyle,
 	defaultProps,

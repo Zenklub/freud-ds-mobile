@@ -2,6 +2,7 @@ import { IconButtonTheme } from './tokens';
 import { BordersTokens } from './tokens/borders';
 import { ColorsTokens } from './tokens/colors';
 import { ButtonTheme } from './tokens/components/button';
+import { TextInputTheme } from './tokens/components/text-input';
 import { OpacityTokens } from './tokens/opacity';
 import { RadiiTokens } from './tokens/radius';
 import { ShadowTokens } from './tokens/shadows';
@@ -21,5 +22,6 @@ export interface Theme {
 	components: {
 		Button: ButtonTheme;
 		IconButton: IconButtonTheme;
+		TextInput: TextInputTheme;
 	};
 }

@@ -1,3 +1,4 @@
+import { useContainerPropsStyle } from '@hooks';
 import React from 'react';
 import {
 	GestureResponderEvent,
@@ -24,6 +25,8 @@ export const Touchable = <T,>({
 	style,
 	...props
 }: TouchableProps<T>) => {
+	const [mergedStyle, rest] = useContainerPropsStyle(props, style);
+
 	const hitSlopFinal =
 		typeof hitSlop === 'number'
 			? { top: hitSlop, right: hitSlop, bottom: hitSlop, left: hitSlop }
@@ -62,7 +65,7 @@ export const Touchable = <T,>({
 	};
 
 	const renderContent = () => {
-		return <View style={style}>{children}</View>;
+		return <View style={mergedStyle}>{children}</View>;
 	};
 
 	if (Platform.OS === 'android') {
@@ -76,7 +79,7 @@ export const Touchable = <T,>({
 				onPressIn={handleOnPressIn}
 				onPressOut={handleOnPressOut}
 				onLongPress={handleOnLongPress}
-				{...props}
+				{...rest}
 			>
 				{renderContent()}
 			</TouchableNativeFeedback>
@@ -91,7 +94,7 @@ export const Touchable = <T,>({
 			onPressIn={handleOnPressIn}
 			onPressOut={handleOnPressOut}
 			onLongPress={handleOnLongPress}
-			{...props}
+			{...rest}
 		>
 			{renderContent()}
 		</TouchableOpacity>
