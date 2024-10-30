@@ -1,50 +1,38 @@
-import { ColorsPathOrHardCoded } from '../colors';
-import { OpacityLevel } from '../opacity';
-import { RadiiSize } from '../radius';
+import { DeepPartial } from '@helpers/deep-partial.interface';
+import {
+	ContainerThemeAggregate,
+	IconThemeAggregator,
+} from '@theme/theming.interface';
+import { ColorsLeaves } from '@theme/types';
+import { HardCodedColor, SpinnerComponentTheme, SpinnerSize } from '../tokens';
 
 export type IconButtonVariants = 'solid' | 'outline' | 'ghost';
 export type IconButtonSizes = 'xs' | 'sm' | 'md' | 'lg';
 
-export interface IconButtonThemeVariantStyle {
-	color: ColorsPathOrHardCoded;
-	backgroundColor: ColorsPathOrHardCoded;
-	borderColor: ColorsPathOrHardCoded;
-	borderWidth: number;
-	opacity?: OpacityLevel | number;
-	borderRadius?: RadiiSize | number;
-	spinner?: {
-		color: ColorsPathOrHardCoded;
+export interface IconButtonThemeVariantStyle extends ContainerThemeAggregate {
+	color: ColorsLeaves | HardCodedColor;
+	icon: IconThemeAggregator;
+	spinner?: ContainerThemeAggregate & {
+		size?: SpinnerSize;
+		color?: SpinnerComponentTheme['color'];
 	};
 }
 
 export interface IconButtonThemeVariant {
-	default: IconButtonThemeVariantStyle;
-	loading: Partial<IconButtonThemeVariantStyle>;
-	focus: Partial<IconButtonThemeVariantStyle>;
-	active: Partial<IconButtonThemeVariantStyle>;
-	disabled: Partial<IconButtonThemeVariantStyle>;
+	base: IconButtonThemeVariantStyle;
+	normal: DeepPartial<IconButtonThemeVariantStyle>;
+	loading: DeepPartial<IconButtonThemeVariantStyle>;
+	focus: DeepPartial<IconButtonThemeVariantStyle>;
+	active: DeepPartial<IconButtonThemeVariantStyle>;
+	disabled: DeepPartial<IconButtonThemeVariantStyle>;
 }
 
-export interface IconButtonThemeSizes {
-	height: number;
-	width?: number;
-	padding?: number;
-	paddingTop?: number;
-	paddingRight?: number;
-	paddingBottom?: number;
-	paddingLeft?: number;
-	paddingVertical?: number;
-	paddingHorizontal?: number;
-	icon: {
-		size: number;
+export interface IconButtonComponentTheme {
+	variants: {
+		base: IconButtonThemeVariant;
+		solid: DeepPartial<IconButtonThemeVariant>;
+		outline: DeepPartial<IconButtonThemeVariant>;
+		ghost: DeepPartial<IconButtonThemeVariant>;
 	};
-	spinner: {
-		size: 'small' | 'large';
-	};
-}
-
-export interface IconButtonTheme {
-	variants: Record<IconButtonVariants, IconButtonThemeVariant>;
-	inverted: Record<IconButtonVariants, IconButtonThemeVariant>;
-	sizes: Record<IconButtonSizes, IconButtonThemeSizes>;
+	sizes: DeepPartial<Record<IconButtonSizes, IconButtonThemeVariantStyle>>;
 }

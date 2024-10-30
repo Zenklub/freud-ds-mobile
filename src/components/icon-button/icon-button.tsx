@@ -11,7 +11,7 @@ import { useIconButtonProps } from './use-icon-button-props';
 export function IconButton<T>(props: Readonly<IconButtonProps<T>>) {
 	const { icon, testID } = props;
 
-	const [state, setState] = React.useState<ButtonsState>('default');
+	const [state, setState] = React.useState<ButtonsState>('normal');
 
 	const {
 		pressable: pressableProps,
@@ -38,7 +38,7 @@ export function IconButton<T>(props: Readonly<IconButtonProps<T>>) {
 				pressableProps.onPressIn
 			)}
 			onPressOut={mergePressableResponder(
-				() => setState('default'),
+				() => setState('normal'),
 				pressableProps.onPressOut
 			)}
 			disabled={props.disabled ?? props.isLoading}
@@ -53,7 +53,7 @@ export function IconButton<T>(props: Readonly<IconButtonProps<T>>) {
 						<Spinner {...spinnerProps} />
 					</View>
 				) : (
-					<Icon testID={`${testID}-icon`} name={icon} {...iconProps} />
+					<Icon testID={`${testID}-icon`} {...iconProps} name={icon} />
 				)}
 			</View>
 		</Touchable>

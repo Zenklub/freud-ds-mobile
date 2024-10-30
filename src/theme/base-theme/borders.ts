@@ -1,6 +1,6 @@
 // @ts-ignore
 import * as Tokens from '@freud-ds/tokens/style/react-native/variables';
-import { BordersTokens } from '@theme/tokens';
+import { BordersTokens } from '@theme/tokens/tokens';
 
 export const baseBordersTheme: BordersTokens = {
 	none: Tokens.borderWidthNone,

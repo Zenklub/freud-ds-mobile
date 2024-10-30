@@ -91,8 +91,8 @@ const ButtonStory = () => {
 
 	return (
 		<StoryWrapper title="Forms | Button">
-			{renderSession(false)}
 			{renderSession(true)}
+			{renderSession(false)}
 		</StoryWrapper>
 	);
 };

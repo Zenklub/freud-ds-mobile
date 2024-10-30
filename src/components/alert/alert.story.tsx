@@ -1,10 +1,10 @@
 import React from 'react';
 import { Alert as RNAlert, ScrollView, View } from 'react-native';
 
-import { Alert } from './alert';
 import { Text } from '@components/typography';
-import { StoryWrapper } from '../../storybook/story-wrapper';
 import { storiesOf } from '@storybook/react-native';
+import { StoryWrapper } from '../../storybook/story-wrapper';
+import { Alert } from './alert';
 
 const Space: React.FC<{ size: number }> = ({ size }) => (
 	<View style={{ height: size }} />

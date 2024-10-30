@@ -1,11 +1,14 @@
-import { ContainerProps } from '@theme/container-props-style';
-import { ColorsPathOrHardCoded } from '@theme/tokens/colors';
+import { ContainerProps } from '@components/view';
+import {
+	ColorsPathOrHardCoded,
+	FontSize,
+	FontWeight,
+	LineHeight,
+} from '@theme';
 import {
 	HeadingFontSizes,
-	IFont,
-	IFontWeight,
 	TextFontSizes,
-} from '@theme/tokens/typography';
+} from '@theme/tokens/components/text-heading';
 import React from 'react';
 import {
 	AccessibilityProps,
@@ -15,9 +18,8 @@ import {
 
 export interface BaseTypographyStyleProps extends ContainerProps {
 	color?: ColorsPathOrHardCoded;
-	font?: IFont;
-	fontSize?: number;
-	lineHeight?: number;
+	fontSize?: number | FontSize;
+	lineHeight?: LineHeight | number;
 	fontFamily?: string;
 	textAlign?: 'left' | 'center' | 'right';
 	italic?: boolean;
@@ -36,7 +38,7 @@ export interface BaseTypographyStyleProps extends ContainerProps {
 	inverted?: boolean;
 
 	// Font weight
-	fontWeight?: IFontWeight;
+	fontWeight?: FontWeight;
 	thin?: boolean;
 	light?: boolean;
 	regular?: boolean;
@@ -47,7 +49,7 @@ export interface BaseTypographyStyleProps extends ContainerProps {
 	black?: boolean;
 }
 
-type BaseTypographyProps = BaseTypographyStyleProps &
+export type BaseTypographyProps = BaseTypographyStyleProps &
 	ContainerProps &
 	AccessibilityProps &
 	RNTextProps;

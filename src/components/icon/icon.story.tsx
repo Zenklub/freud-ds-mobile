@@ -1,20 +1,18 @@
-import { StoryWrapper } from '../../storybook/story-wrapper';
-import { storiesOf } from '@storybook/react-native';
-import React from 'react';
-import { StyleSheet, useWindowDimensions, View } from 'react-native';
 import { Icon } from '@components/icon/icon';
 import { Text } from '@components/typography/text';
-import { iconCharMap } from '@components/icon/constants';
-import { IconName } from '@components/icon/icon.types';
-
-const keys = Object.keys(iconCharMap) as Array<IconName>;
+import { storiesOf } from '@storybook/react-native';
+import { IconName } from '@theme';
+import { iconsNamesList } from '@theme/tokens/icons';
+import React from 'react';
+import { StyleSheet, useWindowDimensions, View } from 'react-native';
+import { StoryWrapper } from '../../storybook/story-wrapper';
 
 const MARGIN = 5;
 const IconStory = () => {
 	const { width } = useWindowDimensions();
 
-	const itensPerRow = 3;
-	const itemWidth = (width - 10) / itensPerRow - MARGIN * (itensPerRow - 1);
+	const itemsPerRow = 3;
+	const itemWidth = (width - 10) / itemsPerRow - MARGIN * (itemsPerRow - 1);
 	const renderIcon = (name: IconName) => {
 		return (
 			<View
@@ -50,7 +48,7 @@ const IconStory = () => {
 						flexWrap: 'wrap',
 					}}
 				>
-					{keys.map(renderIcon)}
+					{iconsNamesList.map(renderIcon)}
 				</View>
 			</StoryWrapper.Session>
 		</StoryWrapper>

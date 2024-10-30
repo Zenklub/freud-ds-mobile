@@ -1,3 +1,5 @@
+import { InputWrapper } from '@components/input-wrapper/input-wrapper';
+import { InputState } from '@theme/tokens/components/input-base-theme';
 import React, {
 	useCallback,
 	useEffect,
@@ -5,54 +7,64 @@ import React, {
 	useRef,
 	useState,
 } from 'react';
-import { SelectOption, SelectProps } from './select.types';
 import {
 	Button,
 	InputAccessoryView,
 	Keyboard,
+	Platform,
 	StyleSheet,
 	TextInput,
 	View,
 } from 'react-native';
-import { Text } from '@components/typography';
-import { Icon } from '@components/icon';
-import { FreudDSIOSPickerView } from './ios-picker-view';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import { useIsIOS } from '@helpers/use-is-ios.hook';
-import { Picker } from '@react-native-picker/picker';
-import { useSelectStyle } from './use-select-style.hook';
-import { ConditionalTouchable } from '@components/touchable';
+import { SelectOption, SelectProps } from './select.types';
 
-export const Select: React.FC<SelectProps> = ({
-	testID,
-	placeholder,
-	selected,
-	options,
-	label,
-	error,
-	helperText,
-	onClose,
-	onOpen,
-	onCancel,
-	onDone,
-	onPress,
-	onSelectedValueChange,
-	nativeID: inputNativeID,
-	accessoryViewID,
-	style,
-	cancelText = 'Cancel',
-	doneText = 'Done',
-	cancelAccessibilityLabel = 'Cancel',
-	doneAccessibilityLabel = 'Done',
-	hideCancelButton = false,
-	hideDoneButton = false,
-	customPicker = false,
-	inverted = false,
-	isFocused = false,
-	disabled = false,
-	displayAccessories = true,
-}) => {
-	const isIOS = useIsIOS();
+import { ConditionalTouchable } from '@components/touchable/conditional-touchable';
+import { Text } from '@components/typography/text';
+import { Picker } from '@react-native-picker/picker';
+import { ColorsPathOrHardCoded } from '@theme';
+import { FreudDSIOSPickerView } from './ios-picker-view';
+
+const isIOS = Platform.OS === 'ios';
+
+export const Select: React.FC<SelectProps> = (props) => {
+	const {
+		placeholder,
+		testID,
+		error,
+		options,
+		selected,
+		accessoryViewID,
+		onClose,
+		onOpen,
+		onCancel,
+		onDone,
+		onPress,
+		onSelectedValueChange,
+		nativeID: inputNativeID,
+		inputStyle,
+		cancelText = 'Cancel',
+		doneText = 'Done',
+		cancelAccessibilityLabel = 'Cancel',
+		doneAccessibilityLabel = 'Done',
+		hideCancelButton = false,
+		hideDoneButton = false,
+		customPicker = false,
+		isFocused = false,
+		disabled = false,
+		displayAccessories = true,
+	} = props;
+	const value = '';
+	const [focused, _setFocusedState] = useState(false);
+	const state: InputState =
+		disabled === true
+			? 'disabled'
+			: focused
+			? 'focused'
+			: error
+			? 'error'
+			: value
+			? 'entered'
+			: 'normal';
 
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -67,35 +79,7 @@ export const Select: React.FC<SelectProps> = ({
 		return accessoryViewID ?? `${inputNativeID}-accessory`;
 	}, [accessoryViewID, inputNativeID]);
 
-	const {
-		backgroundColor,
-		normalBorderColor,
-		focusedBorderColor,
-		errorBorderColor,
-		placeholderTextColor,
-		helperTextColor,
-		errorTextColor,
-		selectedItemTextColor,
-		labelColor,
-		iconColor,
-		inputHeight,
-		paddingHorizontal,
-		inputAccessoryPaddingHorizontal,
-		borderRadius,
-		opacity,
-	} = useSelectStyle(disabled, inverted);
-
 	const inputRef = useRef<TextInput>(null);
-
-	const borderColor = useMemo(() => {
-		if (error) {
-			return errorBorderColor;
-		} else if (isFocused) {
-			return focusedBorderColor;
-		} else {
-			return normalBorderColor;
-		}
-	}, [inverted, focusedBorderColor, errorBorderColor, isFocused]);
 
 	const selectedLabel = useMemo(() => {
 		if (!selected) return;
@@ -208,122 +192,85 @@ export const Select: React.FC<SelectProps> = ({
 	}, [isOpen, onClose, onOpen]);
 
 	return (
-		<View
-			testID={testID}
-			style={[
-				styles.container,
-				{
-					opacity: opacity,
-				},
-				style,
-			]}
+		<InputWrapper
+			{...props}
+			theme="Select"
+			state={state}
+			iconName="chevron-down"
+			onIconPress={onChevronPress}
 		>
-			{label ? (
-				<Text
-					testID={`${testID}-label`}
-					color={labelColor}
-					fontWeight="semibold"
-					size="md"
-				>
-					{label}
-				</Text>
-			) : null}
-			<ConditionalTouchable
-				condition={customPicker}
-				onPress={onPressHandler}
-				testID={`${testID}-text-container`}
-				style={[
-					styles.selectContainer,
-					{
-						backgroundColor,
-						borderColor,
-						height: inputHeight,
-						borderRadius: borderRadius,
-						paddingHorizontal: paddingHorizontal,
-					},
-				]}
-			>
-				<Text
-					testID={`${testID}-text`}
-					style={styles.selectValue}
-					bold={!!selectedLabel && !!isFocused && !disabled}
-					color={selectedLabel ? selectedItemTextColor : placeholderTextColor}
-					size="md"
-				>
-					{selectedLabel ?? placeholder}
-				</Text>
-				<TouchableWithoutFeedback
-					style={styles.iconContainer}
-					onPress={onChevronPress}
-				>
-					<Icon name="chevron-down" size="md" color={iconColor} />
-				</TouchableWithoutFeedback>
-
-				<View
-					style={styles.nativePickerContainer}
-					pointerEvents={disabled ? 'none' : undefined}
-				>
-					{renderPicker()}
-				</View>
-			</ConditionalTouchable>
-
-			{error || helperText ? (
-				<Text
-					testID={`${testID}-${helperText ? 'helper-text' : 'error'}`}
-					color={error ? errorTextColor : helperTextColor}
-					bold={!!selectedLabel && isFocused && !disabled}
-				>
-					{error ?? helperText}
-				</Text>
-			) : null}
-			{displayAccessories && isIOS ? (
-				<InputAccessoryView nativeID={inputAccessoryViewID}>
-					<View
-						style={{
-							flex: 1,
-							flexDirection: 'row',
-							justifyContent: 'space-between',
-							display: 'flex',
-							paddingHorizontal: inputAccessoryPaddingHorizontal,
-						}}
+			{(theme) => (
+				<>
+					<ConditionalTouchable
+						condition={customPicker}
+						onPress={onPressHandler}
+						testID={`${testID}-text-container`}
+						style={styles.selectContainer}
 					>
-						<View>
-							{hideCancelButton ? null : (
-								<Button
-									testID={`${testID}-cancel-button`}
-									onPress={onCancelHandler}
-									title={cancelText}
-									accessibilityLabel={cancelAccessibilityLabel}
-								/>
-							)}
+						<Text
+							testID={`${testID}-text`}
+							bold={!!selectedLabel && !!isFocused && !disabled}
+							style={[styles.selectValue, theme.input.style, inputStyle]}
+							color={
+								(selectedLabel
+									? theme.input.style.color
+									: theme.placeholderColor) as ColorsPathOrHardCoded
+							}
+							size="md"
+						>
+							{selectedLabel ?? placeholder}
+						</Text>
+
+						<View
+							style={styles.nativePickerContainer}
+							pointerEvents={disabled ? 'none' : undefined}
+						>
+							{renderPicker()}
 						</View>
-						<View>
-							{hideDoneButton ? null : (
-								<Button
-									testID={`${testID}-done-button`}
-									onPress={onDoneHandler}
-									title={doneText}
-									accessibilityLabel={doneAccessibilityLabel}
-								/>
-							)}
-						</View>
-					</View>
-				</InputAccessoryView>
-			) : null}
-		</View>
+					</ConditionalTouchable>
+					{displayAccessories && isIOS ? (
+						<InputAccessoryView nativeID={inputAccessoryViewID}>
+							<View
+								style={{
+									flex: 1,
+									flexDirection: 'row',
+									justifyContent: 'space-between',
+									display: 'flex',
+									// paddingHorizontal: inputAccessoryPaddingHorizontal,
+								}}
+							>
+								<View>
+									{hideCancelButton ? null : (
+										<Button
+											testID={`${testID}-cancel-button`}
+											onPress={onCancelHandler}
+											title={cancelText}
+											accessibilityLabel={cancelAccessibilityLabel}
+										/>
+									)}
+								</View>
+								<View>
+									{hideDoneButton ? null : (
+										<Button
+											testID={`${testID}-done-button`}
+											onPress={onDoneHandler}
+											title={doneText}
+											accessibilityLabel={doneAccessibilityLabel}
+										/>
+									)}
+								</View>
+							</View>
+						</InputAccessoryView>
+					) : null}
+				</>
+			)}
+		</InputWrapper>
 	);
 };
 
 const styles = StyleSheet.create({
-	container: {
-		flexDirection: 'column',
-		alignItems: 'flex-start',
-	},
 	selectContainer: {
-		flexDirection: 'row',
-		alignItems: 'center',
-		borderWidth: 1,
-		width: '100%',
+		flex: 1,
 	},
 	selectValue: {
 		flex: 1,
@@ -331,9 +278,6 @@ const styles = StyleSheet.create({
 	input: {
 		flex: 1,
 		backgroundColor: 'transparent',
-	},
-	iconContainer: {
-		// marginRight: -4,
 	},
 	nativePickerContainer: {
 		...StyleSheet.absoluteFillObject,

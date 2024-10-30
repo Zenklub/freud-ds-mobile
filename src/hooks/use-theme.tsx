@@ -1,30 +1,56 @@
 import { ThemeContext } from '@theme/theme-provider';
-import { BordersSizes, ShadowSizes, Sizes, SpacingSizes } from '@theme/tokens';
-import { OpacityLevel } from '@theme/tokens/opacity';
-import { RadiiSize } from '@theme/tokens/radius';
-import { Theme } from '@theme/types';
+import {
+	BordersSizes,
+	OpacityLevel,
+	RadiiSize,
+	ShadowSizes,
+	Sizes,
+	SpacingSizes,
+} from '@theme/tokens/tokens';
+import { ThemeValues, Tokens } from '@theme/types';
 import { useContext } from 'react';
 
-type Keys = keyof Theme;
+type TokensKeys = keyof Tokens;
 
-export function useTheme(): Theme;
-export function useTheme<K extends Keys>(key: K): Theme[K];
-export function useTheme<K extends Keys>(key?: K): Theme | Theme[K] {
+export function useFreudThemeContext() {
 	const context = useContext(ThemeContext);
 
-	if (!context?.theme) {
-		throw new Error('useTheme must be used within a ThemeProvider');
+	if (!context?.current) {
+		throw new Error('useFreudTheme must be used within a ThemeProvider');
 	}
+
+	return context;
+}
+
+export function useColorMode(inverted?: boolean) {
+	const context = useFreudThemeContext();
+
+	if (inverted) {
+		return context.mode === 'light' ? 'dark' : 'light';
+	}
+
+	return context.mode;
+}
+
+export function useTokens(): Tokens;
+export function useTokens<K extends TokensKeys>(key: K): Tokens[K];
+export function useTokens<K extends TokensKeys>(key?: K): Tokens | Tokens[K] {
+	const context = useFreudThemeContext();
 
 	if (key) {
-		return context.theme[key];
+		return context.tokens[key];
 	}
 
-	return context.theme;
+	return context.tokens;
+}
+
+export function useTokensLeaves() {
+	const context = useFreudThemeContext();
+	return context.leaves;
 }
 
 export function useRadii(size: RadiiSize | number) {
-	const theme = useTheme('radii');
+	const theme = useTokens('radii');
 
 	if (typeof size === 'number') {
 		return size;
@@ -34,7 +60,7 @@ export function useRadii(size: RadiiSize | number) {
 }
 
 export function useOpacity(opacity: OpacityLevel | number) {
-	const theme = useTheme('opacity');
+	const theme = useTokens('opacity');
 
 	if (typeof opacity === 'number') {
 		return opacity;
@@ -44,7 +70,7 @@ export function useOpacity(opacity: OpacityLevel | number) {
 }
 
 export function useSpacing(spacing: SpacingSizes | number) {
-	const theme = useTheme('spacing');
+	const theme = useTokens('spacing');
 
 	if (typeof spacing === 'number') {
 		return spacing;
@@ -54,7 +80,7 @@ export function useSpacing(spacing: SpacingSizes | number) {
 }
 
 export function useSize(size: Sizes | number) {
-	const theme = useTheme('size');
+	const theme = useTokens('size');
 
 	if (typeof size === 'number') {
 		return size;
@@ -64,13 +90,13 @@ export function useSize(size: Sizes | number) {
 }
 
 export function useShadow(shadow: ShadowSizes) {
-	const theme = useTheme('shadow');
+	const theme = useTokens('shadow');
 
 	return theme[shadow];
 }
 
 export function useBorder(border: BordersSizes | number) {
-	const theme = useTheme('border');
+	const theme = useTokens('border');
 
 	if (typeof border === 'number') {
 		return border;
@@ -79,10 +105,26 @@ export function useBorder(border: BordersSizes | number) {
 	return theme[border];
 }
 
-export function useComponentTheme<K extends keyof Theme['components']>(
-	component: K
-): Theme['components'][K] {
-	const theme = useTheme();
+export function useComponentTheme<K extends keyof ThemeValues>(
+	/**
+	 * The name of the component theme to use.
+	 */
+	name: K,
+	/**
+	 * The color mode to use for the theme. If not provided,
+	 * the current mode defined by system preferences will be used.
+	 */
+	colorMode?: 'light' | 'dark' | 'current'
+): ThemeValues[K] {
+	const context = useFreudThemeContext();
 
-	return theme.components[component];
+	if (colorMode === 'light') {
+		return context.lightTheme[name];
+	}
+
+	if (colorMode === 'dark') {
+		return context.darkTheme[name];
+	}
+
+	return context.current[name];
 }

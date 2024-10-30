@@ -1,0 +1,2847 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Theme > Pre-processors > Universal Processor Should process the theme object 1`] = `
+Object {
+  "Alert": Object {
+    "full": Object {
+      "danger": Object {
+        "body": Object {
+          "props": Object {
+            "size": "sm",
+          },
+          "style": Object {
+            "color": "#1F2937",
+            "fontFamily": "SourceSansPro-Regular",
+            "fontWeight": "400",
+            "marginTop": 8,
+          },
+        },
+        "close": Object {
+          "name": "close",
+          "size": 20,
+          "style": Object {
+            "color": "#1F2937",
+            "marginLeft": 8,
+          },
+        },
+        "icon": Object {
+          "name": "exclamation-triangle",
+          "size": "md",
+          "style": Object {
+            "color": "#FF2026",
+            "marginRight": 11,
+            "marginTop": 4,
+          },
+        },
+        "style": Object {
+          "backgroundColor": "#FFE8E9",
+          "borderColor": "transparent",
+          "borderRadius": 4,
+          "borderWidth": 0,
+          "opacity": 1,
+          "paddingHorizontal": 12,
+          "paddingVertical": 12,
+        },
+        "title": Object {
+          "props": Object {
+            "size": "md",
+          },
+          "style": Object {
+            "color": "#1F2937",
+            "fontFamily": "SourceSansPro-SemiBold",
+            "fontWeight": "600",
+          },
+        },
+      },
+      "info": Object {
+        "body": Object {
+          "props": Object {
+            "size": "sm",
+          },
+          "style": Object {
+            "color": "#1F2937",
+            "fontFamily": "SourceSansPro-Regular",
+            "fontWeight": "400",
+            "marginTop": 8,
+          },
+        },
+        "close": Object {
+          "name": "close",
+          "size": 20,
+          "style": Object {
+            "color": "#1F2937",
+            "marginLeft": 8,
+          },
+        },
+        "icon": Object {
+          "name": "info-circle",
+          "size": "md",
+          "style": Object {
+            "color": "#1764E3",
+            "marginRight": 11,
+            "marginTop": 4,
+          },
+        },
+        "style": Object {
+          "backgroundColor": "#E3EBF9",
+          "borderColor": "transparent",
+          "borderRadius": 4,
+          "borderWidth": 0,
+          "opacity": 1,
+          "paddingHorizontal": 12,
+          "paddingVertical": 12,
+        },
+        "title": Object {
+          "props": Object {
+            "size": "md",
+          },
+          "style": Object {
+            "color": "#1F2937",
+            "fontFamily": "SourceSansPro-SemiBold",
+            "fontWeight": "600",
+          },
+        },
+      },
+      "success": Object {
+        "body": Object {
+          "props": Object {
+            "size": "sm",
+          },
+          "style": Object {
+            "color": "#1F2937",
+            "fontFamily": "SourceSansPro-Regular",
+            "fontWeight": "400",
+            "marginTop": 8,
+          },
+        },
+        "close": Object {
+          "name": "close",
+          "size": 20,
+          "style": Object {
+            "color": "#1F2937",
+            "marginLeft": 8,
+          },
+        },
+        "icon": Object {
+          "name": "check-circle",
+          "size": "md",
+          "style": Object {
+            "color": "#22C55E",
+            "marginRight": 11,
+            "marginTop": 4,
+          },
+        },
+        "style": Object {
+          "backgroundColor": "#DDF3E5",
+          "borderColor": "transparent",
+          "borderRadius": 4,
+          "borderWidth": 0,
+          "opacity": 1,
+          "paddingHorizontal": 12,
+          "paddingVertical": 12,
+        },
+        "title": Object {
+          "props": Object {
+            "size": "md",
+          },
+          "style": Object {
+            "color": "#1F2937",
+            "fontFamily": "SourceSansPro-SemiBold",
+            "fontWeight": "600",
+          },
+        },
+      },
+      "warning": Object {
+        "body": Object {
+          "props": Object {
+            "size": "sm",
+          },
+          "style": Object {
+            "color": "#1F2937",
+            "fontFamily": "SourceSansPro-Regular",
+            "fontWeight": "400",
+            "marginTop": 8,
+          },
+        },
+        "close": Object {
+          "name": "close",
+          "size": 20,
+          "style": Object {
+            "color": "#1F2937",
+            "marginLeft": 8,
+          },
+        },
+        "icon": Object {
+          "name": "exclamation-circle",
+          "size": "md",
+          "style": Object {
+            "color": "#FDBE08",
+            "marginRight": 11,
+            "marginTop": 4,
+          },
+        },
+        "style": Object {
+          "backgroundColor": "#FFF9E8",
+          "borderColor": "transparent",
+          "borderRadius": 4,
+          "borderWidth": 0,
+          "opacity": 1,
+          "paddingHorizontal": 12,
+          "paddingVertical": 12,
+        },
+        "title": Object {
+          "props": Object {
+            "size": "md",
+          },
+          "style": Object {
+            "color": "#1F2937",
+            "fontFamily": "SourceSansPro-SemiBold",
+            "fontWeight": "600",
+          },
+        },
+      },
+    },
+    "titleOnly": Object {
+      "danger": Object {
+        "body": Object {
+          "props": Object {
+            "size": "sm",
+          },
+          "style": Object {
+            "color": "#1F2937",
+            "fontFamily": "SourceSansPro-Regular",
+            "fontWeight": "400",
+            "marginTop": 8,
+          },
+        },
+        "close": Object {
+          "name": "close",
+          "size": 20,
+          "style": Object {
+            "color": "#1F2937",
+            "marginLeft": 8,
+          },
+        },
+        "icon": Object {
+          "name": "exclamation-triangle",
+          "size": "md",
+          "style": Object {
+            "color": "#FF2026",
+            "marginRight": 11,
+            "marginTop": -2,
+          },
+        },
+        "style": Object {
+          "backgroundColor": "#FFE8E9",
+          "borderColor": "transparent",
+          "borderRadius": 4,
+          "borderWidth": 0,
+          "opacity": 1,
+          "paddingBottom": 13.5,
+          "paddingHorizontal": 13.5,
+          "paddingTop": 15.5,
+          "paddingVertical": 12,
+        },
+        "title": Object {
+          "props": Object {
+            "size": "sm",
+          },
+          "style": Object {
+            "color": "#1F2937",
+            "fontFamily": "SourceSansPro-SemiBold",
+            "fontWeight": "600",
+          },
+        },
+      },
+      "info": Object {
+        "body": Object {
+          "props": Object {
+            "size": "sm",
+          },
+          "style": Object {
+            "color": "#1F2937",
+            "fontFamily": "SourceSansPro-Regular",
+            "fontWeight": "400",
+            "marginTop": 8,
+          },
+        },
+        "close": Object {
+          "name": "close",
+          "size": 20,
+          "style": Object {
+            "color": "#1F2937",
+            "marginLeft": 8,
+          },
+        },
+        "icon": Object {
+          "name": "info-circle",
+          "size": "md",
+          "style": Object {
+            "color": "#1764E3",
+            "marginRight": 11,
+            "marginTop": -2,
+          },
+        },
+        "style": Object {
+          "backgroundColor": "#E3EBF9",
+          "borderColor": "transparent",
+          "borderRadius": 4,
+          "borderWidth": 0,
+          "opacity": 1,
+          "paddingBottom": 13.5,
+          "paddingHorizontal": 13.5,
+          "paddingTop": 15.5,
+          "paddingVertical": 12,
+        },
+        "title": Object {
+          "props": Object {
+            "size": "sm",
+          },
+          "style": Object {
+            "color": "#1F2937",
+            "fontFamily": "SourceSansPro-SemiBold",
+            "fontWeight": "600",
+          },
+        },
+      },
+      "success": Object {
+        "body": Object {
+          "props": Object {
+            "size": "sm",
+          },
+          "style": Object {
+            "color": "#1F2937",
+            "fontFamily": "SourceSansPro-Regular",
+            "fontWeight": "400",
+            "marginTop": 8,
+          },
+        },
+        "close": Object {
+          "name": "close",
+          "size": 20,
+          "style": Object {
+            "color": "#1F2937",
+            "marginLeft": 8,
+          },
+        },
+        "icon": Object {
+          "name": "check-circle",
+          "size": "md",
+          "style": Object {
+            "color": "#22C55E",
+            "marginRight": 11,
+            "marginTop": -2,
+          },
+        },
+        "style": Object {
+          "backgroundColor": "#DDF3E5",
+          "borderColor": "transparent",
+          "borderRadius": 4,
+          "borderWidth": 0,
+          "opacity": 1,
+          "paddingBottom": 13.5,
+          "paddingHorizontal": 13.5,
+          "paddingTop": 15.5,
+          "paddingVertical": 12,
+        },
+        "title": Object {
+          "props": Object {
+            "size": "sm",
+          },
+          "style": Object {
+            "color": "#1F2937",
+            "fontFamily": "SourceSansPro-SemiBold",
+            "fontWeight": "600",
+          },
+        },
+      },
+      "warning": Object {
+        "body": Object {
+          "props": Object {
+            "size": "sm",
+          },
+          "style": Object {
+            "color": "#1F2937",
+            "fontFamily": "SourceSansPro-Regular",
+            "fontWeight": "400",
+            "marginTop": 8,
+          },
+        },
+        "close": Object {
+          "name": "close",
+          "size": 20,
+          "style": Object {
+            "color": "#1F2937",
+            "marginLeft": 8,
+          },
+        },
+        "icon": Object {
+          "name": "exclamation-circle",
+          "size": "md",
+          "style": Object {
+            "color": "#FDBE08",
+            "marginRight": 11,
+            "marginTop": -2,
+          },
+        },
+        "style": Object {
+          "backgroundColor": "#FFF9E8",
+          "borderColor": "transparent",
+          "borderRadius": 4,
+          "borderWidth": 0,
+          "opacity": 1,
+          "paddingBottom": 13.5,
+          "paddingHorizontal": 13.5,
+          "paddingTop": 15.5,
+          "paddingVertical": 12,
+        },
+        "title": Object {
+          "props": Object {
+            "size": "sm",
+          },
+          "style": Object {
+            "color": "#1F2937",
+            "fontFamily": "SourceSansPro-SemiBold",
+            "fontWeight": "600",
+          },
+        },
+      },
+    },
+  },
+  "Button": Object {
+    "sizes": Object {
+      "lg": Object {
+        "icon": Object {
+          "size": "md",
+        },
+        "spinner": Object {
+          "size": "small",
+        },
+        "style": Object {
+          "height": 48,
+          "paddingHorizontal": 12,
+          "paddingVertical": 12,
+        },
+        "text": Object {
+          "props": Object {
+            "size": "md",
+          },
+          "style": Object {
+            "fontFamily": "typography.families.body.typography.fontWeights.regular",
+          },
+        },
+      },
+      "md": Object {
+        "icon": Object {
+          "size": "sm",
+          "style": Object {
+            "marginTop": -2,
+          },
+        },
+        "spinner": Object {
+          "size": "small",
+        },
+        "style": Object {
+          "height": 40,
+          "paddingHorizontal": 12,
+          "paddingTop": 12,
+          "paddingVertical": 11,
+        },
+        "text": Object {
+          "props": Object {
+            "size": "xs",
+          },
+          "style": Object {
+            "fontFamily": "typography.families.body.typography.fontWeights.regular",
+          },
+        },
+      },
+      "sm": Object {
+        "icon": Object {
+          "size": "sm",
+          "style": Object {
+            "marginTop": -4,
+          },
+        },
+        "spinner": Object {
+          "size": "small",
+        },
+        "style": Object {
+          "height": 32,
+          "paddingHorizontal": 12,
+          "paddingTop": 11.5,
+          "paddingVertical": 8.5,
+        },
+        "text": Object {
+          "props": Object {
+            "size": "2xs",
+          },
+          "style": Object {
+            "fontFamily": "typography.families.body.typography.fontWeights.regular",
+          },
+        },
+      },
+    },
+    "variants": Object {
+      "ghost": Object {
+        "active": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#6732D1",
+              "marginLeft": 4,
+            },
+          },
+          "spinner": Object {
+            "style": Object {
+              "color": "#6732D1",
+              "marginLeft": 8,
+            },
+          },
+          "style": Object {
+            "backgroundColor": "#EEE6FC",
+            "borderColor": "#EEE6FC",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "color": "#6732D1",
+            "opacity": 1,
+          },
+          "text": Object {
+            "props": Object {
+              "size": "sm",
+            },
+            "style": Object {
+              "color": "#6732D1",
+              "fontFamily": "SourceSansPro-Regular",
+              "fontWeight": "400",
+            },
+          },
+        },
+        "disabled": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#6732D1",
+              "marginLeft": 4,
+            },
+          },
+          "spinner": Object {
+            "style": Object {
+              "marginLeft": 8,
+            },
+          },
+          "style": Object {
+            "backgroundColor": "transparent",
+            "borderColor": "transparent",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "color": "#6732D1",
+            "opacity": 0.4,
+          },
+          "text": Object {
+            "props": Object {
+              "size": "sm",
+            },
+            "style": Object {
+              "color": "#6732D1",
+              "fontFamily": "SourceSansPro-Regular",
+              "fontWeight": "400",
+            },
+          },
+        },
+        "focus": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#6732D1",
+              "marginLeft": 4,
+            },
+          },
+          "spinner": Object {
+            "style": Object {
+              "marginLeft": 8,
+            },
+          },
+          "style": Object {
+            "backgroundColor": "transparent",
+            "borderColor": "#5127A4",
+            "borderRadius": 4,
+            "borderWidth": 2,
+            "color": "#6732D1",
+            "opacity": 1,
+          },
+          "text": Object {
+            "props": Object {
+              "size": "sm",
+            },
+            "style": Object {
+              "color": "#6732D1",
+              "fontFamily": "SourceSansPro-Regular",
+              "fontWeight": "400",
+            },
+          },
+        },
+        "loading": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#6732D1",
+              "marginLeft": 4,
+            },
+          },
+          "spinner": Object {
+            "style": Object {
+              "marginLeft": 8,
+            },
+          },
+          "style": Object {
+            "backgroundColor": "transparent",
+            "borderColor": "transparent",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "color": "#6732D1",
+            "opacity": 0.64,
+          },
+          "text": Object {
+            "props": Object {
+              "size": "sm",
+            },
+            "style": Object {
+              "color": "#6732D1",
+              "fontFamily": "SourceSansPro-Regular",
+              "fontWeight": "400",
+            },
+          },
+        },
+        "normal": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#6732D1",
+              "marginLeft": 4,
+            },
+          },
+          "spinner": Object {
+            "style": Object {
+              "marginLeft": 8,
+            },
+          },
+          "style": Object {
+            "backgroundColor": "transparent",
+            "borderColor": "transparent",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "color": "#6732D1",
+            "opacity": 1,
+          },
+          "text": Object {
+            "props": Object {
+              "size": "sm",
+            },
+            "style": Object {
+              "color": "#6732D1",
+              "fontFamily": "SourceSansPro-Regular",
+              "fontWeight": "400",
+            },
+          },
+        },
+      },
+      "outline": Object {
+        "active": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#6732D1",
+              "marginLeft": 4,
+            },
+          },
+          "spinner": Object {
+            "style": Object {
+              "color": "#6732D1",
+              "marginLeft": 8,
+            },
+          },
+          "style": Object {
+            "backgroundColor": "#EEE6FC",
+            "borderColor": "#EEE6FC",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "color": "#6732D1",
+            "opacity": 1,
+          },
+          "text": Object {
+            "props": Object {
+              "size": "sm",
+            },
+            "style": Object {
+              "color": "#6732D1",
+              "fontFamily": "SourceSansPro-Regular",
+              "fontWeight": "400",
+            },
+          },
+        },
+        "disabled": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#6732D1",
+              "marginLeft": 4,
+            },
+          },
+          "spinner": Object {
+            "style": Object {
+              "marginLeft": 8,
+            },
+          },
+          "style": Object {
+            "backgroundColor": "transparent",
+            "borderColor": "#6732D1",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "color": "#6732D1",
+            "opacity": 0.4,
+          },
+          "text": Object {
+            "props": Object {
+              "size": "sm",
+            },
+            "style": Object {
+              "color": "#6732D1",
+              "fontFamily": "SourceSansPro-Regular",
+              "fontWeight": "400",
+            },
+          },
+        },
+        "focus": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#6732D1",
+              "marginLeft": 4,
+            },
+          },
+          "spinner": Object {
+            "style": Object {
+              "marginLeft": 8,
+            },
+          },
+          "style": Object {
+            "backgroundColor": "transparent",
+            "borderColor": "#5127A4",
+            "borderRadius": 4,
+            "borderWidth": 2,
+            "color": "#6732D1",
+            "opacity": 1,
+          },
+          "text": Object {
+            "props": Object {
+              "size": "sm",
+            },
+            "style": Object {
+              "color": "#6732D1",
+              "fontFamily": "SourceSansPro-Regular",
+              "fontWeight": "400",
+            },
+          },
+        },
+        "loading": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#6732D1",
+              "marginLeft": 4,
+            },
+          },
+          "spinner": Object {
+            "style": Object {
+              "marginLeft": 8,
+            },
+          },
+          "style": Object {
+            "backgroundColor": "transparent",
+            "borderColor": "#6732D1",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "color": "#6732D1",
+            "opacity": 0.64,
+          },
+          "text": Object {
+            "props": Object {
+              "size": "sm",
+            },
+            "style": Object {
+              "color": "#6732D1",
+              "fontFamily": "SourceSansPro-Regular",
+              "fontWeight": "400",
+            },
+          },
+        },
+        "normal": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#6732D1",
+              "marginLeft": 4,
+            },
+          },
+          "spinner": Object {
+            "style": Object {
+              "marginLeft": 8,
+            },
+          },
+          "style": Object {
+            "backgroundColor": "transparent",
+            "borderColor": "#6732D1",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "color": "#6732D1",
+            "opacity": 1,
+          },
+          "text": Object {
+            "props": Object {
+              "size": "sm",
+            },
+            "style": Object {
+              "color": "#6732D1",
+              "fontFamily": "SourceSansPro-Regular",
+              "fontWeight": "400",
+            },
+          },
+        },
+      },
+      "solid": Object {
+        "active": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#6732D1",
+              "marginLeft": 4,
+            },
+          },
+          "spinner": Object {
+            "style": Object {
+              "color": "#6732D1",
+              "marginLeft": 8,
+            },
+          },
+          "style": Object {
+            "backgroundColor": "#EEE6FC",
+            "borderColor": "#EEE6FC",
+            "borderRadius": 8,
+            "borderWidth": 1,
+            "color": "#6732D1",
+            "opacity": 1,
+          },
+          "text": Object {
+            "props": Object {
+              "size": "sm",
+            },
+            "style": Object {
+              "color": "#6732D1",
+              "fontFamily": "SourceSansPro-Regular",
+              "fontWeight": "400",
+            },
+          },
+        },
+        "disabled": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#F7F9FA",
+              "marginLeft": 4,
+            },
+          },
+          "spinner": Object {
+            "style": Object {
+              "color": "#F7F9FA",
+              "marginLeft": 8,
+            },
+          },
+          "style": Object {
+            "backgroundColor": "#6732D1",
+            "borderColor": "#6732D1",
+            "borderRadius": 8,
+            "borderWidth": 1,
+            "color": "#FFFFFF",
+            "opacity": 0.4,
+          },
+          "text": Object {
+            "props": Object {
+              "size": "sm",
+            },
+            "style": Object {
+              "color": "#F7F9FA",
+              "fontFamily": "SourceSansPro-Regular",
+              "fontWeight": "400",
+            },
+          },
+        },
+        "focus": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#F7F9FA",
+              "marginLeft": 4,
+            },
+          },
+          "spinner": Object {
+            "style": Object {
+              "color": "#F7F9FA",
+              "marginLeft": 8,
+            },
+          },
+          "style": Object {
+            "backgroundColor": "#6732D1",
+            "borderColor": "#5127A4",
+            "borderRadius": 8,
+            "borderWidth": 2,
+            "color": "#FFFFFF",
+            "opacity": 1,
+          },
+          "text": Object {
+            "props": Object {
+              "size": "sm",
+            },
+            "style": Object {
+              "color": "#F7F9FA",
+              "fontFamily": "SourceSansPro-Regular",
+              "fontWeight": "400",
+            },
+          },
+        },
+        "loading": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#F7F9FA",
+              "marginLeft": 4,
+            },
+          },
+          "spinner": Object {
+            "style": Object {
+              "color": "#F7F9FA",
+              "marginLeft": 8,
+            },
+          },
+          "style": Object {
+            "backgroundColor": "#6732D1",
+            "borderColor": "#6732D1",
+            "borderRadius": 8,
+            "borderWidth": 1,
+            "color": "#FFFFFF",
+            "opacity": 0.64,
+          },
+          "text": Object {
+            "props": Object {
+              "size": "sm",
+            },
+            "style": Object {
+              "color": "#F7F9FA",
+              "fontFamily": "SourceSansPro-Regular",
+              "fontWeight": "400",
+            },
+          },
+        },
+        "normal": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#F7F9FA",
+              "marginLeft": 4,
+            },
+          },
+          "spinner": Object {
+            "style": Object {
+              "color": "#F7F9FA",
+              "marginLeft": 8,
+            },
+          },
+          "style": Object {
+            "backgroundColor": "#6732D1",
+            "borderColor": "#6732D1",
+            "borderRadius": 8,
+            "borderWidth": 1,
+            "color": "#FFFFFF",
+            "opacity": 1,
+          },
+          "text": Object {
+            "props": Object {
+              "size": "sm",
+            },
+            "style": Object {
+              "color": "#F7F9FA",
+              "fontFamily": "SourceSansPro-Regular",
+              "fontWeight": "400",
+            },
+          },
+        },
+      },
+    },
+  },
+  "CheckBox": Object {
+    "checked": Object {
+      "box": Object {
+        "style": Object {
+          "backgroundColor": "#6732D1",
+          "borderColor": "#6732D1",
+          "borderRadius": 4,
+          "borderWidth": 2,
+          "height": 20,
+          "width": 20,
+        },
+      },
+      "check": Object {
+        "name": "check",
+        "size": 16,
+        "style": Object {
+          "color": "#FFFFFF",
+          "marginLeft": 0.5,
+          "marginTop": 0.5,
+        },
+      },
+      "label": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "typography.families.body.typography.fontWeights.regular",
+          "marginLeft": 6,
+        },
+      },
+      "style": Object {
+        "borderColor": "transparent",
+        "borderRadius": 6,
+        "borderWidth": 2,
+      },
+    },
+    "disabled": Object {
+      "box": Object {
+        "style": Object {
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#D1D5DB",
+          "borderRadius": 4,
+          "borderWidth": 2,
+          "height": 20,
+          "width": 20,
+        },
+      },
+      "check": Object {
+        "name": "check",
+        "size": 16,
+        "style": Object {
+          "color": "transparent",
+          "marginLeft": 0.5,
+          "marginTop": 0.5,
+        },
+      },
+      "label": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "typography.families.body.typography.fontWeights.regular",
+          "marginLeft": 6,
+        },
+      },
+      "style": Object {
+        "borderColor": "transparent",
+        "borderRadius": 6,
+        "borderWidth": 2,
+        "opacity": 0.4,
+      },
+    },
+    "disabledChecked": Object {
+      "box": Object {
+        "style": Object {
+          "backgroundColor": "#6732D1",
+          "borderColor": "#6732D1",
+          "borderRadius": 4,
+          "borderWidth": 2,
+          "height": 20,
+          "width": 20,
+        },
+      },
+      "check": Object {
+        "name": "check",
+        "size": 16,
+        "style": Object {
+          "color": "#FFFFFF",
+          "marginLeft": 0.5,
+          "marginTop": 0.5,
+        },
+      },
+      "label": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "typography.families.body.typography.fontWeights.regular",
+          "marginLeft": 6,
+        },
+      },
+      "style": Object {
+        "borderColor": "transparent",
+        "borderRadius": 6,
+        "borderWidth": 2,
+        "opacity": 0.4,
+      },
+    },
+    "focused": Object {
+      "box": Object {
+        "style": Object {
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#D1D5DB",
+          "borderRadius": 4,
+          "borderWidth": 2,
+          "height": 20,
+          "width": 20,
+        },
+      },
+      "check": Object {
+        "name": "check",
+        "size": 16,
+        "style": Object {
+          "color": "transparent",
+          "marginLeft": 0.5,
+          "marginTop": 0.5,
+        },
+      },
+      "label": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "typography.families.body.typography.fontWeights.regular",
+          "marginLeft": 6,
+        },
+      },
+      "style": Object {
+        "borderColor": "#6732D1",
+        "borderRadius": 6,
+        "borderWidth": 2,
+      },
+    },
+    "focusedChecked": Object {
+      "box": Object {
+        "style": Object {
+          "backgroundColor": "#6732D1",
+          "borderColor": "#6732D1",
+          "borderRadius": 4,
+          "borderWidth": 2,
+          "height": 20,
+          "width": 20,
+        },
+      },
+      "check": Object {
+        "name": "check",
+        "size": 16,
+        "style": Object {
+          "color": "#FFFFFF",
+          "marginLeft": 0.5,
+          "marginTop": 0.5,
+        },
+      },
+      "label": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "typography.families.body.typography.fontWeights.regular",
+          "marginLeft": 6,
+        },
+      },
+      "style": Object {
+        "borderColor": "#6732D1",
+        "borderRadius": 6,
+        "borderWidth": 2,
+      },
+    },
+    "normal": Object {
+      "box": Object {
+        "style": Object {
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#D1D5DB",
+          "borderRadius": 4,
+          "borderWidth": 2,
+          "height": 20,
+          "width": 20,
+        },
+      },
+      "check": Object {
+        "name": "check",
+        "size": 16,
+        "style": Object {
+          "color": "transparent",
+          "marginLeft": 0.5,
+          "marginTop": 0.5,
+        },
+      },
+      "label": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "typography.families.body.typography.fontWeights.regular",
+          "marginLeft": 6,
+        },
+      },
+      "style": Object {
+        "borderColor": "transparent",
+        "borderRadius": 6,
+        "borderWidth": 2,
+      },
+    },
+  },
+  "Heading": Object {
+    "sizes": Object {
+      "2xl": Object {
+        "style": Object {
+          "fontFamily": "SourceSansPro-Bold",
+          "fontSize": 40,
+          "fontWeight": "700",
+          "lineHeight": 60,
+        },
+      },
+      "3xl": Object {
+        "style": Object {
+          "fontFamily": "SourceSansPro-Bold",
+          "fontSize": 48,
+          "fontWeight": "700",
+          "lineHeight": 72,
+        },
+      },
+      "4xl": Object {
+        "style": Object {
+          "fontFamily": "SourceSansPro-Bold",
+          "fontSize": 56,
+          "fontWeight": "700",
+          "lineHeight": 84,
+        },
+      },
+      "lg": Object {
+        "style": Object {
+          "fontFamily": "SourceSansPro-Bold",
+          "fontSize": 24,
+          "fontWeight": "700",
+          "lineHeight": 36,
+        },
+      },
+      "md": Object {
+        "style": Object {
+          "fontFamily": "SourceSansPro-Bold",
+          "fontSize": 20,
+          "fontWeight": "700",
+          "lineHeight": 30,
+        },
+      },
+      "sm": Object {
+        "style": Object {
+          "fontFamily": "SourceSansPro-Bold",
+          "fontSize": 16,
+          "fontWeight": "700",
+          "lineHeight": 24,
+        },
+      },
+      "xl": Object {
+        "style": Object {
+          "fontFamily": "SourceSansPro-Bold",
+          "fontSize": 40,
+          "fontWeight": "700",
+          "lineHeight": 60,
+        },
+      },
+      "xs": Object {
+        "style": Object {
+          "fontFamily": "SourceSansPro-Bold",
+          "fontSize": 14,
+          "fontWeight": "700",
+          "lineHeight": 21,
+        },
+      },
+    },
+    "style": Object {
+      "color": "#000000",
+    },
+  },
+  "Icon": Object {
+    "sizes": Object {
+      "lg": Object {
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "freud-icon",
+          "fontSize": 32,
+          "lineHeight": 32,
+        },
+      },
+      "md": Object {
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "freud-icon",
+          "fontSize": 24,
+          "lineHeight": 24,
+        },
+      },
+      "sm": Object {
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "freud-icon",
+          "fontSize": 16,
+          "lineHeight": 16,
+        },
+      },
+      "xs": Object {
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "freud-icon",
+          "fontSize": 14,
+          "lineHeight": 14,
+        },
+      },
+    },
+  },
+  "IconButton": Object {
+    "sizes": Object {
+      "lg": Object {
+        "icon": Object {
+          "size": "md",
+        },
+        "spinner": Object {
+          "size": "small",
+        },
+        "style": Object {
+          "borderRadius": 4,
+          "height": 48,
+          "width": 48,
+        },
+      },
+      "md": Object {
+        "icon": Object {
+          "size": "md",
+        },
+        "spinner": Object {
+          "size": "small",
+        },
+        "style": Object {
+          "borderRadius": 4,
+          "height": 40,
+          "width": 40,
+        },
+      },
+      "sm": Object {
+        "icon": Object {
+          "size": "md",
+        },
+        "spinner": Object {
+          "size": "small",
+        },
+        "style": Object {
+          "borderRadius": 4,
+          "height": 32,
+          "width": 32,
+        },
+      },
+      "xs": Object {
+        "icon": Object {
+          "size": "sm",
+        },
+        "spinner": Object {
+          "size": "small",
+        },
+        "style": Object {
+          "borderRadius": 4,
+          "height": 24,
+          "width": 24,
+        },
+      },
+    },
+    "variants": Object {
+      "ghost": Object {
+        "active": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#6732D1",
+            },
+          },
+          "spinner": Object {
+            "size": "small",
+            "style": Object {
+              "color": "#6732D1",
+            },
+          },
+          "style": Object {
+            "backgroundColor": "#EEE6FC",
+            "borderColor": "#EEE6FC",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "color": "#6732D1",
+            "opacity": 1,
+          },
+        },
+        "disabled": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#6732D1",
+            },
+          },
+          "spinner": Object {
+            "size": "small",
+            "style": Object {
+              "color": "#F7F9FA",
+            },
+          },
+          "style": Object {
+            "backgroundColor": "transparent",
+            "borderColor": "transparent",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "color": "#6732D1",
+            "opacity": 0.4,
+          },
+        },
+        "focus": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#6732D1",
+            },
+          },
+          "spinner": Object {
+            "size": "small",
+            "style": Object {
+              "color": "#F7F9FA",
+            },
+          },
+          "style": Object {
+            "backgroundColor": "transparent",
+            "borderColor": "#5127A4",
+            "borderRadius": 4,
+            "borderWidth": 2,
+            "color": "#6732D1",
+            "opacity": 1,
+          },
+        },
+        "loading": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#6732D1",
+            },
+          },
+          "spinner": Object {
+            "size": "small",
+            "style": Object {
+              "color": "#F7F9FA",
+            },
+          },
+          "style": Object {
+            "backgroundColor": "transparent",
+            "borderColor": "transparent",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "color": "#6732D1",
+            "opacity": 0.64,
+          },
+        },
+        "normal": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#6732D1",
+            },
+          },
+          "spinner": Object {
+            "size": "small",
+            "style": Object {
+              "color": "#F7F9FA",
+            },
+          },
+          "style": Object {
+            "backgroundColor": "transparent",
+            "borderColor": "transparent",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "color": "#6732D1",
+            "opacity": 1,
+          },
+        },
+      },
+      "outline": Object {
+        "active": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#6732D1",
+            },
+          },
+          "spinner": Object {
+            "size": "small",
+            "style": Object {
+              "color": "#6732D1",
+            },
+          },
+          "style": Object {
+            "backgroundColor": "#EEE6FC",
+            "borderColor": "#EEE6FC",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "color": "#6732D1",
+            "opacity": 1,
+          },
+        },
+        "disabled": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#6732D1",
+            },
+          },
+          "spinner": Object {
+            "size": "small",
+            "style": Object {
+              "color": "#F7F9FA",
+            },
+          },
+          "style": Object {
+            "backgroundColor": "transparent",
+            "borderColor": "#6732D1",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "color": "#6732D1",
+            "opacity": 0.4,
+          },
+        },
+        "focus": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#6732D1",
+            },
+          },
+          "spinner": Object {
+            "size": "small",
+            "style": Object {
+              "color": "#F7F9FA",
+            },
+          },
+          "style": Object {
+            "backgroundColor": "transparent",
+            "borderColor": "#5127A4",
+            "borderRadius": 4,
+            "borderWidth": 2,
+            "color": "#6732D1",
+            "opacity": 1,
+          },
+        },
+        "loading": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#6732D1",
+            },
+          },
+          "spinner": Object {
+            "size": "small",
+            "style": Object {
+              "color": "#F7F9FA",
+            },
+          },
+          "style": Object {
+            "backgroundColor": "transparent",
+            "borderColor": "#6732D1",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "color": "#6732D1",
+            "opacity": 0.64,
+          },
+        },
+        "normal": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#6732D1",
+            },
+          },
+          "spinner": Object {
+            "size": "small",
+            "style": Object {
+              "color": "#F7F9FA",
+            },
+          },
+          "style": Object {
+            "backgroundColor": "transparent",
+            "borderColor": "#6732D1",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "color": "#6732D1",
+            "opacity": 1,
+          },
+        },
+      },
+      "solid": Object {
+        "active": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#6732D1",
+            },
+          },
+          "spinner": Object {
+            "size": "small",
+            "style": Object {
+              "color": "#6732D1",
+            },
+          },
+          "style": Object {
+            "backgroundColor": "#EEE6FC",
+            "borderColor": "#EEE6FC",
+            "borderRadius": 8,
+            "borderWidth": 1,
+            "color": "#6732D1",
+            "opacity": 1,
+          },
+        },
+        "disabled": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#F7F9FA",
+            },
+          },
+          "spinner": Object {
+            "size": "small",
+            "style": Object {
+              "color": "#F7F9FA",
+            },
+          },
+          "style": Object {
+            "backgroundColor": "#6732D1",
+            "borderColor": "#6732D1",
+            "borderRadius": 8,
+            "borderWidth": 1,
+            "color": "#FFFFFF",
+            "opacity": 0.4,
+          },
+        },
+        "focus": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#F7F9FA",
+            },
+          },
+          "spinner": Object {
+            "size": "small",
+            "style": Object {
+              "color": "#F7F9FA",
+            },
+          },
+          "style": Object {
+            "backgroundColor": "#6732D1",
+            "borderColor": "#5127A4",
+            "borderRadius": 8,
+            "borderWidth": 2,
+            "color": "#FFFFFF",
+            "opacity": 1,
+          },
+        },
+        "loading": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#F7F9FA",
+            },
+          },
+          "spinner": Object {
+            "size": "small",
+            "style": Object {
+              "color": "#F7F9FA",
+            },
+          },
+          "style": Object {
+            "backgroundColor": "#6732D1",
+            "borderColor": "#6732D1",
+            "borderRadius": 8,
+            "borderWidth": 1,
+            "color": "#FFFFFF",
+            "opacity": 0.64,
+          },
+        },
+        "normal": Object {
+          "icon": Object {
+            "name": "accessible",
+            "size": "md",
+            "style": Object {
+              "color": "#F7F9FA",
+            },
+          },
+          "spinner": Object {
+            "size": "small",
+            "style": Object {
+              "color": "#F7F9FA",
+            },
+          },
+          "style": Object {
+            "backgroundColor": "#6732D1",
+            "borderColor": "#6732D1",
+            "borderRadius": 8,
+            "borderWidth": 1,
+            "color": "#FFFFFF",
+            "opacity": 1,
+          },
+        },
+      },
+    },
+  },
+  "Popover": Object {
+    "animation": Object {
+      "duration": 200,
+    },
+    "arrow": Object {
+      "style": Object {
+        "height": 10,
+        "width": 10,
+      },
+    },
+    "backdropColor": "transparent",
+    "spaceToStartAnimation": 4,
+    "style": Object {
+      "backgroundColor": "#384252",
+      "borderRadius": 8,
+      "elevation": 4,
+      "paddingHorizontal": 12,
+      "paddingVertical": 4,
+      "shadowColor": "rgba(31, 41, 55, 0.14)",
+      "shadowOffset": Object {
+        "height": 2,
+        "width": 0,
+      },
+      "shadowOpacity": 0.14,
+      "shadowRadius": 8,
+    },
+    "text": Object {
+      "props": Object {
+        "size": "sm",
+      },
+      "style": Object {
+        "fontFamily": "typography.families.body.typography.fontWeights.regular",
+      },
+    },
+  },
+  "Radio": Object {
+    "disabled": Object {
+      "box": Object {
+        "style": Object {
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#D1D5DB",
+          "borderRadius": 999,
+          "borderWidth": 2,
+          "height": 20,
+          "width": 20,
+        },
+      },
+      "indicator": Object {
+        "style": Object {
+          "backgroundColor": "transparent",
+          "borderRadius": 999,
+          "height": 10,
+          "width": 10,
+        },
+      },
+      "label": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "typography.families.body.typography.fontWeights.regular",
+          "marginLeft": 6,
+        },
+      },
+      "outer": Object {
+        "style": Object {
+          "borderColor": "transparent",
+          "borderRadius": 999,
+          "borderWidth": 2,
+        },
+      },
+      "style": Object {
+        "opacity": 0.4,
+      },
+    },
+    "disabledSelected": Object {
+      "box": Object {
+        "style": Object {
+          "backgroundColor": "#6732D1",
+          "borderColor": "#6732D1",
+          "borderRadius": 999,
+          "borderWidth": 2,
+          "height": 20,
+          "width": 20,
+        },
+      },
+      "indicator": Object {
+        "style": Object {
+          "backgroundColor": "#FFFFFF",
+          "borderRadius": 999,
+          "height": 10,
+          "width": 10,
+        },
+      },
+      "label": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "typography.families.body.typography.fontWeights.regular",
+          "marginLeft": 6,
+        },
+      },
+      "outer": Object {
+        "style": Object {
+          "borderColor": "transparent",
+          "borderRadius": 999,
+          "borderWidth": 2,
+        },
+      },
+      "style": Object {
+        "opacity": 0.4,
+      },
+    },
+    "focused": Object {
+      "box": Object {
+        "style": Object {
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#D1D5DB",
+          "borderRadius": 999,
+          "borderWidth": 2,
+          "height": 20,
+          "width": 20,
+        },
+      },
+      "indicator": Object {
+        "style": Object {
+          "backgroundColor": "transparent",
+          "borderRadius": 999,
+          "height": 10,
+          "width": 10,
+        },
+      },
+      "label": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "typography.families.body.typography.fontWeights.regular",
+          "marginLeft": 6,
+        },
+      },
+      "outer": Object {
+        "style": Object {
+          "borderColor": "#6732D1",
+          "borderRadius": 999,
+          "borderWidth": 2,
+        },
+      },
+    },
+    "focusedSelected": Object {
+      "box": Object {
+        "style": Object {
+          "backgroundColor": "#6732D1",
+          "borderColor": "#6732D1",
+          "borderRadius": 999,
+          "borderWidth": 2,
+          "height": 20,
+          "width": 20,
+        },
+      },
+      "indicator": Object {
+        "style": Object {
+          "backgroundColor": "#FFFFFF",
+          "borderRadius": 999,
+          "height": 10,
+          "width": 10,
+        },
+      },
+      "label": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "typography.families.body.typography.fontWeights.regular",
+          "marginLeft": 6,
+        },
+      },
+      "outer": Object {
+        "style": Object {
+          "borderColor": "#6732D1",
+          "borderRadius": 999,
+          "borderWidth": 2,
+        },
+      },
+    },
+    "normal": Object {
+      "box": Object {
+        "style": Object {
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#D1D5DB",
+          "borderRadius": 999,
+          "borderWidth": 2,
+          "height": 20,
+          "width": 20,
+        },
+      },
+      "indicator": Object {
+        "style": Object {
+          "backgroundColor": "transparent",
+          "borderRadius": 999,
+          "height": 10,
+          "width": 10,
+        },
+      },
+      "label": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "typography.families.body.typography.fontWeights.regular",
+          "marginLeft": 6,
+        },
+      },
+      "outer": Object {
+        "style": Object {
+          "borderColor": "transparent",
+          "borderRadius": 999,
+          "borderWidth": 2,
+        },
+      },
+    },
+    "selected": Object {
+      "box": Object {
+        "style": Object {
+          "backgroundColor": "#6732D1",
+          "borderColor": "#6732D1",
+          "borderRadius": 999,
+          "borderWidth": 2,
+          "height": 20,
+          "width": 20,
+        },
+      },
+      "indicator": Object {
+        "style": Object {
+          "backgroundColor": "#FFFFFF",
+          "borderRadius": 999,
+          "height": 10,
+          "width": 10,
+        },
+      },
+      "label": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "typography.families.body.typography.fontWeights.regular",
+          "marginLeft": 6,
+        },
+      },
+      "outer": Object {
+        "style": Object {
+          "borderColor": "transparent",
+          "borderRadius": 999,
+          "borderWidth": 2,
+        },
+      },
+    },
+  },
+  "Select": Object {
+    "disabled": Object {
+      "errorText": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "400",
+          "marginTop": 4,
+          "opacity": 1,
+        },
+      },
+      "helperText": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "400",
+          "marginTop": 4,
+          "opacity": 1,
+        },
+      },
+      "icon": Object {
+        "size": "md",
+        "style": Object {
+          "color": "#6B7280",
+          "opacity": 1,
+        },
+      },
+      "iconContainer": Object {
+        "style": Object {
+          "paddingHorizontal": 10,
+          "paddingVertical": 6,
+        },
+      },
+      "input": Object {
+        "style": Object {
+          "backgroundColor": "transparent",
+          "paddingHorizontal": 12,
+          "paddingVertical": 6,
+        },
+      },
+      "inputContainer": Object {
+        "style": Object {
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#E5E7EB",
+          "borderRadius": 8,
+          "borderWidth": 2,
+        },
+      },
+      "label": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "600",
+          "marginBottom": 4,
+          "opacity": 1,
+        },
+      },
+      "placeholderColor": "#6B7280",
+      "style": Object {
+        "opacity": 0.32,
+      },
+    },
+    "entered": Object {
+      "errorText": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "400",
+          "marginTop": 4,
+          "opacity": 1,
+        },
+      },
+      "helperText": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "400",
+          "marginTop": 4,
+          "opacity": 1,
+        },
+      },
+      "icon": Object {
+        "size": "md",
+        "style": Object {
+          "color": "#6B7280",
+          "opacity": 1,
+        },
+      },
+      "iconContainer": Object {
+        "style": Object {
+          "paddingHorizontal": 10,
+          "paddingVertical": 6,
+        },
+      },
+      "input": Object {
+        "style": Object {
+          "backgroundColor": "transparent",
+          "paddingHorizontal": 12,
+          "paddingVertical": 6,
+        },
+      },
+      "inputContainer": Object {
+        "style": Object {
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#E5E7EB",
+          "borderRadius": 8,
+          "borderWidth": 2,
+        },
+      },
+      "label": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "600",
+          "marginBottom": 4,
+          "opacity": 1,
+        },
+      },
+      "placeholderColor": "#6B7280",
+      "style": Object {
+        "opacity": 1,
+      },
+    },
+    "error": Object {
+      "errorText": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "400",
+          "marginTop": 4,
+          "opacity": 1,
+        },
+      },
+      "helperText": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "400",
+          "marginTop": 4,
+          "opacity": 1,
+        },
+      },
+      "icon": Object {
+        "size": "md",
+        "style": Object {
+          "color": "#6B7280",
+          "opacity": 1,
+        },
+      },
+      "iconContainer": Object {
+        "style": Object {
+          "paddingHorizontal": 10,
+          "paddingVertical": 6,
+        },
+      },
+      "input": Object {
+        "style": Object {
+          "backgroundColor": "transparent",
+          "paddingHorizontal": 12,
+          "paddingVertical": 6,
+        },
+      },
+      "inputContainer": Object {
+        "style": Object {
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#FF2026",
+          "borderRadius": 8,
+          "borderWidth": 2,
+        },
+      },
+      "label": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "600",
+          "marginBottom": 4,
+          "opacity": 1,
+        },
+      },
+      "placeholderColor": "#6B7280",
+      "style": Object {
+        "opacity": 1,
+      },
+    },
+    "focused": Object {
+      "errorText": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "400",
+          "marginTop": 4,
+          "opacity": 1,
+        },
+      },
+      "helperText": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "400",
+          "marginTop": 4,
+          "opacity": 1,
+        },
+      },
+      "icon": Object {
+        "size": "md",
+        "style": Object {
+          "color": "#6B7280",
+          "opacity": 1,
+        },
+      },
+      "iconContainer": Object {
+        "style": Object {
+          "paddingHorizontal": 10,
+          "paddingVertical": 6,
+        },
+      },
+      "input": Object {
+        "style": Object {
+          "backgroundColor": "transparent",
+          "paddingHorizontal": 12,
+          "paddingVertical": 6,
+        },
+      },
+      "inputContainer": Object {
+        "style": Object {
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#6732D1",
+          "borderRadius": 8,
+          "borderWidth": 2,
+        },
+      },
+      "label": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "600",
+          "marginBottom": 4,
+          "opacity": 1,
+        },
+      },
+      "placeholderColor": "#6B7280",
+      "style": Object {
+        "opacity": 1,
+      },
+    },
+    "normal": Object {
+      "errorText": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "400",
+          "marginTop": 4,
+          "opacity": 1,
+        },
+      },
+      "helperText": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "400",
+          "marginTop": 4,
+          "opacity": 1,
+        },
+      },
+      "icon": Object {
+        "size": "md",
+        "style": Object {
+          "color": "#6B7280",
+          "opacity": 1,
+        },
+      },
+      "iconContainer": Object {
+        "style": Object {
+          "paddingHorizontal": 10,
+          "paddingVertical": 6,
+        },
+      },
+      "input": Object {
+        "style": Object {
+          "backgroundColor": "transparent",
+          "paddingHorizontal": 12,
+          "paddingVertical": 6,
+        },
+      },
+      "inputContainer": Object {
+        "style": Object {
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#E5E7EB",
+          "borderRadius": 8,
+          "borderWidth": 2,
+        },
+      },
+      "label": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "600",
+          "marginBottom": 4,
+          "opacity": 1,
+        },
+      },
+      "placeholderColor": "#6B7280",
+      "style": Object {
+        "opacity": 1,
+      },
+    },
+  },
+  "Spinner": Object {
+    "style": Object {
+      "color": "#6732D1",
+    },
+  },
+  "Switch": Object {
+    "disabled": Object {
+      "active": Object {
+        "style": Object {
+          "backgroundColor": "#6732D1",
+          "color": "#FFFFFF",
+          "opacity": 0.4,
+        },
+      },
+      "style": Object {
+        "backgroundColor": "#9CA3AF",
+        "color": "#FFFFFF",
+        "opacity": 0.4,
+      },
+    },
+    "enabled": Object {
+      "active": Object {
+        "style": Object {
+          "backgroundColor": "#6732D1",
+          "color": "#FFFFFF",
+          "opacity": 1,
+        },
+      },
+      "style": Object {
+        "backgroundColor": "#9CA3AF",
+        "color": "#FFFFFF",
+        "opacity": 1,
+      },
+    },
+  },
+  "Text": Object {
+    "sizes": Object {
+      "2xl": Object {
+        "style": Object {
+          "fontFamily": "SourceSansPro-Regular",
+          "fontSize": 24,
+          "fontWeight": "400",
+          "lineHeight": 36,
+        },
+      },
+      "2xs": Object {
+        "style": Object {
+          "fontFamily": "SourceSansPro-Regular",
+          "fontSize": 10,
+          "fontWeight": "400",
+          "lineHeight": 10,
+        },
+      },
+      "3xl": Object {
+        "style": Object {
+          "fontFamily": "SourceSansPro-Regular",
+          "fontSize": 32,
+          "fontWeight": "400",
+          "lineHeight": 48,
+        },
+      },
+      "4xl": Object {
+        "style": Object {
+          "fontFamily": "SourceSansPro-Regular",
+          "fontSize": 40,
+          "fontWeight": "400",
+          "lineHeight": 60,
+        },
+      },
+      "5xl": Object {
+        "style": Object {
+          "fontFamily": "SourceSansPro-Regular",
+          "fontSize": 48,
+          "fontWeight": "400",
+          "lineHeight": 72,
+        },
+      },
+      "6xl": Object {
+        "style": Object {
+          "fontFamily": "SourceSansPro-Regular",
+          "fontSize": 56,
+          "fontWeight": "400",
+          "lineHeight": 84,
+        },
+      },
+      "lg": Object {
+        "style": Object {
+          "fontFamily": "SourceSansPro-Regular",
+          "fontSize": 18,
+          "fontWeight": "400",
+          "lineHeight": 27,
+        },
+      },
+      "md": Object {
+        "style": Object {
+          "fontFamily": "SourceSansPro-Regular",
+          "fontSize": 16,
+          "fontWeight": "400",
+          "lineHeight": 24,
+        },
+      },
+      "sm": Object {
+        "style": Object {
+          "fontFamily": "SourceSansPro-Regular",
+          "fontSize": 14,
+          "fontWeight": "400",
+          "lineHeight": 14,
+        },
+      },
+      "xl": Object {
+        "style": Object {
+          "fontFamily": "SourceSansPro-Regular",
+          "fontSize": 20,
+          "fontWeight": "400",
+          "lineHeight": 30,
+        },
+      },
+      "xs": Object {
+        "style": Object {
+          "fontFamily": "SourceSansPro-Regular",
+          "fontSize": 12,
+          "fontWeight": "400",
+          "lineHeight": 12,
+        },
+      },
+    },
+    "style": Object {
+      "color": "#000000",
+    },
+  },
+  "TextInput": Object {
+    "disabled": Object {
+      "errorText": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "400",
+          "marginTop": 4,
+          "opacity": 1,
+        },
+      },
+      "helperText": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "400",
+          "marginTop": 4,
+          "opacity": 1,
+        },
+      },
+      "icon": Object {
+        "size": "md",
+        "style": Object {
+          "color": "#6B7280",
+          "opacity": 1,
+        },
+      },
+      "iconContainer": Object {
+        "style": Object {
+          "paddingHorizontal": 10,
+          "paddingVertical": 6,
+        },
+      },
+      "input": Object {
+        "style": Object {
+          "backgroundColor": "transparent",
+          "paddingHorizontal": 12,
+          "paddingVertical": 8,
+        },
+      },
+      "inputContainer": Object {
+        "style": Object {
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#E5E7EB",
+          "borderRadius": 8,
+          "borderWidth": 2,
+        },
+      },
+      "label": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "600",
+          "marginBottom": 4,
+          "opacity": 1,
+        },
+      },
+      "placeholderColor": "#6B7280",
+      "style": Object {
+        "opacity": 0.32,
+      },
+    },
+    "entered": Object {
+      "errorText": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "400",
+          "marginTop": 4,
+          "opacity": 1,
+        },
+      },
+      "helperText": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "400",
+          "marginTop": 4,
+          "opacity": 1,
+        },
+      },
+      "icon": Object {
+        "size": "md",
+        "style": Object {
+          "color": "#6B7280",
+          "opacity": 1,
+        },
+      },
+      "iconContainer": Object {
+        "style": Object {
+          "paddingHorizontal": 10,
+          "paddingVertical": 6,
+        },
+      },
+      "input": Object {
+        "style": Object {
+          "backgroundColor": "transparent",
+          "paddingHorizontal": 12,
+          "paddingVertical": 8,
+        },
+      },
+      "inputContainer": Object {
+        "style": Object {
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#E5E7EB",
+          "borderRadius": 8,
+          "borderWidth": 2,
+        },
+      },
+      "label": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "600",
+          "marginBottom": 4,
+          "opacity": 1,
+        },
+      },
+      "placeholderColor": "#6B7280",
+      "style": Object {
+        "opacity": 1,
+      },
+    },
+    "error": Object {
+      "errorText": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "400",
+          "marginTop": 4,
+          "opacity": 1,
+        },
+      },
+      "helperText": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "400",
+          "marginTop": 4,
+          "opacity": 1,
+        },
+      },
+      "icon": Object {
+        "size": "md",
+        "style": Object {
+          "color": "#6B7280",
+          "opacity": 1,
+        },
+      },
+      "iconContainer": Object {
+        "style": Object {
+          "paddingHorizontal": 10,
+          "paddingVertical": 6,
+        },
+      },
+      "input": Object {
+        "style": Object {
+          "backgroundColor": "transparent",
+          "paddingHorizontal": 12,
+          "paddingVertical": 8,
+        },
+      },
+      "inputContainer": Object {
+        "style": Object {
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#FF2026",
+          "borderRadius": 8,
+          "borderWidth": 2,
+        },
+      },
+      "label": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "600",
+          "marginBottom": 4,
+          "opacity": 1,
+        },
+      },
+      "placeholderColor": "#6B7280",
+      "style": Object {
+        "opacity": 1,
+      },
+    },
+    "focused": Object {
+      "errorText": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "400",
+          "marginTop": 4,
+          "opacity": 1,
+        },
+      },
+      "helperText": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "400",
+          "marginTop": 4,
+          "opacity": 1,
+        },
+      },
+      "icon": Object {
+        "size": "md",
+        "style": Object {
+          "color": "#6B7280",
+          "opacity": 1,
+        },
+      },
+      "iconContainer": Object {
+        "style": Object {
+          "paddingHorizontal": 10,
+          "paddingVertical": 6,
+        },
+      },
+      "input": Object {
+        "style": Object {
+          "backgroundColor": "transparent",
+          "paddingHorizontal": 12,
+          "paddingVertical": 8,
+        },
+      },
+      "inputContainer": Object {
+        "style": Object {
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#6732D1",
+          "borderRadius": 8,
+          "borderWidth": 2,
+        },
+      },
+      "label": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "600",
+          "marginBottom": 4,
+          "opacity": 1,
+        },
+      },
+      "placeholderColor": "#6B7280",
+      "style": Object {
+        "opacity": 1,
+      },
+    },
+    "normal": Object {
+      "errorText": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "400",
+          "marginTop": 4,
+          "opacity": 1,
+        },
+      },
+      "helperText": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "400",
+          "marginTop": 4,
+          "opacity": 1,
+        },
+      },
+      "icon": Object {
+        "size": "md",
+        "style": Object {
+          "color": "#6B7280",
+          "opacity": 1,
+        },
+      },
+      "iconContainer": Object {
+        "style": Object {
+          "paddingHorizontal": 10,
+          "paddingVertical": 6,
+        },
+      },
+      "input": Object {
+        "style": Object {
+          "backgroundColor": "transparent",
+          "paddingHorizontal": 12,
+          "paddingVertical": 8,
+        },
+      },
+      "inputContainer": Object {
+        "style": Object {
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#E5E7EB",
+          "borderRadius": 8,
+          "borderWidth": 2,
+        },
+      },
+      "label": Object {
+        "props": Object {
+          "size": "md",
+        },
+        "style": Object {
+          "color": "#1F2937",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontWeight": "600",
+          "marginBottom": 4,
+          "opacity": 1,
+        },
+      },
+      "placeholderColor": "#6B7280",
+      "style": Object {
+        "opacity": 1,
+      },
+    },
+  },
+  "Toast": Object {
+    "alertContainer": Object {
+      "style": Object {
+        "left": 16,
+        "right": 16,
+      },
+    },
+    "animation": Object {
+      "duration": 400,
+    },
+    "containerHeight": 56,
+    "containerMarginTop": 16,
+    "displayDuration": 5000,
+    "spaceBetween": 8,
+  },
+}
+`;

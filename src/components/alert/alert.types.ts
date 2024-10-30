@@ -1,10 +1,8 @@
+import { AlertStatus } from '@theme';
 import React from 'react';
-import { LayoutRectangle } from 'react-native';
-import { Animated, StyleProp, ViewStyle } from 'react-native';
+import { Animated, LayoutRectangle, StyleProp, ViewStyle } from 'react-native';
 
 type AnimatedStyle = Animated.AnimatedProps<StyleProp<ViewStyle>> | ViewStyle;
-
-export type AlertStatus = 'success' | 'info' | 'warning' | 'danger';
 
 export interface AlertProps {
 	/**
@@ -49,4 +47,9 @@ export interface AlertProps {
 	 * @example 'Alert'
 	 */
 	testID?: string;
+	/**
+	 * If true displays the toast inverted (dark mode)
+	 * @default false
+	 */
+	inverted?: boolean;
 }

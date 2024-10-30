@@ -1,4 +1,4 @@
-import { SizesTokens } from '@theme/tokens';
+import { SizesTokens } from '@theme/tokens/tokens';
 
 export const baseSizesTheme: SizesTokens = {
 	'3xs': 224,

@@ -1,4 +1,4 @@
-import { ContainerProps } from '@theme/container-props-style';
+import { ContainerProps } from '@components/view';
 import React from 'react';
 import {
 	AccessibilityProps,

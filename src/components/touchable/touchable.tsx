@@ -25,7 +25,7 @@ export const Touchable = <T,>({
 	style,
 	...props
 }: TouchableProps<T>) => {
-	const [mergedStyle, rest] = useContainerPropsStyle(props, style);
+	const [mergedStyle, rest] = useContainerPropsStyle(props);
 
 	const hitSlopFinal =
 		typeof hitSlop === 'number'
@@ -65,7 +65,7 @@ export const Touchable = <T,>({
 	};
 
 	const renderContent = () => {
-		return <View style={mergedStyle}>{children}</View>;
+		return <View style={[mergedStyle, style]}>{children}</View>;
 	};
 
 	if (Platform.OS === 'android') {

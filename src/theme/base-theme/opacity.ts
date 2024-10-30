@@ -1,6 +1,6 @@
 // @ts-ignore
 import * as Tokens from '@freud-ds/tokens/style/react-native/variables';
-import { OpacityTokens } from '@theme/tokens';
+import { OpacityTokens } from '@theme/tokens/tokens';
 
 export const baseThemeOpacity: OpacityTokens = {
 	none: 0,

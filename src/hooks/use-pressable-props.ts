@@ -1,4 +1,4 @@
-import { PressableProps } from '@components/touchable';
+import { PressableProps } from '@components/touchable/touchable-types';
 import { useAccessibilityProps } from '@hooks/use-accessibility-props';
 import { useExtractProps } from '@hooks/use-extract-props';
 

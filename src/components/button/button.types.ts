@@ -1,7 +1,6 @@
-import { IconName } from '@components/icon';
 import { PressableProps } from '@components/touchable';
-import { ContainerProps } from '@theme/container-props-style';
-import { ButtonSizes, ButtonVariants } from '@theme/tokens';
+import { ContainerProps } from '@components/view';
+import { ButtonSizes, ButtonVariants, IconName } from '@theme';
 import { TextStyle, ViewStyle } from 'react-native';
 
 export type ButtonProps<T> = PressableProps<T> &
@@ -17,4 +16,5 @@ export type ButtonProps<T> = PressableProps<T> &
 		isFocused?: boolean;
 		icon?: IconName;
 		testID?: string;
+		iconStyle?: TextStyle;
 	};

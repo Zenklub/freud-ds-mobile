@@ -1,8 +1,8 @@
+import { Text } from '@components/typography/text';
+import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 import { View } from 'react-native';
 import { StoryWrapper } from '../../storybook/story-wrapper';
-import { storiesOf } from '@storybook/react-native';
-import { Text } from '@components/typography/text';
 import { Popover } from './popover';
 
 const Space: React.FC<{ size: number }> = ({ size }) => (
@@ -62,7 +62,7 @@ export const Story = () => {
 };
 
 export const PopoverStory = () => (
-	<StoryWrapper title="Feedback | Toast">
+	<StoryWrapper title="Feedback | Popover">
 		<StoryWrapper.Session>
 			<Story />
 		</StoryWrapper.Session>
