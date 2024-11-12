@@ -3,7 +3,7 @@ import { LayoutRectangle, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { UniqueId } from '@helpers/unique-id-generator';
-import { useComponentTheme } from '@hooks/use-theme';
+import { useComponentTheme } from '@hooks/use-theme.hook';
 import Animated from 'react-native-reanimated';
 import { Alert } from '../alert';
 import { ToastDialogConfig, ToastDialogHook } from './toast.types';

@@ -1,7 +1,8 @@
-import { IRadioGroupOnChangeHandler } from 'native-base/lib/typescript/components/primitives/Radio/types';
-import React, { useCallback, useState, createContext, useContext } from 'react';
+import React, { createContext, useCallback, useContext, useState } from 'react';
 
-export declare type IRadioValue = string;
+export type IRadioValue = string;
+export type IRadioGroupOnChangeHandler = (value: IRadioValue) => any;
+
 export interface IRadioGroupContext {
 	setValue: (optionValue: string) => void;
 	currentValue?: string;

@@ -1,4 +1,4 @@
-import { useContainerPropsStyle } from '@hooks';
+import { useContainerPropsStyle } from '@hooks/use-container-style.hook';
 import React from 'react';
 import {
 	GestureResponderEvent,

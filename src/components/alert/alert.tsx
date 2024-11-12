@@ -7,7 +7,7 @@ import { Icon } from '@components/icon';
 import { ConditionalTouchable } from '@components/touchable';
 import { Touchable } from '@components/touchable/touchable';
 import { useOnLayout } from '@helpers/use-on-layout';
-import { useColorMode, useComponentTheme } from '@hooks/use-theme';
+import { useColorMode, useComponentTheme } from '@hooks/use-theme.hook';
 import { AlertStatus } from '@theme/tokens/components/alert';
 import { AlertProps } from './alert.types';
 

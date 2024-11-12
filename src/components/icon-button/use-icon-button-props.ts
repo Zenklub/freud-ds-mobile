@@ -3,10 +3,10 @@ import { IconButtonProps } from '@components/icon-button';
 import { SpinnerProps } from '@components/spinner';
 import { PressableProps } from '@components/touchable';
 import { deepMerge } from '@helpers/object.helper';
-import { useContainerPropsStyle } from '@hooks';
+import { useContainerPropsStyle } from '@hooks/use-container-style.hook';
 import { usePressableProps } from '@hooks/use-pressable-props';
 
-import { useColorMode, useComponentTheme } from '@hooks/use-theme';
+import { useColorMode, useComponentTheme } from '@hooks/use-theme.hook';
 import {
 	HardCodedColor,
 	IconButtonSizes,

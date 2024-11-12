@@ -1,6 +1,6 @@
 import { SpinnerProps } from '@components/spinner/spinner.types';
 import { useCustomColorExtractor } from '@hooks';
-import { useColorMode, useComponentTheme } from '@hooks/use-theme';
+import { useColorMode, useComponentTheme } from '@hooks/use-theme.hook';
 import React, { useMemo } from 'react';
 import { ActivityIndicator, ColorValue, StyleSheet } from 'react-native';
 

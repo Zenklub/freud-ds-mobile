@@ -9,7 +9,7 @@ import { StyleSheet, View } from 'react-native';
 import { ButtonsState, useButtonProps } from './use-button-props';
 
 export function Button<T>(props: Readonly<ButtonProps<T>>) {
-	const { text, testID } = props;
+	const { text, testID, children } = props;
 
 	const [state, setState] = useState<ButtonsState>('normal');
 
@@ -67,9 +67,12 @@ export function Button<T>(props: Readonly<ButtonProps<T>>) {
 				{...containerProps}
 				style={[styles.container, containerProps.style]}
 			>
-				<Text testID={`${testID}-text`} {...textProps}>
-					{text}
-				</Text>
+				{text ? (
+					<Text testID={`${testID}-text`} {...textProps}>
+						{text}
+					</Text>
+				) : null}
+				{children}
 
 				{renderRightComponent()}
 			</View>

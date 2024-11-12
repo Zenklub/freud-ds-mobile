@@ -1,5 +1,5 @@
 import { Text } from '@components/typography/text';
-import { useColorMode, useComponentTheme } from '@hooks/use-theme';
+import { useColorMode, useComponentTheme } from '@hooks/use-theme.hook';
 import React, { useMemo } from 'react';
 import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 import { RadioGroupContextProvider, useRadioContext } from './radio-context';

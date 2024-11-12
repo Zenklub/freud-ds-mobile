@@ -1,4 +1,4 @@
-import { OpacityLevel, SpacingSizes } from '@theme';
+import { ColorsPathOrHardCoded, OpacityLevel, SpacingSizes } from '@theme';
 
 export interface ContainerProps {
 	/**
@@ -62,4 +62,8 @@ export interface ContainerProps {
 	 * Opacity
 	 */
 	opacity?: OpacityLevel | number;
+	/**
+	 * Background color
+	 */
+	bg?: ColorsPathOrHardCoded;
 }

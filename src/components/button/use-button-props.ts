@@ -2,8 +2,8 @@ import { IconProps } from '@components/icon';
 import { SpinnerProps } from '@components/spinner';
 import { PressableProps } from '@components/touchable';
 import { TextProps } from '@components/typography';
-import { useContainerPropsStyle } from '@hooks';
-import { useColorMode, useComponentTheme } from '@hooks/use-theme';
+import { useContainerPropsStyle } from '@hooks/use-container-style.hook';
+import { useColorMode, useComponentTheme } from '@hooks/use-theme.hook';
 
 import { deepMerge } from '@helpers/object.helper';
 import { ButtonSizes, ButtonVariants, HardCodedColor } from '@theme';

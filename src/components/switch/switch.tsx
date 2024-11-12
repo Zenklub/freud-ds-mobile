@@ -1,4 +1,4 @@
-import { useColorMode, useComponentTheme } from '@hooks/use-theme';
+import { useColorMode, useComponentTheme } from '@hooks/use-theme.hook';
 import React from 'react';
 import { Switch as RNSwitch, SwitchChangeEvent, View } from 'react-native';
 import { SwitchProps } from './switch.types';

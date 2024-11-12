@@ -1,4 +1,4 @@
-import { ThemeContext } from '@theme/theme-provider';
+import { ThemeContext } from '@theme/context';
 import {
 	BordersSizes,
 	OpacityLevel,
