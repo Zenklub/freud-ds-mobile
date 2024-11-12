@@ -1,9 +1,11 @@
-import { ColorsPathOrHardCoded } from '@theme/tokens/colors';
+import { ColorsPathOrHardCoded, SpinnerSize } from '@theme';
+import { ActivityIndicator } from 'react-native';
 
-export type SpinnerSize = number | 'small' | 'large';
+type RNSpinnerProps = React.ComponentProps<typeof ActivityIndicator>;
 
-export interface SpinnerProps {
+export interface SpinnerProps extends Omit<RNSpinnerProps, 'size' | 'color'> {
 	size?: SpinnerSize;
 	color?: ColorsPathOrHardCoded;
+	inverted?: boolean;
 	testID?: string;
 }

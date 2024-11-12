@@ -4,14 +4,14 @@ import { Spinner } from '@components/spinner';
 import { Touchable } from '@components/touchable';
 import { Text } from '@components/typography';
 import { mergePressableResponder } from '@helpers/merge-pressable-responder';
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { ButtonsState, useButtonProps } from './use-button-props';
 
 export function Button<T>(props: Readonly<ButtonProps<T>>) {
 	const { text, testID } = props;
 
-	const [state, setState] = React.useState<ButtonsState>('default');
+	const [state, setState] = useState<ButtonsState>('normal');
 
 	const {
 		pressable: pressableProps,
@@ -27,12 +27,12 @@ export function Button<T>(props: Readonly<ButtonProps<T>>) {
 		} else if (props.isLoading) {
 			setState('loading');
 		}
-	}, [props.disabled]);
+	}, [props.disabled, props.isLoading]);
 
 	const renderRightComponent = useCallback(() => {
 		if (props.isLoading) {
 			return (
-				<View testID={`${testID}-spinner`} style={styles.icon}>
+				<View testID={`${testID}-spinner`}>
 					<Spinner {...spinnerProps} />
 				</View>
 			);
@@ -40,17 +40,12 @@ export function Button<T>(props: Readonly<ButtonProps<T>>) {
 
 		if (props.icon) {
 			return (
-				<Icon
-					testID={`${testID}-icon`}
-					name={props.icon}
-					{...iconProps}
-					style={styles.icon}
-				/>
+				<Icon testID={`${testID}-icon`} {...iconProps} name={props.icon} />
 			);
 		}
 
 		return null;
-	}, [props.icon, props.isLoading]);
+	}, [props.icon, props.isLoading, iconProps, spinnerProps, testID]);
 
 	return (
 		<Touchable
@@ -62,7 +57,7 @@ export function Button<T>(props: Readonly<ButtonProps<T>>) {
 				pressableProps.onPressIn
 			)}
 			onPressOut={mergePressableResponder(
-				() => setState('default'),
+				() => setState('normal'),
 				pressableProps.onPressOut
 			)}
 			disabled={props.disabled ?? props.isLoading}
@@ -88,9 +83,6 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'center',
-	},
-	icon: {
-		marginLeft: 4,
 	},
 });
 

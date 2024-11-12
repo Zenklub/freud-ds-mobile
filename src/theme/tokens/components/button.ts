@@ -1,57 +1,40 @@
-import { ColorsPathOrHardCoded } from '../colors';
-import { OpacityLevel } from '../opacity';
-import { RadiiSize } from '../radius';
-import { IFontWeight, TextFontSizes } from '../typography';
+import { DeepPartial } from '@helpers/deep-partial.interface';
+import {
+	ContainerThemeAggregate,
+	IconThemeAggregator,
+	TextThemeAggregator,
+} from '@theme/theming.interface';
+import { ColorsLeaves } from '@theme/types';
+import { HardCodedColor, SpinnerComponentTheme, SpinnerSize } from '../tokens';
 
 export type ButtonVariants = 'solid' | 'outline' | 'ghost';
 export type ButtonSizes = 'sm' | 'md' | 'lg';
 
-export interface ButtonThemeVariantStyle {
-	color: ColorsPathOrHardCoded;
-	backgroundColor: ColorsPathOrHardCoded;
-	borderColor: ColorsPathOrHardCoded;
-	borderWidth: number;
-	opacity?: OpacityLevel | number;
-	borderRadius?: RadiiSize | number;
-	icon?: {
-		color: ColorsPathOrHardCoded;
-	};
-	spinner?: {
-		color: ColorsPathOrHardCoded;
+export interface ButtonThemeVariantStyle extends ContainerThemeAggregate {
+	color: ColorsLeaves | HardCodedColor;
+	icon: IconThemeAggregator;
+	text: TextThemeAggregator;
+	spinner?: ContainerThemeAggregate & {
+		size?: SpinnerSize;
+		color?: SpinnerComponentTheme['color'];
 	};
 }
 
 export interface ButtonThemeVariant {
-	default: ButtonThemeVariantStyle;
-	loading: Partial<ButtonThemeVariantStyle>;
-	focus: Partial<ButtonThemeVariantStyle>;
-	active: Partial<ButtonThemeVariantStyle>;
-	disabled: Partial<ButtonThemeVariantStyle>;
+	base: ButtonThemeVariantStyle;
+	normal: DeepPartial<ButtonThemeVariantStyle>;
+	loading: DeepPartial<ButtonThemeVariantStyle>;
+	focus: DeepPartial<ButtonThemeVariantStyle>;
+	active: DeepPartial<ButtonThemeVariantStyle>;
+	disabled: DeepPartial<ButtonThemeVariantStyle>;
 }
 
-export interface ButtonThemeSizes {
-	height: number;
-	padding?: number;
-	paddingTop?: number;
-	paddingRight?: number;
-	paddingBottom?: number;
-	paddingLeft?: number;
-	paddingVertical?: number;
-	paddingHorizontal?: number;
-	text: {
-		size: TextFontSizes;
-		weight?: IFontWeight;
+export interface ButtonComponentTheme {
+	variants: {
+		base: ButtonThemeVariant;
+		solid: DeepPartial<ButtonThemeVariant>;
+		outline: DeepPartial<ButtonThemeVariant>;
+		ghost: DeepPartial<ButtonThemeVariant>;
 	};
-	icon: {
-		size: number;
-	};
-	spinner: {
-		size: 'small' | 'large';
-	};
-}
-
-export interface ButtonTheme {
-	variants: Record<ButtonVariants, ButtonThemeVariant>;
-	inverted: Record<ButtonVariants, ButtonThemeVariant>;
-	sizes: Record<ButtonSizes, ButtonThemeSizes>;
+	sizes: DeepPartial<Record<ButtonSizes, ButtonThemeVariantStyle>>;
 }

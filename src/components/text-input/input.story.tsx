@@ -1,9 +1,9 @@
-import { TextInput } from '@components/text-input/input-text';
 import { storiesOf } from '@storybook/react-native';
-import { SpacingSizes } from '@theme/tokens';
+import { SpacingSizes } from '@theme';
 import React from 'react';
 import { Alert } from 'react-native';
 import { StoryWrapper } from '../../storybook/story-wrapper';
+import { TextInput } from './input-text';
 
 const marginTop: SpacingSizes = 'xxs';
 const paddingX = 16;

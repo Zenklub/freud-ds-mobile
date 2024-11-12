@@ -4,7 +4,7 @@ import { IText } from './typography.types';
 import { TypographyComponent } from './component';
 
 export const Text: IText = (props) => {
-	return <TypographyComponent {...props} type="text" />;
+	return <TypographyComponent {...props} family="body" />;
 };
 
 const TextMedium: IText['Medium'] = (props) => {

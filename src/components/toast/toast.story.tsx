@@ -1,10 +1,10 @@
 import React from 'react';
-import { ScrollView, Button, View } from 'react-native';
+import { Button, ScrollView, View } from 'react-native';
 
-import { useToastDialog } from './provider';
-import { StoryWrapper } from '../../storybook/story-wrapper';
 import { storiesOf } from '@storybook/react-native';
-import { AlertStatus } from '@components/alert/alert.types';
+import { AlertStatus } from '@theme';
+import { StoryWrapper } from '../../storybook/story-wrapper';
+import { useToast } from './provider';
 
 const Space: React.FC<{ size: number }> = ({ size }) => (
 	<View style={{ height: size }} />
@@ -12,7 +12,7 @@ const Space: React.FC<{ size: number }> = ({ size }) => (
 
 const body = 'The quick brown fox jumps over the lazy dog';
 export const Story = () => {
-	const { present } = useToastDialog();
+	const { present } = useToast();
 
 	const displayToastWithTheme = (status: AlertStatus) => () => {
 		present({

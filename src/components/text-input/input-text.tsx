@@ -1,46 +1,24 @@
-import { Icon } from '@components/icon';
-import { InputProps } from '@components/text-input/input.types';
-import { Touchable } from '@components/touchable';
-import { Text } from '@components/typography';
-import { View } from '@components/view';
+import {
+	BaseInputProps,
+	InputWrapper,
+} from '@components/input-wrapper/input-wrapper';
+import { InputState } from '@theme/tokens/components/input-base-theme';
 import React, { useCallback, useState } from 'react';
-import { TextInput as RNTextInput, StyleSheet } from 'react-native';
-import { useTextInputTheme } from './use-text-input-theme';
+import {
+	TextInput as RNTextInput,
+	TextInputProps as RNTextInputProps,
+	StyleSheet,
+} from 'react-native';
 
-export const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		flexDirection: 'row',
-	},
-	input: {
-		flex: 1,
-	},
-	iconContainer: {
-		justifyContent: 'center',
-	},
-});
+export type TextInputProps = Omit<RNTextInputProps, 'style'> &
+	BaseInputProps & {
+		inputStyle?: RNTextInputProps['style'];
+	};
 
-export const TextInput: React.FC<InputProps> = ({
-	label,
-	helperText,
-	inverted = false,
-	error,
-	disabled,
-	iconName,
-	onIconPress,
-	onFocus,
-	onBlur,
-	testID,
-	value,
-	containerStyle,
-	inputContainerStyle,
-	iconContainerStyle,
-	inputStyle,
-	iconHitSlop,
-	...props
-}) => {
+export const TextInput: React.FC<TextInputProps> = (props) => {
+	const { disabled, error, onFocus, onBlur, value, testID, inputStyle } = props;
 	const [focused, setFocusedState] = useState(false);
-	const state =
+	const state: InputState =
 		disabled === true
 			? 'disabled'
 			: focused
@@ -49,88 +27,48 @@ export const TextInput: React.FC<InputProps> = ({
 			? 'error'
 			: value
 			? 'entered'
-			: 'default';
+			: 'normal';
 
-	const theme = useTextInputTheme(inverted, state);
+	const onFocusHandler = useCallback(
+		(e: any) => {
+			setFocusedState(true);
+			onFocus?.(e);
+		},
+		[onFocus]
+	);
 
-	const onFocusHandler = useCallback((e: any) => {
-		setFocusedState(true);
-		onFocus?.(e);
-	}, []);
-
-	const onBlurHandler = useCallback((e: any) => {
-		setFocusedState(false);
-		onBlur?.(e);
-	}, []);
-
-	const renderText = () => {
-		if (error && typeof error === 'string') {
-			return (
-				<Text {...theme.errorTextProps} testID={`${testID}-error-text`}>
-					{error}
-				</Text>
-			);
-		}
-
-		if (helperText) {
-			return (
-				<Text {...theme.helperTextProps} testID={`${testID}-helper-text`}>
-					{helperText}
-				</Text>
-			);
-		}
-
-		return null;
-	};
+	const onBlurHandler = useCallback(
+		(e: any) => {
+			setFocusedState(false);
+			onBlur?.(e);
+		},
+		[onBlur]
+	);
 
 	const editable = typeof disabled === 'boolean' ? !disabled : props.editable;
 
 	return (
-		<View
-			{...theme.containerProps}
-			{...props}
-			testID={`${testID}-container`}
-			style={containerStyle}
-		>
-			<Text {...theme.labelProps} testID={`${testID}-label`}>
-				{label}
-			</Text>
-			<View
-				{...theme.inputContainerProps}
-				testID={`${testID}-input-container`}
-				style={[
-					styles.container,
-					theme.inputContainerProps.style,
-					inputContainerStyle,
-				]}
-			>
-				<RNTextInput
-					{...props}
-					{...theme.inputProps}
-					editable={editable ?? true}
-					style={[styles.input, theme.inputProps.style, inputStyle]}
-					testID={testID}
-					value={value}
-					onBlur={onBlurHandler}
-					onFocus={onFocusHandler}
-				/>
-				{iconName ? (
-					<Touchable
-						{...theme.iconContainerProps}
-						onPress={onIconPress}
-						hitSlop={iconHitSlop}
-						style={[styles.iconContainer, iconContainerStyle]}
-						testID={`${testID}-icon-container`}
-					>
-						<Icon
-							{...theme.iconProps}
-							testID={`${testID}-icon`}
-							name={iconName}
-						/>
-					</Touchable>
-				) : null}
-			</View>
-			{renderText()}
-		</View>
+		<InputWrapper {...props} theme="TextInput" state={state}>
+			{(theme) => {
+				return (
+					<RNTextInput
+						{...props}
+						onFocus={onFocusHandler}
+						onBlur={onBlurHandler}
+						placeholderTextColor={theme.placeholderColor}
+						style={[styles.input, theme.input.style, inputStyle]}
+						editable={editable ?? true}
+						testID={testID}
+						value={value}
+					/>
+				);
+			}}
+		</InputWrapper>
 	);
 };
+
+export const styles = StyleSheet.create({
+	input: {
+		flex: 1,
+	},
+});

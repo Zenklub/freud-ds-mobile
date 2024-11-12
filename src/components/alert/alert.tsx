@@ -3,14 +3,13 @@ import { Animated, StyleSheet, View } from 'react-native';
 
 import { Text } from '../typography';
 
-import { Icon, IconName } from '@components/icon';
+import { Icon } from '@components/icon';
 import { ConditionalTouchable } from '@components/touchable';
 import { Touchable } from '@components/touchable/touchable';
 import { useOnLayout } from '@helpers/use-on-layout';
-import { useColors, useTokens } from '@hooks';
-import { IColors } from '@theme/base/colors';
-import { ColorsPathOrHardCoded } from '@theme/tokens/colors';
-import { AlertProps, AlertStatus } from './alert.types';
+import { useColorMode, useComponentTheme } from '@hooks/use-theme';
+import { AlertStatus } from '@theme/tokens/components/alert';
+import { AlertProps } from './alert.types';
 
 const styles = StyleSheet.create({
 	container: {
@@ -19,23 +18,22 @@ const styles = StyleSheet.create({
 	innerContainer: {
 		flex: 1,
 		flexDirection: 'row',
-		padding: 12,
 	},
 });
 
-const StatusIconNamesMap: Record<AlertStatus, IconName> = {
-	success: 'check-circle',
-	info: 'info-circle',
-	warning: 'exclamation-circle',
-	danger: 'exclamation-triangle',
-};
+// const StatusIconNamesMap: Record<AlertStatus, IconName> = {
+// 	success: 'check-circle',
+// 	info: 'info-circle',
+// 	warning: 'exclamation-circle',
+// 	danger: 'exclamation-triangle',
+// };
 
-const StatusColors: Record<AlertStatus, IColors[]> = {
-	success: ['feedback.positive.100', 'feedback.positive.pure'],
-	info: ['feedback.neutral.100', 'feedback.neutral.pure'],
-	warning: ['feedback.warning.100', 'feedback.warning.pure'],
-	danger: ['feedback.negative.100', 'feedback.negative.pure'],
-};
+// const StatusColors: Record<AlertStatus, ColorTokensPath[]> = {
+// 	success: ['feedback.positive.100', 'feedback.positive.pure'],
+// 	info: ['feedback.neutral.100', 'feedback.neutral.pure'],
+// 	warning: ['feedback.warning.100', 'feedback.warning.pure'],
+// 	danger: ['feedback.negative.100', 'feedback.negative.pure'],
+// };
 
 export const Alert: React.FC<AlertProps> = memo(
 	({
@@ -47,31 +45,26 @@ export const Alert: React.FC<AlertProps> = memo(
 		onDismiss,
 		action,
 		onLayout,
+		inverted = false,
 		testID = 'Alert',
 	}) => {
 		const [layout, onLayoutHandler] = useOnLayout();
 
-		const [backgroundColor, iconColor] = useColors(...StatusColors[status]);
+		const isTitleOnly = !body;
 
-		const [borderRadius, closeButtonRadius, marginBetween] = useTokens(
-			'radii.sm',
-			'radii.circular',
-			'spacing.nano'
-		);
+		const theme = useAlertTheme(inverted, status, isTitleOnly);
 
 		const onClose = () => {
 			onDismiss?.();
 		};
 
 		const renderIcon = () => {
-			const iconTestID = `${testID}-icon-${status}`;
 			return (
 				<Icon
-					style={{ marginTop: body ? 4 : undefined }}
-					color={iconColor as ColorsPathOrHardCoded}
-					name={StatusIconNamesMap[status]}
-					testID={iconTestID}
-					size={22}
+					testID={`${testID}-icon-${status}`}
+					{...theme.icon}
+					size={theme.icon.size ?? 'md'}
+					name={theme.icon.name}
 				/>
 			);
 		};
@@ -89,21 +82,24 @@ export const Alert: React.FC<AlertProps> = memo(
 					<View
 						style={{
 							flex: 1,
-							marginLeft: marginBetween,
 							justifyContent: 'center',
 						}}
 					>
-						<Text.Medium size={body ? 'md' : 'sm'} testID={`${testID}-title`}>
+						<Text
+							testID={`${testID}-title`}
+							{...theme.title.props}
+							style={theme.title.style}
+						>
 							{title}
-						</Text.Medium>
+						</Text>
 						{body ? (
-							<Text.Regular
-								size="sm"
+							<Text
 								testID={`${testID}-body`}
-								style={{ marginTop: 4 }}
+								{...theme.body.props}
+								style={theme.body.style}
 							>
 								{body}
-							</Text.Regular>
+							</Text>
 						) : null}
 					</View>
 					{dismissible && (
@@ -111,16 +107,12 @@ export const Alert: React.FC<AlertProps> = memo(
 							onPress={onClose}
 							hitSlop={{ top: 16, right: 16, bottom: 16, left: 16 }}
 							testID={`${testID}-dismiss-touchable`}
-							style={{
-								marginLeft: marginBetween,
-								borderRadius: closeButtonRadius,
-							}}
 						>
 							<Icon
-								color="neutral.dark.400"
 								testID={`${testID}-dismiss-icon`}
-								name="close"
-								size={16}
+								{...theme.close}
+								size={theme.close.size ?? 'md'}
+								name={theme.close.name ?? 'close'}
 							/>
 						</Touchable>
 					)}
@@ -130,14 +122,14 @@ export const Alert: React.FC<AlertProps> = memo(
 
 		return (
 			<Animated.View
-				style={[styles.container, style as any]}
+				style={[style as any]}
 				testID={testID}
 				onLayout={onLayoutHandler}
 			>
 				<ConditionalTouchable
 					condition={!!action}
 					onPress={action}
-					style={[styles.innerContainer, { borderRadius, backgroundColor }]}
+					style={[styles.innerContainer, theme.style]}
 				>
 					{renderContent()}
 				</ConditionalTouchable>
@@ -145,3 +137,106 @@ export const Alert: React.FC<AlertProps> = memo(
 		);
 	}
 );
+
+function useAlertTheme(
+	inverted: boolean,
+	status: AlertStatus,
+	isTitleOnly: boolean
+) {
+	const colorMode = useColorMode(inverted);
+	const alertTheme = useComponentTheme('Alert', colorMode);
+
+	const theme = isTitleOnly
+		? alertTheme.titleOnly[status]
+		: alertTheme.full[status];
+
+	return theme;
+
+	// // Container
+	// const borderRadius = useRadii(theme.borderRadius);
+	// const borderWidth = useBorder(theme.borderWidth);
+	// const borderColor = useColorTokenOrHardCoded(
+	// 	theme.borderColor,
+	// 	'neutral.light.300'
+	// );
+	// const backgroundColor = useColorTokenOrHardCoded(
+	// 	theme.backgroundColor,
+	// 	'neutral.white'
+	// );
+	// const padding = useSpacing(theme.padding ?? 0);
+	// const paddingHorizontal = useSpacing(theme.paddingHorizontal);
+	// const paddingVertical = useSpacing(theme.paddingVertical);
+
+	// const containerProps = useMemo(() => {
+	// 	return {
+	// 		style: {
+	// 			borderRadius,
+	// 			borderWidth,
+	// 			borderColor,
+	// 			backgroundColor,
+	// 			opacity: theme.opacity,
+	// 			padding: theme.padding ? padding : undefined,
+	// 			paddingHorizontal: theme.paddingHorizontal
+	// 				? paddingHorizontal
+	// 				: undefined,
+	// 			paddingVertical: theme.paddingVertical ? paddingVertical : undefined,
+	// 		},
+	// 	};
+	// }, [theme]);
+
+	// // Icon Container
+	// const iconContainerProps = useMemo(() => {
+	// 	return {
+	// 		p: theme.icon.padding,
+	// 		ml: theme.icon.spacing,
+	// 		opacity: theme.icon.opacity,
+	// 	};
+	// }, [theme]);
+
+	// // Icon
+	// const iconProps = useMemo(() => {
+	// 	return {
+	// 		color: theme.icon.color,
+	// 		size: theme.icon.size,
+	// 	};
+	// }, [theme]);
+
+	// // Title
+	// const titleProps = theme.title as TextProps;
+
+	// // Description
+	// const descriptionProps = useMemo(() => {
+	// 	return {
+	// 		...theme.body,
+	// 		mt: theme.body.spacing,
+	// 	} as TextProps;
+	// }, [theme]);
+
+	// // Close Icon Container
+
+	// const closeIconContainerProps = useMemo(() => {
+	// 	return {
+	// 		p: theme.close.padding,
+	// 		ml: theme.close.spacing,
+	// 		opacity: theme.close.opacity,
+	// 	};
+	// }, [theme]);
+
+	// // Close Icon
+	// const closeIconProps = useMemo(() => {
+	// 	return {
+	// 		color: theme.close.color,
+	// 		size: theme.close.size,
+	// 	};
+	// }, [theme]);
+
+	// return {
+	// 	containerProps,
+	// 	iconContainerProps,
+	// 	iconProps,
+	// 	titleProps,
+	// 	descriptionProps,
+	// 	closeIconContainerProps,
+	// 	closeIconProps,
+	// };
+}

@@ -1,52 +1,41 @@
 import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 
-import { baseThemeTypography } from '@theme/base-theme/typography';
-import { HeadingFontSizes, TextFontSizes } from '@theme/tokens/typography';
+import { useComponentTheme } from '@hooks/use-theme';
+import {
+	HeadingFontSizes,
+	TextFontSizes,
+} from '@theme/tokens/components/text-heading';
 import { HStack } from '../../storybook/components/h-stack';
 import { StoryWrapper } from '../../storybook/story-wrapper';
 import { Heading } from './heading';
 import { Text } from './text';
 
-const headerSizesWithSize: { size: HeadingFontSizes; fontSize: number }[] = [
-	{ size: 'xs', fontSize: baseThemeTypography.heading.xs.fontSize },
-	{ size: 'sm', fontSize: baseThemeTypography.heading.sm.fontSize },
-	{ size: 'md', fontSize: baseThemeTypography.heading.md.fontSize },
-	{ size: 'lg', fontSize: baseThemeTypography.heading.lg.fontSize },
-	{ size: 'xl', fontSize: baseThemeTypography.heading.xl.fontSize },
-	{ size: '2xl', fontSize: baseThemeTypography.heading['2xl'].fontSize },
-	{ size: '3xl', fontSize: baseThemeTypography.heading['3xl'].fontSize },
-	{ size: '4xl', fontSize: baseThemeTypography.heading['4xl'].fontSize },
-];
-
-const textSizesWithSize: { size: TextFontSizes; fontSize: number }[] = [
-	{ size: '2xs', fontSize: baseThemeTypography.text['2xs'].fontSize },
-	{ size: 'xs', fontSize: baseThemeTypography.text.xs.fontSize },
-	{ size: 'sm', fontSize: baseThemeTypography.text.sm.fontSize },
-	{ size: 'md', fontSize: baseThemeTypography.text.md.fontSize },
-	{ size: 'lg', fontSize: baseThemeTypography.text.lg.fontSize },
-	{ size: 'xl', fontSize: baseThemeTypography.text.xl.fontSize },
-	{ size: '2xl', fontSize: baseThemeTypography.text['2xl'].fontSize },
-	{ size: '3xl', fontSize: baseThemeTypography.text['3xl'].fontSize },
-	{ size: '4xl', fontSize: baseThemeTypography.text['4xl'].fontSize },
-	{ size: '5xl', fontSize: baseThemeTypography.text['5xl'].fontSize },
-	{ size: '6xl', fontSize: baseThemeTypography.text['6xl'].fontSize },
-];
-
 const HeadingStory: React.FC = () => {
+	const theme = useComponentTheme('Heading');
+	const sizes: HeadingFontSizes[] = [
+		'xs',
+		'sm',
+		'md',
+		'lg',
+		'xl',
+		'2xl',
+		'3xl',
+		'4xl',
+	];
 	return (
 		<StoryWrapper title="Typography | Heading">
 			<StoryWrapper.Session>
-				{headerSizesWithSize.map((item) => (
-					<Heading size={item.size} key={item.size}>
-						{item.size}: {item.fontSize}px
+				{sizes.map((size) => (
+					<Heading size={size} key={size}>
+						{size}: {theme.sizes[size].style.fontSize}px
 					</Heading>
 				))}
 			</StoryWrapper.Session>
 			<StoryWrapper.Session inverted>
-				{headerSizesWithSize.map((item) => (
-					<Heading size={item.size} key={item.size} inverted>
-						{item.size}: {item.fontSize}px
+				{sizes.map((size) => (
+					<Heading size={size} key={size} inverted>
+						{size}: {theme.sizes[size].style.fontSize}px
 					</Heading>
 				))}
 			</StoryWrapper.Session>
@@ -57,6 +46,20 @@ const HeadingStory: React.FC = () => {
 const SPACE = 32;
 
 const TextStory: React.FC = () => {
+	const textComponentTheme = useComponentTheme('Text');
+	const sizes: TextFontSizes[] = [
+		'2xs',
+		'xs',
+		'sm',
+		'md',
+		'lg',
+		'xl',
+		'2xl',
+		'3xl',
+		'4xl',
+		'5xl',
+		'6xl',
+	];
 	return (
 		<StoryWrapper title="Typography | Text">
 			<StoryWrapper.Session>
@@ -64,13 +67,13 @@ const TextStory: React.FC = () => {
 					<Text size="md">Regular</Text>
 					<Text size="md">Medium </Text>
 				</HStack>
-				{textSizesWithSize.map((item) => (
-					<HStack space={SPACE} key={item.size}>
-						<Text.Regular size={item.size}>
-							{item.size}: {item.fontSize}px
+				{sizes.map((size) => (
+					<HStack space={SPACE} key={size}>
+						<Text.Regular size={size}>
+							{size}: {textComponentTheme.sizes[size].style.fontSize}px
 						</Text.Regular>
-						<Text.Medium size={item.size}>
-							{item.size}: {item.fontSize}px
+						<Text.Medium size={size}>
+							{size}: {textComponentTheme.sizes[size].style.fontSize}px
 						</Text.Medium>
 					</HStack>
 				))}
@@ -84,13 +87,13 @@ const TextStory: React.FC = () => {
 						Medium{' '}
 					</Text>
 				</HStack>
-				{textSizesWithSize.map((item) => (
-					<HStack space={SPACE} key={item.size}>
-						<Text.Regular size={item.size} inverted>
-							{item.size}: {item.fontSize}px
+				{sizes.map((size) => (
+					<HStack space={SPACE} key={size}>
+						<Text.Regular size={size} inverted>
+							{size}: {textComponentTheme.sizes[size].style.fontSize}px
 						</Text.Regular>
-						<Text.Medium size={item.size} inverted>
-							{item.size}: {item.fontSize}px
+						<Text.Medium size={size} inverted>
+							{size}: {textComponentTheme.sizes[size].style.fontSize}px
 						</Text.Medium>
 					</HStack>
 				))}

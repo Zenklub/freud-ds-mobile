@@ -1,2 +1,2 @@
-export { ToastDialogProvider, useToastDialog } from './provider';
+export { ToastDialogProvider, useToast } from './provider';
 export * from './toast.types';

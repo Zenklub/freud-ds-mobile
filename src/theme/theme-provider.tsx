@@ -1,32 +1,26 @@
-import React, { createContext, useMemo } from 'react';
-import { deepMerge } from '../helpers/deep-merge';
-import { baseTheme } from './base-theme';
-import { Theme } from './types';
-
-interface ThemeContextValue {
-	theme: Theme;
-}
+import { DeepPartial } from '@helpers/deep-partial.interface';
+import React, { createContext } from 'react';
+import { useThemeProviderValues } from './theme-provider-values.hook';
+import { Theme, ThemeContextValue, Tokens } from './types';
 
 export const ThemeContext = createContext({} as ThemeContextValue);
 
-interface ThemeProviderProps {
+export interface ThemeProviderProps {
+	tokens?: Tokens;
 	theme?: Theme;
+	darkTheme?: DeepPartial<Theme>;
 	children: React.ReactNode;
 }
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({
 	theme,
+	darkTheme,
+	tokens,
 	children,
 }) => {
-	const currentTheme = useMemo(() => {
-		if (!theme) return baseTheme;
-
-		return deepMerge(baseTheme, theme);
-	}, [theme]);
+	const value = useThemeProviderValues({ tokens, theme, darkTheme });
 
 	return (
-		<ThemeContext.Provider value={{ theme: currentTheme }}>
-			{children}
-		</ThemeContext.Provider>
+		<ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
 	);
 };

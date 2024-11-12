@@ -1,12 +1,11 @@
 import { Text } from '@components/typography/text';
 import { Portal } from '@gorhom/portal';
 import { useMeasurement } from '@helpers/use-measure.hook';
-import { useColors, useTokens } from '@hooks';
+import { useColorMode, useComponentTheme } from '@hooks/use-theme';
 import React, { useEffect, useRef } from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { calculatePosition } from './calculate-position';
-import { ANIMATION_DURATION, ARROW_SIZE, EASING } from './constants';
 
 export interface PopoverProps {
 	placement: 'top' | 'bottom' | 'left' | 'right';
@@ -15,28 +14,27 @@ export interface PopoverProps {
 	backdropColor?: string;
 	children: React.ReactNode;
 	containerStyle?: ViewStyle | ViewStyle[];
+	inverted?: boolean;
 	dismissOnBackdropPress?: boolean;
 }
 
 const SPACE_TO_START_ANIMATION = 4;
 
-export const Popover: React.FC<PopoverProps> = ({
-	content,
-	placement,
-	children,
-	maxWidth,
-	dismissOnBackdropPress = true,
-	backdropColor = 'transparent',
-	containerStyle,
-}) => {
+export const Popover: React.FC<PopoverProps> = (props) => {
+	const {
+		content,
+		placement,
+		children,
+		dismissOnBackdropPress = true,
+		containerStyle,
+	} = props;
+
+	const theme = usePopoverTheme(props);
+
 	const [visible, setVisible] = React.useState(false);
 	const [layout, onRef, onLayoutHandler] = useMeasurement();
 	const [tooltipLayout, onTooltipRef, setTooltipLayout] = useMeasurement();
 	const animation = useRef(new Animated.Value(0));
-
-	const [backgroundColor] = useColors('neutral.dark.300');
-
-	const [borderRadius, shadows] = useTokens('radii.md', 'shadow.300');
 
 	const onPressHandler = () => {
 		setVisible(true);
@@ -51,8 +49,8 @@ export const Popover: React.FC<PopoverProps> = ({
 	useEffect(() => {
 		Animated.timing(animation.current, {
 			toValue: visible ? 1 : 0,
-			duration: ANIMATION_DURATION,
-			easing: EASING,
+			duration: theme.animation.duration,
+			easing: theme.animation.easing,
 		}).start();
 	}, [visible]);
 
@@ -76,7 +74,7 @@ export const Popover: React.FC<PopoverProps> = ({
 								inputRange: [0, 1],
 								outputRange: [SPACE_TO_START_ANIMATION, 0],
 							}),
-							backgroundColor: backdropColor,
+							backgroundColor: theme.backdropColor,
 						},
 					]}
 					onTouchEnd={onBackdropPress}
@@ -85,14 +83,15 @@ export const Popover: React.FC<PopoverProps> = ({
 					<View
 						style={[
 							styles.tooltip,
+							{ ...theme.style },
 							tooltipPosition,
-							{ maxWidth, backgroundColor, borderRadius, ...shadows },
+							// { maxWidth, backgroundColor, borderRadius, ...shadows },
 						]}
 						onLayout={setTooltipLayout}
 						onTouchEnd={(e) => e.stopPropagation()}
 						ref={onTooltipRef}
 					>
-						<View style={[styles.arrow, arrowStyle, { backgroundColor }]} />
+						<View style={[styles.arrow, theme.arrow.style, arrowStyle]} />
 						{typeof content === 'string' ? (
 							<Text color="neutral.white">{content}</Text>
 						) : (
@@ -116,18 +115,26 @@ export const Popover: React.FC<PopoverProps> = ({
 		</View>
 	);
 };
+
+function usePopoverTheme({ inverted, backdropColor, maxWidth }: PopoverProps) {
+	const colorMode = useColorMode(inverted);
+	const theme = useComponentTheme('Popover', colorMode);
+
+	return {
+		...theme,
+		backdropColor: backdropColor ?? theme.backdropColor,
+		maxWidth: maxWidth ?? theme.style.maxWidth,
+	};
+}
+
 const styles = StyleSheet.create({
 	backdrop: {
 		...StyleSheet.absoluteFillObject,
 	},
 	tooltip: {
 		position: 'absolute',
-		padding: 10,
 	},
 	arrow: {
 		position: 'absolute',
-		width: ARROW_SIZE,
-		height: ARROW_SIZE,
-		transform: [{ rotate: '45deg' }],
 	},
 });

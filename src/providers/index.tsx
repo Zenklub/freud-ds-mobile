@@ -1,20 +1,24 @@
 import React from 'react';
-import { NativeBaseProvider, NativeBaseProviderProps } from 'native-base';
-import { theme, ThemeProvider } from '../theme';
-import { ToastDialogProvider } from '@components';
-import { PortalProvider } from '@gorhom/portal';
 
-export const FreudDSProvider: React.FC<NativeBaseProviderProps> = ({
+// import { ToastDialogProvider } from '@components';
+import { ToastDialogProvider } from '@components/toast';
+import { PortalProvider } from '@gorhom/portal';
+import { ThemeProvider, ThemeProviderProps } from '@theme';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+type FreudDSProviderProps = ThemeProviderProps;
+
+export const FreudDSProvider: React.FC<FreudDSProviderProps> = ({
+	theme,
 	children,
-	...props
 }) => {
 	return (
-		<ThemeProvider>
-			<NativeBaseProvider theme={theme} {...props}>
+		<ThemeProvider theme={theme}>
+			<SafeAreaProvider>
 				<PortalProvider>
 					<ToastDialogProvider>{children}</ToastDialogProvider>
 				</PortalProvider>
-			</NativeBaseProvider>
+			</SafeAreaProvider>
 		</ThemeProvider>
 	);
 };

@@ -1,4 +1,4 @@
-import { ShadowTokens } from '@theme/tokens';
+import { ShadowTokens } from '@theme/tokens/tokens';
 
 export const baseShadowTheme: ShadowTokens = {
 	none: {

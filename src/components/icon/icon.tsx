@@ -1,44 +1,18 @@
-import { iconCharMap, iconSizeMap } from '@components/icon/constants';
-import { IconProps, IconSize } from '@components/icon/icon.types';
-import { useColorTokenOrHardCoded } from '@hooks';
-import { ColorTokensPath } from '@theme/tokens/colors';
-import React from 'react';
-import { Text } from 'react-native';
+import { IconProps } from '@components/icon/icon.types';
+import { calculateLineHeight } from '@helpers/calculate-line-height';
+import { useColorMode, useComponentTheme } from '@hooks/use-theme';
+import React, { useMemo } from 'react';
+import { StyleSheet, Text } from 'react-native';
+import { iconMap } from './icon-map';
 
-const isIconSize = (size: unknown): size is IconSize => {
-	return typeof size === 'string' && size in iconSizeMap;
-};
+export const Icon: React.FC<IconProps> = (props) => {
+	const char = iconMap[props.name];
 
-const ICONS_DEFAULT_COLOR: ColorTokensPath = 'neutral.dark.400';
-
-export const Icon: React.FC<IconProps> = ({
-	testID,
-	color,
-	name,
-	size = 'md',
-	style,
-}) => {
-	const char = iconCharMap[name];
-	const iconsSize = isIconSize(size) ? iconSizeMap[size] : size;
-
-	const iconColor = useColorTokenOrHardCoded(
-		color ?? ICONS_DEFAULT_COLOR,
-		ICONS_DEFAULT_COLOR
-	);
+	const theme = useIconTheme(props);
 
 	if (char) {
 		return (
-			<Text
-				testID={testID}
-				style={[
-					{
-						fontFamily: 'freud-icon',
-						fontSize: iconsSize,
-						color: iconColor,
-					},
-					style,
-				]}
-			>
+			<Text testID={props.testID} style={[theme.style, props.style]}>
 				{char}
 			</Text>
 		);
@@ -46,3 +20,50 @@ export const Icon: React.FC<IconProps> = ({
 
 	return null;
 };
+
+function useIconTheme(props: IconProps) {
+	const {
+		inverted,
+		size: customSize,
+		color: customColor,
+		style: customStyle,
+	} = props;
+	const colorMode = useColorMode(inverted);
+	const theme = useComponentTheme('Icon', colorMode);
+
+	const { style: baseStyle, sizes } = theme;
+	const size = typeof customSize === 'string' ? sizes[customSize] : sizes.md;
+
+	const customStyleLineHeight = StyleSheet.flatten(customStyle)?.lineHeight;
+
+	const [fontSize, lineHeight] = useMemo(() => {
+		if (typeof customSize === 'number') {
+			return [
+				customSize,
+				calculateLineHeight(customSize, customStyleLineHeight ?? 1),
+			];
+		}
+
+		return [size.style.fontSize, size.style.lineHeight];
+	}, [
+		customSize,
+		size.style.fontSize,
+		size.style.lineHeight,
+		customStyleLineHeight,
+	]);
+
+	const style = useMemo(() => {
+		return StyleSheet.flatten([
+			baseStyle,
+			size.style,
+			{
+				fontSize,
+				lineHeight,
+				color: customColor || size.style?.color,
+			},
+			customStyle,
+		]);
+	}, [baseStyle, size.style, fontSize, lineHeight, customColor, customStyle]);
+
+	return { ...size.props, style };
+}
