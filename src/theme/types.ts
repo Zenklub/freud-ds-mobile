@@ -52,16 +52,6 @@ import {
 
 export type ThemeColorMode = 'light' | 'dark';
 
-export interface ThemeContextValue {
-	tokens: Tokens;
-	leaves: TokenLeaves;
-	current: ThemeValues;
-	darkTheme: ThemeValues;
-	lightTheme: ThemeValues;
-	mode: ThemeColorMode;
-	setColorMode: (mode: ThemeColorMode) => void;
-}
-
 export interface Tokens {
 	color: ColorsTokens;
 	opacity: OpacityTokens;

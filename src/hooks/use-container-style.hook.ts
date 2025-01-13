@@ -1,7 +1,7 @@
 import { ContainerProps } from '@components/view';
 import { useMemo } from 'react';
 import { ViewStyle } from 'react-native';
-import { useTokens } from './use-theme';
+import { useTokens } from './use-theme.hook';
 
 function getValue<T, K extends keyof T = keyof T, V = T[K]>(
 	obj: T,
@@ -11,14 +11,16 @@ function getValue<T, K extends keyof T = keyof T, V = T[K]>(
 		return undefined;
 	}
 
-	return (
+	if (
 		obj &&
 		typeof obj === 'object' &&
 		typeof keyOrValue === 'string' &&
 		keyOrValue in obj
-			? obj[keyOrValue as K]
-			: keyOrValue
-	) as V;
+	) {
+		return obj[keyOrValue as K] as V;
+	}
+
+	return keyOrValue as V;
 }
 
 export function useContainerPropsStyle<
@@ -26,6 +28,7 @@ export function useContainerPropsStyle<
 	S extends ViewStyle
 >(props: P): [style: S, rest: Omit<P, keyof ContainerProps>] {
 	const {
+		bg,
 		opacity,
 		m,
 		mx,
@@ -48,6 +51,7 @@ export function useContainerPropsStyle<
 
 	const mergedStyle = useMemo(() => {
 		return {
+			backgroundColor: getValue(theme.color, bg),
 			margin: getValue(theme.spacing, m),
 			marginHorizontal: getValue(theme.spacing, mx),
 			marginVertical: getValue(theme.spacing, my),
@@ -64,7 +68,7 @@ export function useContainerPropsStyle<
 			paddingRight: getValue(theme.spacing, pr),
 			opacity: getValue(theme.opacity, opacity),
 		} as S;
-	}, [m, mx, my, mt, mb, ml, mr, p, px, py, pt, pb, pl, pr, opacity]);
+	}, [bg, m, mx, my, mt, mb, ml, mr, p, px, py, pt, pb, pl, pr, opacity]);
 
 	return [mergedStyle, rest as Omit<P, keyof ContainerProps>];
 }

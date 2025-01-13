@@ -1,6 +1,6 @@
 import { IconProps } from '@components/icon/icon.types';
 import { calculateLineHeight } from '@helpers/calculate-line-height';
-import { useColorMode, useComponentTheme } from '@hooks/use-theme';
+import { useColorMode, useComponentTheme } from '@hooks/use-theme.hook';
 import React, { useMemo } from 'react';
 import { StyleSheet, Text } from 'react-native';
 import { iconMap } from './icon-map';

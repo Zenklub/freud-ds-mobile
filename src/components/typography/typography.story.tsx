@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 
-import { useComponentTheme } from '@hooks/use-theme';
+import { useComponentTheme } from '@hooks/use-theme.hook';
 import {
 	HeadingFontSizes,
 	TextFontSizes,

@@ -2,7 +2,7 @@ import { Icon } from '@components/icon';
 import { Touchable, TouchableProps } from '@components/touchable';
 import { Text } from '@components/typography';
 import { ContainerProps, View } from '@components/view';
-import { useColorMode, useComponentTheme } from '@hooks/use-theme';
+import { useColorMode, useComponentTheme } from '@hooks/use-theme.hook';
 import { IconName, ThemeValues } from '@theme';
 import { ExtractThemeValues } from '@theme/theme-value-extractor.type';
 import { StylingKeys } from '@theme/theming.interface';

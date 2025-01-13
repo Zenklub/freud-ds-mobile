@@ -1,6 +1,6 @@
 import { TokenLeaves } from '@theme';
 import { useMemo } from 'react';
-import { useTokensLeaves } from './use-theme';
+import { useTokensLeaves } from './use-theme.hook';
 
 type TupleMapper<
 	Source extends Record<string, any>,

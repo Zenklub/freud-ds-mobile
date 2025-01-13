@@ -15,10 +15,7 @@ export const containerPropsKeys = [
 	'pb',
 	'pl',
 	'pr',
-	'borderRadius',
-	'borderColor',
-	'borderWidth',
-	'backgroundColor',
+	'bg',
 	'opacity',
 ] as const;
 

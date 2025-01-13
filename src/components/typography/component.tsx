@@ -1,11 +1,12 @@
 import { calculateLineHeight } from '@helpers/calculate-line-height';
 import { removeNullable } from '@helpers/object.helper';
-import { useContainerPropsStyle, useCustomColorExtractor } from '@hooks';
+import { useCustomColorExtractor } from '@hooks';
+import { useContainerPropsStyle } from '@hooks/use-container-style.hook';
 import {
 	useColorMode,
 	useComponentTheme,
 	useTokensLeaves,
-} from '@hooks/use-theme';
+} from '@hooks/use-theme.hook';
 import React, { useMemo } from 'react';
 import {
 	TextProps as RNTextProps,

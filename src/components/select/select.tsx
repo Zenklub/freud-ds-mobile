@@ -271,12 +271,15 @@ export const Select: React.FC<SelectProps> = (props) => {
 const styles = StyleSheet.create({
 	selectContainer: {
 		flex: 1,
+		flexGrow: 1,
 	},
 	selectValue: {
 		flex: 1,
+		flexGrow: 1,
 	},
 	input: {
 		flex: 1,
+		flexGrow: 1,
 		backgroundColor: 'transparent',
 	},
 	nativePickerContainer: {

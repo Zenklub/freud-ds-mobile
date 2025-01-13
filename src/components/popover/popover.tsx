@@ -1,7 +1,7 @@
 import { Text } from '@components/typography/text';
 import { Portal } from '@gorhom/portal';
 import { useMeasurement } from '@helpers/use-measure.hook';
-import { useColorMode, useComponentTheme } from '@hooks/use-theme';
+import { useColorMode, useComponentTheme } from '@hooks/use-theme.hook';
 import React, { useEffect, useRef } from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';

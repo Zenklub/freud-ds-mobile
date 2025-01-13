@@ -5,9 +5,8 @@ import { TextStyle, ViewStyle } from 'react-native';
 
 export type ButtonProps<T> = PressableProps<T> &
 	ContainerProps & {
-		text: string;
 		style?: ViewStyle;
-		textStyle: TextStyle;
+		textStyle?: TextStyle;
 		inverted?: boolean;
 		size?: ButtonSizes;
 		disabled?: boolean;
@@ -17,4 +16,13 @@ export type ButtonProps<T> = PressableProps<T> &
 		icon?: IconName;
 		testID?: string;
 		iconStyle?: TextStyle;
-	};
+	} & (
+		| {
+				text: string;
+				children?: React.ReactNode;
+		  }
+		| {
+				text?: string;
+				children: React.ReactNode;
+		  }
+	);

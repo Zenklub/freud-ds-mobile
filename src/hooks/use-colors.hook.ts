@@ -1,7 +1,7 @@
 import { customColorExtractor } from '@helpers/custom-color-extractor';
 import { ColorTokensPath, ColorsPathOrHardCoded } from '@theme';
 import { useCallback, useMemo } from 'react';
-import { useTokensLeaves } from './use-theme';
+import { useTokensLeaves } from './use-theme.hook';
 
 export function useColors<T extends ColorTokensPath>(...tokens: T[]) {
 	const colorExtractor = useCustomColorExtractor();

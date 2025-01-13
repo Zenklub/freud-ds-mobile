@@ -22,7 +22,6 @@
 		"@storybook/addon-ondevice-knobs": "^5.3.25",
 		"@storybook/react-native": "^5.3.25",
 		"@storybook/react-native-server": "^5.3.23",
-		"native-base": "^3.4.25",
 		"react": "18.2.0",
 		"react-native": "0.72.15",
 		"react-native-gesture-handler": "2.1.0",

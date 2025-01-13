@@ -5,6 +5,7 @@ export * from './icon';
 export * from './icon-button';
 export * from './popover';
 export * from './radio';
+export * from './select';
 export * from './spinner';
 export * from './switch';
 export * from './text-heading';

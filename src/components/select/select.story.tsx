@@ -1,7 +1,6 @@
 import { Icon } from '@components/icon';
 import { Touchable } from '@components/touchable';
 import { Text } from '@components/typography';
-import { useBooleanState } from '@hooks';
 import { storiesOf } from '@storybook/react-native';
 import { SpacingSizes } from '@theme';
 import React, { useState } from 'react';
@@ -123,7 +122,10 @@ const CustomSelect: React.FC<{ nativeID: string; inverted?: boolean }> = ({
 	const [selected, setSelected] = useState<SelectOption['value'] | undefined>(
 		undefined
 	);
-	const modalVisibility = useBooleanState(false);
+	const [modalVisibility, setModalVisibility] = useState(false);
+
+	const toggle = () => setModalVisibility((previous) => !previous);
+	const setOff = () => setModalVisibility(false);
 
 	return (
 		<>
@@ -132,7 +134,7 @@ const CustomSelect: React.FC<{ nativeID: string; inverted?: boolean }> = ({
 				placeholder="Placeholder"
 				helperText="Helper text"
 				nativeID={nativeID}
-				onPress={modalVisibility.toggle}
+				onPress={toggle}
 				options={options}
 				selected={selected}
 				inverted={inverted}
@@ -142,9 +144,9 @@ const CustomSelect: React.FC<{ nativeID: string; inverted?: boolean }> = ({
 				title="Select an option"
 				options={options}
 				selected={selected}
-				onDismiss={modalVisibility.setOff}
+				onDismiss={setOff}
 				onSelectedValueChange={setSelected}
-				visible={modalVisibility.state}
+				visible={modalVisibility}
 			/>
 		</>
 	);
