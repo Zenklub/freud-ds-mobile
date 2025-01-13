@@ -33,14 +33,14 @@ Here is a list of all available heading sizes:
 
 | Size | Font Size | Line Height | Font Weight |
 | --- | --- | --- | --- |
-| xs | 14 | 21 | bold (700) |
-| sm | 16 | 24 | bold (700) |
-| md | 20 | 30 | bold (700) |
-| lg | 24 | 36 | bold (700) |
-| xl | 30 | 45 | bold (700) |
-| 2xl | 36 | 54 | bold (700) |
-| 3xl | 48 | 72 | bold (700) |
-| 4xl | 60 | 90 | bold (700) |
+| xs | 14 | 21 | 700 (bold) |
+| sm | 16 | 24 | 700 (bold) |
+| md | 20 | 30 | 700 (bold) |
+| lg | 24 | 36 | 700 (bold) |
+| xl | 40 | 60 | 700 (bold) |
+| 2xl | 40 | 60 | 700 (bold) |
+| 3xl | 48 | 72 | 700 (bold) |
+| 4xl | 56 | 84 | 700 (bold) |
 
 ## Text
 
@@ -58,17 +58,17 @@ Here is a list of all available text sizes:
 
 | Size | Font Size | Line Height | Font Weight |
 | --- | --- | --- | --- |
-| 2xs | 10 | 10 | regular (400) |
-| xs | 12 | 12 | regular (400) |
-| sm | 14 | 14 | regular (400) |
-| md | 16 | 24 | regular (400) |
-| lg | 18 | 27 | regular (400) |
-| xl | 20 | 30 | regular (400) |
-| 2xl | 24 | 36 | regular (400) |
-| 3xl | 32 | 48 | regular (400) |
-| 4xl | 40 | 60 | regular (400) |
-| 5xl | 48 | 72 | regular (400) |
-| 6xl | 60 | 90 | regular (400) |
+| 2xs | 10 | 10 | 400 (regular) |
+| xs | 12 | 12 | 400 (regular) |
+| sm | 14 | 14 | 400 (regular) |
+| md | 16 | 24 | 400 (regular) |
+| lg | 18 | 27 | 400 (regular) |
+| xl | 20 | 30 | 400 (regular) |
+| 2xl | 24 | 36 | 400 (regular) |
+| 3xl | 32 | 48 | 400 (regular) |
+| 4xl | 40 | 60 | 400 (regular) |
+| 5xl | 48 | 72 | 400 (regular) |
+| 6xl | 56 | 84 | 400 (regular) |
 
 ## Text.Regular
 

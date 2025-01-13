@@ -1,52 +1,51 @@
 {
-  "compilerOptions": {
-    "outDir": "dist",
-    "module": "esnext",
-    "target": "es5",
-    "lib": ["ES2019"],
-    "declaration": true,
-    "moduleResolution": "node",
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "esModuleInterop": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "allowSyntheticDefaultImports": true,
-    "allowJs": true,
-    "checkJs": false,
-    "jsx": "react-native",
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "baseUrl": ".",
-    "paths": {
-      "@components": ["./src/components"],
-      "@components/*": ["./src/components/*"],
-      "@hooks": ["./src/hooks"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@providers": ["./src/providers"],
-      "@providers/*": ["./src/providers/*"],
-      "@theme": ["./src/theme"],
-      "@theme/*": ["./src/theme/*"],
-      "@helpers": ["./src/helpers"],
-      "@helpers/*": ["./src/helpers/*"]
-    }
-  },
-  "include": ["type-declarations/**/*.d.ts", "src/**/*"],
-  "exclude": [
-    "**/*.test.*",
-    "**/__mocks__/*",
-    "**/__tests__/*",
-    "src/helpers/testing/"
-  ],
-  "ts-node": {
-    "compilerOptions": {
-      "module": "commonjs",
-      "target": "esnext"
-    }
-  }
+	"compilerOptions": {
+		"outDir": "dist",
+		"module": "esnext",
+		"target": "es5",
+		"lib": ["ES2019"],
+		"declaration": true,
+		"moduleResolution": "node",
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"esModuleInterop": true,
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+		"allowSyntheticDefaultImports": true,
+		"allowJs": true,
+		"checkJs": false,
+		"jsx": "react-native",
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"skipLibCheck": true,
+		"resolveJsonModule": true,
+		"baseUrl": ".",
+		"paths": {
+			"@components": ["./src/components"],
+			"@components/*": ["./src/components/*"],
+			"@hooks": ["./src/hooks"],
+			"@hooks/*": ["./src/hooks/*"],
+			"@providers": ["./src/providers"],
+			"@providers/*": ["./src/providers/*"],
+			"@theme": ["./src/theme"],
+			"@theme/*": ["./src/theme/*"],
+			"@helpers": ["./src/helpers"],
+			"@helpers/*": ["./src/helpers/*"]
+		}
+	},
+	"include": ["type-declarations/**/*.d.ts", "src/**/*"],
+	"exclude": [
+		"**/*.test.*",
+		"**/__mocks__/*",
+		"**/__tests__/*",
+		"src/helpers/testing/"
+	],
+	"ts-node": {
+		"compilerOptions": {
+			"module": "commonjs",
+			"target": "esnext"
+		}
+	}
 }

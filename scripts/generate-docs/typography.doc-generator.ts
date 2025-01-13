@@ -1,15 +1,21 @@
-import { calculateLineHeight } from '../../src/helpers/calculate-line-height';
-import { baseThemeTypography } from '../../src/theme/base-theme/typography';
+import { baseTheme, baseTokens } from '../../dist/theme/base-theme';
+import { baseThemeTypography } from '../../dist/theme/base-theme/typography';
+import { componentsThemeProcessor } from '../../dist/theme/pre-processors/components-theme.processor';
+import { tokensProcessor } from '../../dist/theme/pre-processors/tokens.processor';
 import {
-	FontSizeBaseMap,
 	HeadingFontSizes,
 	TextFontSizes,
-} from '../../src/theme/tokens/typography';
+} from '../../dist/theme/tokens/components/text-heading';
+import { FontWeight, FontWeightValue } from '../../dist/theme/tokens/tokens';
+import { ThemeValues } from '../../dist/theme/types';
 import { DocGenerator, DocGeneratorTable } from './doc-generator';
 
 export class TypographyCheatSheetDocGenerator extends DocGenerator {
+	private theme: ThemeValues;
+
 	constructor() {
 		super('Typography Cheat Sheet');
+		this.theme = this.processTheme();
 	}
 
 	async generate() {
@@ -27,6 +33,13 @@ export class TypographyCheatSheetDocGenerator extends DocGenerator {
 		this.logger.success();
 	}
 
+	private processTheme() {
+		const leaves = tokensProcessor(baseTokens);
+		const theme = componentsThemeProcessor(leaves, baseTheme);
+
+		return theme;
+	}
+
 	private generateFontWeights() {
 		this.generator.addText('Font Weights', 'subtitle');
 		this.generator.addText('Here are the available font weights:', 'text');
@@ -38,7 +51,9 @@ export class TypographyCheatSheetDocGenerator extends DocGenerator {
 
 		const rows: string[][] = [];
 
-		const weights = Object.keys(baseThemeTypography.fontWeights);
+		const weights = Object.keys(
+			baseThemeTypography.fontWeights
+		) as FontWeight[];
 
 		for (const weight of weights) {
 			rows.push([weight, baseThemeTypography.fontWeights[weight]]);
@@ -69,23 +84,24 @@ export class TypographyCheatSheetDocGenerator extends DocGenerator {
 
 		const rows: string[][] = [];
 
-		const sizes = Object.keys(
-			baseThemeTypography.heading
-		) as HeadingFontSizes[];
+		const sizes: HeadingFontSizes[] = [
+			'xs',
+			'sm',
+			'md',
+			'lg',
+			'xl',
+			'2xl',
+			'3xl',
+			'4xl',
+		];
 
 		for (const size of sizes) {
-			const config: FontSizeBaseMap = baseThemeTypography.heading[size];
-			const lineHeight = calculateLineHeight(
-				config.fontSize,
-				config.lineHeight
-			);
+			const style = this.theme.Heading.sizes[size].style;
 			rows.push([
 				size,
-				config.fontSize.toString(),
-				lineHeight.toString(),
-				`${config.fontWeight} (${
-					baseThemeTypography.fontWeights[config.fontWeight]
-				})`,
+				`${style.fontSize}`,
+				`${style.lineHeight}`,
+				`${style.fontWeight} (${this.findFontWeight(style.fontWeight)})`,
 			]);
 		}
 
@@ -130,26 +146,48 @@ export class TypographyCheatSheetDocGenerator extends DocGenerator {
 
 		const rows: string[][] = [];
 
-		const sizes = Object.keys(baseThemeTypography.text) as TextFontSizes[];
+		const sizes: TextFontSizes[] = [
+			'2xs',
+			'xs',
+			'sm',
+			'md',
+			'lg',
+			'xl',
+			'2xl',
+			'3xl',
+			'4xl',
+			'5xl',
+			'6xl',
+		];
 
 		for (const size of sizes) {
-			const config: FontSizeBaseMap = baseThemeTypography.text[size];
-			const lineHeight = calculateLineHeight(
-				config.fontSize,
-				config.lineHeight
-			);
+			const style = this.theme.Text.sizes[size].style;
 			rows.push([
 				size,
-				config.fontSize.toString(),
-				lineHeight.toString(),
-				`${config.fontWeight} (${
-					baseThemeTypography.fontWeights[config.fontWeight]
-				})`,
+				`${style.fontSize}`,
+				`${style.lineHeight}`,
+				`${style.fontWeight} (${this.findFontWeight(style.fontWeight)})`,
 			]);
 		}
 
 		table.rows = rows;
 
 		this.generator.addTable(table);
+	}
+
+	private findFontWeight(weight?: FontWeightValue) {
+		const weights = Object.keys(
+			baseThemeTypography.fontWeights
+		) as FontWeight[];
+
+		let fontWeights: FontWeight = 'regular';
+
+		for (const w of weights) {
+			if (baseThemeTypography.fontWeights[w] === weight) {
+				fontWeights = w;
+			}
+		}
+
+		return fontWeights;
 	}
 }

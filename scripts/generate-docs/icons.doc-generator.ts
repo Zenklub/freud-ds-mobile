@@ -1,5 +1,5 @@
+import { iconMap } from '../../src/components/icon/icon-map';
 import { DocGenerator, DocGeneratorTable } from './doc-generator';
-import { iconCharMap } from '../../src/components/icon/constants';
 
 export class IconsCheatSheetDocGenerator extends DocGenerator {
 	private baseSvgUrl =
@@ -34,7 +34,7 @@ export class IconsCheatSheetDocGenerator extends DocGenerator {
 	}
 
 	private async generateIconsTable() {
-		const keys = Object.keys(iconCharMap);
+		const keys = Object.keys(iconMap);
 
 		const data: DocGeneratorTable = {
 			header: ['Icon', 'Preview'],

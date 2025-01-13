@@ -11,6 +11,7 @@ export interface FreudDSPickerRenderInputProps extends TextInputProps {
 }
 
 export interface FreudDSPickerViewProps {
+	testID?: string;
 	selected?: SelectOption['value'];
 	options: SelectOption[];
 	inputNativeID: string;
