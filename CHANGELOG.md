@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/Zenklub/freud-ds-mobile/compare/v2.0.0...v2.0.1) (2025-01-13)
+
+
+### Bug Fixes
+
+* **select:** passing testID to component ([ea410ee](https://github.com/Zenklub/freud-ds-mobile/commit/ea410ee8b5ac82494b114fcd1f3fb50277da7ea7))
+
 # [2.0.0](https://github.com/Zenklub/freud-ds-mobile/compare/v1.3.0...v2.0.0) (2025-01-13)
 
 
