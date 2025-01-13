@@ -1,3 +1,24 @@
+# [2.0.0](https://github.com/Zenklub/freud-ds-mobile/compare/v1.3.0...v2.0.0) (2025-01-13)
+
+
+### Code Refactoring
+
+* removed all native-base references and exports ([4ac409c](https://github.com/Zenklub/freud-ds-mobile/commit/4ac409ce3be27cec3b8f9f9b35ed35729c6335b1))
+* **typography:** create typography components ([5a10e20](https://github.com/Zenklub/freud-ds-mobile/commit/5a10e204910a54b8bf4fa1c453ce42404470df52))
+
+
+### Features
+
+* migrate out of native-base ([5262e64](https://github.com/Zenklub/freud-ds-mobile/commit/5262e6424af343e457d21a87fdf9e99ac5b54b02))
+* **preview:** upgrade react native version of preview app ([b70caa7](https://github.com/Zenklub/freud-ds-mobile/commit/b70caa70804c68c7997e8996d6df2d1291484ab0))
+* **select:** enables custom picker ([f10256a](https://github.com/Zenklub/freud-ds-mobile/commit/f10256a22eaf7beecc0f438c717bf026dd9fe02c))
+
+
+### BREAKING CHANGES
+
+* Hook, tokens and themes has been changed to accommodate the new theme provider
+* **typography:** typography props
+
 # [1.3.0](https://github.com/Zenklub/freud-ds-mobile/compare/v1.2.1...v1.3.0) (2024-06-12)
 
 
