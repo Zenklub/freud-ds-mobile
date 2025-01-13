@@ -1,16 +1,4 @@
-import { ColorModeOptions, extendTheme } from 'native-base';
-
-import base from '@theme/base';
-import components from '@theme/components';
-
-const config: ColorModeOptions = {
-	useSystemColorMode: false, // TODO: implement this
-	initialColorMode: 'light',
-	accessibleColors: false,
-};
-
-export const theme = extendTheme({
-	...base,
-	components,
-	config,
-});
+export * from './base-theme';
+export * from './tokens/components';
+export * from './tokens/tokens';
+export * from './types';

@@ -1,11 +1,11 @@
-import { StoryWrapper } from '../../storybook/story-wrapper';
+import { Spinner } from '@components/spinner/spinner';
+import { Text } from '@components/typography/text';
 import { storiesOf } from '@storybook/react-native';
 import React from 'react';
-import { Spinner } from '@components/spinner/spinner';
-import { HStack } from 'native-base';
-import { Text } from '@components/typography/text';
+import { HStack } from '../../storybook/components/h-stack';
+import { StoryWrapper } from '../../storybook/story-wrapper';
 
-const sizes = ['sm', 'lg'] as const;
+const sizes = ['small', 'large'] as const;
 
 const SPACE_BETWEEN = 16;
 const SpinnerStory = () => {
@@ -25,7 +25,7 @@ const SpinnerStory = () => {
 			<StoryWrapper.Session inverted>
 				<HStack space={SPACE_BETWEEN}>
 					{sizes.map((size) => (
-						<Spinner key={size} size={size} inverted />
+						<Spinner key={size} size={size} color="neutral.light.100" />
 					))}
 				</HStack>
 			</StoryWrapper.Session>

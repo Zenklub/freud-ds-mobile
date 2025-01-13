@@ -1,12 +1,23 @@
-import React, { useMemo } from 'react';
-import { Text as NBText } from 'native-base';
-import TextTheme from '@theme/components/text';
-import { TextProps } from './typography.types';
+import React from 'react';
+import { IText } from './typography.types';
 
-export const Text: React.FC<TextProps> = ({ inverted, ...props }) => {
-	const color = useMemo(() => {
-		if (props.color) return props.color;
-		return inverted ? TextTheme.baseStyle()._dark.color : props.color;
-	}, [props.color, inverted]);
-	return <NBText {...props} color={color} fontFamily={'heading'} />;
+import { TypographyComponent } from './component';
+
+export const Text: IText = (props) => {
+	return <TypographyComponent {...props} family="body" />;
 };
+
+const TextMedium: IText['Medium'] = (props) => {
+	return <Text {...props} fontWeight="medium" />;
+};
+
+const TextRegular: IText['Regular'] = (props) => {
+	return <Text {...props} fontWeight="regular" />;
+};
+
+Text.Medium = TextMedium;
+Text.Regular = TextRegular;
+
+Text.displayName = 'Text';
+Text.Regular.displayName = 'Text.Regular';
+Text.Medium.displayName = 'Text.Medium';

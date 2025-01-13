@@ -1,28 +1,13 @@
+import { useColorMode, useComponentTheme } from '@hooks/use-theme.hook';
 import React from 'react';
 import { Switch as RNSwitch, SwitchChangeEvent, View } from 'react-native';
 import { SwitchProps } from './switch.types';
-import { useColors, useTokens } from '@hooks';
 
-const colors = {
-	normal: ['neutral.white', 'neutral.dark.100', 'brand.pure'],
-	inverted: ['neutral.white', 'neutral.dark.100', 'brand.pure'],
-} as const;
+export const Switch: React.FC<SwitchProps> = (props) => {
+	const { testID, checked, onChange, disabled } = props;
 
-export const Switch: React.FC<SwitchProps> = ({
-	testID,
-	checked,
-	onChange,
-	disabled,
-	inverted = false,
-}) => {
-	const [thumbColor, trackColorFalse, trackColorTrue] = useColors(
-		...(inverted ? colors.inverted : colors.normal)
-	);
-
-	const [opacity, opacityDisabled] = useTokens(
-		'opacity.full',
-		'opacity.level5'
-	);
+	const { opacity, trackColorTrue, trackColorFalse, thumbColor } =
+		useSwitchTheme(props);
 
 	const onChangeHandler = (event: SwitchChangeEvent) => {
 		if (disabled) {
@@ -36,7 +21,7 @@ export const Switch: React.FC<SwitchProps> = ({
 		<View pointerEvents={disabled ? 'none' : undefined}>
 			<RNSwitch
 				testID={testID}
-				style={{ opacity: disabled ? opacityDisabled : opacity }}
+				style={{ opacity }}
 				thumbColor={thumbColor}
 				trackColor={{ false: trackColorFalse, true: trackColorTrue }}
 				value={checked}
@@ -46,3 +31,24 @@ export const Switch: React.FC<SwitchProps> = ({
 		</View>
 	);
 };
+
+function useSwitchTheme(props: SwitchProps) {
+	const colorMode = useColorMode(props.inverted);
+	const switchTheme = useComponentTheme('Switch', colorMode);
+	const isActive = props.checked ?? false;
+	const isDisabled = props.disabled ?? false;
+
+	const theme = isDisabled ? switchTheme.disabled : switchTheme.enabled;
+
+	const opacity = isActive ? theme.active.style.opacity : theme.style.opacity;
+	const trackColorTrue = theme.active.style.backgroundColor;
+	const trackColorFalse = theme.style.backgroundColor;
+	const thumbColor = isActive ? theme.active.style.color : theme.style.color;
+
+	return {
+		opacity,
+		trackColorTrue,
+		trackColorFalse,
+		thumbColor,
+	};
+}

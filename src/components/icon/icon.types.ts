@@ -1,11 +1,11 @@
-import { iconCharMap } from '@components/icon/constants';
-
-export type IconName = keyof typeof iconCharMap;
-export type IconSize = 'xs' | 'sm' | 'md' | 'lg';
+import { ColorsPathOrHardCoded, IconName, IconSize } from '@theme';
+import { StyleProp, TextStyle } from 'react-native';
 
 export interface IconProps {
 	name: IconName;
-	size?: IconSize;
-	color?: string;
+	size?: IconSize | number;
+	color?: ColorsPathOrHardCoded;
+	inverted?: boolean;
 	testID?: string;
+	style?: StyleProp<TextStyle>;
 }

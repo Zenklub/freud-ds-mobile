@@ -1,15 +1,12 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Animated, LayoutRectangle, StyleSheet, View } from 'react-native';
+import { LayoutRectangle, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import {
-	TOAST_ANIMATION_DURATION,
-	TOAST_ANIMATION_EASING,
-	TOAST_DEFAULT_DURATION,
-} from './constants';
+import { UniqueId } from '@helpers/unique-id-generator';
+import { useComponentTheme } from '@hooks/use-theme.hook';
+import Animated from 'react-native-reanimated';
 import { Alert } from '../alert';
 import { ToastDialogConfig, ToastDialogHook } from './toast.types';
-import { UniqueId } from '@helpers/unique-id-generator';
 
 interface ToastDialogContext {
 	present: (key: string, config: ToastDialogConfig) => void;
@@ -28,17 +25,15 @@ type IToastDisplayInstance = {
 
 const Context = React.createContext({} as ToastDialogContext);
 
-export const TOAST_MARGIN_BETWEEN = 8;
-export const TOAST_MARGIN_TOP = 12;
-export const TOAST_MARGIN_HORIZONTAL = 16;
-
 export const ToastDialogProvider: React.FC = ({ children }) => {
 	const [instances, setInstances] = useState<IToastDisplayInstance[]>([]);
 	const timers = useRef<{ [key: string]: any }>({});
-	const animations = useRef<{ [key: string]: Animated.Value }>({});
+	const animations = useRef<{ [key: string]: Animated.Value<number> }>({});
 	const toastHeights = useRef<{ [key: string]: number }>({});
 
 	const { top: topInset } = useSafeAreaInsets();
+
+	const theme = useComponentTheme('Toast');
 
 	const clearReferences = (key: string) => {
 		delete toastHeights.current[key];
@@ -61,8 +56,8 @@ export const ToastDialogProvider: React.FC = ({ children }) => {
 	};
 
 	const dismissAll = () => {
-		setInstances((vals) =>
-			vals.map((instance) => {
+		setInstances((it) =>
+			it.map((instance) => {
 				return {
 					...instance,
 					nextState: 'hidden',
@@ -72,25 +67,23 @@ export const ToastDialogProvider: React.FC = ({ children }) => {
 	};
 
 	const present = (key: string, config: ToastDialogConfig) => {
-		animations.current[key] = new Animated.Value(-topInset);
-		animations.current[key].setOffset(topInset + TOAST_MARGIN_TOP);
+		animations.current[key] = new Animated.Value(-200);
 		toastHeights.current[key] = 0;
-		const instance: IToastDisplayInstance = {
-			key,
-			config,
-			currentState: 'created',
-			nextState: 'presenting',
-		};
-		// fix: Cannot update a component from inside the function body of a different component
-		setTimeout(() => {
+		requestAnimationFrame(() => {
+			const instance: IToastDisplayInstance = {
+				key,
+				config,
+				currentState: 'created',
+				nextState: 'presenting',
+			};
 			setInstances((vals) => [...vals, instance]);
-		}, 0);
+		});
 	};
 
 	const startTimer = (instance: IToastDisplayInstance) => {
 		const { config, key } = instance;
 		if (config.duration !== 'permanent' && !timers.current[key]) {
-			const { duration = TOAST_DEFAULT_DURATION } = config;
+			const { duration = theme.displayDuration } = config;
 			timers.current[key] = setTimeout(() => {
 				dismiss(key);
 			}, duration);
@@ -99,22 +92,14 @@ export const ToastDialogProvider: React.FC = ({ children }) => {
 
 	const onAnimationFinishes = useCallback(() => {
 		setInstances((vals) => {
-			return vals
-				.map((instance) => {
-					startTimer(instance);
-					return {
-						...instance,
-						currentState: instance.nextState,
-					};
-				})
-				.filter(({ currentState, key, config }) => {
-					if (currentState === 'hidden') {
-						config.onDismiss?.();
-						clearReferences(key);
-						return false;
-					}
-					return true;
-				});
+			return vals.filter(({ currentState, key, config }) => {
+				if (currentState === 'hidden') {
+					config.onDismiss?.();
+					clearReferences(key);
+					return false;
+				}
+				return true;
+			});
 		});
 	}, []);
 
@@ -124,33 +109,51 @@ export const ToastDialogProvider: React.FC = ({ children }) => {
 		);
 
 		if (!shouldUpdate) return;
-		let topPosition = 0;
 
-		Animated.parallel(
-			instances
-				.filter((it) => !!animations.current[it.key])
-				.map((instance) => {
-					const { key, nextState } = instance;
-					const height = toastHeights.current[key];
-					let itemFinalPosition =
-						nextState === 'hidden'
-							? -(height + topInset + TOAST_MARGIN_TOP)
-							: topPosition;
+		let displayPosition = topInset + theme.containerMarginTop;
 
-					const animation = Animated.timing(animations.current[key], {
-						toValue: itemFinalPosition,
-						duration: TOAST_ANIMATION_DURATION,
-						easing: TOAST_ANIMATION_EASING,
-						useNativeDriver: false,
-					});
+		for (const instance of instances) {
+			const { key, nextState } = instance;
+			const height = toastHeights.current[key];
+			const hiddenPosition = -(
+				height +
+				topInset +
+				theme.containerMarginTop +
+				80
+			);
+			let finalPosition =
+				nextState === 'hidden' ? hiddenPosition : displayPosition;
 
-					if (nextState !== 'hidden') {
-						topPosition += height + TOAST_MARGIN_BETWEEN;
-					}
+			if (nextState === 'presenting' && instance.currentState === 'created') {
+				animations.current[key].setValue(hiddenPosition);
+			}
 
-					return animation;
-				})
-		).start(onAnimationFinishes);
+			const animationConfig = {
+				toValue: finalPosition,
+				duration: theme.animation.duration,
+				easing: theme.animation.easing,
+			};
+
+			Animated.timing(animations.current[key], animationConfig).start();
+
+			if (nextState !== 'hidden') {
+				displayPosition += height + theme.spaceBetween;
+			}
+		}
+
+		setInstances((vals) => {
+			return vals.map((instance) => {
+				startTimer(instance);
+				return {
+					...instance,
+					currentState: instance.nextState,
+				};
+			});
+		});
+
+		setTimeout(() => {
+			onAnimationFinishes();
+		}, theme.animation.duration + 50);
 	};
 
 	useEffect(() => {
@@ -170,8 +173,7 @@ export const ToastDialogProvider: React.FC = ({ children }) => {
 					key={`toast-${key}`}
 					testID={`toast-${key}`}
 					style={{
-						left: TOAST_MARGIN_HORIZONTAL,
-						right: TOAST_MARGIN_HORIZONTAL,
+						...theme.alertContainer.style,
 						position: 'absolute',
 						top: animations.current[key],
 					}}
@@ -198,13 +200,11 @@ export const ToastDialogProvider: React.FC = ({ children }) => {
 	);
 };
 
-export const useToastDialog = (): ToastDialogHook => {
+export const useToast = (): ToastDialogHook => {
 	const context = React.useContext(Context);
 
 	if (!context) {
-		throw new Error(
-			'useToastDialog should be used inside a ToastDialogProvider'
-		);
+		throw new Error('useToast should be used inside a ToastDialogProvider');
 	}
 
 	const present = (config: ToastDialogConfig) => {

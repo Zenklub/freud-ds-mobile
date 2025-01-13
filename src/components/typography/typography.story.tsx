@@ -1,36 +1,41 @@
-import React from 'react';
 import { storiesOf } from '@storybook/react-native';
+import React from 'react';
 
-import { Heading } from './heading';
-import { HStack } from 'native-base';
-import { Text } from './text';
+import { useComponentTheme } from '@hooks/use-theme.hook';
+import {
+	HeadingFontSizes,
+	TextFontSizes,
+} from '@theme/tokens/components/text-heading';
+import { HStack } from '../../storybook/components/h-stack';
 import { StoryWrapper } from '../../storybook/story-wrapper';
-
-const headerSizesWithSize = [
-	{ size: 'xs', fontSize: 14 },
-	{ size: 'sm', fontSize: 16 },
-	{ size: 'md', fontSize: 20 },
-	{ size: 'lg', fontSize: 24 },
-	{ size: 'xl', fontSize: 30 },
-	{ size: '2xl', fontSize: 36 },
-	{ size: '3xl', fontSize: 48 },
-	{ size: '4xl', fontSize: 60 },
-];
+import { Heading } from './heading';
+import { Text } from './text';
 
 const HeadingStory: React.FC = () => {
+	const theme = useComponentTheme('Heading');
+	const sizes: HeadingFontSizes[] = [
+		'xs',
+		'sm',
+		'md',
+		'lg',
+		'xl',
+		'2xl',
+		'3xl',
+		'4xl',
+	];
 	return (
 		<StoryWrapper title="Typography | Heading">
 			<StoryWrapper.Session>
-				{headerSizesWithSize.map((item) => (
-					<Heading size={item.size} key={item.size}>
-						{item.size}: {item.fontSize}px
+				{sizes.map((size) => (
+					<Heading size={size} key={size}>
+						{size}: {theme.sizes[size].style.fontSize}px
 					</Heading>
 				))}
 			</StoryWrapper.Session>
 			<StoryWrapper.Session inverted>
-				{headerSizesWithSize.map((item) => (
-					<Heading size={item.size} inverted key={item.size}>
-						{item.size}: {item.fontSize}px
+				{sizes.map((size) => (
+					<Heading size={size} key={size} inverted>
+						{size}: {theme.sizes[size].style.fontSize}px
 					</Heading>
 				))}
 			</StoryWrapper.Session>
@@ -38,56 +43,58 @@ const HeadingStory: React.FC = () => {
 	);
 };
 
-const textSizesWithSize = [
-	{ size: '2xs', fontSize: 10 },
-	{ size: 'xs', fontSize: 12 },
-	{ size: 'sm', fontSize: 14 },
-	{ size: 'md', fontSize: 16 },
-	{ size: 'lg', fontSize: 18 },
-	{ size: 'xl', fontSize: 20 },
-	{ size: '2xl', fontSize: 24 },
-	{ size: '3xl', fontSize: 32 },
-	{ size: '4xl', fontSize: 40 },
-	{ size: '5xl', fontSize: 48 },
-	{ size: '6xl', fontSize: 60 },
-];
+const SPACE = 32;
 
 const TextStory: React.FC = () => {
+	const textComponentTheme = useComponentTheme('Text');
+	const sizes: TextFontSizes[] = [
+		'2xs',
+		'xs',
+		'sm',
+		'md',
+		'lg',
+		'xl',
+		'2xl',
+		'3xl',
+		'4xl',
+		'5xl',
+		'6xl',
+	];
 	return (
 		<StoryWrapper title="Typography | Text">
 			<StoryWrapper.Session>
-				<HStack space="xl">
-					<Text fontSize="md">Regular</Text>
-					<Text fontSize="md">Medium </Text>
+				<HStack space={SPACE}>
+					<Text size="md">Regular</Text>
+					<Text size="md">Medium </Text>
 				</HStack>
-				{textSizesWithSize.map((item) => (
-					<HStack space="xl" key={item.size}>
-						<Text fontSize={item.size}>
-							{item.size}: {item.fontSize}px
-						</Text>
-						<Text fontSize={item.size} fontWeight="medium">
-							{item.size}: {item.fontSize}px
-						</Text>
+				{sizes.map((size) => (
+					<HStack space={SPACE} key={size}>
+						<Text.Regular size={size}>
+							{size}: {textComponentTheme.sizes[size].style.fontSize}px
+						</Text.Regular>
+						<Text.Medium size={size}>
+							{size}: {textComponentTheme.sizes[size].style.fontSize}px
+						</Text.Medium>
 					</HStack>
 				))}
 			</StoryWrapper.Session>
 			<StoryWrapper.Session inverted>
-				<HStack space="xl">
-					<Text fontSize="md" inverted>
+				<HStack space={SPACE}>
+					<Text size="md" inverted>
 						Regular
 					</Text>
-					<Text fontSize="md" inverted>
+					<Text size="md" inverted>
 						Medium{' '}
 					</Text>
 				</HStack>
-				{textSizesWithSize.map((item) => (
-					<HStack space="xl" key={item.size}>
-						<Text fontSize={item.size} inverted>
-							{item.size}: {item.fontSize}px
-						</Text>
-						<Text fontSize={item.size} inverted fontWeight="medium">
-							{item.size}: {item.fontSize}px
-						</Text>
+				{sizes.map((size) => (
+					<HStack space={SPACE} key={size}>
+						<Text.Regular size={size} inverted>
+							{size}: {textComponentTheme.sizes[size].style.fontSize}px
+						</Text.Regular>
+						<Text.Medium size={size} inverted>
+							{size}: {textComponentTheme.sizes[size].style.fontSize}px
+						</Text.Medium>
 					</HStack>
 				))}
 			</StoryWrapper.Session>

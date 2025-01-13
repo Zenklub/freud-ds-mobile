@@ -5,16 +5,16 @@ import '@components/typography/typography.story';
 import '@components/icon/icon.story';
 
 // Feedback
-import '@components/spinner/spinner.story';
 import '@components/alert/alert.story';
-import '@components/toast/toast.story';
 import '@components/popover/popover.story';
+import '@components/spinner/spinner.story';
+import '@components/toast/toast.story';
 
-// Form
+// // Form
 import '@components/button/button.story';
+import '@components/checkbox/checkbox.story';
 import '@components/icon-button/icon-button.story';
-import '@components/input-text/input.story';
 import '@components/radio/radio.story';
 import '@components/select/select.story';
 import '@components/switch/switch.story';
-import '@components/checkbox/checkbox.story';
+import '@components/text-input/input.story';

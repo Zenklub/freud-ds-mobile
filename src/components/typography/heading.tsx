@@ -1,13 +1,9 @@
-import React, { useMemo } from 'react';
-import { Heading as NBHeading } from 'native-base';
-import HeadingTheme from '@theme/components/heading';
+import React from 'react';
+import { TypographyComponent } from './component';
 import { HeadingProps } from './typography.types';
 
-export const Heading: React.FC<HeadingProps> = ({ inverted, ...props }) => {
-	const color = useMemo(() => {
-		if (props.color) return props.color;
-		return inverted ? HeadingTheme.baseStyle()._dark.color : props.color;
-	}, [props.color, inverted]);
-
-	return <NBHeading {...props} color={color} fontFamily="heading" />;
+export const Heading: React.FC<HeadingProps> = (props) => {
+	return <TypographyComponent {...props} family="heading" />;
 };
+
+Heading.displayName = 'Heading';

@@ -1,9 +1,7 @@
-import {
-	IRadioGroupOnChangeHandler,
-	IRadioValue,
-} from 'native-base/lib/typescript/components/primitives/Radio/types';
 import { ViewStyle } from 'react-native';
 
+export type IRadioValue = string;
+export type IRadioGroupOnChangeHandler = (value: IRadioValue) => any;
 export interface RadioProps {
 	value: IRadioValue;
 	testID?: string;

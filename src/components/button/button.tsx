@@ -1,53 +1,92 @@
-import React, { useMemo } from 'react';
-import { Button as NBButton, composeEventHandlers } from 'native-base';
 import { ButtonProps } from '@components/button/button.types';
-import { Icon } from '@components/icon/icon';
-import { useIconColor } from '@helpers/icons-color.hook';
-import buttonTheme from '@theme/components/button';
+import { Icon } from '@components/icon';
+import { Spinner } from '@components/spinner';
+import { Touchable } from '@components/touchable';
+import { Text } from '@components/typography';
+import { mergePressableResponder } from '@helpers/merge-pressable-responder';
+import React, { useCallback, useEffect, useState } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { ButtonsState, useButtonProps } from './use-button-props';
 
-export const Button: React.FC<ButtonProps> = ({
-	testID,
-	icon,
-	inverted,
-	onPressIn,
-	onPressOut,
-	children,
-	...props
-}) => {
-	const [iconColor, pressableProps] = useIconColor(buttonTheme.variants, {
-		icon,
-		inverted,
-		...props,
-	});
+export function Button<T>(props: Readonly<ButtonProps<T>>) {
+	const { text, testID, children } = props;
 
-	const _isLoadingText = useMemo(() => {
-		if (props.isLoading) return children as string;
-		return undefined;
-	}, [props.isLoading, children]);
+	const [state, setState] = useState<ButtonsState>('normal');
+
+	const {
+		pressable: pressableProps,
+		container: containerProps,
+		text: textProps,
+		icon: iconProps,
+		spinner: spinnerProps,
+	} = useButtonProps(props, state);
+
+	useEffect(() => {
+		if (props.disabled) {
+			setState('disabled');
+		} else if (props.isLoading) {
+			setState('loading');
+		}
+	}, [props.disabled, props.isLoading]);
+
+	const renderRightComponent = useCallback(() => {
+		if (props.isLoading) {
+			return (
+				<View testID={`${testID}-spinner`}>
+					<Spinner {...spinnerProps} />
+				</View>
+			);
+		}
+
+		if (props.icon) {
+			return (
+				<Icon testID={`${testID}-icon`} {...iconProps} name={props.icon} />
+			);
+		}
+
+		return null;
+	}, [props.icon, props.isLoading, iconProps, spinnerProps, testID]);
 
 	return (
-		<NBButton
+		<Touchable
 			testID={testID}
-			size="md"
-			onPressIn={composeEventHandlers(onPressIn, pressableProps.onPressIn)}
-			onPressOut={composeEventHandlers(onPressOut, pressableProps.onPressOut)}
-			colorScheme={inverted ? 'neutral.white' : 'brand.pure'}
-			endIcon={
-				icon ? (
-					<Icon
-						name={icon}
-						size={props.size}
-						color={iconColor ?? 'white'}
-						testID={`${testID}-icon`}
-					/>
-				) : undefined
-			}
-			{...props}
-			isDisabled={props.disabled || props.isLoading}
-			isLoadingText={_isLoadingText}
-			spinnerPlacement="end"
+			{...pressableProps}
+			activeOpacity={1}
+			onPressIn={mergePressableResponder(
+				() => setState('active'),
+				pressableProps.onPressIn
+			)}
+			onPressOut={mergePressableResponder(
+				() => setState('normal'),
+				pressableProps.onPressOut
+			)}
+			disabled={props.disabled ?? props.isLoading}
 		>
-			{children}
-		</NBButton>
+			<View
+				testID={`${testID}-container`}
+				{...containerProps}
+				style={[styles.container, containerProps.style]}
+			>
+				{text ? (
+					<Text testID={`${testID}-text`} {...textProps}>
+						{text}
+					</Text>
+				) : null}
+				{children}
+
+				{renderRightComponent()}
+			</View>
+		</Touchable>
 	);
-};
+}
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+});
+
+Button.displayName = 'Button';

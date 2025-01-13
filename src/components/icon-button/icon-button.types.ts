@@ -1,17 +1,17 @@
-import { IconName } from '@components/icon/icon.types';
-import { IButtonProps } from 'native-base';
+import { PressableProps } from '@components/touchable';
+import { ContainerProps } from '@components/view';
+import { IconButtonSizes, IconButtonVariants, IconName } from '@theme';
+import { ViewStyle } from 'react-native';
 
-export type IconButtonSize = 'xs' | 'sm' | 'md' | 'lg';
-export type IconButtonVariant = 'solid' | 'outline' | 'ghost';
-
-export interface IconButtonProps {
-	icon: IconName;
-	disabled?: boolean;
-	inverted?: boolean;
-	size?: IconButtonSize;
-	variant?: IconButtonVariant;
-	testID?: string;
-	onPress?: IButtonProps['onPress'];
-	onPressIn?: IButtonProps['onPressIn'];
-	onPressOut?: IButtonProps['onPressOut'];
-}
+export type IconButtonProps<T> = PressableProps<T> &
+	ContainerProps & {
+		style?: ViewStyle;
+		inverted?: boolean;
+		size?: IconButtonSizes;
+		disabled?: boolean;
+		variant?: IconButtonVariants;
+		isLoading?: boolean;
+		isFocused?: boolean;
+		icon: IconName;
+		testID?: string;
+	};

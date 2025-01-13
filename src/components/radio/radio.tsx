@@ -1,27 +1,30 @@
+import { Text } from '@components/typography/text';
+import { useColorMode, useComponentTheme } from '@hooks/use-theme.hook';
 import React, { useMemo } from 'react';
-import { RadioComponentType } from './radio.types';
 import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 import { RadioGroupContextProvider, useRadioContext } from './radio-context';
-import { Text } from '@components/typography/text';
-import { useToken } from 'native-base';
+import { RadioComponentType } from './radio.types';
 
 export const Radio: RadioComponentType = ({
+	testID,
 	value,
-	isFocused,
-	disabled,
-	inverted,
+	isFocused = false,
+	disabled = false,
+	inverted = false,
 	children,
 }) => {
-	const [neutralWhiteColor, neutralLight400Color, brandPureColor] = useToken(
-		'colors',
-		['neutral.white', 'neutral.light.400', 'brand.pure']
-	);
-
 	const { setValue, currentValue } = useRadioContext();
 
-	const isChecked = useMemo(() => {
+	const isSelected = useMemo(() => {
 		return currentValue === value;
 	}, [currentValue, value]);
+
+	const theme = useRadioTheme({
+		selected: isSelected,
+		focused: isFocused,
+		disabled,
+		inverted,
+	});
 
 	const onPressHandler = () => {
 		if (disabled) return;
@@ -30,29 +33,23 @@ export const Radio: RadioComponentType = ({
 	};
 
 	return (
-		<TouchableWithoutFeedback onPress={onPressHandler}>
-			<View style={[styles.container, disabled ? styles.disabled : undefined]}>
-				<View
-					style={[
-						styles.focusContainer,
-						{
-							borderColor:
-								isFocused && !disabled ? brandPureColor : 'transparent',
-						},
-					]}
-				>
-					<View
-						style={[
-							styles.radio,
-							{
-								backgroundColor: neutralWhiteColor,
-								borderColor: isChecked ? brandPureColor : neutralLight400Color,
-								borderWidth: isChecked ? 5 : 2,
-							},
-						]}
-					/>
+		<TouchableWithoutFeedback onPress={onPressHandler} testID={testID}>
+			<View style={[styles.container, theme.style]}>
+				<View style={theme.outer.style}>
+					<View style={[styles.box, theme.box.style]}>
+						<View
+							testID={`${testID}.indicator`}
+							style={theme.indicator.style}
+						/>
+					</View>
 				</View>
-				<Text inverted={inverted}>{children}</Text>
+				<Text
+					testID={`${testID}.label`}
+					style={theme.label.style}
+					{...theme.label.props}
+				>
+					{children}
+				</Text>
 			</View>
 		</TouchableWithoutFeedback>
 	);
@@ -63,22 +60,38 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 	},
-	disabled: {
-		opacity: 0.4,
-	},
-	radio: {
-		width: 20,
-		height: 20,
-		borderWidth: 2,
-		borderRadius: 10,
-	},
-	focusContainer: {
-		borderWidth: 2,
-		borderRadius: 12,
-		borderColor: 'transparent',
-		marginRight: 10,
+	box: {
+		alignItems: 'center',
+		justifyContent: 'center',
 	},
 });
+
+interface UseRadioThemeArgs {
+	selected: boolean;
+	focused: boolean;
+	disabled: boolean;
+	inverted: boolean;
+}
+
+function useRadioTheme({
+	selected,
+	focused,
+	disabled,
+	inverted,
+}: UseRadioThemeArgs) {
+	const colorMode = useColorMode(inverted);
+	const radioTheme = useComponentTheme('Radio', colorMode);
+
+	if (disabled) {
+		return selected ? radioTheme.disabledSelected : radioTheme.disabled;
+	}
+
+	if (focused) {
+		return selected ? radioTheme.focusedSelected : radioTheme.focused;
+	}
+
+	return selected ? radioTheme.selected : radioTheme.normal;
+}
 
 export const RadioGroup: RadioComponentType['Group'] = ({
 	children,
