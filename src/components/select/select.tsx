@@ -158,6 +158,7 @@ export const Select: React.FC<SelectProps> = (props) => {
 					/>
 
 					<FreudDSIOSPickerView
+						testID={testID}
 						options={options}
 						selected={selected}
 						onSelectedValueChange={onSelectedValueChange}
@@ -169,6 +170,7 @@ export const Select: React.FC<SelectProps> = (props) => {
 
 		return (
 			<Picker
+				testID={testID}
 				onValueChange={onValueChangeAndroidHandler}
 				selectedValue={selected}
 			>
