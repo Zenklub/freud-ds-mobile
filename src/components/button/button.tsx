@@ -61,11 +61,12 @@ export function Button<T>(props: Readonly<ButtonProps<T>>) {
 				pressableProps.onPressOut
 			)}
 			disabled={props.disabled ?? props.isLoading}
+			style={containerProps.style}
 		>
 			<View
 				testID={`${testID}-container`}
 				{...containerProps}
-				style={[styles.container, containerProps.style]}
+				style={styles.container}
 			>
 				{text ? (
 					<Text testID={`${testID}-text`} {...textProps}>
