@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/Zenklub/freud-ds-mobile/compare/v2.0.1...v2.0.2) (2025-01-15)
+
+
+### Bug Fixes
+
+* **button:** set container style to button's pressable ([e802161](https://github.com/Zenklub/freud-ds-mobile/commit/e802161ab15fb5eb02915e16349fc0ddfb5e19bc))
+
 ## [2.0.1](https://github.com/Zenklub/freud-ds-mobile/compare/v2.0.0...v2.0.1) (2025-01-13)
 
 
