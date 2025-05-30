@@ -1,3 +1,10 @@
+## [2.0.3](https://github.com/Zenklub/freud-ds-mobile/compare/v2.0.2...v2.0.3) (2025-05-30)
+
+
+### Bug Fixes
+
+* **select:** alterando ordem do picker para ios e ajustando o InputAccessory ([ca1913e](https://github.com/Zenklub/freud-ds-mobile/commit/ca1913e8f4d76a6f4a9ab2c2347c8dee81b288bb))
+
 ## [2.0.2](https://github.com/Zenklub/freud-ds-mobile/compare/v2.0.1...v2.0.2) (2025-01-15)
 
 
