@@ -141,6 +141,13 @@ export const Select: React.FC<SelectProps> = (props) => {
 		if (isIOS) {
 			return (
 				<>
+					<FreudDSIOSPickerView
+						testID={testID}
+						options={options}
+						selected={selected}
+						onSelectedValueChange={onSelectedValueChange}
+						inputNativeID={inputNativeID}
+					/>
 					<TextInput
 						ref={inputRef}
 						nativeID={inputNativeID}
@@ -155,14 +162,6 @@ export const Select: React.FC<SelectProps> = (props) => {
 						inputAccessoryViewID={inputAccessoryViewID}
 						contextMenuHidden
 						caretHidden
-					/>
-
-					<FreudDSIOSPickerView
-						testID={testID}
-						options={options}
-						selected={selected}
-						onSelectedValueChange={onSelectedValueChange}
-						inputNativeID={inputNativeID}
 					/>
 				</>
 			);
@@ -234,11 +233,13 @@ export const Select: React.FC<SelectProps> = (props) => {
 						<InputAccessoryView nativeID={inputAccessoryViewID}>
 							<View
 								style={{
-									flex: 1,
 									flexDirection: 'row',
+									alignItems: 'center',
 									justifyContent: 'space-between',
-									display: 'flex',
-									// paddingHorizontal: inputAccessoryPaddingHorizontal,
+									backgroundColor: '#f8f8f8',
+									borderTopWidth: StyleSheet.hairlineWidth,
+									borderColor: '#ccc',
+									paddingHorizontal: 12,
 								}}
 							>
 								<View>
