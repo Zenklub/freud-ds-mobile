@@ -4,7 +4,6 @@ This is the implementation of Freud Design System for mobile apps
 
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) [![node-version](https://img.shields.io/badge/node-18-brightgreen.svg)](https://nodejs.org/en/blog/release/v18.16.0/)
 
-
 ### Installing
 
 ```bash
@@ -14,8 +13,6 @@ yarn add "@freud-ds/react-native"
 ```bash
 npm i "@freud-ds/react-native"
 ```
-
-
 
 ### How to use it
 
@@ -34,13 +31,12 @@ export const Component: React.FC = () => {
 }
 ```
 
-
-
 ### Documentation (components list)
 
 - [Text](docs/components/text.md)
 - [Heading](docs/components/heading.md)
 - [Button](docs/components/button.md)
+- [Select](docs/components/select.md)
 
 <hr />
 
@@ -66,9 +62,9 @@ brew update
 brew install watchman
 ```
 
-*If you are not on a mac please refer to the [watchman's documentation](https://facebook.github.io/watchman/docs/install.html)*
+_If you are not on a mac please refer to the [watchman's documentation](https://facebook.github.io/watchman/docs/install.html)_
 
-#### Building the playground app 
+#### Building the playground app
 
 ```bash
 # iOS
@@ -82,8 +78,6 @@ Running the build script on development mode
 ```bash
 yarn dev
 ```
-
-
 
 #### Creating components and adding it to the Playground
 
@@ -107,12 +101,14 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { MyFirstComponent } from '.';
 
-storiesOf('MyFirstComponent', module).add('Simple Usage', () => <MyFirstComponent />);
+storiesOf('MyFirstComponent', module).add('Simple Usage', () => (
+	<MyFirstComponent />
+));
 ```
 
 Finally, let's import our story into the application, open the `src/storybook/stories.ts` file and add the import statement of our component's story:
 
-``` diff
+```diff
 // src/storybook/stories.ts
 ...
 + import '@components/my-fist-component/my-fist-component.stories';
@@ -121,13 +117,9 @@ Finally, let's import our story into the application, open the `src/storybook/st
 
 Now you can see our component is already being displayed in the playground.
 
-
-
 ## Good Practice
 
 TODO
-
-
 
 ## Generating a version
 
