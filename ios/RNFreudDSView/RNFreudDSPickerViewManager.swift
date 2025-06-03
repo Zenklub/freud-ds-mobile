@@ -63,6 +63,7 @@ class FreudDSPickerView: UIView {
                 }
                 
                 input.backedTextInputView.inputView = weekSelf.picker
+                input.backedTextInputView.reloadInputViews()
                 
                 weekSelf.currentInputNativeID = weekSelf.inputNativeID
             }
