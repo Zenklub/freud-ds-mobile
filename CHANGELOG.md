@@ -1,3 +1,15 @@
+# [2.1.0](https://github.com/Zenklub/freud-ds-mobile/compare/v2.0.3...v2.1.0) (2025-06-03)
+
+
+### Features
+
+* adicionando doc do select ([351b900](https://github.com/Zenklub/freud-ds-mobile/commit/351b90009daa49a15ba52129c59243178b25d4f1))
+
+
+### Reverts
+
+* **select:** returning the ordering of the native ios component of select ([0defc51](https://github.com/Zenklub/freud-ds-mobile/commit/0defc516f66d409a47fbf25aee927010252165e2))
+
 ## [2.0.3](https://github.com/Zenklub/freud-ds-mobile/compare/v2.0.2...v2.0.3) (2025-05-30)
 
 
