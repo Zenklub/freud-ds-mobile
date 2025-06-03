@@ -26,21 +26,23 @@ import { FreudDSIOSPickerView } from './ios-picker-view';
 
 const isIOS = Platform.OS === 'ios';
 
-export const Select: React.FC<SelectProps> = (props) => {
+export const Select: React.FC<SelectProps> = ({
+	accessoryViewID,
+	nativeID: inputNativeID,
+	...props
+}) => {
 	const {
 		placeholder,
 		testID,
 		error,
 		options,
 		selected,
-		accessoryViewID,
 		onClose,
 		onOpen,
 		onCancel,
 		onDone,
 		onPress,
 		onSelectedValueChange,
-		nativeID: inputNativeID,
 		inputStyle,
 		cancelText = 'Cancel',
 		doneText = 'Done',
@@ -155,6 +157,7 @@ export const Select: React.FC<SelectProps> = (props) => {
 						inputAccessoryViewID={inputAccessoryViewID}
 						contextMenuHidden
 						caretHidden
+						showSoftInputOnFocus={false}
 					/>
 					<FreudDSIOSPickerView
 						testID={testID}
