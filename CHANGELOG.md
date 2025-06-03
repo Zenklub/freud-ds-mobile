@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/Zenklub/freud-ds-mobile/compare/v2.1.0...v2.1.1) (2025-06-03)
+
+
+### Bug Fixes
+
+* removendo props de nativeID parea input wrapper ([f218bcf](https://github.com/Zenklub/freud-ds-mobile/commit/f218bcf628a92a49bba3cd6f3dfd04c3d852cc5e))
+
 # [2.1.0](https://github.com/Zenklub/freud-ds-mobile/compare/v2.0.3...v2.1.0) (2025-06-03)
 
 
