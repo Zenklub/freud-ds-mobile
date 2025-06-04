@@ -66,17 +66,15 @@ _If you are not on a mac please refer to the [watchman's documentation](https://
 
 #### Building the playground app
 
-```bash
-# iOS
-yarn build:playground:ios
-# Android
-yarn build:playground:android
-```
-
 Running the build script on development mode
 
 ```bash
 yarn dev
+```
+
+```bash
+# iOS
+yarn pods
 ```
 
 #### Creating components and adding it to the Playground

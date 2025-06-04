@@ -4,6 +4,7 @@ const previewProjName = 'preview';
 
 const { spawn, spawnSync } = require('child_process');
 const { name } = require('../package.json');
+const fs = require('fs');
 
 const SAMPLE_PROJ_PATH = `./${previewProjName}/node_modules/${name}`;
 
@@ -72,11 +73,31 @@ function cloneFiles() {
 			spawnSync('cp', [`./${path}`, `${SAMPLE_PROJ_PATH}/${path}`]);
 		}
 	}
+
+	const cloneAndAdjustPodspec = () => {
+		const sourcePath = './react-native-freud-ds.podspec';
+		const destPath = `${SAMPLE_PROJ_PATH}/react-native-freud-ds.podspec`;
+
+		try {
+			const content = fs.readFileSync(sourcePath, 'utf8');
+
+			const adjustedContent = content.replace(
+				/(s\.version\s*=\s*)(package\["version"\]|['"].*?['"])/,
+				'$1"1.0.0"'
+			);
+
+			fs.writeFileSync(destPath, adjustedContent);
+			return true;
+		} catch (error) {
+			print(`Failed to adjust podspec: ${error.message}`);
+			return false;
+		}
+	};
 	cloneItem('android', true);
 	cloneItem('ios', true);
 	cloneItem('dist', true);
 	cloneItem('package.json', false);
-	cloneItem('react-native-freud-ds.podspec', false);
+	cloneAndAdjustPodspec();
 	success('  Done');
 }
 
