@@ -39,7 +39,7 @@
 		"prepublishOnly": "yarn build",
 		"semantic-release": "semantic-release",
 		"preview": "yarn --cwd preview",
-		"pods": "cd preview && pod-install --quiet",
+		"pods": "cd preview && npx pod-install --quiet",
 		"bootstrap": "yarn build && cd preview && yarn && npx react-native-asset && pod-install --quiet && cd ../",
 		"generate-docs": "./scripts/generate-docs/run.sh"
 	},

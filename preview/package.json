@@ -9,9 +9,9 @@
 		"postinstall": "patch-package && yarn jetify"
 	},
 	"dependencies": {
-		"@freud-ds/icons": "*",
+		"@freud-ds/icons": "2.2.1",
 		"@freud-ds/react-native": "file:../dist",
-		"@freud-ds/tokens": "*",
+		"@freud-ds/tokens": "2.0.7",
 		"@gorhom/portal": "^1.0.14",
 		"@react-native-async-storage/async-storage": "^2.0.0",
 		"@react-native-picker/picker": "^2.8.1",

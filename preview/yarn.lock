@@ -1287,7 +1287,7 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.57.1.tgz#de633db3ec2ef6a3c89e2f19038063e8a122e2c2"
   integrity sha512-d9zaMRSTIKDLhctzH12MtXvJKSSUhaHcjV+2Z+GK+EEY7XKpP5yR4x+N3TAcHTcu963nIr+TMcCb4DBCYX1z6Q==
 
-"@freud-ds/icons@*":
+"@freud-ds/icons@2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@freud-ds/icons/-/icons-2.2.1.tgz#18ef0d5305a828ff7b7e029c3f08ba7ed70c6f3a"
   integrity sha512-GFiK6Z8CM8Y8m6XTfmK+LxQtesKtksbZLQLGffcBKzMHr1sMrEcM2aMhVMPG3Ayz14tR6UAcyglNwgUmclv9FQ==
@@ -1297,7 +1297,7 @@
 "@freud-ds/react-native@file:../dist":
   version "0.0.0"
 
-"@freud-ds/tokens@*":
+"@freud-ds/tokens@2.0.7":
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/@freud-ds/tokens/-/tokens-2.0.7.tgz#125eeba5cdf49ad4a46b6aaef51da2ea77de96fd"
   integrity sha512-haSxFMYOjhKBGuDF37FD+DxCaw2S33xmRTI7Dq0W+WtboWLK3MaVYdMqQ33UxxV70sio9a914bUSiY5Cw0g5cw==
@@ -6376,9 +6376,9 @@ fs-extra@^10.1.0:
     universalify "^2.0.0"
 
 fs-extra@^11.1.0:
-  version "11.2.0"
-  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-11.2.0.tgz#e70e17dfad64232287d01929399e0ea7c86b0e5b"
-  integrity sha512-PmDi3uwK5nFuXh7XDTlVnS17xJS7vW36is2+w3xcv8SVxiB4NyATf4ctkVY5bkSjX0Y4nbvZCq1/EjtEyr9ktw==
+  version "11.3.0"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-11.3.0.tgz#0daced136bbaf65a555a326719af931adc7a314d"
+  integrity sha512-Z4XaCL6dUDHfP/jT25jJKMmtxvuwbkrD1vNSMFlo9lNLY2c5FHYSQgHPRZUjAB26TpDEoW9HCOgplrdbaPV/ew==
   dependencies:
     graceful-fs "^4.2.0"
     jsonfile "^6.0.1"

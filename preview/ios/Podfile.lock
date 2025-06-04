@@ -282,8 +282,6 @@ PODS:
   - React-jsinspector (0.72.15)
   - React-logger (0.72.15):
     - glog
-  - react-native-freud-ds (0.0.0):
-    - React-Core
   - react-native-safe-area-context (4.11.1):
     - React-Core
   - React-NativeModulesApple (0.72.15):
@@ -426,7 +424,6 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
-  - "react-native-freud-ds (from `../node_modules/@freud-ds/react-native`)"
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
@@ -498,8 +495,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   React-logger:
     :path: "../node_modules/react-native/ReactCommon/logger"
-  react-native-freud-ds:
-    :path: "../node_modules/@freud-ds/react-native"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   React-NativeModulesApple:
@@ -571,7 +566,6 @@ SPEC CHECKSUMS:
   React-jsiexecutor: ce8ecfcd3b7dbc9cb65a661110be17f5afd18aa3
   React-jsinspector: b86a8abae760c28d69366bbc1d991561e51341ed
   React-logger: ed7c9e01e58529065e7da6bf8318baf15024283e
-  react-native-freud-ds: 54f5f0cb0acd29cdd748b3df1e4c731615697094
   react-native-safe-area-context: 5141f11858b033636f1788b14f32eaba92cee810
   React-NativeModulesApple: 7bab439cb5de9a76299210ed1127698170777a7f
   React-perflogger: 6acc671f527e69c0cd93b8e62821d33d3ddf25ca
@@ -600,4 +594,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 30bfe6d460c730725efafdfb4d4a5eb241d171f4
 
-COCOAPODS: 1.14.3
+COCOAPODS: 1.16.2
